@@ -76,11 +76,11 @@ export const SOFTWARE_OPTIONS: TaxonomyOption[] = [
 
 /** MODULE 6 — the 10 industries served, rendered on the home page. */
 export const INDUSTRIES: TaxonomyOption[] = [
+  { slug: 'media', label: 'Media and Film/TV', icon: '🎬', description: 'Entertainment, publishing and OTT.' },
   { slug: 'education', label: 'Education', icon: '🎓', description: 'Institutions, ed-tech and training brands.' },
   { slug: 'government', label: 'Government', icon: '🏛️', description: 'Public sector campaigns and outreach.' },
   { slug: 'healthcare', label: 'Healthcare', icon: '🩺', description: 'Hospitals, wellness and pharma.' },
   { slug: 'it', label: 'IT', icon: '💻', description: 'Software, SaaS and digital products.' },
-  { slug: 'media', label: 'Media', icon: '🎬', description: 'Entertainment, publishing and OTT.' },
   { slug: 'hospitality', label: 'Hospitality', icon: '🏨', description: 'Hotels, travel and lifestyle.' },
   { slug: 'retail', label: 'Retail', icon: '🛍️', description: 'Stores, FMCG and consumer brands.' },
   { slug: 'ecommerce', label: 'E-Commerce', icon: '🛒', description: 'Online marketplaces and D2C.' },

@@ -1,14 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ScrollAnimationDirective } from '../../shared/directives/scroll-animation.directive';
 import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
 import { FoundationNoteCardComponent } from '../../shared/components/foundation-note-card/foundation-note-card.component';
 import { SeoService } from '../../core/services/seo.service';
+import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective, SectionHeaderComponent, FoundationNoteCardComponent],
+  imports: [CommonModule, RouterLink, ScrollAnimationDirective, SectionHeaderComponent, FoundationNoteCardComponent],
   template: `
     <!-- ============================= HERO ============================= -->
     <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
@@ -25,15 +28,70 @@ import { SeoService } from '../../core/services/seo.service';
           Every story has the power to inspire, every experience the ability to transform,
           and every brand deserves to be remembered.
         </p>
+
+        <!-- Quick nav to the four About sections -->
+        <div class="mt-12 flex flex-wrap justify-center gap-3 animate-slide-up" style="animation-delay: 0.5s;">
+          @for (section of aboutSections; track section.fragment) {
+            <a
+              routerLink="/about"
+              [fragment]="section.fragment"
+              (click)="scrollToSection(section.fragment)"
+              class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card text-brand-white/70 font-poppins text-sm hover:border-brand-gold/30 hover:text-brand-gold transition-all duration-300"
+            >
+              <span class="text-base">{{ section.icon }}</span>
+              {{ section.label }}
+            </a>
+          }
+        </div>
       </div>
     </section>
 
-    <!-- ===================== THE BRAND — INTRO ===================== -->
-    <section class="section-padding bg-brand-black relative">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <!-- ======================== THE FOUNDER ======================== -->
+    <section id="the-founder" class="section-padding bg-brand-black relative scroll-mt-28">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-brand-pink/5 rounded-full blur-[120px]"></div>
+      <div class="relative max-w-7xl mx-auto">
+        <app-section-header
+          subtitle="The Founder"
+          title="The Vision Behind The Venture"
+          description="A creative entrepreneur building a house where storytelling, talent and technology work as one."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <!-- Founder profile -->
+          <div appScrollAnimation animationType="fade-left">
+            <div class="glass-card-gold p-8 md:p-10">
+              <div class="flex items-center gap-5 mb-8">
+                <div class="w-20 h-20 shrink-0 rounded-full border border-brand-gold/30 bg-gradient-to-br from-brand-gold/20 to-brand-pink/10 flex items-center justify-center">
+                  <span class="font-playfair text-2xl text-brand-gold">YB</span>
+                </div>
+                <div>
+                  <p class="font-playfair text-2xl text-brand-white">Yashvi Bagga</p>
+                  <p class="text-brand-gold font-poppins text-xs tracking-[3px] uppercase mt-1">Founder &amp; Creative Director</p>
+                </div>
+              </div>
+
+              <p class="text-brand-white/60 font-poppins text-sm leading-relaxed mb-8">
+                Yashvi Bagga is a passionate content creator, digital storyteller, and creative entrepreneur.
+                From bold fashion campaigns to high-impact social launches, every project is crafted with
+                editorial precision, emotional storytelling, and premium visual identity.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                @for (value of founderValues; track value.title) {
+                  <div class="glass-card p-6 border border-brand-white/10">
+                    <p class="text-brand-gold uppercase text-[11px] tracking-[0.3em] mb-3">{{ value.title }}</p>
+                    <p class="text-brand-white/60 font-poppins text-sm leading-relaxed">{{ value.description }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+
           <!-- Foundation Note panel -->
-          <div class="relative" appScrollAnimation animationType="fade-left">
+          <div class="relative" appScrollAnimation animationType="fade-right">
             <app-foundation-note-card
               title="Foundation Note"
               subtitle="Every Dream Begins With A Vision"
@@ -43,19 +101,26 @@ import { SeoService } from '../../core/services/seo.service';
               founderRole="Founder"
             />
           </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- The Brand intro copy -->
-          <div appScrollAnimation animationType="fade-right">
-            <span class="text-brand-gold font-poppins text-sm tracking-[3px] uppercase">The Brand</span>
-            <h2 class="heading-md text-brand-white mt-4 mb-6">
-              A Multidisciplinary <span class="gradient-text">Creative</span> Organization
-            </h2>
-            <div class="space-y-4 text-brand-white/60 font-poppins text-sm leading-relaxed">
-              @for (paragraph of brandIntro; track $index) {
-                <p>{{ paragraph }}</p>
-              }
-            </div>
-          </div>
+    <!-- ===================== THE BRAND — INTRO ===================== -->
+    <section id="the-brand" class="section-padding bg-brand-black relative scroll-mt-28">
+      <div class="max-w-7xl mx-auto">
+        <app-section-header
+          subtitle="The Brand"
+          title="A Multidisciplinary Creative Organization"
+          description="Media, communication, learning, branding and creative production under one roof."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="max-w-4xl mx-auto space-y-4 text-brand-white/60 font-poppins text-sm leading-relaxed" appScrollAnimation animationType="fade-up">
+          @for (paragraph of brandIntro; track $index) {
+            <p>{{ paragraph }}</p>
+          }
         </div>
       </div>
     </section>
@@ -194,7 +259,7 @@ import { SeoService } from '../../core/services/seo.service';
     </section>
 
     <!-- ========================= THE TEAM ========================= -->
-    <section class="section-padding bg-brand-dark relative">
+    <section id="the-team" class="section-padding bg-brand-dark relative scroll-mt-28">
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
           subtitle="The Team"
@@ -246,7 +311,7 @@ import { SeoService } from '../../core/services/seo.service';
     </section>
 
     <!-- ======================== OUR NETWORK ======================== -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
+    <section id="our-network" class="section-padding bg-brand-black relative overflow-hidden scroll-mt-28">
       <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-gold/8 rounded-full blur-[130px]"></div>
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
@@ -369,10 +434,22 @@ import { SeoService } from '../../core/services/seo.service';
   `,
   styles: [`:host { display: block; }`],
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit, OnDestroy {
   private readonly seoService = inject(SeoService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly platformId = inject(PLATFORM_ID);
+  private fragmentSub?: Subscription;
 
-  /** Foundation Note card story (paired with The Brand intro) */
+  /** The four About sections — also drives the navbar "About" dropdown */
+  readonly aboutSections = ABOUT_SECTIONS;
+
+  /** THE FOUNDER — signature values */
+  founderValues = [
+    { title: 'Visionary Storytelling', description: 'Transforming brand narratives into cinematic editorial moments.' },
+    { title: 'Premium Production', description: 'From concept to launch, every detail is crafted for camera-ready impact.' },
+  ];
+
+  /** Foundation Note card story (shown in The Founder section) */
   foundationStory = [
     'YASHVI BAGGA PRODUCTIONS was founded with the belief that creativity has the power to inspire, influence, and transform businesses, brands, and individuals. In an era where digital presence defines success, we envisioned a platform that brings together talent, innovation, storytelling, and strategic marketing under one roof.',
     'What started as a passion for creating meaningful content has evolved into a dedicated venture focused on helping brands build authentic connections with their audiences. We believe that every brand has a story worth telling, every creator deserves an opportunity to shine, and every campaign should leave a lasting impact.',
@@ -470,7 +547,28 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateMetaTags({
       title: 'About Us | Yashvi Bagga Productions',
-      description: 'Discover the brand, the team, and the Pan-India network behind Yashvi Bagga Productions — a multidisciplinary creative, media, branding, and training organization.',
+      description: 'Discover the founder, the brand, the team, and the Pan-India network behind Yashvi Bagga Productions — a multidisciplinary creative, media, branding, and training organization.',
     });
+
+    // Anchor navigation from the navbar "About" dropdown. The router's own
+    // anchorScrolling can fire before this lazy-loaded page has laid out, so
+    // scroll once the section is actually in the DOM. scroll-mt-28 on each
+    // section keeps the heading clear of the fixed navbar.
+    if (isPlatformBrowser(this.platformId)) {
+      this.fragmentSub = this.route.fragment.subscribe(fragment => {
+        if (!fragment) return;
+        setTimeout(() => this.scrollToSection(fragment), 120);
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.fragmentSub?.unsubscribe();
+  }
+
+  /** Scrolls a section into view; also bound to the in-page quick-nav chips. */
+  scrollToSection(fragment: string): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

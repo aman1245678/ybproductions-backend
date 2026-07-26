@@ -44,7 +44,7 @@ import { IndustriesComponent } from './sections/industries.component';
                 YASHVI BAGGA PRODUCTIONS is a next-generation creative media and digital production agency delivering impactful storytelling, influencer collaborations, social media growth and premium content experiences.
               </p>
 
-              <div class="flex flex-col sm:flex-row gap-4 items-center animate-slide-up" style="animation-delay: 1s;">
+              <!-- <div class="flex flex-col sm:flex-row gap-4 items-center animate-slide-up" style="animation-delay: 1s;">
                 <app-magnetic-button>
                   <a routerLink="/contact" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-gold text-brand-black font-semibold rounded-full transition-all duration-500 hover:bg-brand-white">
                     Book a Consultation
@@ -55,7 +55,7 @@ import { IndustriesComponent } from './sections/industries.component';
                     Explore Our Work
                   </a>
                 </app-magnetic-button>
-              </div>
+              </div> -->
             </div>
 
             <!-- Removed per client requirement — design-feature cards (Cinematic Overlays / Parallax / Glassmorphism / Instagram-Inspired UI) taken off the home page -->
@@ -132,43 +132,7 @@ import { IndustriesComponent } from './sections/industries.component';
     </section>
     -->
 
-    <!-- FOUNDER SECTION -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
-      <div class="absolute right-0 top-0 w-72 h-72 rounded-full bg-brand-pink/10 blur-[100px]"></div>
-      <div class="relative max-w-7xl mx-auto grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
-        <div class="relative rounded-[36px] border border-brand-gold/10 bg-brand-dark/90 p-8 overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent_30%)]"></div>
-          <div class="aspect-[4/5] rounded-[32px] overflow-hidden bg-[url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
-          <div class="absolute bottom-8 left-8 rounded-[28px] border border-brand-white/10 bg-brand-black/70 p-5 backdrop-blur-sm">
-            <p class="text-brand-white/60 text-xs uppercase tracking-[0.32em] mb-2">Founder & Creative Director</p>
-            <p class="text-brand-white font-playfair text-xl">Yashvi Bagga</p>
-            <p class="text-brand-gold text-xs mt-2">Signature Creative Vision</p>
-          </div>
-        </div>
-
-        <div class="space-y-8">
-          <div class="flex flex-col gap-4">
-            <span class="text-brand-gold text-sm uppercase tracking-[0.3em]">About The Founder</span>
-            <h2 class="heading-lg text-brand-white max-w-xl">An editorial storyteller shaping luxurious creator campaigns and cinematic brand narratives.</h2>
-            <p class="body-lg text-brand-white/70 max-w-2xl">Yashvi Bagga is a passionate content creator, digital storyteller, and creative entrepreneur. From bold fashion campaigns to high-impact social launches, every project is crafted with editorial precision, emotional storytelling, and premium visual identity.</p>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            @for (value of founderValues; track value.title) {
-              <div class="glass-card p-6 border border-brand-white/10">
-                <p class="text-brand-gold uppercase text-[11px] tracking-[0.3em] mb-4">{{ value.title }}</p>
-                <p class="text-brand-white/70 text-sm leading-6">{{ value.description }}</p>
-              </div>
-            }
-          </div>
-
-          <div class="rounded-[28px] border border-brand-gold/15 bg-brand-black/70 p-8 backdrop-blur-sm">
-            <p class="text-brand-white/90 font-playfair text-2xl mb-4">“We build influence with each story, making every brand feel like a cover story.”</p>
-            <p class="text-brand-white/50 text-sm">A signature approach that combines luxury aesthetics, trend-led strategy and cinematic production values.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Removed per client requirement — the "About The Founder" section was taken off the home page. -->
 
     <!-- SERVICES SECTION -->
     <section class="section-padding bg-brand-black relative overflow-hidden">
@@ -204,40 +168,7 @@ import { IndustriesComponent } from './sections/industries.component';
     <!-- INDUSTRIES WE SERVE (Module 6) -->
     <app-industries />
 
-    <!-- CORE TEAM SECTION -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
-      <div class="absolute right-0 top-1/3 w-80 h-80 rounded-full bg-brand-pink/10 blur-[100px]"></div>
-      <div class="relative max-w-7xl mx-auto">
-        <app-section-header
-          subtitle="Meet The Team"
-          title="The Creative Minds Behind The Magic"
-          description="Departments and specialists delivering premium production, editorial direction and digital strategy."
-          [titleGradient]="true"
-          appScrollAnimation
-          animationType="fade-up"
-        />
-
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4 mt-10">
-          @for (team of coreTeam; track team.name) {
-            <div class="group rounded-[32px] border border-brand-white/10 bg-brand-dark/80 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/25">
-              <div class="flex items-center gap-4">
-                <div class="h-16 w-16 rounded-full bg-brand-white/5 border border-brand-white/10 flex items-center justify-center text-brand-gold text-xl font-semibold">{{ team.initials }}</div>
-                <div>
-                  <p class="text-brand-white font-semibold">{{ team.name }}</p>
-                  <p class="text-brand-white/50 text-sm">{{ team.role }}</p>
-                </div>
-              </div>
-              <p class="mt-4 text-brand-white/60 text-sm leading-6">{{ team.specialty }}</p>
-              <div class="mt-5 flex flex-wrap gap-2 text-[11px] uppercase tracking-[0.28em] text-brand-white/40">
-                @for (tag of team.tags; track tag) {
-                  <span class="rounded-full border border-brand-white/10 px-3 py-1">{{ tag }}</span>
-                }
-              </div>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
+    <!-- Removed per client requirement — the "Meet The Team" section was taken off the home page. -->
 
     <!-- DIGITAL JOURNEY SECTION -->
     <section class="section-padding bg-brand-dark relative overflow-hidden">
@@ -375,10 +306,11 @@ export class HomeComponent implements OnInit {
   //   { icon: '📸', title: 'Instagram-Inspired UI', description: 'Creator culture visuals with bold social-first presentation.' },
   // ];
 
-  founderValues = [
-    { title: 'Visionary Storytelling', description: 'Transforming brand narratives into cinematic editorial moments.' },
-    { title: 'Premium Production', description: 'From concept to launch, every detail is crafted for camera-ready impact.' },
-  ];
+  // Removed per client requirement — "About The Founder" section taken off the home page.
+  // founderValues = [
+  //   { title: 'Visionary Storytelling', description: 'Transforming brand narratives into cinematic editorial moments.' },
+  //   { title: 'Premium Production', description: 'From concept to launch, every detail is crafted for camera-ready impact.' },
+  // ];
 
   premiumServices = [
     { icon: '📱', title: 'Social Media Management', description: 'Luxury content curation, audience growth and creator-led storytelling.' },
@@ -392,16 +324,17 @@ export class HomeComponent implements OnInit {
     { icon: '🎓', title: 'Vocational Training', description: 'Curated learning experiences for creators, editors and marketers.' },
   ];
 
-  coreTeam = [
-    { initials: 'AM', name: 'Aryan Malik', role: 'Photographer', specialty: 'Lifestyle & Fashion Photography', tags: ['Photographers', 'Editorial'] },
-    { initials: 'MS', name: 'Megha Sharma', role: 'Photographer', specialty: 'Product & Brand Imagery', tags: ['Photographers', 'Luxury'] },
-    { initials: 'RV', name: 'Rohan Verma', role: 'Videographer', specialty: 'Cinematic Video Direction', tags: ['Videographers', 'Storytelling'] },
-    { initials: 'PM', name: 'Pranjal Mishra', role: 'Videographer', specialty: 'Travel & Lifestyle Films', tags: ['Videographers', 'Motion'] },
-    { initials: 'TG', name: 'Tanvi Gupta', role: 'Graphic Designer', specialty: 'Brand Identity & Visual Design', tags: ['Designers', 'Brand'] },
-    { initials: 'RK', name: 'Riya Kapoor', role: 'Graphic Designer', specialty: 'Social Media Creative', tags: ['Designers', 'Social'] },
-    { initials: 'SK', name: 'Simran Kaur', role: 'Content Writer', specialty: 'Brand Storytelling & Copy', tags: ['Writers', 'Strategy'] },
-    { initials: 'AN', name: 'Anjali Dubey', role: 'Video Editor', specialty: 'Reels & Short-form Editing', tags: ['Editors', 'Motion'] },
-  ];
+  // Removed per client requirement — "Meet The Team" section taken off the home page.
+  // coreTeam = [
+  //   { initials: 'AM', name: 'Aryan Malik', role: 'Photographer', specialty: 'Lifestyle & Fashion Photography', tags: ['Photographers', 'Editorial'] },
+  //   { initials: 'MS', name: 'Megha Sharma', role: 'Photographer', specialty: 'Product & Brand Imagery', tags: ['Photographers', 'Luxury'] },
+  //   { initials: 'RV', name: 'Rohan Verma', role: 'Videographer', specialty: 'Cinematic Video Direction', tags: ['Videographers', 'Storytelling'] },
+  //   { initials: 'PM', name: 'Pranjal Mishra', role: 'Videographer', specialty: 'Travel & Lifestyle Films', tags: ['Videographers', 'Motion'] },
+  //   { initials: 'TG', name: 'Tanvi Gupta', role: 'Graphic Designer', specialty: 'Brand Identity & Visual Design', tags: ['Designers', 'Brand'] },
+  //   { initials: 'RK', name: 'Riya Kapoor', role: 'Graphic Designer', specialty: 'Social Media Creative', tags: ['Designers', 'Social'] },
+  //   { initials: 'SK', name: 'Simran Kaur', role: 'Content Writer', specialty: 'Brand Storytelling & Copy', tags: ['Writers', 'Strategy'] },
+  //   { initials: 'AN', name: 'Anjali Dubey', role: 'Video Editor', specialty: 'Reels & Short-form Editing', tags: ['Editors', 'Motion'] },
+  // ];
 
   socialStats = [
     { value: '8.5M', label: 'Monthly Reach' },
@@ -436,7 +369,7 @@ export class HomeComponent implements OnInit {
     this.seoService.updateMetaTags({
       title: 'Home | YASHVI BAGGA PRODUCTIONS',
       description: 'Luxury creative media agency specializing in cinematic storytelling, influencer campaigns, and premium digital experiences.',
-      url: 'https://yashvibagga.com',
+      url: 'https://ybproductions.co.in',
     });
   }
 }

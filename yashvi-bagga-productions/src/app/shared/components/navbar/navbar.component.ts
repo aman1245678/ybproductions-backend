@@ -3,6 +3,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ScrollService } from '../../../core/services/scroll.service';
 import { AuthModalComponent } from '../auth-modal/auth-modal.component';
+import { ABOUT_SECTIONS } from '../../models/about-sections.model';
+import { SERVICE_LINKS } from '../../models/service-links.model';
 
 @Component({
   selector: 'app-navbar',
@@ -34,79 +36,135 @@ import { AuthModalComponent } from '../auth-modal/auth-modal.component';
           <!-- Desktop Navigation -->
           <div class="hidden lg:flex items-center gap-8">
             @for (link of navLinks; track link.path) {
-              <!-- Services Dropdown with Mega Menu -->
+              <!-- Services Dropdown — the eight services from the deck (opens on click) -->
               @if (link.path === '/services') {
-                <div class="relative group">
+                <div class="relative">
                   <button
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 relative flex items-center gap-2"
+                    type="button"
+                    (click)="toggleDesktopMenu('services', $event)"
+                    [attr.aria-expanded]="openMenu() === 'services'"
+                    aria-haspopup="true"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                    [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
-                    <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      class="w-4 h-4 transition-transform duration-300"
+                      [class.rotate-180]="openMenu() === 'services'"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
                   </button>
 
-                  <!-- Mega Menu Dropdown -->
-                  <div class="fixed left-1/2 top-16 -translate-x-1/2 pt-8 w-[min(1120px,95vw)] z-50 opacity-0 invisible translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-[28px] shadow-2xl p-8">
-                      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-8">
-                        <div class="space-y-4">
-                          <h3 class="text-sm font-playfair text-brand-gold font-semibold uppercase tracking-wide">Services Overview</h3>
-                          <p class="text-xs leading-6 text-brand-white/55">
-                            A connected ecosystem for creative media, talent, technology and workforce growth.
-                          </p>
-                          <div class="space-y-2">
-                            <a routerLink="/services" class="block text-xs text-brand-white/70 hover:text-brand-gold transition-colors duration-300">View All Services</a>
-                            <a routerLink="/join-network" class="block text-xs text-brand-white/70 hover:text-brand-gold transition-colors duration-300">Join Network</a>
-                            <a routerLink="/contact" class="block text-xs text-brand-white/70 hover:text-brand-gold transition-colors duration-300">Get Started</a>
-                          </div>
-                        </div>
+                  <div
+                    class="fixed left-1/2 top-16 -translate-x-1/2 pt-8 w-[min(1000px,94vw)] z-50 transition-all duration-300"
+                    [class.opacity-100]="openMenu() === 'services'"
+                    [class.visible]="openMenu() === 'services'"
+                    [class.pointer-events-auto]="openMenu() === 'services'"
+                    [class.translate-y-0]="openMenu() === 'services'"
+                    [class.opacity-0]="openMenu() !== 'services'"
+                    [class.invisible]="openMenu() !== 'services'"
+                    [class.pointer-events-none]="openMenu() !== 'services'"
+                    [class.translate-y-3]="openMenu() !== 'services'"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl p-6">
+                      <div class="flex items-center justify-between mb-5">
+                        <span class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80">Our Services</span>
+                        <a routerLink="/services" (click)="closeDesktopMenus()" class="text-xs text-brand-gold hover:text-brand-white transition-colors duration-300">
+                          Overview
+                        </a>
+                      </div>
 
-                        <div class="space-y-4">
-                          <h3 class="text-sm font-playfair text-brand-gold font-semibold uppercase tracking-wide">Creative Media</h3>
-                          <ul class="space-y-2">
-                            <li><a routerLink="/services/creative-media" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Creative Media & Production</a></li>
-                            <li><a routerLink="/services/creative-media" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Content Creation</a></li>
-                            <li><a routerLink="/services/creative-media" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Video Production</a></li>
-                            <li><a routerLink="/services/creative-media" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Social Media Strategy</a></li>
-                          </ul>
-                        </div>
+                      <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
+                        @for (service of serviceLinks; track service.slug) {
+                          <a
+                            [routerLink]="service.link"
+                            (click)="closeDesktopMenus()"
+                            class="flex items-start gap-4 rounded-lg border border-brand-white/10 bg-brand-black/60 px-5 py-4 transition-all duration-300 hover:border-brand-gold/35 hover:bg-brand-black/85"
+                          >
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-brand-gold/20 bg-brand-gold/10 text-base">
+                              {{ service.icon }}
+                            </span>
+                            <span class="min-w-0">
+                              <span class="block text-sm font-medium text-brand-white/85">{{ service.label }}</span>
+                              <span class="mt-1 block text-[11px] leading-5 text-brand-white/45">{{ service.description }}</span>
+                            </span>
+                          </a>
+                        }
+                      </div>
 
-                        <div class="space-y-4">
-                          <h3 class="text-sm font-playfair text-brand-gold font-semibold uppercase tracking-wide">Casting & Talent</h3>
-                          <ul class="space-y-2">
-                            <li><a routerLink="/casting-services" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Casting Services</a></li>
-                            <li><a routerLink="/casting-application" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Casting Application</a></li>
-                            <li><a routerLink="/talent-network" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Talent Network</a></li>
-                            <li><a routerLink="/join-network" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Register as Talent</a></li>
-                            <li><a routerLink="/media-professional" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Media Professional</a></li>
-                            <!-- Not part of PDF requirement — link commented out -->
-                            <!-- <li><a routerLink="/collaborations" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Apply for Collaborations</a></li> -->
-                          </ul>
-                        </div>
+                      <!-- Secondary entry points kept from the previous mega menu -->
+                      <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-brand-white/10 pt-4">
+                        <a routerLink="/casting-application" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Casting Application</a>
+                        <a routerLink="/media-professional" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Media Professional</a>
+                        <a routerLink="/manpower-requirement" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Manpower Requirement</a>
+                        <a routerLink="/join-network" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Join Network</a>
+                        <a routerLink="/contact" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Get Started</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              } @else if (link.path === '/about') {
+                <!-- About Dropdown — the four About-page sections (opens on click) -->
+                <div class="relative">
+                  <button
+                    type="button"
+                    (click)="toggleDesktopMenu('about', $event)"
+                    [attr.aria-expanded]="openMenu() === 'about'"
+                    aria-haspopup="true"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                    [class.text-brand-gold]="openMenu() === 'about'"
+                  >
+                    {{ link.label }}
+                    <svg
+                      class="w-4 h-4 transition-transform duration-300"
+                      [class.rotate-180]="openMenu() === 'about'"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    </svg>
+                  </button>
 
-                        <div class="space-y-4">
-                          <h3 class="text-sm font-playfair text-brand-gold font-semibold uppercase tracking-wide">Technology</h3>
-                          <ul class="space-y-2">
-                            <li><a routerLink="/it-solutions" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Technology & Digital Solutions</a></li>
-                            <li><a routerLink="/services/it-solutions" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Web & App Development</a></li>
-                            <li><a routerLink="/services/it-solutions" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">CRM & ERP Platforms</a></li>
-                            <li><a routerLink="/services/it-solutions" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Cloud & Support</a></li>
-                          </ul>
-                        </div>
+                  <!-- Wide 2x2 panel of the four About sections -->
+                  <div
+                    class="absolute left-0 top-full pt-6 w-[min(680px,92vw)] z-50 transition-all duration-300"
+                    [class.opacity-100]="openMenu() === 'about'"
+                    [class.visible]="openMenu() === 'about'"
+                    [class.pointer-events-auto]="openMenu() === 'about'"
+                    [class.translate-y-0]="openMenu() === 'about'"
+                    [class.opacity-0]="openMenu() !== 'about'"
+                    [class.invisible]="openMenu() !== 'about'"
+                    [class.pointer-events-none]="openMenu() !== 'about'"
+                    [class.translate-y-3]="openMenu() !== 'about'"
+                    (click)="$event.stopPropagation()"
+                  >
+                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl p-6">
+                      <div class="flex items-center justify-between mb-5">
+                        <span class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80">About</span>
+                        <a routerLink="/about" (click)="closeDesktopMenus()" class="text-xs text-brand-gold hover:text-brand-white transition-colors duration-300">
+                          Overview
+                        </a>
+                      </div>
 
-                        <div class="space-y-4">
-                          <h3 class="text-sm font-playfair text-brand-gold font-semibold uppercase tracking-wide">Workforce & Growth</h3>
-                          <ul class="space-y-2">
-                            <li><a routerLink="/workforce-solutions" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Workforce Solutions</a></li>
-                            <li><a routerLink="/services/manpower-outsourcing" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Staffing Services</a></li>
-                            <li><a routerLink="/manpower-requirement" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Manpower Requirement</a></li>
-                            <li><a routerLink="/vocational-training" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Vocational Training</a></li>
-                            <li><a routerLink="/join-network" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Careers</a></li>
-                            <!-- Not part of PDF requirement — link commented out -->
-                            <!-- <li><a routerLink="/our-process" class="text-xs text-brand-white/70 hover:text-brand-white transition-colors duration-300">Our Process</a></li> -->
-                          </ul>
-                        </div>
+                      <div class="grid grid-cols-2 gap-4">
+                        @for (section of aboutSections; track section.fragment) {
+                          <a
+                            routerLink="/about"
+                            [fragment]="section.fragment"
+                            (click)="closeDesktopMenus()"
+                            class="flex items-start gap-4 rounded-lg border border-brand-white/10 bg-brand-black/60 px-5 py-4 transition-all duration-300 hover:border-brand-gold/35 hover:bg-brand-black/85"
+                          >
+                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-brand-gold/20 bg-brand-gold/10 text-base">
+                              {{ section.icon }}
+                            </span>
+                            <span class="min-w-0">
+                              <span class="block text-sm font-medium text-brand-white/85">{{ section.label }}</span>
+                              <span class="mt-1 block text-[11px] leading-5 text-brand-white/45">{{ section.description }}</span>
+                            </span>
+                          </a>
+                        }
                       </div>
                     </div>
                   </div>
@@ -180,48 +238,63 @@ import { AuthModalComponent } from '../auth-modal/auth-modal.component';
                   </svg>
                 </button>
                 
-                <!-- Mobile Services Submenu -->
+                <!-- Mobile Services Submenu — the eight services from the deck -->
                 @if (mobileServicesOpen()) {
-                  <div class="w-full pt-4 border-t border-brand-gold/20 space-y-6">
+                  <div class="w-full pt-4 border-t border-brand-gold/20 space-y-4">
                     <div class="text-center">
                       <a routerLink="/services" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">View All Services</a>
                     </div>
 
-                    <div class="space-y-3">
-                      <p class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80 text-center">Creative Media</p>
-                      <div class="flex flex-col items-center gap-3">
-                        <a routerLink="/services/creative-media" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Creative Media & Production</a>
-                      </div>
+                    <div class="flex flex-col items-center gap-3">
+                      @for (service of serviceLinks; track service.slug) {
+                        <a
+                          [routerLink]="service.link"
+                          class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors"
+                          (click)="closeMenu()"
+                        >
+                          {{ service.label }}
+                        </a>
+                      }
                     </div>
 
-                    <div class="space-y-3">
-                      <p class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80 text-center">Casting & Talent</p>
-                      <div class="flex flex-col items-center gap-3">
-                        <a routerLink="/casting-services" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Casting Services</a>
-                        <a routerLink="/casting-application" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Casting Application</a>
-                        <a routerLink="/talent-network" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Talent Network</a>
-                        <a routerLink="/join-network" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Join Network</a>
-                        <a routerLink="/media-professional" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Media Professional</a>
-                      </div>
+                    <div class="flex flex-col items-center gap-3 pt-4 border-t border-brand-white/10">
+                      <a routerLink="/casting-application" class="text-sm text-brand-white/50 hover:text-brand-gold transition-colors" (click)="closeMenu()">Casting Application</a>
+                      <a routerLink="/media-professional" class="text-sm text-brand-white/50 hover:text-brand-gold transition-colors" (click)="closeMenu()">Media Professional</a>
+                      <a routerLink="/manpower-requirement" class="text-sm text-brand-white/50 hover:text-brand-gold transition-colors" (click)="closeMenu()">Manpower Requirement</a>
+                      <a routerLink="/join-network" class="text-sm text-brand-white/50 hover:text-brand-gold transition-colors" (click)="closeMenu()">Join Network</a>
                     </div>
+                  </div>
+                }
+              </div>
+            } @else if (link.path === '/about') {
+              <div class="w-full flex flex-col items-center gap-4">
+                <button
+                  class="text-2xl font-playfair text-brand-white hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                  (click)="toggleMobileAbout()"
+                >
+                  {{ link.label }}
+                  <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="mobileAboutOpen()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                  </svg>
+                </button>
 
-                    <div class="space-y-3">
-                      <p class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80 text-center">Technology</p>
-                      <div class="flex flex-col items-center gap-3">
-                        <a routerLink="/it-solutions" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Technology & Digital Solutions</a>
-                        <a routerLink="/services/it-solutions" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Web & App Development</a>
-                      </div>
+                <!-- Mobile About Submenu -->
+                @if (mobileAboutOpen()) {
+                  <div class="w-full pt-4 border-t border-brand-gold/20 space-y-4">
+                    <div class="text-center">
+                      <a routerLink="/about" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">About Overview</a>
                     </div>
-
-                    <div class="space-y-3">
-                      <p class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80 text-center">Workforce & Growth</p>
-                      <div class="flex flex-col items-center gap-3">
-                        <a routerLink="/workforce-solutions" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Workforce Solutions</a>
-                        <a routerLink="/manpower-requirement" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Manpower Requirement</a>
-                        <a routerLink="/vocational-training" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Vocational Training</a>
-                        <!-- Not part of PDF requirement — link commented out -->
-                        <!-- <a routerLink="/our-process" class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors" (click)="closeMenu()">Our Process</a> -->
-                      </div>
+                    <div class="flex flex-col items-center gap-3">
+                      @for (section of aboutSections; track section.fragment) {
+                        <a
+                          routerLink="/about"
+                          [fragment]="section.fragment"
+                          class="text-sm text-brand-white/70 hover:text-brand-gold transition-colors"
+                          (click)="closeMenu()"
+                        >
+                          {{ section.label }}
+                        </a>
+                      }
                     </div>
                   </div>
                 }
@@ -288,7 +361,20 @@ export class NavbarComponent {
 
   mobileMenuOpen = signal(false);
   mobileServicesOpen = signal(false);
+  mobileAboutOpen = signal(false);
   isNavHidden = signal(false);
+
+  /**
+   * Which desktop dropdown is open. Per client requirement the About and
+   * Services menus open on click rather than on hover.
+   */
+  openMenu = signal<'about' | 'services' | null>(null);
+
+  /** Sections of the About page surfaced in the About dropdown */
+  readonly aboutSections = ABOUT_SECTIONS;
+
+  /** The eight services surfaced in the Services dropdown */
+  readonly serviceLinks = SERVICE_LINKS;
 
   private lastScrollY = 0;
 
@@ -315,12 +401,35 @@ export class NavbarComponent {
     this.authModalOpen.set(true);
   }
 
+  /** Toggles a desktop dropdown; stops the click reaching the outside-click handler. */
+  toggleDesktopMenu(menu: 'about' | 'services', event: Event): void {
+    event.stopPropagation();
+    this.openMenu.update(current => (current === menu ? null : menu));
+  }
+
+  closeDesktopMenus(): void {
+    this.openMenu.set(null);
+  }
+
+  /** Clicking anywhere outside an open dropdown closes it. */
+  @HostListener('document:click')
+  onDocumentClick(): void {
+    this.closeDesktopMenus();
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeDesktopMenus();
+  }
+
   @HostListener('window:scroll')
   onScroll(): void {
     if (!isPlatformBrowser(this.platformId)) return;
     const currentY = window.scrollY;
     if (currentY > 100 && currentY > this.lastScrollY) {
       this.isNavHidden.set(true);
+      // Don't leave an open dropdown hanging while the bar slides away.
+      this.closeDesktopMenus();
     } else {
       this.isNavHidden.set(false);
     }
@@ -337,6 +446,7 @@ export class NavbarComponent {
   closeMenu(): void {
     this.mobileMenuOpen.set(false);
     this.mobileServicesOpen.set(false);
+    this.mobileAboutOpen.set(false);
     if (isPlatformBrowser(this.platformId)) {
       document.body.style.overflow = '';
     }
@@ -344,5 +454,9 @@ export class NavbarComponent {
 
   toggleMobileServices(): void {
     this.mobileServicesOpen.update(v => !v);
+  }
+
+  toggleMobileAbout(): void {
+    this.mobileAboutOpen.update(v => !v);
   }
 }

@@ -5,6 +5,7 @@ import { ScrollAnimationDirective } from '../../shared/directives/scroll-animati
 import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
 import { MagneticButtonComponent } from '../../shared/components/magnetic-button/magnetic-button.component';
 import { SeoService } from '../../core/services/seo.service';
+import { SERVICE_LINKS } from '../../shared/models/service-links.model';
 
 @Component({
   selector: 'app-services',
@@ -26,6 +27,39 @@ import { SeoService } from '../../core/services/seo.service';
           Comprehensive solutions across creative media, technology, staffing, and professional development.
           Your complete partner for business growth and digital transformation.
         </p>
+      </div>
+    </section>
+
+    <!-- OUR SERVICES — the eight services from the deck -->
+    <section class="section-padding bg-brand-black relative">
+      <div class="max-w-7xl mx-auto">
+        <app-section-header
+          subtitle="Our Services"
+          title="What We Deliver"
+          description="Eight core services spanning casting, marketing, branding, technology, talent, staffing and training."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-12">
+          @for (service of serviceLinks; track service.slug; let i = $index) {
+            <a
+              [routerLink]="service.link"
+              class="group flex flex-col rounded-xl border border-brand-white/10 bg-brand-dark/80 p-6 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/35"
+              appScrollAnimation
+              animationType="fade-up"
+              [animationDelay]="(i % 4) * 80"
+            >
+              <span class="mb-5 flex h-12 w-12 items-center justify-center rounded-md border border-brand-gold/20 bg-brand-gold/10 text-xl">
+                {{ service.icon }}
+              </span>
+              <h3 class="text-lg font-playfair text-brand-white group-hover:text-brand-gold transition-colors duration-300">{{ service.label }}</h3>
+              <p class="mt-3 text-brand-white/50 font-poppins text-sm leading-relaxed flex-grow">{{ service.description }}</p>
+              <span class="mt-5 text-[11px] uppercase tracking-[0.28em] text-brand-gold">Explore</span>
+            </a>
+          }
+        </div>
       </div>
     </section>
 
@@ -345,6 +379,9 @@ export class ServicesComponent implements OnInit {
    * shown as clickable blocks that expand to a description).
    */
   readonly openPillar = signal<number | null>(null);
+
+  /** The eight services from the deck — shared with the navbar dropdown */
+  readonly serviceLinks = SERVICE_LINKS;
 
   togglePillar(index: number): void {
     this.openPillar.update((current) => (current === index ? null : index));
