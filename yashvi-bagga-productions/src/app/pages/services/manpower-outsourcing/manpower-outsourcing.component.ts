@@ -24,7 +24,8 @@ import { SeoService } from '../../../core/services/seo.service';
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
         <span class="inline-block text-emerald-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Corporate Excellence</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
-          Workforce <span class="gradient-text" style="background: linear-gradient(135deg, #10b981, #0ea4a4);">Solutions</span>
+          <!-- background-image, not the background shorthand: the shorthand resets .gradient-text's background-clip to border-box, painting a solid block behind the word. -->
+          Workforce <span class="gradient-text" style="background-image: linear-gradient(135deg, #10b981, #0ea4a4);">Solutions</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
           Strategic staffing solutions that connect your organization with top-tier talent. We simplify recruitment, reduce overhead, and ensure seamless workforce integration.

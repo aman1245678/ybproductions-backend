@@ -12,6 +12,7 @@ import { ToastService } from '../../shared/services/toast.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { indianMobileValidator } from '../../shared/validators/form.validators';
 import { InquiryPayload } from '../../shared/models/notification.model';
+import { SERVICE_LINKS } from '../../shared/models/service-links.model';
 
 @Component({
   selector: 'app-contact',
@@ -213,13 +214,10 @@ import { InquiryPayload } from '../../shared/models/notification.model';
                         class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-all duration-300"
                       >
                         <option value="" disabled>Select a service</option>
-                        <option value="social-media">Social Media Management</option>
-                        <option value="influencer">Influencer Marketing</option>
-                        <option value="content">Content Creation</option>
-                        <option value="branding">Brand Promotions</option>
-                        <option value="talent">Talent Collaborations</option>
-                        <option value="production">Creative Production</option>
-                        <option value="multiple">Multiple Services</option>
+                        @for (service of serviceLinks; track service.slug) {
+                          <option [value]="service.label">{{ service.label }}</option>
+                        }
+                        <option value="Multiple Services">Multiple Services</option>
                       </select>
                     </div>
 
@@ -328,6 +326,12 @@ export class ContactComponent implements OnInit {
 
   currentStep = signal(1);
   submitting = signal(false);
+
+  /**
+   * The eight services from the client deck — shared with the navbar dropdown
+   * and the Services page grid so all three stay in sync.
+   */
+  readonly serviceLinks = SERVICE_LINKS;
 
   socials: { name: string; url: string; icon: SafeHtml }[] = [
     { name: 'Instagram', url: 'https://instagram.com/yashvibagga', icon: this.sanitizer.bypassSecurityTrustHtml('<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>') },

@@ -24,7 +24,8 @@ import { SeoService } from '../../../core/services/seo.service';
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
         <span class="inline-block text-yellow-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Inspire Growth</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
-          Vocational <span class="gradient-text" style="background: linear-gradient(135deg, #f59e0b, #f97316);">Training Programs</span>
+          <!-- background-image, not the background shorthand: the shorthand resets .gradient-text's background-clip to border-box, painting a solid block behind the words. -->
+          Vocational <span class="gradient-text" style="background-image: linear-gradient(135deg, #f59e0b, #f97316);">Training Programs</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
           Empower yourself with industry-relevant skills and professional certifications. Our comprehensive training programs are designed to launch successful careers in high-demand fields.
