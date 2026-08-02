@@ -22,8 +22,8 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           <div class="flex items-center gap-8 lg:gap-10 min-w-0">
           <!-- Logo — nudged right from the edge -->
           <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
-            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
-              <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
+            <div class="w-11 h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
+              <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-contain" />
             </div>
             <div class="hidden sm:block leading-tight">
               <span class="text-brand-white font-playfair text-lg font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">

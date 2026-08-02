@@ -17,8 +17,8 @@ import { RouterLink } from '@angular/router';
           <!-- Brand -->
           <div class="lg:col-span-1">
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
-                <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
+              <div class="w-11 h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
+                <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-contain" />
               </div>
               <div>
                 <span class="text-brand-white font-playfair text-lg font-semibold">YASHVI BAGGA</span>
