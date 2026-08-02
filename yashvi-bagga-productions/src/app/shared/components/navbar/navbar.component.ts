@@ -19,7 +19,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       <div class="w-full pl-8 sm:pl-10 lg:pl-14 pr-5 sm:pr-6 lg:pr-8">
         <div class="flex items-center justify-between h-20">
           <!-- Brand + nav: links sit lower under the company name line -->
-          <div class="flex items-end gap-5 lg:gap-6 min-w-0">
+          <div class="flex items-end gap-10 lg:gap-14 xl:gap-16 min-w-0">
           <!-- Logo -->
           <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
             <div class="w-11 h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
@@ -35,8 +35,8 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             </div>
           </a>
 
-          <!-- Desktop Navigation — aligned to brand baseline, slightly lower -->
-          <div class="hidden lg:flex items-center gap-4 xl:gap-5 pb-0.5">
+          <!-- Desktop Navigation — more space from brand, nudged right -->
+          <div class="hidden lg:flex items-center gap-4 xl:gap-5 pb-0.5 ml-2 xl:ml-4">
             @for (link of navLinks; track link.path) {
               <!-- Services Dropdown — titles only; click opens the page -->
               @if (link.path === '/services') {
