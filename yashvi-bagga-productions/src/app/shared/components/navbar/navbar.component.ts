@@ -16,15 +16,15 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       [class.nav-scrolled]="scrollService.isScrolled()"
       [class.nav-hidden]="isNavHidden()"
     >
-      <div class="w-full pl-3 pr-4 sm:pl-4 sm:pr-6 lg:pl-5 lg:pr-8">
-        <div class="flex items-center justify-between h-16 lg:h-20 gap-6 lg:gap-10">
-          <!-- Logo — pinned to the top-left corner -->
-          <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-2.5 group" (click)="closeMenu()">
-            <div class="w-9 h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
+      <div class="w-full px-5 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo — near left, not flush to the edge -->
+          <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
               <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
             </div>
             <div class="hidden sm:block leading-tight">
-              <span class="text-brand-white font-playfair text-base lg:text-lg font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+              <span class="text-brand-white font-playfair text-lg font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                 YASHVI BAGGA
               </span>
               <span class="block text-[10px] uppercase tracking-[3px] text-brand-gold/80 font-poppins">
@@ -33,10 +33,10 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             </div>
           </a>
 
-          <!-- Desktop Navigation — pushed right with clear gap from brand -->
-          <div class="hidden lg:flex flex-1 items-center justify-end gap-5 xl:gap-6 min-w-0 pl-10 xl:pl-16">
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center gap-6 xl:gap-7 ml-6">
             @for (link of navLinks; track link.path) {
-              <!-- Services Dropdown — the eight services from the deck (opens on click) -->
+              <!-- Services Dropdown — titles only; click opens the page -->
               @if (link.path === '/services') {
                 <div class="relative">
                   <button
@@ -44,21 +44,22 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('services', $event)"
                     [attr.aria-expanded]="openMenu() === 'services'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-1.5"
                     [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
                     <svg
-                      class="w-4 h-4 transition-transform duration-300"
+                      class="w-3.5 h-3.5 transition-transform duration-300"
                       [class.rotate-180]="openMenu() === 'services'"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
 
                   <div
-                    class="fixed left-1/2 top-16 -translate-x-1/2 pt-8 w-[min(1000px,94vw)] z-50 transition-all duration-300"
+                    class="absolute right-0 top-full pt-4 w-64 z-50 transition-all duration-300"
                     [class.opacity-100]="openMenu() === 'services'"
                     [class.visible]="openMenu() === 'services'"
                     [class.pointer-events-auto]="openMenu() === 'services'"
@@ -66,70 +67,54 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     [class.opacity-0]="openMenu() !== 'services'"
                     [class.invisible]="openMenu() !== 'services'"
                     [class.pointer-events-none]="openMenu() !== 'services'"
-                    [class.translate-y-3]="openMenu() !== 'services'"
+                    [class.translate-y-2]="openMenu() !== 'services'"
                     (click)="$event.stopPropagation()"
                   >
-                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl p-6">
-                      <div class="flex items-center justify-between mb-5">
-                        <span class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80">Our Services</span>
-                        <a routerLink="/services" (click)="closeDesktopMenus()" class="text-xs text-brand-gold hover:text-brand-white transition-colors duration-300">
-                          Overview
+                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
+                      <a
+                        routerLink="/services"
+                        (click)="closeDesktopMenus()"
+                        class="block px-4 py-2.5 text-xs uppercase tracking-[0.2em] text-brand-gold/80 hover:text-brand-gold transition-colors duration-300"
+                      >
+                        Overview
+                      </a>
+                      <div class="my-1 border-t border-brand-white/10"></div>
+                      @for (service of serviceLinks; track service.slug) {
+                        <a
+                          [routerLink]="service.link"
+                          (click)="closeDesktopMenus()"
+                          class="block px-4 py-2.5 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors duration-300"
+                        >
+                          {{ service.label }}
                         </a>
-                      </div>
-
-                      <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
-                        @for (service of serviceLinks; track service.slug) {
-                          <a
-                            [routerLink]="service.link"
-                            (click)="closeDesktopMenus()"
-                            class="flex items-start gap-4 rounded-lg border border-brand-white/10 bg-brand-black/60 px-5 py-4 transition-all duration-300 hover:border-brand-gold/35 hover:bg-brand-black/85"
-                          >
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-brand-gold/20 bg-brand-gold/10 text-base">
-                              {{ service.icon }}
-                            </span>
-                            <span class="min-w-0">
-                              <span class="block text-sm font-medium text-brand-white/85">{{ service.label }}</span>
-                              <span class="mt-1 block text-[11px] leading-5 text-brand-white/45">{{ service.description }}</span>
-                            </span>
-                          </a>
-                        }
-                      </div>
-
-                      <!-- Secondary entry points kept from the previous mega menu -->
-                      <div class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-brand-white/10 pt-4">
-                        <a routerLink="/casting-application" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Casting Application</a>
-                        <a routerLink="/media-professional" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Media Professional</a>
-                        <a routerLink="/manpower-requirement" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Manpower Requirement</a>
-                        <a routerLink="/join-network" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Join Network</a>
-                        <a routerLink="/contact" (click)="closeDesktopMenus()" class="text-xs text-brand-white/60 hover:text-brand-gold transition-colors duration-300">Get Started</a>
-                      </div>
+                      }
                     </div>
                   </div>
                 </div>
               } @else if (link.path === '/about') {
-                <!-- About Dropdown — the four About-page sections (opens on click) -->
+                <!-- About Dropdown — titles only; click opens the section -->
                 <div class="relative">
                   <button
                     type="button"
                     (click)="toggleDesktopMenu('about', $event)"
                     [attr.aria-expanded]="openMenu() === 'about'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-1.5"
                     [class.text-brand-gold]="openMenu() === 'about'"
                   >
                     {{ link.label }}
                     <svg
-                      class="w-4 h-4 transition-transform duration-300"
+                      class="w-3.5 h-3.5 transition-transform duration-300"
                       [class.rotate-180]="openMenu() === 'about'"
                       fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      aria-hidden="true"
                     >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </button>
 
-                  <!-- Wide 2x2 panel of the four About sections -->
                   <div
-                    class="absolute left-0 top-full pt-6 w-[min(680px,92vw)] z-50 transition-all duration-300"
+                    class="absolute left-0 top-full pt-4 w-56 z-50 transition-all duration-300"
                     [class.opacity-100]="openMenu() === 'about'"
                     [class.visible]="openMenu() === 'about'"
                     [class.pointer-events-auto]="openMenu() === 'about'"
@@ -137,35 +122,28 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     [class.opacity-0]="openMenu() !== 'about'"
                     [class.invisible]="openMenu() !== 'about'"
                     [class.pointer-events-none]="openMenu() !== 'about'"
-                    [class.translate-y-3]="openMenu() !== 'about'"
+                    [class.translate-y-2]="openMenu() !== 'about'"
                     (click)="$event.stopPropagation()"
                   >
-                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl p-6">
-                      <div class="flex items-center justify-between mb-5">
-                        <span class="text-[11px] uppercase tracking-[0.3em] text-brand-gold/80">About</span>
-                        <a routerLink="/about" (click)="closeDesktopMenus()" class="text-xs text-brand-gold hover:text-brand-white transition-colors duration-300">
-                          Overview
+                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
+                      <a
+                        routerLink="/about"
+                        (click)="closeDesktopMenus()"
+                        class="block px-4 py-2.5 text-xs uppercase tracking-[0.2em] text-brand-gold/80 hover:text-brand-gold transition-colors duration-300"
+                      >
+                        Overview
+                      </a>
+                      <div class="my-1 border-t border-brand-white/10"></div>
+                      @for (section of aboutSections; track section.fragment) {
+                        <a
+                          routerLink="/about"
+                          [fragment]="section.fragment"
+                          (click)="closeDesktopMenus()"
+                          class="block px-4 py-2.5 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors duration-300"
+                        >
+                          {{ section.label }}
                         </a>
-                      </div>
-
-                      <div class="grid grid-cols-2 gap-4">
-                        @for (section of aboutSections; track section.fragment) {
-                          <a
-                            routerLink="/about"
-                            [fragment]="section.fragment"
-                            (click)="closeDesktopMenus()"
-                            class="flex items-start gap-4 rounded-lg border border-brand-white/10 bg-brand-black/60 px-5 py-4 transition-all duration-300 hover:border-brand-gold/35 hover:bg-brand-black/85"
-                          >
-                            <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-brand-gold/20 bg-brand-gold/10 text-base">
-                              {{ section.icon }}
-                            </span>
-                            <span class="min-w-0">
-                              <span class="block text-sm font-medium text-brand-white/85">{{ section.label }}</span>
-                              <span class="mt-1 block text-[11px] leading-5 text-brand-white/45">{{ section.description }}</span>
-                            </span>
-                          </a>
-                        }
-                      </div>
+                      }
                     </div>
                   </div>
                 </div>
@@ -184,7 +162,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             <button
               type="button"
               (click)="openAuthModal()"
-              class="ml-2 px-5 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 shrink-0"
+              class="ml-2 px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 shrink-0"
             >
               Log In / Sign Up
             </button>
@@ -234,7 +212,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                 >
                   {{ link.label }}
                   <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="mobileServicesOpen()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                   </svg>
                 </button>
                 
@@ -274,7 +252,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                 >
                   {{ link.label }}
                   <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="mobileAboutOpen()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                   </svg>
                 </button>
 
