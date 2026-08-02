@@ -16,9 +16,11 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       [class.nav-scrolled]="scrollService.isScrolled()"
       [class.nav-hidden]="isNavHidden()"
     >
-      <div class="w-full px-5 sm:px-6 lg:px-8">
+      <div class="w-full pl-8 sm:pl-10 lg:pl-14 pr-5 sm:pr-6 lg:pr-8">
         <div class="flex items-center justify-between h-20">
-          <!-- Logo — near left, not flush to the edge -->
+          <!-- Brand + nav sit together so Home stays close to the logo -->
+          <div class="flex items-center gap-8 lg:gap-10 min-w-0">
+          <!-- Logo — nudged right from the edge -->
           <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
             <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
               <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
@@ -34,7 +36,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           </a>
 
           <!-- Desktop Navigation -->
-          <div class="hidden lg:flex items-center gap-6 xl:gap-7 ml-6">
+          <div class="hidden lg:flex items-center gap-5 xl:gap-6">
             @for (link of navLinks; track link.path) {
               <!-- Services Dropdown — titles only; click opens the page -->
               @if (link.path === '/services') {
@@ -159,14 +161,18 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                 </a>
               }
             }
+          </div>
+          </div>
+
+          <!-- Auth + mobile toggle stay on the right -->
+          <div class="flex items-center shrink-0 gap-2">
             <button
               type="button"
               (click)="openAuthModal()"
-              class="ml-2 px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 shrink-0"
+              class="hidden lg:inline-flex px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105"
             >
               Log In / Sign Up
             </button>
-          </div>
 
           <!-- Mobile Menu Button -->
           <button
@@ -191,6 +197,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
               ></span>
             </div>
           </button>
+          </div>
         </div>
       </div>
 
