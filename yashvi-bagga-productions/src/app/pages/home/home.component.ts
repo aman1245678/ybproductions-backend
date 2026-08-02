@@ -13,78 +13,70 @@ import { IndustriesComponent } from './sections/industries.component';
   standalone: true,
   imports: [CommonModule, RouterLink, ScrollAnimationDirective, SectionHeaderComponent, MagneticButtonComponent, EcosystemExpansionComponent, IndustriesComponent],
   template: `
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen overflow-hidden bg-brand-black text-brand-white">
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-dark to-brand-black"></div>
-      <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-brand-gold/10 blur-[120px]"></div>
-      <div class="absolute right-0 top-1/3 w-96 h-96 rounded-full bg-brand-pink/10 blur-[130px]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.06),_transparent_35%)] pointer-events-none"></div>
+    <!-- HERO SECTION — full-bleed cinematic composition -->
+    <section class="relative min-h-[100svh] overflow-hidden bg-brand-black text-brand-white">
+      <!-- Dominant visual plane: edge-to-edge showcase image -->
+      <div class="absolute inset-0 hero-visual" aria-hidden="true">
+        <img
+          src="/ShowcaseOfTheWeek.png"
+          alt=""
+          class="hero-visual__img absolute inset-0 h-full w-full object-cover object-[68%_center] lg:object-[60%_center]"
+        />
+        <div class="absolute inset-0 bg-brand-black/75 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-black lg:via-brand-black/92 lg:via-45% lg:to-brand-black/25"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black/55"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_rgba(212,175,55,0.12),_transparent_55%)]"></div>
+      </div>
 
-      <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
-          <div class="space-y-10">
-            <div class="overflow-hidden">
-              <p class="font-poppins text-brand-gold text-sm tracking-[5px] uppercase mb-6 animate-fade-in inline-flex items-center" style="animation-delay: 0.4s;">
-                <!-- <span class="inline-flex w-6 h-6 rounded-full bg-gradient-to-br from-brand-gold to-yellow-300 items-center justify-center overflow-hidden align-middle mr-0.5">
-                  <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
-                </span>YASHVI BAGGA PRODUCTIONS -->
-              </p>
-            </div>
+      <div class="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center px-6 pb-16 pt-28 sm:px-8 lg:px-10 lg:pb-20 lg:pt-32">
+        <div class="max-w-[36rem] xl:max-w-[40rem]">
+          <p
+            class="mb-5 font-poppins text-[11px] font-medium uppercase tracking-[0.42em] text-brand-gold opacity-0 animate-fade-in sm:mb-6 sm:text-xs"
+            style="animation-delay: 0.25s; animation-fill-mode: forwards;"
+          >
+            Creative Media &amp; Digital Production
+          </p>
 
-            <div class="overflow-hidden">
-              <h1 class="font-playfair font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-[-0.05em] text-brand-white animate-slide-up" style="animation-delay: 0.6s;">
-                Creating Stories.
-                <span class="block mt-3 text-brand-gold">Building Influence.</span>
-                <span class="block mt-3 text-brand-white">Producing Impact.</span>
-              </h1>
-            </div>
+          <h1
+            class="font-playfair text-[2.65rem] font-bold leading-[1.05] tracking-[-0.03em] text-brand-white opacity-0 animate-slide-up sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-[4.75rem]"
+            style="animation-delay: 0.4s; animation-fill-mode: forwards;"
+          >
+            Creating Stories.
+            <span class="mt-2 block text-brand-gold sm:mt-2.5">Building Influence.</span>
+            <span class="mt-2 block sm:mt-2.5">Producing Impact.</span>
+          </h1>
 
-            <div class="max-w-2xl space-y-6 overflow-hidden">
-              <p class="body-lg text-brand-white/70 animate-slide-up" style="animation-delay: 0.8s;">
-                YASHVI BAGGA PRODUCTIONS is a next-generation creative media and digital production agency delivering impactful storytelling, influencer collaborations, social media growth and premium content experiences.
-              </p>
+          <div
+            class="mt-6 h-px w-16 origin-left bg-brand-gold opacity-0 animate-scale-in sm:mt-8 sm:w-20"
+            style="animation-delay: 0.65s; animation-fill-mode: forwards;"
+          ></div>
 
-              <!-- <div class="flex flex-col sm:flex-row gap-4 items-center animate-slide-up" style="animation-delay: 1s;">
-                <app-magnetic-button>
-                  <a routerLink="/contact" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-gold text-brand-black font-semibold rounded-full transition-all duration-500 hover:bg-brand-white">
-                    Book a Consultation
-                  </a>
-                </app-magnetic-button>
-                <app-magnetic-button>
-                  <a routerLink="/portfolio" class="inline-flex items-center gap-3 px-8 py-4 border border-brand-white/20 text-brand-white font-medium rounded-full transition-all duration-500 hover:border-brand-gold hover:text-brand-gold">
-                    Explore Our Work
-                  </a>
-                </app-magnetic-button>
-              </div> -->
-            </div>
+          <p
+            class="mt-6 max-w-md font-poppins text-[0.95rem] font-light leading-7 text-brand-white/70 opacity-0 animate-slide-up sm:mt-7 sm:text-base sm:leading-8 md:max-w-lg"
+            style="animation-delay: 0.75s; animation-fill-mode: forwards;"
+          >
+            Cinematic storytelling, talent collaborations, and premium campaigns crafted for film, television, and digital culture.
+          </p>
 
-            <!-- Removed per client requirement — design-feature cards (Cinematic Overlays / Parallax / Glassmorphism / Instagram-Inspired UI) taken off the home page -->
-            <!-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
-              @for (feature of heroFeatures; track feature.title) {
-                <div class="group relative overflow-hidden rounded-[28px] border border-brand-white/10 bg-brand-dark/70 p-6 transition-all duration-500 hover:border-brand-gold/25 hover:bg-brand-black/80">
-                  <div class="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-brand-gold/5 via-transparent to-brand-pink/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-                  <div class="relative z-10 space-y-3">
-                    <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-gold/10 text-brand-gold">
-                      {{ feature.icon }}
-                    </div>
-                    <h3 class="text-lg font-playfair text-brand-white">{{ feature.title }}</h3>
-                    <p class="text-brand-white/60 text-sm leading-6">{{ feature.description }}</p>
-                  </div>
-                </div>
-              }
-            </div> -->
-          </div>
-
-          <div class="relative">
-            <!-- Showcase of the Week poster (per client requirement — branded image from public/Images folder) -->
-            <div class="relative overflow-hidden rounded-[40px] border border-brand-gold/15 bg-brand-black/60 shadow-[0_40px_120px_rgba(0,0,0,0.45)]">
-              <img
-                src="/ShowcaseOfTheWeek.png"
-                alt="Showcase of the Week — Talent. Creativity. Opportunity. Only at Yashvi Bagga Productions."
-                class="w-full h-auto object-cover"
-              />
-            </div>
-            <div class="absolute -bottom-10 left-8 w-40 h-40 rounded-full border border-brand-gold/20 bg-brand-gold/10 blur-[50px]"></div>
+          <div
+            class="mt-9 flex flex-col gap-3 opacity-0 animate-slide-up sm:mt-10 sm:flex-row sm:items-center sm:gap-4"
+            style="animation-delay: 0.95s; animation-fill-mode: forwards;"
+          >
+            <app-magnetic-button>
+              <a
+                routerLink="/services"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-7 py-3.5 font-poppins text-sm font-semibold text-brand-black transition-colors duration-300 hover:bg-brand-white"
+              >
+                Explore Services
+              </a>
+            </app-magnetic-button>
+            <app-magnetic-button>
+              <a
+                routerLink="/talent-network"
+                class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-white/25 px-7 py-3.5 font-poppins text-sm font-medium text-brand-white transition-colors duration-300 hover:border-brand-gold hover:text-brand-gold"
+              >
+                Be Next Week&rsquo;s Showcase
+              </a>
+            </app-magnetic-button>
           </div>
         </div>
       </div>
@@ -294,6 +286,25 @@ import { IndustriesComponent } from './sections/industries.component';
       </div>
     </section>
   `,
+  styles: [`
+    .hero-visual__img {
+      transform: scale(1.08);
+      animation: heroKenBurns 18s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes heroKenBurns {
+      from { transform: scale(1.08) translate3d(0, 0, 0); }
+      to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual__img {
+        animation: none;
+        transform: scale(1.05);
+      }
+    }
+  `],
 })
 export class HomeComponent implements OnInit {
   private readonly seoService = inject(SeoService);
