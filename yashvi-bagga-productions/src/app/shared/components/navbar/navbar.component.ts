@@ -19,8 +19,8 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       <div class="w-full pl-8 sm:pl-10 lg:pl-14 pr-5 sm:pr-6 lg:pr-8">
         <div class="flex items-center justify-between h-20">
           <!-- Brand + nav sit together so Home stays close to the logo -->
-          <div class="flex items-center gap-8 lg:gap-10 min-w-0">
-          <!-- Logo — nudged right from the edge -->
+          <div class="flex items-center gap-5 lg:gap-6 min-w-0">
+          <!-- Logo -->
           <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
             <div class="w-11 h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
               <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-contain" />
@@ -36,7 +36,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           </a>
 
           <!-- Desktop Navigation -->
-          <div class="hidden lg:flex items-center gap-5 xl:gap-6">
+          <div class="hidden lg:flex items-center gap-4 xl:gap-5">
             @for (link of navLinks; track link.path) {
               <!-- Services Dropdown — titles only; click opens the page -->
               @if (link.path === '/services') {
