@@ -16,15 +16,15 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       [class.nav-scrolled]="scrollService.isScrolled()"
       [class.nav-hidden]="isNavHidden()"
     >
-      <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20 lg:h-24">
-          <!-- Logo -->
-          <a routerLink="/" class="relative z-50 flex items-center gap-3 group" (click)="closeMenu()">
-            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
+      <div class="w-full pl-3 pr-4 sm:pl-4 sm:pr-6 lg:pl-5 lg:pr-8">
+        <div class="flex items-center justify-between h-16 lg:h-20 gap-6 lg:gap-10">
+          <!-- Logo — pinned to the top-left corner -->
+          <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-2.5 group" (click)="closeMenu()">
+            <div class="w-9 h-9 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-300 flex items-center justify-center overflow-hidden">
               <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-cover" />
             </div>
-            <div class="hidden sm:block">
-              <span class="text-brand-white font-playfair text-lg font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+            <div class="hidden sm:block leading-tight">
+              <span class="text-brand-white font-playfair text-base lg:text-lg font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                 YASHVI BAGGA
               </span>
               <span class="block text-[10px] uppercase tracking-[3px] text-brand-gold/80 font-poppins">
@@ -33,8 +33,8 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             </div>
           </a>
 
-          <!-- Desktop Navigation -->
-          <div class="hidden lg:flex items-center gap-8">
+          <!-- Desktop Navigation — pushed right with clear gap from brand -->
+          <div class="hidden lg:flex flex-1 items-center justify-end gap-5 xl:gap-6 min-w-0 pl-10 xl:pl-16">
             @for (link of navLinks; track link.path) {
               <!-- Services Dropdown — the eight services from the deck (opens on click) -->
               @if (link.path === '/services') {
@@ -184,7 +184,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             <button
               type="button"
               (click)="openAuthModal()"
-              class="ml-4 px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105"
+              class="ml-2 px-5 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 shrink-0"
             >
               Log In / Sign Up
             </button>
