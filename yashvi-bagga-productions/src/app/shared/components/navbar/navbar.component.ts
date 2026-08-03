@@ -46,18 +46,10 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('services', $event)"
                     [attr.aria-expanded]="openMenu() === 'services'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-1.5"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
-                    <svg
-                      class="w-3.5 h-3.5 transition-transform duration-300"
-                      [class.rotate-180]="openMenu() === 'services'"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
                   </button>
 
                   <div
@@ -101,18 +93,10 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('about', $event)"
                     [attr.aria-expanded]="openMenu() === 'about'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 flex items-center gap-1.5"
+                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'about'"
                   >
                     {{ link.label }}
-                    <svg
-                      class="w-3.5 h-3.5 transition-transform duration-300"
-                      [class.rotate-180]="openMenu() === 'about'"
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
                   </button>
 
                   <div
@@ -214,13 +198,10 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             @if (link.path === '/services') {
               <div class="w-full flex flex-col items-center gap-4">
                 <button
-                  class="text-2xl font-playfair text-brand-white hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                  class="text-2xl font-playfair text-brand-white hover:text-brand-gold transition-all duration-300"
                   (click)="toggleMobileServices()"
                 >
                   {{ link.label }}
-                  <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="mobileServicesOpen()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                  </svg>
                 </button>
                 
                 <!-- Mobile Services Submenu — the eight services from the deck -->
@@ -254,13 +235,10 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             } @else if (link.path === '/about') {
               <div class="w-full flex flex-col items-center gap-4">
                 <button
-                  class="text-2xl font-playfair text-brand-white hover:text-brand-gold transition-all duration-300 flex items-center gap-2"
+                  class="text-2xl font-playfair text-brand-white hover:text-brand-gold transition-all duration-300"
                   (click)="toggleMobileAbout()"
                 >
                   {{ link.label }}
-                  <svg class="w-5 h-5 transition-transform duration-300" [class.rotate-180]="mobileAboutOpen()" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                  </svg>
                 </button>
 
                 <!-- Mobile About Submenu -->

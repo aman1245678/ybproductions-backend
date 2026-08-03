@@ -67,7 +67,7 @@ import { IndustriesComponent } from './sections/industries.component';
                 routerLink="/talent-network"
                 class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-white/25 px-7 py-3.5 font-poppins text-sm font-medium text-brand-white transition-colors duration-300 hover:border-brand-gold hover:text-brand-gold"
               >
-                Be Next Week&rsquo;s Showcase
+                Get Featured
               </a>
             </app-magnetic-button>
           </div>
