@@ -43,10 +43,10 @@ import { DocumentUpload } from '../../shared/models/document-upload.model';
         <div class="absolute bottom-16 left-10 h-72 w-72 rounded-full bg-brand-pink/10 blur-[120px]"></div>
       </div>
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Casting Application</span>
-        <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">Apply for Casting & Auditions</h1>
+        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Lights. Camera. Opportunity.</span>
+        <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">Actor Registration & Casting Application</h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Submit your casting profile for upcoming campaigns, films and brand productions. Every application moves through a clear, transparent review flow.
+          Join our talent network for films, web series, advertisements, corporate videos, music videos and digital campaigns. Submission does not guarantee selection — every profile is reviewed for suitable opportunities.
         </p>
       </div>
     </section>

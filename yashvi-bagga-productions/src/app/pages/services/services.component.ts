@@ -19,13 +19,12 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
         <div class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-brand-gold/10 rounded-full blur-[100px]"></div>
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Multi-Vertical Excellence</span>
+        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Creating Impact. Inspiring Excellence.</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
-          Our <span class="gradient-text">Business Verticals</span>
+          Our <span class="gradient-text">Services</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Comprehensive solutions across creative media, technology, staffing, and professional development.
-          Your complete partner for business growth and digital transformation.
+          Casting, social media, digital marketing, branding, IT, talent pool, manpower and training — end-to-end solutions across India.
         </p>
       </div>
     </section>
@@ -100,13 +99,13 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
               <h3 class="text-3xl font-playfair text-brand-white mb-4">Creative Media & Branding</h3>
               @if (openPillar() === 0) {
                 <p class="text-brand-white/60 font-poppins text-base leading-relaxed mb-8 flex-grow">
-                  Premium creative solutions including brand strategy, content creation, video production, and social media management that elevates your brand presence.
+                  Social media, digital marketing, creative branding and video — solutions that educate, engage, inspire and deliver measurable impact.
                 </p>
                 <div class="space-y-2 mb-8">
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Brand Strategy & Identity</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Content Creation & Media</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Video Production</p>
                   <p class="text-brand-white/70 font-poppins text-sm">✓ Social Media Management</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Digital Marketing & SEO</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Creative Branding</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Video & Content Production</p>
                 </div>
                 <a routerLink="/services/creative-media" class="inline-flex items-center gap-3 px-6 py-3 bg-brand-gold text-brand-black font-poppins font-medium rounded-lg hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 w-fit">
                   Explore Service
@@ -143,13 +142,13 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
               <h3 class="text-3xl font-playfair text-brand-white mb-4">IT Solutions & Services</h3>
               @if (openPillar() === 1) {
                 <p class="text-brand-white/60 font-poppins text-base leading-relaxed mb-8 flex-grow">
-                  Enterprise-grade technology solutions including web development, mobile apps, cloud infrastructure, and digital transformation services.
+                  Website design, development and maintenance, mobile apps, web applications, e-commerce and hosting for modern organisations.
                 </p>
                 <div class="space-y-2 mb-8">
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Web & Mobile Development</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Cloud Solutions</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Digital Transformation</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Enterprise Support</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Website Design & Development</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Mobile & Web Applications</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ E-Commerce Solutions</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Maintenance & Hosting</p>
                 </div>
                 <a routerLink="/services/it-solutions" class="inline-flex items-center gap-3 px-6 py-3 bg-cyan-500 text-brand-black font-poppins font-medium rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-300 hover:scale-105 w-fit">
                   Explore Service
@@ -186,13 +185,13 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
               <h3 class="text-3xl font-playfair text-brand-white mb-4">Manpower Outsourcing</h3>
               @if (openPillar() === 2) {
                 <p class="text-brand-white/60 font-poppins text-base leading-relaxed mb-8 flex-grow">
-                  Strategic staffing solutions for technical and non-technical roles, connecting organizations with top talent for permanent and contract positions.
+                  Contract, project and flexible workforce solutions — admin, IT, creative, training and event staffing with compliance-focused operations.
                 </p>
                 <div class="space-y-2 mb-8">
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Technical Staffing</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Contract & Permanent Hiring</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Remote Workforce Solutions</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ HR Support Services</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Contract & Project Staffing</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Technical & Creative Workforce</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Event & Promotional Staffing</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ End-to-End Workforce Admin</p>
                 </div>
                 <a routerLink="/services/manpower-outsourcing" class="inline-flex items-center gap-3 px-6 py-3 bg-emerald-500 text-brand-black font-poppins font-medium rounded-lg hover:bg-teal-500 hover:text-white transition-all duration-300 hover:scale-105 w-fit">
                   Explore Service
@@ -226,16 +225,16 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
                 <div class="text-5xl mb-6">🎓</div>
                 <svg class="w-6 h-6 text-yellow-400/70 transition-transform duration-300" [class.rotate-180]="openPillar() === 3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </div>
-              <h3 class="text-3xl font-playfair text-brand-white mb-4">Vocational Training</h3>
+              <h3 class="text-3xl font-playfair text-brand-white mb-4">Professional & Vocational Training</h3>
               @if (openPillar() === 3) {
                 <p class="text-brand-white/60 font-poppins text-base leading-relaxed mb-8 flex-grow">
-                  Comprehensive professional development programs including IT training, digital marketing, soft skills, and industry certifications for career growth.
+                  Leadership, digital skills, media and vocational programmes that bridge education and employability for individuals and institutions.
                 </p>
                 <div class="space-y-2 mb-8">
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ IT Training Programs</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Digital Skills</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Professional Certifications</p>
-                  <p class="text-brand-white/70 font-poppins text-sm">✓ Career Development</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Leadership & Soft Skills</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ AI & Digital Skills</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Media & Performance Skills</p>
+                  <p class="text-brand-white/70 font-poppins text-sm">✓ Government & Institutional Training</p>
                 </div>
                 <a routerLink="/services/vocational-training" class="inline-flex items-center gap-3 px-6 py-3 bg-yellow-500 text-brand-black font-poppins font-medium rounded-lg hover:bg-orange-500 hover:text-white transition-all duration-300 hover:scale-105 w-fit">
                   Explore Service
@@ -389,60 +388,60 @@ export class ServicesComponent implements OnInit {
 
   services = [
     {
+      icon: '🎬',
+      title: 'Casting Services',
+      description: 'Connecting productions and brands with actors, models, anchors and performers across film, TV, OTT and ads.',
+      color: '#D4AF37',
+      features: ['Film & TV Casting', 'OTT & Web Series', 'Commercial Casting', 'Corporate Films', 'Audition Support'],
+    },
+    {
       icon: '📱',
       title: 'Social Media Management',
-      description: 'Complete social media strategy, content planning, and community management that grows your brand presence across all platforms.',
-      color: '#D4AF37',
-      features: ['Content Strategy & Calendar', 'Community Management', 'Analytics & Reporting', 'Platform Optimization', 'Engagement Growth'],
-    },
-    {
-      icon: '🌟',
-      title: 'Influencer Marketing',
-      description: 'Strategic influencer partnerships that amplify your message and connect your brand with the right audiences through authentic collaborations.',
+      description: 'Strategy, content, community and paid campaigns that build lasting digital presence and engagement.',
       color: '#FF2E88',
-      features: ['Influencer Discovery & Vetting', 'Campaign Strategy', 'Content Collaboration', 'Performance Tracking', 'ROI Optimization'],
+      features: ['Content Calendar', 'Reels & Graphics', 'Community Management', 'Influencer Support', 'Analytics'],
     },
     {
-      icon: '🎬',
-      title: 'Content Creation',
-      description: 'Premium cinematic content including reels, editorial shoots, brand films, and digital assets that stop the scroll and drive engagement.',
+      icon: '📈',
+      title: 'Digital Marketing',
+      description: 'SEO, performance ads, content, video and reputation management for measurable brand growth.',
       color: '#D4AF37',
-      features: ['Reels & Short-form Content', 'Brand Films & Videos', 'Photography & Editorials', 'Graphic Design', 'Motion Graphics'],
-    },
-    {
-      icon: '🚀',
-      title: 'Brand Promotions',
-      description: 'Strategic brand campaigns that create buzz, drive awareness, and convert audiences into loyal customers through multi-channel promotion.',
-      color: '#FF2E88',
-      features: ['Campaign Strategy', 'Launch Events', 'Digital Advertising', 'PR & Media Coverage', 'Brand Activations'],
-    },
-    {
-      icon: '🤝',
-      title: 'Talent Collaborations',
-      description: 'Connecting brands with the perfect creators and talent for impactful collaborations that resonate with target audiences.',
-      color: '#D4AF37',
-      features: ['Talent Sourcing', 'Contract Negotiation', 'Campaign Management', 'Performance Analytics', 'Long-term Partnerships'],
+      features: ['SEO & Local SEO', 'Google & Social Ads', 'Content Marketing', 'Video Marketing', 'ORM'],
     },
     {
       icon: '🎨',
-      title: 'Creative Production',
-      description: 'Full-service creative production from concept development to final delivery, with cinematic quality standards at every step.',
+      title: 'Creative Branding',
+      description: 'Brand strategy, identity design and campaigns that inspire confidence and lasting recall.',
       color: '#FF2E88',
-      features: ['Concept Development', 'Pre-production Planning', 'Cinematic Production', 'Post-production', 'Multi-format Delivery'],
+      features: ['Brand Positioning', 'Logo & Identity', 'Collateral Design', 'Campaign Concepts', 'AV Branding'],
+    },
+    {
+      icon: '🌟',
+      title: 'Talent Pool & Headhunting',
+      description: 'Single-window sourcing across every production department — from lead actors to crew and support.',
+      color: '#D4AF37',
+      features: ['On-Screen Talent', 'Creative Professionals', 'Technical Crew', 'Post-Production', 'Support Staff'],
+    },
+    {
+      icon: '🎓',
+      title: 'Professional Training',
+      description: 'Leadership, digital skills, media and vocational programmes that build future-ready professionals.',
+      color: '#FF2E88',
+      features: ['Leadership & Soft Skills', 'AI & Digital', 'Media Skills', 'Gov / Institutional', 'Employability'],
     },
   ];
 
   processSteps = [
-    { title: 'Discover', description: 'Understanding your brand, goals, and audience deeply.' },
-    { title: 'Strategize', description: 'Crafting a data-driven creative strategy.' },
-    { title: 'Create', description: 'Producing premium content with cinematic quality.' },
-    { title: 'Amplify', description: 'Maximizing reach and driving measurable results.' },
+    { title: 'Understand', description: 'Clarify vision, objectives and audience for every engagement.' },
+    { title: 'Strategize', description: 'Design a clear plan aligned to measurable outcomes.' },
+    { title: 'Execute', description: 'Deliver creative, technical and operational excellence.' },
+    { title: 'Measure', description: 'Track impact and refine for lasting results.' },
   ];
 
   ngOnInit(): void {
     this.seoService.updateMetaTags({
-      title: 'Services | Yashvi Bagga Productions - Creative, IT, Staffing & Training',
-      description: 'Explore our comprehensive business verticals: Creative Media & Branding, IT Solutions & Services, Manpower Outsourcing, and Vocational Training Programs.',
+      title: 'Services | Yashvi Bagga Productions',
+      description: 'Casting, social media, digital marketing, creative branding, IT solutions, talent pool, manpower outsourcing and professional training — across India.',
     });
   }
 }

@@ -1,8 +1,8 @@
 /**
  * The eight services defined in the client deck ("Our Services" slide):
- * Casting (Films/TV) · Digital Marketing · Social Media Management ·
- * Creative Branding · IT Solutions · Talent Pool (Film/TV) ·
- * Manpower Outsourcing · Training and Assessments.
+ * Casting · Social Media Management · Digital Marketing ·
+ * Creative Branding · IT Solutions · Talent Pool ·
+ * Manpower Outsourcing · Professional & Vocational Training.
  *
  * Shared by the Services page grid and the navbar "Services" dropdown so both
  * stay in sync — mirrors how ABOUT_SECTIONS drives the About dropdown.
@@ -19,57 +19,57 @@ export interface ServiceLink {
 export const SERVICE_LINKS: ServiceLink[] = [
   {
     slug: 'casting',
-    label: 'Casting (Films/TV)',
-    description: 'Casting calls and auditions for film, television and commercials.',
+    label: 'Casting Services',
+    description: 'Discovering talent and filling every role — films, TV, OTT, ads and corporate films.',
     icon: '🎬',
     link: '/casting-services',
   },
   {
-    slug: 'digital-marketing',
-    label: 'Digital Marketing',
-    description: 'Campaigns, performance media and measurable brand growth.',
-    icon: '📈',
+    slug: 'social-media',
+    label: 'Social Media Management',
+    description: 'Strategy, content, community and paid campaigns that build lasting digital presence.',
+    icon: '📱',
     link: '/services/creative-media',
   },
   {
-    slug: 'social-media',
-    label: 'Social Media Management',
-    description: 'Content calendars, community and channel-first storytelling.',
-    icon: '📱',
+    slug: 'digital-marketing',
+    label: 'Digital Marketing',
+    description: 'SEO, performance media, content, video and ORM for measurable brand growth.',
+    icon: '📈',
     link: '/services/creative-media',
   },
   {
     slug: 'creative-branding',
     label: 'Creative Branding',
-    description: 'Brand identity, art direction and premium visual systems.',
+    description: 'Brand strategy, identity design and campaigns that inspire, connect and endure.',
     icon: '🎨',
     link: '/services/creative-media',
   },
   {
     slug: 'it-solutions',
     label: 'IT Solutions',
-    description: 'Websites, apps, CRM/ERP platforms, cloud and support.',
+    description: 'Website design, apps, web applications, e-commerce, hosting and maintenance.',
     icon: '💻',
     link: '/it-solutions',
   },
   {
     slug: 'talent-pool',
-    label: 'Talent Pool (Film/TV)',
-    description: 'A verified network of actors, models, crew and creators.',
+    label: 'Talent Pool & Headhunting',
+    description: 'One partner for every department — on-screen talent, crew and production support.',
     icon: '🌟',
     link: '/talent-network',
   },
   {
     slug: 'manpower-outsourcing',
     label: 'Manpower Outsourcing',
-    description: 'Technical, non-technical, contract and project staffing.',
+    description: 'Contract, project and flexible workforce solutions for growing organizations.',
     icon: '👥',
     link: '/services/manpower-outsourcing',
   },
   {
     slug: 'training',
-    label: 'Training and Assessments',
-    description: 'Vocational programmes, certifications and skill assessments.',
+    label: 'Professional & Vocational Training',
+    description: 'Leadership, digital skills and industry programmes that build future-ready professionals.',
     icon: '🎓',
     link: '/vocational-training',
   },

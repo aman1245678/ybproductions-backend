@@ -139,9 +139,9 @@ import { IndustriesComponent } from './sections/industries.component';
       <div class="absolute left-0 bottom-10 w-72 h-72 rounded-full bg-brand-gold/10 blur-[120px]"></div>
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
-          subtitle="Service Excellence"
-          title="Premium Services"
-          description="A curated suite of luxury offerings for creators, brands and production teams."
+          subtitle="Our Services"
+          title="What We Deliver"
+          description="Creative, media, branding, talent, technology, staffing and training — under one roof."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -175,9 +175,9 @@ import { IndustriesComponent } from './sections/industries.component';
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(212,175,55,0.09),_transparent_30%)]"></div>
       <div class="relative max-w-7xl mx-auto grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
         <div class="space-y-8">
-          <span class="text-brand-gold text-sm uppercase tracking-[0.3em]">Social Presence</span>
-          <h2 class="heading-lg text-brand-white max-w-xl">A digital journey designed for creators, brands and high-impact growth.</h2>
-          <p class="body-lg text-brand-white/70 max-w-2xl">From Instagram reels to branded content, our approach fuses editorial storytelling with measurable social momentum for premium campaigns.</p>
+          <span class="text-brand-gold text-sm uppercase tracking-[0.3em]">Digital Engagement</span>
+          <h2 class="heading-lg text-brand-white max-w-xl">Transforming brands through strategic digital engagement.</h2>
+          <p class="body-lg text-brand-white/70 max-w-2xl">We combine creativity, strategy and data-driven insights to build meaningful connections between brands and audiences across every major platform.</p>
 
           <div class="grid gap-4 sm:grid-cols-2">
             @for (stat of socialStats; track stat.label) {
@@ -218,8 +218,8 @@ import { IndustriesComponent } from './sections/industries.component';
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
           subtitle="Why Choose Us"
-          title="Our Creative Manifesto"
-          description="A premium agency approach built for fashion, media and creator brands."
+          title="What Defines Our Brand"
+          description="Innovation, excellence, integrity and people-centric solutions that create lasting impact."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -242,9 +242,9 @@ import { IndustriesComponent } from './sections/industries.component';
       <div class="absolute inset-0 bg-gradient-to-br from-brand-black via-transparent to-brand-black opacity-60"></div>
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
-          subtitle="Portfolio Highlights"
-          title="Editorial Visual Stories"
-          description="A luxury showcase of campaigns, reels and cinematic brand moments."
+          subtitle="Showcase"
+          title="Stories That Leave An Impact"
+          description="Campaigns, productions and digital experiences crafted for brands, institutions and creators."
           appScrollAnimation
           animationType="fade-up"
         />
@@ -277,8 +277,8 @@ import { IndustriesComponent } from './sections/industries.component';
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.1),_transparent_30%)]"></div>
       <div class="relative max-w-6xl mx-auto rounded-[40px] border border-brand-gold/15 bg-brand-dark/90 p-12 text-center shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
         <p class="text-brand-gold uppercase tracking-[0.35em] text-sm mb-4">Let’s Create Together</p>
-        <h2 class="heading-lg text-brand-white mb-6">Let’s Create Something Extraordinary Together.</h2>
-        <p class="body-lg text-brand-white/70 max-w-2xl mx-auto mb-10">Book a consultation with YASHVI BAGGA PRODUCTIONS and bring your next luxury campaign, creator story, or production project to life.</p>
+        <h2 class="heading-lg text-brand-white mb-6">Creating Experiences. Inspiring Excellence. Building Impact.</h2>
+        <p class="body-lg text-brand-white/70 max-w-2xl mx-auto mb-10">Partner with YASHVI BAGGA PRODUCTIONS for creative media, casting, branding, talent, training and end-to-end production — anywhere in India.</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <app-magnetic-button>
             <a routerLink="/contact" class="inline-flex items-center gap-3 px-10 py-4 bg-brand-gold text-brand-black font-semibold rounded-full transition-all duration-500 hover:bg-brand-white">
@@ -313,15 +313,14 @@ export class HomeComponent implements OnInit {
   // ];
 
   premiumServices = [
-    { icon: '📱', title: 'Social Media Management', description: 'Luxury content curation, audience growth and creator-led storytelling.' },
-    { icon: '🎬', title: 'Content Creation', description: 'Fashion-forward videos, editorial shoots and campaign assets.' },
-    { icon: '🤝', title: 'Influencer Marketing', description: 'Strategic collaborations with creators and premium brand talent.' },
-    { icon: '🎥', title: 'Creative Production', description: 'Full-service production with cinematic direction and edit craft.' },
-    { icon: '✨', title: 'Personal Branding', description: 'Signature creator identity design for lasting digital influence.' },
-    { icon: '👥', title: 'Talent Management', description: 'Curated talent partnerships for brands and creators alike.' },
-    { icon: '💻', title: 'IT Solutions & Services', description: 'Digital infrastructure and technology experiences for modern brands.' },
-    { icon: '👔', title: 'Manpower Outsourcing', description: 'Creative staffing and operational support for growing teams.' },
-    { icon: '🎓', title: 'Vocational Training', description: 'Curated learning experiences for creators, editors and marketers.' },
+    { icon: '🎬', title: 'Casting Services', description: 'Connecting filmmakers, brands and platforms with the right on-screen talent.' },
+    { icon: '📱', title: 'Social Media Management', description: 'Strategy, content, community and campaigns that build lasting digital presence.' },
+    { icon: '📈', title: 'Digital Marketing', description: 'SEO, performance ads, content and reputation solutions with measurable growth.' },
+    { icon: '🎨', title: 'Creative Branding', description: 'Brand strategy, identity design and campaigns that inspire and endure.' },
+    { icon: '💻', title: 'IT Solutions', description: 'Website design, apps, web applications, e-commerce and ongoing support.' },
+    { icon: '🌟', title: 'Talent Pool & Headhunting', description: 'End-to-end sourcing across every production department — one partner, every role.' },
+    { icon: '👔', title: 'Manpower Outsourcing', description: 'Contract, project and flexible workforce solutions for growing organizations.' },
+    { icon: '🎓', title: 'Professional & Vocational Training', description: 'Leadership, digital skills and industry programmes that build future-ready talent.' },
   ];
 
   // Removed per client requirement — "Meet The Team" section taken off the home page.
@@ -337,38 +336,38 @@ export class HomeComponent implements OnInit {
   // ];
 
   socialStats = [
-    { value: '8.5M', label: 'Monthly Reach' },
-    { value: '120K', label: 'Creator Followers' },
-    { value: '98%', label: 'Engagement Rate' },
-    { value: '75+', label: 'Brand Partnerships' },
+    { value: 'Pan-India', label: 'Execution Network' },
+    { value: '8+', label: 'Core Service Verticals' },
+    { value: 'Gov + Corp', label: 'Trusted Sectors' },
+    { value: '1 Partner', label: 'Every Department' },
   ];
 
   socialPosts = [
-    { title: 'Campaign Teaser', description: 'A premium reel concept with high-gloss editorial styling.' },
-    { title: 'Creator Drop', description: 'A scroll-stopping social story for influencer audiences.' },
-    { title: 'Brand Launch', description: 'A cinematic content suite for luxury product reveal.' },
+    { title: 'Brand Storytelling', description: 'Content that builds trust, engagement and lasting recall.' },
+    { title: 'Creator Collaborations', description: 'Authentic influencer and talent partnerships that amplify reach.' },
+    { title: 'Campaign Impact', description: 'Integrated digital campaigns with measurable business outcomes.' },
   ];
 
   manifestoPoints = [
-    { icon: '🧠', title: 'Creative & Trend-Driven Approach', description: 'We shape campaigns around culture, luxury and lasting impact.' },
-    { icon: '🔧', title: 'End-to-End Production Support', description: 'Strategy, shoot, edit and launch with seamless execution.' },
-    { icon: '🤝', title: 'Strong Industry Network', description: 'Creators, brands and media partners aligned for every story.' },
-    { icon: '👥', title: 'Youth-Centric Digital Strategy', description: 'Modern content for Gen Z, creators and aspirational audiences.' },
-    { icon: '🎨', title: 'Premium Visual Storytelling', description: 'Editorial frames, fashion aesthetics and cinematic motion.' },
-    { icon: '📈', title: 'Result-Oriented Campaigns', description: 'Every experience is built to drive engagement and growth.' },
+    { icon: '💡', title: 'Innovation with Purpose', description: 'New ideas, technologies and creative approaches for contemporary solutions.' },
+    { icon: '🏆', title: 'Excellence in Execution', description: 'Quality, professionalism and attention to detail in every project.' },
+    { icon: '🤝', title: 'People-Centric Approach', description: 'Solutions designed to inspire growth, confidence and transformation.' },
+    { icon: '🛡️', title: 'Integrity & Trust', description: 'Transparency, commitment and ethical practices that build long-term relationships.' },
+    { icon: '🎨', title: 'Creativity Beyond Boundaries', description: 'Imagination with strategic execution — distinctive and memorable work.' },
+    { icon: '📈', title: 'Result-Oriented Delivery', description: 'Experiences that educate, engage, inspire and deliver measurable impact.' },
   ];
 
   portfolioHighlights = [
-    { title: 'Luxury Fashion Film', category: 'Campaign' },
-    { title: 'Creator Lifestyle Series', category: 'Editorial' },
-    { title: 'Brand Launch Visuals', category: 'Production' },
-    { title: 'Social Growth Reel', category: 'Digital' },
+    { title: 'Brand & Awareness Campaigns', category: 'Digital Marketing' },
+    { title: 'Casting & Talent Stories', category: 'Casting' },
+    { title: 'Corporate & Training Films', category: 'Production' },
+    { title: 'Social Media Growth Series', category: 'Social Media' },
   ];
 
   ngOnInit(): void {
     this.seoService.updateMetaTags({
       title: 'Home | YASHVI BAGGA PRODUCTIONS',
-      description: 'Luxury creative media agency specializing in cinematic storytelling, influencer campaigns, and premium digital experiences.',
+      description: 'Creative media, casting, branding, talent, IT, manpower and training — creating experiences, inspiring excellence, building impact across India.',
       url: 'https://ybproductions.co.in',
     });
   }

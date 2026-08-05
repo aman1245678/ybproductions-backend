@@ -35,9 +35,9 @@ interface TrainingStory {
       <div class="absolute right-0 top-1/4 h-80 w-80 rounded-full bg-brand-gold/10 blur-[120px]"></div>
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
-          subtitle="Vocational Training"
-          title="Build Skills. Earn Certifications. Create Momentum."
-          description="Practical training across digital, creative and professional development tracks."
+          subtitle="Professional & Vocational Training"
+          title="Empowering People. Developing Skills. Transforming Careers."
+          description="High-impact learning across leadership, digital skills, media and vocational tracks."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -105,35 +105,35 @@ interface TrainingStory {
 })
 export class EcosystemExpansionComponent {
   trainingPrograms: TrainingProgram[] = [
-    { title: 'Digital Marketing', description: 'SEO, social media, paid media and analytics fundamentals.', icon: '📣' },
-    { title: 'Web Development', description: 'Modern websites, responsive UI and application basics.', icon: '🧑‍💻' },
-    { title: 'Graphic Design', description: 'Brand identity, layouts and visual storytelling systems.', icon: '🎨' },
-    { title: 'Video Editing', description: 'Reels, shorts and polished narrative editing workflows.', icon: '🎞️' },
-    { title: 'Social Media Management', description: 'Community, content and channel planning.', icon: '📱' },
-    { title: 'Communication Skills', description: 'Presentation, confidence and client-ready communication.', icon: '🗣️' },
-    { title: 'Interview Preparation', description: 'Interview readiness, confidence and portfolio polish.', icon: '🎯' },
-    { title: 'Career Development', description: 'Personal branding, goal setting and growth planning.', icon: '🚀' },
+    { title: 'Leadership & Soft Skills', description: 'Executive development, communication, EI and workplace excellence.', icon: '👔' },
+    { title: 'AI & Digital Skills', description: 'AI, data analytics, digital marketing and productivity tools.', icon: '🤖' },
+    { title: 'Media & Performance', description: 'Acting, anchoring, camera, editing, photography and events.', icon: '🎬' },
+    { title: 'Creative Skills', description: 'Graphic design, content, social media and brand storytelling.', icon: '🎨' },
+    { title: 'IT Fundamentals', description: 'Web basics, collaboration tools and emerging technologies.', icon: '💻' },
+    { title: 'Government & Institutional', description: 'Custom programmes for ministries, PSUs and training institutes.', icon: '🏛️' },
+    { title: 'Employability Skills', description: 'Career readiness, interview prep and entrepreneurship basics.', icon: '🎯' },
+    { title: 'Hospitality & Retail', description: 'Customer relations, office admin and vocational readiness.', icon: '🏨' },
   ];
 
   trainingJourney: WorkflowStep[] = [
-    { title: 'Learn', description: 'Understand the core skills, tools and language of the field.' },
-    { title: 'Practice', description: 'Apply concepts through projects, exercises and guided feedback.' },
-    { title: 'Certify', description: 'Validate skills with a structured learning milestone.' },
-    { title: 'Grow', description: 'Use the training to move into stronger roles and opportunities.' },
+    { title: 'Needs Assessment', description: 'Understand organisational and individual learning goals.' },
+    { title: 'Design & Deliver', description: 'Interactive, practical programmes led by industry experts.' },
+    { title: 'Assess & Certify', description: 'Evaluations, feedback and certification support.' },
+    { title: 'Measure Impact', description: 'Post-training analytics and continuous capability building.' },
   ];
 
   trainingStories: TrainingStory[] = [
     {
       initials: 'PS',
       name: 'Priya Sharma',
-      outcome: 'Digital Marketing Specialist',
-      quote: 'The training helped me move from learner to job-ready professional with clarity and confidence.',
+      outcome: 'Digital Skills Graduate',
+      quote: 'Practical learning and mentorship helped me move from classroom concepts to job-ready confidence.',
     },
     {
       initials: 'AK',
       name: 'Aman Khan',
-      outcome: 'Video Editor',
-      quote: 'The practical assignments and mentorship made the learning journey feel real and career-focused.',
+      outcome: 'Media Skills Trainee',
+      quote: 'Hands-on assignments made the journey real — from camera basics to polished storytelling.',
     },
   ];
 }

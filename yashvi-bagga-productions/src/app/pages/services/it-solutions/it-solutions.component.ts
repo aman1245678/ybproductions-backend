@@ -25,13 +25,13 @@ import gsap from 'gsap';
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-cyan-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Futuristic Technology</span>
+        <span class="inline-block text-cyan-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Website · Apps · Support</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
-          Technology
-          <span class="gradient-text-cyan">& Digital Solutions</span>
+          IT Solutions &amp;
+          <span class="gradient-text-cyan"> Digital Services</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Enterprise-grade technology solutions designed to transform your digital infrastructure, accelerate innovation, and drive sustainable growth in the digital landscape.
+          Website design, development and maintenance, mobile apps, web applications, e-commerce and hosting — secure, scalable solutions for modern organisations.
         </p>
 
         <!-- Animated CTA button -->
@@ -292,52 +292,52 @@ export class ItSolutionsComponent implements OnInit {
 
   coreServices = [
     {
-      title: 'Web Application Development',
+      title: 'Website Design',
+      icon: '🎨',
+      description: 'Visually appealing, user-friendly and responsive websites that reflect your brand identity.',
+      features: ['Modern UI', 'Mobile Compatible', 'Intuitive Navigation', 'Brand Alignment'],
+    },
+    {
+      title: 'Website Development',
       icon: '🌐',
-      description: 'Modern, scalable web applications built with cutting-edge technologies and best practices.',
-      features: ['Responsive Design', 'Progressive Web Apps', 'Cloud Native', 'API Development'],
+      description: 'High-performance corporate, portfolio, educational and custom web solutions.',
+      features: ['Secure & Scalable', 'Corporate Sites', 'Landing Pages', 'Best Practices'],
     },
     {
       title: 'Mobile App Development',
       icon: '📱',
-      description: 'Native and cross-platform mobile solutions for iOS and Android platforms.',
-      features: ['Native Apps', 'Cross-Platform', 'Real-time Sync', 'Offline Support'],
+      description: 'Custom Android and iOS applications with seamless experiences from concept to support.',
+      features: ['UI/UX Design', 'Android & iOS', 'Deployment', 'Ongoing Support'],
     },
     {
-      title: 'UI/UX Design',
-      icon: '🎨',
-      description: 'Stunning user interfaces and experiences that drive engagement and conversion.',
-      features: ['User Research', 'Prototyping', 'Design Systems', 'Accessibility'],
+      title: 'Web Application Solutions',
+      icon: '⚙️',
+      description: 'CRM, LMS, ERP, booking portals and lead management systems tailored to your processes.',
+      features: ['CRM / LMS / ERP', 'Booking Portals', 'Lead Management', 'Custom Workflows'],
     },
     {
-      title: 'Cloud Solutions',
-      icon: '☁️',
-      description: 'Infrastructure as a Service, Platform as a Service, and Software as a Service solutions.',
-      features: ['AWS Solutions', 'Azure Services', 'GCP Integration', 'Multi-cloud'],
-    },
-    {
-      title: 'Software Consulting',
-      icon: '💡',
-      description: 'Strategic technology consulting to align solutions with your business objectives.',
-      features: ['Architecture Design', 'Tech Stack Selection', 'Migration Planning', 'Optimization'],
-    },
-    {
-      title: 'Digital Transformation',
-      icon: '🚀',
-      description: 'End-to-end digital transformation services to modernize your operations.',
-      features: ['Process Automation', 'Legacy Modernization', 'Change Management', 'Training'],
-    },
-    {
-      title: 'Enterprise Solutions',
-      icon: '🏢',
-      description: 'Comprehensive enterprise-grade solutions for large-scale operations.',
-      features: ['ERP Systems', 'CRM Integration', 'Business Intelligence', 'Custom Solutions'],
+      title: 'E-Commerce Solutions',
+      icon: '🛒',
+      description: 'Secure online sales platforms with payments, inventory, orders and customer management.',
+      features: ['Payment Gateway', 'Inventory', 'Order Tracking', 'Customer Management'],
     },
     {
       title: 'Maintenance & Support',
       icon: '🔧',
-      description: '24/7 technical support and proactive maintenance for your systems.',
-      features: ['24/7 Support', 'Monitoring', 'Patching', 'Performance Tuning'],
+      description: 'Content updates, security monitoring, performance optimization and technical support.',
+      features: ['Security Monitoring', 'Backups', 'Bug Fixes', 'Plugin Updates'],
+    },
+    {
+      title: 'Domain, Hosting & Email',
+      icon: '☁️',
+      description: 'Domain assistance, hosting management, business email and reliable cloud operations.',
+      features: ['Domain Setup', 'Web Hosting', 'Business Email', 'Server Care'],
+    },
+    {
+      title: 'UX Enhancement',
+      icon: '✨',
+      description: 'User experience improvements that increase engagement and conversion across digital properties.',
+      features: ['UX Audit', 'Conversion Focus', 'Accessibility', 'Iterative Design'],
     },
   ];
 

@@ -37,10 +37,10 @@ interface RegistrationRole {
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Registration Portal</span>
-        <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">Join Our Creative & Professional Network</h1>
+        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Career Opportunities</span>
+        <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">Build Your Future with Yashvi Bagga Productions</h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Register your talent, creative skillset or media expertise and open the door to premium collaborations, casting requests and future API-powered onboarding.
+          Share your profile with our growing network of creatives, professionals and specialists. Your next opportunity may begin here.
         </p>
       </div>
     </section>

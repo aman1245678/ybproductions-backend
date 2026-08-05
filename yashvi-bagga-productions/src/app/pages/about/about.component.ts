@@ -52,8 +52,8 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
           subtitle="The Founder"
-          title="The Vision Behind The Venture"
-          description="A creative entrepreneur building a house where storytelling, talent and technology work as one."
+          title="Every Dream Begins With A Vision"
+          description="The belief that creativity can inspire, influence and transform businesses, brands and individuals."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -74,9 +74,9 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
               </div>
 
               <p class="text-brand-white/60 font-poppins text-sm leading-relaxed mb-8">
-                Yashvi Bagga is a passionate content creator, digital storyteller, and creative entrepreneur.
-                From bold fashion campaigns to high-impact social launches, every project is crafted with
-                editorial precision, emotional storytelling, and premium visual identity.
+                YASHVI BAGGA PRODUCTIONS was founded to bring talent, innovation, storytelling and strategic
+                marketing under one roof — helping brands build authentic connections, empowering creators,
+                and delivering campaigns that leave a lasting impact.
               </p>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -263,8 +263,8 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
           subtitle="The Team"
-          title="The Minds Behind The Magic"
-          description="A passionate group of professionals committed to delivering impactful marketing solutions, compelling content, innovative designs, and seamless production services."
+          title="Our Strength Lies In Our People"
+          description="A passionate group of professionals committed to impactful marketing, compelling content, innovative design and seamless production."
           appScrollAnimation
           animationType="fade-up"
         />
@@ -445,8 +445,8 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   /** THE FOUNDER — signature values */
   founderValues = [
-    { title: 'Visionary Storytelling', description: 'Transforming brand narratives into cinematic editorial moments.' },
-    { title: 'Premium Production', description: 'From concept to launch, every detail is crafted for camera-ready impact.' },
+    { title: 'Creativity with Purpose', description: 'Meaningful content that inspires, influences and transforms brands and individuals.' },
+    { title: 'Bridge Brands & Talent', description: 'Connecting opportunities with creators through storytelling and strategic marketing.' },
   ];
 
   /** Foundation Note card story (shown in The Founder section) */

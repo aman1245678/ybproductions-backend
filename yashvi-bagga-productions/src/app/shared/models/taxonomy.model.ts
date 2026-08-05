@@ -74,18 +74,18 @@ export const SOFTWARE_OPTIONS: TaxonomyOption[] = [
   { slug: 'blender', label: 'Blender' },
 ];
 
-/** MODULE 6 — the 10 industries served, rendered on the home page. */
+/** MODULE 6 — industries served (aligned with Pan-India network clientele). */
 export const INDUSTRIES: TaxonomyOption[] = [
-  { slug: 'media', label: 'Media and Film/TV', icon: '🎬', description: 'Entertainment, publishing and OTT.' },
-  { slug: 'education', label: 'Education', icon: '🎓', description: 'Institutions, ed-tech and training brands.' },
-  { slug: 'government', label: 'Government', icon: '🏛️', description: 'Public sector campaigns and outreach.' },
-  { slug: 'healthcare', label: 'Healthcare', icon: '🩺', description: 'Hospitals, wellness and pharma.' },
-  { slug: 'it', label: 'IT', icon: '💻', description: 'Software, SaaS and digital products.' },
-  { slug: 'hospitality', label: 'Hospitality', icon: '🏨', description: 'Hotels, travel and lifestyle.' },
-  { slug: 'retail', label: 'Retail', icon: '🛍️', description: 'Stores, FMCG and consumer brands.' },
-  { slug: 'ecommerce', label: 'E-Commerce', icon: '🛒', description: 'Online marketplaces and D2C.' },
-  { slug: 'corporate', label: 'Corporate Organizations', icon: '🏢', description: 'Enterprises and conglomerates.' },
-  { slug: 'startups', label: 'Startups', icon: '🚀', description: 'Early-stage and high-growth ventures.' },
+  { slug: 'government', label: 'Government & Ministries', icon: '🏛️', description: 'Public outreach and institutional programmes.' },
+  { slug: 'psu', label: 'PSUs', icon: '🏢', description: 'Public sector enterprises and projects.' },
+  { slug: 'education', label: 'Education & Universities', icon: '🎓', description: 'Institutions, training institutes and ed-tech.' },
+  { slug: 'corporate', label: 'Corporate Organizations', icon: '💼', description: 'Enterprises and business houses.' },
+  { slug: 'media', label: 'Media & Entertainment', icon: '🎬', description: 'Film, TV, OTT and digital content.' },
+  { slug: 'ngo', label: 'Development Agencies & NGOs', icon: '🤝', description: 'Social impact and development work.' },
+  { slug: 'startups', label: 'Start-ups & MSMEs', icon: '🚀', description: 'Growing businesses and ventures.' },
+  { slug: 'healthcare', label: 'Healthcare & Social Sector', icon: '🩺', description: 'Hospitals, wellness and social orgs.' },
+  { slug: 'hospitality', label: 'Hospitality & Tourism', icon: '🏨', description: 'Hotels, travel and lifestyle brands.' },
+  { slug: 'retail', label: 'Retail & E-Commerce', icon: '🛍️', description: 'Stores, marketplaces and consumer brands.' },
 ];
 
 /** Compensation / budget ranges shared by media + manpower intake. */

@@ -26,7 +26,7 @@ import { RouterLink } from '@angular/router';
               </div>
             </div>
             <p class="text-brand-white/50 font-poppins text-sm leading-relaxed mb-6">
-              Creating Influence. Building Brands. Producing Digital Impact.
+              Creating Experiences. Inspiring Excellence. Building Impact.
             </p>
             <div class="flex gap-4">
               <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-brand-white/60 hover:border-brand-gold hover:text-brand-gold transition-all duration-300 hover:scale-110">
@@ -81,7 +81,7 @@ import { RouterLink } from '@angular/router';
         <!-- Bottom Bar -->
         <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p class="text-brand-white/30 font-poppins text-xs text-center md:text-left">
-            &copy; 2024 Yashvi Bagga Productions. All rights reserved.
+            &copy; 2026 Yashvi Bagga Productions. All rights reserved.
           </p>
           <div class="flex gap-6">
             <a href="#" class="text-brand-white/30 font-poppins text-xs hover:text-brand-gold transition-colors">Privacy Policy</a>

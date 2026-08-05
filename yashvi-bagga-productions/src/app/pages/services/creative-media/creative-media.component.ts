@@ -19,12 +19,12 @@ import { SeoService } from '../../../core/services/seo.service';
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Creative Excellence</span>
+        <span class="inline-block text-brand-gold font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Creative · Digital · Brand</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
           Creative Media & <span class="gradient-text">Branding</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Elevate your brand with stunning creative solutions. From content creation to brand strategy, we craft experiences that resonate and inspire.
+          Social media, digital marketing and creative branding — building identities, campaigns and experiences that educate, engage and inspire.
         </p>
 
         <!-- Animated CTA button -->
@@ -42,7 +42,7 @@ import { SeoService } from '../../../core/services/seo.service';
       <div class="max-w-7xl mx-auto">
         <app-section-header
           subtitle="Our Services"
-          title="Creative Solutions Portfolio"
+          title="Social · Digital · Brand Solutions"
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -106,7 +106,7 @@ import { SeoService } from '../../../core/services/seo.service';
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
           subtitle="Our Approach"
-          title="How We Create Magic"
+          title="From Discovery to Impact"
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -228,9 +228,9 @@ import { SeoService } from '../../../core/services/seo.service';
       </div>
 
       <div class="relative max-w-4xl mx-auto text-center">
-        <h2 class="heading-lg text-brand-white mb-6">Ready to Elevate Your Brand?</h2>
+        <h2 class="heading-lg text-brand-white mb-6">Ready to Build a Brand That Lasts?</h2>
         <p class="body-lg text-brand-white/60 mb-8 max-w-2xl mx-auto">
-          Let's collaborate and create something extraordinary for your brand.
+          Creating identities. Inspiring connections. Delivering digital experiences with measurable results.
         </p>
         <a routerLink="/contact" class="inline-flex items-center gap-3 px-8 py-4 bg-brand-gold text-brand-black font-poppins font-semibold rounded-lg hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105">
           Start Your Project
@@ -293,114 +293,114 @@ export class CreativeMediaComponent implements OnInit {
 
   creativeServices = [
     {
-      title: 'Brand Strategy',
-      icon: '🎯',
-      color: '#d4af37',
-      description: 'Comprehensive brand strategy that defines your unique identity and market position.',
-      features: ['Brand Positioning', 'Market Research', 'Identity Guidelines', 'Strategy Blueprint'],
-    },
-    {
-      title: 'Content Creation',
-      icon: '✍️',
-      color: '#ff1493',
-      description: 'Engaging content that tells your story and resonates with your audience.',
-      features: ['Blog Writing', 'Copywriting', 'Content Strategy', 'SEO Optimization'],
-    },
-    {
-      title: 'Video Production',
-      icon: '🎬',
-      color: '#d4af37',
-      description: 'Cinematic videos that capture attention and drive engagement.',
-      features: ['Concept Development', 'Filming', 'Editing', 'Animation'],
-    },
-    {
-      title: 'Social Media',
+      title: 'Social Media Management',
       icon: '📱',
-      color: '#ff1493',
-      description: 'Strategic social media management that builds authentic connections.',
-      features: ['Content Calendar', 'Community Management', 'Analytics', 'Growth Strategy'],
+      color: '#d4af37',
+      description: 'Strategy, content calendars, community engagement and platform-first storytelling across Instagram, LinkedIn, YouTube and more.',
+      features: ['Strategy & Planning', 'Reels & Graphics', 'Community Management', 'Analytics & Reporting'],
     },
     {
-      title: 'Graphic Design',
+      title: 'Digital Marketing',
+      icon: '📈',
+      color: '#ff1493',
+      description: 'SEO, performance ads, content marketing and reputation management for measurable brand growth.',
+      features: ['SEO & Local SEO', 'Google & Social Ads', 'Lead Generation', 'ORM & PR Support'],
+    },
+    {
+      title: 'Creative Branding',
       icon: '🎨',
       color: '#d4af37',
-      description: 'Stunning visual designs that elevate your brand presence.',
-      features: ['Logo Design', 'Brand Collateral', 'UI/UX Design', 'Illustrations'],
+      description: 'Brand strategy, identity design and collateral that communicate purpose with consistency.',
+      features: ['Brand Positioning', 'Logo & Identity', 'Style Guides', 'Marketing Collateral'],
     },
     {
-      title: 'Digital Campaign',
-      icon: '📊',
+      title: 'Content Marketing',
+      icon: '✍️',
       color: '#ff1493',
-      description: 'Integrated campaigns that deliver measurable results and ROI.',
-      features: ['Campaign Planning', 'Multi-channel Execution', 'Performance Tracking', 'Optimization'],
+      description: 'Website copy, blogs, newsletters and campaign messaging that build authority and engagement.',
+      features: ['Website Content', 'Blogs & Articles', 'Email & Newsletters', 'Campaign Messaging'],
+    },
+    {
+      title: 'Video Marketing',
+      icon: '🎬',
+      color: '#d4af37',
+      description: 'Brand films, corporate videos, reels and awareness campaigns produced end-to-end in-house.',
+      features: ['Brand Films', 'Corporate Videos', 'Social Reels', 'Testimonials'],
+    },
+    {
+      title: 'Influencer Collaborations',
+      icon: '✨',
+      color: '#ff1493',
+      description: 'Connecting brands with creators and industry personalities to amplify authentic reach.',
+      features: ['Creator Matching', 'Campaign Planning', 'Talent Coordination', 'Performance Tracking'],
     },
   ];
 
   creativeProcess = [
     {
       phase: 'Discovery',
-      title: 'Understanding Your Vision',
-      description: 'We immerse ourselves in your brand story, goals, and target audience.',
+      title: 'Understand Objectives',
+      description: 'Business goals, audience research and a clear brief for every engagement.',
     },
     {
       phase: 'Strategy',
-      title: 'Strategic Planning',
-      description: 'Develop a comprehensive creative strategy aligned with your objectives.',
+      title: 'Plan the Approach',
+      description: 'Custom strategies for social, digital and brand aligned to measurable outcomes.',
     },
     {
       phase: 'Creation',
-      title: 'Bringing Ideas to Life',
-      description: 'Our creative team executes with precision and artistic excellence.',
+      title: 'Produce Content',
+      description: 'Design, copy, video and campaigns executed with creative precision.',
     },
     {
-      phase: 'Refinement',
-      title: 'Perfecting the Details',
-      description: 'Polish and perfect every element to ensure premium quality delivery.',
+      phase: 'Optimize',
+      title: 'Track & Improve',
+      description: 'Analytics, reporting and continuous optimization for lasting impact.',
     },
   ];
 
   portfolioProjects = [
     {
-      title: 'Luxury Fashion Campaign',
-      icon: '👗',
+      title: 'Public Awareness Campaign',
+      icon: '📢',
       color: '#ff1493',
-      description: 'Multi-channel campaign that elevated a luxury fashion brand to new heights.',
-      categories: ['Brand Strategy', 'Video Production', 'Social Media'],
+      description: 'Integrated digital outreach for citizen engagement and behaviour-change communication.',
+      categories: ['Digital Marketing', 'Social Media', 'Video'],
     },
     {
-      title: 'Tech Startup Branding',
-      icon: '💻',
+      title: 'Corporate Brand Identity',
+      icon: '🏛️',
       color: '#d4af37',
-      description: 'Complete brand identity and launch campaign for an innovative tech startup.',
-      categories: ['Logo Design', 'Brand Identity', 'Digital Marketing'],
+      description: 'Full brand system — positioning, visual identity and launch collateral.',
+      categories: ['Branding', 'Design', 'Strategy'],
     },
     {
-      title: 'Corporate Video Series',
-      icon: '🎥',
-      color: '#ff1493',
-      description: 'Professional video series showcasing corporate values and achievements.',
-      categories: ['Video Production', 'Storytelling', 'Content Creation'],
-    },
-    {
-      title: 'Social Media Transformation',
+      title: 'Social Growth Programme',
       icon: '📱',
+      color: '#ff1493',
+      description: 'Content calendars, community management and paid support for sustained engagement.',
+      categories: ['Social Media', 'Content', 'Ads'],
+    },
+    {
+      title: 'Brand Film Series',
+      icon: '🎥',
       color: '#d4af37',
-      description: 'Strategic overhaul resulting in 300% increase in engagement and followers.',
-      categories: ['Social Strategy', 'Content Creation', 'Community Management'],
+      description: 'Corporate and promotional films that strengthen storytelling and recall.',
+      categories: ['Video Marketing', 'Production'],
     },
   ];
 
   statistics = [
-    { value: '500+', label: 'Projects Completed' },
-    { value: '200+', label: 'Happy Clients' },
-    { value: '1M+', label: 'Content Pieces Created' },
-    { value: '10M+', label: 'Social Reach' },
+    { value: 'Pan-India', label: 'Campaign Capability' },
+    { value: 'Gov + Corp', label: 'Sector Experience' },
+    { value: 'End-to-End', label: 'Creative Production' },
+    { value: 'Data-Led', label: 'Performance Focus' },
   ];
 
   ngOnInit(): void {
     this.seoService.updateMetaTags({
-      title: 'Creative Media & Branding Services | YASHVI BAGGA PRODUCTIONS',
-      description: 'Premium creative media and branding services including content creation, video production, social media management, and brand strategy.',
+      title: 'Creative Media & Branding | YASHVI BAGGA PRODUCTIONS',
+      description: 'Social media management, digital marketing and creative branding — creating digital experiences and powerful brands with measurable results.',
       url: 'https://yashvibagga.com/services/creative-media',
     });
   }

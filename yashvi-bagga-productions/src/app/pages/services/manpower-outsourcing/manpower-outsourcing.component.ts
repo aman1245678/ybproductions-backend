@@ -22,13 +22,13 @@ import { SeoService } from '../../../core/services/seo.service';
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-emerald-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Corporate Excellence</span>
+        <span class="inline-block text-emerald-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Flexible Workforce Solutions</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
           <!-- background-image, not the background shorthand: the shorthand resets .gradient-text's background-clip to border-box, painting a solid block behind the word. -->
-          Workforce <span class="gradient-text" style="background-image: linear-gradient(135deg, #10b981, #0ea4a4);">Solutions</span>
+          Manpower <span class="gradient-text" style="background-image: linear-gradient(135deg, #10b981, #0ea4a4);">Outsourcing</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Strategic staffing solutions that connect your organization with top-tier talent. We simplify recruitment, reduce overhead, and ensure seamless workforce integration.
+          Skilled, reliable and scalable workforce solutions — so organisations can focus on core functions while we manage staffing requirements.
         </p>
 
         <!-- Animated CTA button -->
@@ -46,7 +46,7 @@ import { SeoService } from '../../../core/services/seo.service';
       <div class="max-w-7xl mx-auto">
         <app-section-header
           subtitle="Our Solutions"
-          title="Comprehensive Staffing Services"
+          title="Comprehensive Outsourcing Services"
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -317,75 +317,75 @@ export class ManpowerOutsourcingComponent implements OnInit {
 
   staffingSolutions = [
     {
-      title: 'Technical Staffing',
-      icon: '💻',
-      description: 'Expert software engineers, developers, and IT professionals for your technical needs.',
-      benefits: ['Quick Onboarding', 'Vetted Professionals', 'Long-term Partnerships'],
-    },
-    {
-      title: 'Non-Technical Staffing',
-      icon: '👥',
-      description: 'Qualified professionals for HR, finance, operations, and administrative roles.',
-      benefits: ['Diverse Talent Pool', 'Role Flexibility', 'Seamless Integration'],
-    },
-    {
-      title: 'Contract Hiring',
+      title: 'Contract Staffing',
       icon: '📋',
-      description: 'Short-term and project-based staffing solutions with full accountability.',
-      benefits: ['Flexible Duration', 'Cost Effective', 'Project Focused'],
+      description: 'Qualified professionals on contract for short-term, long-term and project-specific assignments.',
+      benefits: ['Flexible Duration', 'Right Talent On Demand', 'Reduced Hiring Burden'],
     },
     {
-      title: 'Permanent Hiring',
-      icon: '🏆',
-      description: 'Full-time talent acquisition with comprehensive recruitment and onboarding support.',
-      benefits: ['Long-term Stability', 'Dedicated Support', 'Cultural Fit'],
+      title: 'Project-Based Deployment',
+      icon: '🚀',
+      description: 'Skilled manpower for government projects, corporate assignments, events, campaigns and training programmes.',
+      benefits: ['Project-Fit Teams', 'Fast Mobilisation', 'Clear Accountability'],
     },
     {
-      title: 'Remote Workforce',
-      icon: '🌍',
-      description: 'Globally distributed teams for remote work arrangements and hybrid models.',
-      benefits: ['Global Reach', '24/7 Coverage', 'Cost Optimization'],
-    },
-    {
-      title: 'Executive Recruitment',
-      icon: '👔',
-      description: 'C-suite and senior management placements for strategic leadership roles.',
-      benefits: ['Leadership Expertise', 'Confidentiality', 'Cultural Alignment'],
-    },
-    {
-      title: 'Corporate Recruitment',
+      title: 'Admin & Office Support',
       icon: '🏢',
-      description: 'Bulk hiring solutions for corporate expansion and organizational growth.',
-      benefits: ['Scalable Solutions', 'Quick Turnaround', 'Quality Assurance'],
+      description: 'Front desk, data entry, executive assistance, customer support and back-office operations.',
+      benefits: ['Reliable Operations', 'Documentation Ready', 'Smooth Onboarding'],
     },
     {
-      title: 'HR Support Services',
+      title: 'Technical & IT Staffing',
+      icon: '💻',
+      description: 'Developers, application support, IT executives, coordinators and system administrators.',
+      benefits: ['Vetted Professionals', 'Role Flexibility', 'Quick Turnaround'],
+    },
+    {
+      title: 'Marketing & Creative Workforce',
+      icon: '🎨',
+      description: 'Social media, content, design, photography, videography and campaign teams.',
+      benefits: ['Creative Talent Pool', 'Campaign Ready', 'Scalable Teams'],
+    },
+    {
+      title: 'Education & Training Workforce',
+      icon: '🎓',
+      description: 'Trainers, facilitators, assessors, placement officers and skill-development professionals.',
+      benefits: ['Subject Experts', 'Institution Ready', 'Programme Support'],
+    },
+    {
+      title: 'Event & Promotional Staffing',
+      icon: '📣',
+      description: 'Brand activation, exhibitions, product launches and public engagement programmes.',
+      benefits: ['Event Coverage', 'Promotional Teams', 'On-Ground Support'],
+    },
+    {
+      title: 'Outsourced Workforce Management',
       icon: '📊',
-      description: 'Complete HR management, compliance, and employee relations support.',
-      benefits: ['HR Expertise', 'Compliance Focus', 'Employee Wellbeing'],
+      description: 'End-to-end workforce administration with compliance focus and dedicated client support.',
+      benefits: ['Compliance Focused', 'Cost Effective', 'Ongoing Support'],
     },
   ];
 
   recruitmentProcess = [
     {
-      title: 'Requirement Analysis',
-      description: 'We understand your specific needs, culture, and skill requirements in detail.',
+      title: 'Requirement Assessment',
+      description: 'We understand your workforce needs, locations, roles and timelines in detail.',
     },
     {
-      title: 'Talent Search',
-      description: 'Our team identifies and recruits qualified candidates from our extensive network.',
+      title: 'Workforce Planning',
+      description: 'Resource plans tailored to permanent, contract, project or event-based models.',
     },
     {
-      title: 'Screening & Interview',
-      description: 'Rigorous assessment and interviews to ensure the best fit for your organization.',
+      title: 'Sourcing & Screening',
+      description: 'Candidates are sourced, screened and verified from our diverse talent pool.',
     },
     {
-      title: 'Onboarding',
-      description: 'Smooth transition and comprehensive onboarding support for seamless integration.',
+      title: 'Deployment & Onboarding',
+      description: 'Smooth deployment with documentation and onboarding support.',
     },
     {
-      title: 'Support & Feedback',
-      description: 'Ongoing support and feedback to ensure long-term success and satisfaction.',
+      title: 'Monitoring & Support',
+      description: 'Performance monitoring and ongoing workforce support for lasting productivity.',
     },
   ];
 

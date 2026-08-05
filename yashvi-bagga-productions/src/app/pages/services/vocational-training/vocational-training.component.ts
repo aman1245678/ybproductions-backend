@@ -22,13 +22,13 @@ import { SeoService } from '../../../core/services/seo.service';
       </div>
 
       <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32">
-        <span class="inline-block text-yellow-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Inspire Growth</span>
+        <span class="inline-block text-yellow-400 font-poppins text-sm tracking-[4px] uppercase mb-4 animate-fade-in">Empowering Minds. Enhancing Skills.</span>
         <h1 class="heading-xl text-brand-white mb-6 animate-slide-up">
           <!-- background-image, not the background shorthand: the shorthand resets .gradient-text's background-clip to border-box, painting a solid block behind the words. -->
-          Vocational <span class="gradient-text" style="background-image: linear-gradient(135deg, #f59e0b, #f97316);">Training Programs</span>
+          Professional &amp; <span class="gradient-text" style="background-image: linear-gradient(135deg, #f59e0b, #f97316);">Vocational Training</span>
         </h1>
         <p class="body-lg text-brand-white/60 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.3s;">
-          Empower yourself with industry-relevant skills and professional certifications. Our comprehensive training programs are designed to launch successful careers in high-demand fields.
+          Bridging education and employability through leadership, digital, media and vocational programmes delivered by industry experts across India.
         </p>
 
         <!-- Animated CTA button -->
@@ -45,8 +45,8 @@ import { SeoService } from '../../../core/services/seo.service';
     <section class="section-padding bg-brand-black relative">
       <div class="max-w-7xl mx-auto">
         <app-section-header
-          subtitle="Our Programs"
-          title="Skill Development Courses"
+          subtitle="Our Programmes"
+          title="Areas of Expertise"
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -340,99 +340,99 @@ export class VocationalTrainingComponent implements OnInit {
 
   trainingPrograms = [
     {
-      icon: '💻',
-      title: 'Full Stack Web Development',
-      description: 'Master frontend and backend technologies to build complete web applications.',
-      duration: '6 months',
-      level: 'Beginner to Intermediate',
-      certification: 'Industry Recognized',
-      topics: ['HTML/CSS/JavaScript', 'React/Angular', 'Node.js/Express', 'Databases', 'APIs', 'Deployment'],
-    },
-    {
-      icon: '📱',
-      title: 'Mobile App Development',
-      description: 'Build native iOS and Android applications with modern development frameworks.',
-      duration: '5 months',
-      level: 'Intermediate',
-      certification: 'Professional Certificate',
-      topics: ['Swift/Kotlin', 'React Native', 'Mobile UI/UX', 'App Store Distribution', 'Performance', 'Testing'],
-    },
-    {
-      icon: '🎨',
-      title: 'Digital Marketing Mastery',
-      description: 'Learn SEO, social media, content marketing, and digital advertising strategies.',
-      duration: '3 months',
-      level: 'Beginner',
-      certification: 'Marketing Professional',
-      topics: ['SEO/SEM', 'Social Media Marketing', 'Content Strategy', 'Analytics', 'Email Marketing', 'Branding'],
-    },
-    {
-      icon: '📊',
-      title: 'Data Analytics & BI',
-      description: 'Transform data into actionable insights using modern analytics tools.',
-      duration: '4 months',
-      level: 'Intermediate',
-      certification: 'Data Analytics Certification',
-      topics: ['SQL', 'Python/R', 'Tableau/PowerBI', 'Statistical Analysis', 'Data Visualization', 'ML Basics'],
-    },
-    {
-      icon: '🔐',
-      title: 'Cybersecurity Essentials',
-      description: 'Protect systems and networks from cyber threats with practical security knowledge.',
-      duration: '4 months',
-      level: 'Intermediate',
-      certification: 'Security Professional',
-      topics: ['Network Security', 'Ethical Hacking', 'Cryptography', 'Incident Response', 'Compliance', 'Firewalls'],
-    },
-    {
-      icon: '☁️',
-      title: 'Cloud Architecture',
-      description: 'Design and deploy scalable cloud solutions on AWS, Azure, and GCP platforms.',
-      duration: '3 months',
-      level: 'Advanced',
-      certification: 'Cloud Architect',
-      topics: ['AWS/Azure/GCP', 'Infrastructure', 'Containerization', 'Kubernetes', 'CI/CD', 'Monitoring'],
+      icon: '👔',
+      title: 'Leadership & Executive Development',
+      description: 'Strengthen leadership capability, workplace effectiveness and organisational excellence.',
+      duration: 'Custom',
+      level: 'Professionals & Leaders',
+      certification: 'Programme Certificate',
+      topics: ['Leadership', 'Emotional Intelligence', 'Team Building', 'Decision Making', 'Change Management', 'Accountability'],
     },
     {
       icon: '🗣️',
-      title: 'Professional Communication',
-      description: 'Enhance presentation, writing, and interpersonal communication skills.',
-      duration: '2 months',
+      title: 'Behavioural & Soft Skills',
+      description: 'Communication, presentation, customer excellence and professional conduct programmes.',
+      duration: 'Custom',
       level: 'All Levels',
-      certification: 'Communication Expert',
-      topics: ['Public Speaking', 'Business Writing', 'Negotiation', 'Listening Skills', 'Networking', 'Leadership'],
+      certification: 'Skills Certificate',
+      topics: ['Communication', 'Presentation', 'Time & Stress', 'Conflict Resolution', 'Customer Service', 'Workplace Ethics'],
     },
     {
-      icon: '💼',
-      title: 'Career Development Program',
-      description: 'Interview preparation, resume building, and job search strategies.',
-      duration: '1 month',
+      icon: '🤖',
+      title: 'AI & Digital Technology',
+      description: 'Future-ready programmes in AI, generative AI, analytics and cyber awareness.',
+      duration: 'Custom',
+      level: 'Beginner to Intermediate',
+      certification: 'Digital Skills Certificate',
+      topics: ['Artificial Intelligence', 'Generative AI', 'Data Analytics', 'Cyber Awareness', 'Cloud Basics', 'Collaboration Tools'],
+    },
+    {
+      icon: '📣',
+      title: 'Digital Marketing Skills',
+      description: 'Practical digital marketing for professionals building brand visibility and engagement.',
+      duration: 'Custom',
+      level: 'Beginner to Intermediate',
+      certification: 'Marketing Certificate',
+      topics: ['Social Media', 'Content Strategy', 'SEO Basics', 'Paid Media', 'Analytics', 'Branding'],
+    },
+    {
+      icon: '🎬',
+      title: 'Media & Entertainment Skills',
+      description: 'Acting, anchoring, camera, editing, photography and event management for industry careers.',
+      duration: 'Custom',
+      level: 'Aspiring Professionals',
+      certification: 'Media Skills Certificate',
+      topics: ['Acting & Performance', 'Anchoring', 'Camera Techniques', 'Video Editing', 'Photography', 'Event Management'],
+    },
+    {
+      icon: '💻',
+      title: 'IT Skills for Professionals',
+      description: 'Microsoft Office, digital collaboration and emerging technology fundamentals.',
+      duration: 'Custom',
       level: 'All Levels',
-      certification: 'Career Certified',
-      topics: ['Resume Building', 'Interview Prep', 'Job Search', 'Salary Negotiation', 'LinkedIn Profile', 'Branding'],
+      certification: 'IT Skills Certificate',
+      topics: ['MS Office Suite', 'Digital Tools', 'Collaboration', 'Productivity', 'Emerging Tech', 'Practical Assignments'],
+    },
+    {
+      icon: '🏛️',
+      title: 'Government & Institutional Training',
+      description: 'Custom programmes for ministries, PSUs, ATIs, universities and skill missions.',
+      duration: 'Custom',
+      level: 'Institutional',
+      certification: 'Institutional Certificate',
+      topics: ['TNA', 'Curriculum Design', 'Delivery', 'Assessments', 'Impact Reports', 'Certification Support'],
+    },
+    {
+      icon: '🎯',
+      title: 'Career Readiness & Employability',
+      description: 'Entrepreneurship, career readiness and skills that bridge education with employability.',
+      duration: 'Custom',
+      level: 'Students & Freshers',
+      certification: 'Employability Certificate',
+      topics: ['Career Planning', 'Interview Prep', 'Retail Skills', 'Hospitality', 'Office Admin', 'Entrepreneurship'],
     },
   ];
 
   learningJourney = [
     {
-      name: 'Foundation',
-      title: 'Build Your Base',
-      description: 'Learn fundamental concepts and core principles of your chosen field.',
+      name: 'Assess',
+      title: 'Training Needs Assessment',
+      description: 'Identify capability gaps and align programmes with organisational objectives.',
     },
     {
-      name: 'Development',
-      title: 'Skill Building',
-      description: 'Develop practical skills through hands-on projects and real-world scenarios.',
+      name: 'Design',
+      title: 'Curriculum & Content',
+      description: 'Interactive, application-oriented learning designed with industry experts.',
     },
     {
-      name: 'Advanced',
-      title: 'Mastery',
-      description: 'Master advanced concepts and industry best practices for expertise.',
+      name: 'Deliver',
+      title: 'Experiential Learning',
+      description: 'Case studies, role plays, simulations and live demonstrations.',
     },
     {
-      name: 'Certification',
-      title: 'Achievement',
-      description: 'Complete your course and earn industry-recognized certifications.',
+      name: 'Impact',
+      title: 'Evaluate & Improve',
+      description: 'Assessments, certification support and post-training impact measurement.',
     },
   ];
 
@@ -440,37 +440,37 @@ export class VocationalTrainingComponent implements OnInit {
     {
       initials: 'RJ',
       name: 'Raj Jain',
-      quote: 'The training program completely transformed my career. I went from struggling with basic coding to building production-grade applications.',
-      previous: 'Junior Support Executive',
-      current: 'Senior Full Stack Developer',
+      quote: 'Practical learning and expert facilitation helped me apply new skills at work with confidence.',
+      previous: 'Operations Executive',
+      current: 'Team Lead',
       yearsExperience: '3+',
-      salaryGrowth: '180%',
+      salaryGrowth: 'Career Growth',
     },
     {
       initials: 'PS',
       name: 'Priya Singh',
-      quote: 'The instructors were incredibly supportive and the curriculum was aligned with industry needs. I landed my dream job within a month of completion.',
-      previous: 'Sales Representative',
-      current: 'Digital Marketing Manager',
-      yearsExperience: '2+',
-      salaryGrowth: '150%',
+      quote: 'The programme was interactive and industry-aligned — I felt clearer and more job-ready.',
+      previous: 'Graduate',
+      current: 'Digital Marketing Associate',
+      yearsExperience: '1+',
+      salaryGrowth: 'First Role',
     },
     {
       initials: 'AK',
       name: 'Arun Kumar',
-      quote: 'This program gave me the confidence and skills I needed. The placement support was exceptional and the community is amazing.',
-      previous: 'Freelance Developer',
-      current: 'Cloud Architect',
-      yearsExperience: '5+',
-      salaryGrowth: '200%',
+      quote: 'Hands-on sessions and real scenarios made the learning memorable and immediately useful.',
+      previous: 'Content Executive',
+      current: 'Media Skills Trainee',
+      yearsExperience: '2+',
+      salaryGrowth: 'Skill Upgrade',
     },
   ];
 
   statistics = [
-    { value: '5000+', label: 'Students Trained' },
-    { value: '95%', label: 'Placement Rate' },
-    { value: '50+', label: 'Courses Available' },
-    { value: '500+', label: 'Hiring Partners' },
+    { value: 'Pan-India', label: 'Training Delivery' },
+    { value: 'Gov + Corp', label: 'Institutional Clients' },
+    { value: 'Expert', label: 'Industry Faculty' },
+    { value: 'Outcome', label: 'Measurable Learning' },
   ];
 
   ngOnInit(): void {
@@ -480,8 +480,8 @@ export class VocationalTrainingComponent implements OnInit {
       : 'https://yashvibagga.com/vocational-training';
 
     this.seoService.updateMetaTags({
-      title: 'Vocational Training Programs | YASHVI BAGGA PRODUCTIONS',
-      description: 'Comprehensive vocational and professional training programs in IT, digital marketing, soft skills, and career development.',
+      title: 'Professional & Vocational Training | YASHVI BAGGA PRODUCTIONS',
+      description: 'Leadership, digital skills, media and vocational training programmes that empower people and build future-ready professionals.',
       url: pageUrl,
     });
   }
@@ -489,33 +489,33 @@ export class VocationalTrainingComponent implements OnInit {
   keyBenefits = [
     {
       icon: '👨‍🏫',
-      title: 'Expert Instructors',
-      description: 'Learn from industry professionals with years of real-world experience.',
+      title: 'Industry Experts',
+      description: 'Certified trainers and subject-matter specialists with practical experience.',
     },
     {
-      icon: '💼',
-      title: 'Job Placement',
-      description: 'Career support and direct placement assistance with top companies.',
+      icon: '🏛️',
+      title: 'Gov & Corporate Ready',
+      description: 'Custom programmes for ministries, PSUs, institutes and enterprises.',
     },
     {
       icon: '🏆',
-      title: 'Certified Curriculum',
-      description: 'Industry-recognized certifications that boost your professional credibility.',
+      title: 'Measurable Outcomes',
+      description: 'Assessments, certification support and post-training impact reporting.',
     },
     {
       icon: '🤝',
-      title: 'Community Support',
-      description: 'Network with peers and mentors in an active learning community.',
+      title: 'Learner-Centric Methods',
+      description: 'Case studies, simulations, role plays and practical assignments for real retention.',
     },
     {
-      icon: '⏰',
-      title: 'Flexible Learning',
-      description: 'Online and offline classes designed to fit your schedule.',
+      icon: '🌐',
+      title: 'Pan-India Delivery',
+      description: 'Training capability across metros, state capitals and Tier-II / Tier-III cities.',
     },
     {
       icon: '🚀',
-      title: 'Career Growth',
-      description: 'Continuously updated content aligned with market demands.',
+      title: 'Future-Ready Focus',
+      description: 'Contemporary curriculum aligned with industry trends and continuous improvement.',
     },
   ];
 }

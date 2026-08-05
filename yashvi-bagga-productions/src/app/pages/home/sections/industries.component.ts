@@ -24,7 +24,7 @@ import { INDUSTRIES } from '../../../shared/models/taxonomy.model';
         <app-section-header
           subtitle="Industries We Serve"
           title="Trusted Across Sectors"
-          description="From media and startups to government and healthcare, our creative, technology and workforce solutions adapt to every industry."
+          description="From ministries and PSUs to corporates, education, healthcare and media — solutions tailored across sectors."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
