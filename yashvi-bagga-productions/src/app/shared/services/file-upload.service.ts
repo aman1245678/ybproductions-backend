@@ -42,8 +42,8 @@ export interface FileValidationRules {
 export class FileUploadService {
   private readonly http = inject(HttpClient);
   private readonly platformId = inject(PLATFORM_ID);
-  /** Dev simulation reuses the OTP mock flag so one switch governs dev mode. */
-  private readonly mockMode = environment.otp?.mockMode ?? !environment.production;
+  /** Dev simulation reuses uploads.mockMode (OTP mock stays separate). */
+  private readonly mockMode = environment.uploads?.mockMode ?? false;
 
   /** Detect a file's kind from MIME first, then extension as a fallback. */
   detectKind(file: File): AllowedFileKind | 'unknown' {
@@ -106,7 +106,7 @@ export class FileUploadService {
     form.append('purpose', purpose);
 
     return this.http
-      .post<{ id: string; url: string }>(`${environment.apiUrl}/uploads`, form, {
+      .post<{ id: string; url: string; absoluteUrl?: string }>(`${environment.apiUrl}/uploads`, form, {
         reportProgress: true,
         observe: 'events',
       })
@@ -117,11 +117,18 @@ export class FileUploadService {
             return { progress, status: 'uploading' };
           }
           if (event.type === HttpEventType.Response) {
+            const body = event.body;
+            const url = body?.absoluteUrl || body?.url;
+            // Prefix relative /uploads/... with API host
+            const resolved =
+              url && url.startsWith('/')
+                ? `${environment.apiUrl.replace(/\/api\/v1\/?$/, '')}${url}`
+                : url;
             return {
               progress: 100,
               status: 'uploaded',
-              id: event.body?.id,
-              url: event.body?.url,
+              id: body?.id,
+              url: resolved,
             };
           }
           return { progress: 0, status: 'uploading' };

@@ -24,24 +24,28 @@ import { SeoService } from './core/services/seo.service';
   ],
   template: `
     <!-- Loading Screen -->
-    @if (isLoading()) {
+    @if (isLoading() && !isAdminArea()) {
       <app-loading />
     }
 
     <!-- Main App -->
     <div [class.opacity-0]="isLoading()" class="transition-opacity duration-500">
-      <app-navbar />
+      @if (!isAdminArea()) {
+        <app-navbar />
+      }
 
       <main>
         <router-outlet />
       </main>
 
-      <app-footer />
-      <app-whatsapp-button />
+      @if (!isAdminArea()) {
+        <app-footer />
+        <app-whatsapp-button />
+      }
       <app-toast-container />
 
       <!-- Back to top button -->
-      @if (scrollService.isScrolled()) {
+      @if (scrollService.isScrolled() && !isAdminArea()) {
         <button
           class="fixed bottom-6 left-6 z-50 w-12 h-12 bg-brand-gold/10 border border-brand-gold/30 rounded-full flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-all duration-300 backdrop-blur-sm"
           (click)="scrollService.scrollToTop()"
@@ -66,15 +70,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
 
   isLoading = signal(true);
+  /** The admin CRM renders full-screen, without the public site chrome. */
+  isAdminArea = signal(false);
 
   ngOnInit(): void {
     this.scrollService.init();
     this.seoService.init();
+    this.isAdminArea.set(this.router.url.startsWith('/admin'));
 
-    // Scroll to top on navigation
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    ).subscribe((event) => {
+      this.isAdminArea.set((event as NavigationEnd).urlAfterRedirects.startsWith('/admin'));
       if (isPlatformBrowser(this.platformId)) {
         window.scrollTo(0, 0);
       }
@@ -82,8 +89,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Simulate loading
+    if (isPlatformBrowser(this.platformId) && !this.isAdminArea()) {
+      // Intro animation for the public site only.
       setTimeout(() => {
         this.isLoading.set(false);
       }, 2000);

@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ScrollService } from '../../../core/services/scroll.service';
 import { AuthModalComponent } from '../auth-modal/auth-modal.component';
+import { AuthService } from '../../services/auth.service';
 import { ABOUT_SECTIONS } from '../../models/about-sections.model';
 import { SERVICE_LINKS } from '../../models/service-links.model';
 
@@ -46,7 +47,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('services', $event)"
                     [attr.aria-expanded]="openMenu() === 'services'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300"
+                    class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
@@ -93,7 +94,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('about', $event)"
                     [attr.aria-expanded]="openMenu() === 'about'"
                     aria-haspopup="true"
-                    class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300"
+                    class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'about'"
                   >
                     {{ link.label }}
@@ -138,7 +139,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                   [routerLink]="link.path"
                   routerLinkActive="text-brand-gold"
                   [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-                  class="text-sm font-poppins font-light text-brand-white/80 hover:text-brand-gold transition-all duration-300 relative group"
+                  class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group"
                 >
                   {{ link.label }}
                   <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
@@ -150,13 +151,28 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
 
           <!-- Auth + mobile toggle stay on the right -->
           <div class="flex items-center shrink-0 gap-2">
-            <button
-              type="button"
-              (click)="openAuthModal()"
-              class="hidden lg:inline-flex px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105"
-            >
-              Log In / Sign Up
-            </button>
+            @if (auth.isLoggedIn()) {
+              <div class="hidden lg:flex items-center gap-3">
+                <span class="text-brand-white/70 font-poppins text-sm max-w-[10rem] truncate">
+                  {{ auth.user()?.fullName }}
+                </span>
+                <button
+                  type="button"
+                  (click)="logout()"
+                  class="px-5 py-2.5 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-[15px] rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                >
+                  Log Out
+                </button>
+              </div>
+            } @else {
+              <button
+                type="button"
+                (click)="openAuthModal()"
+                class="hidden lg:inline-flex px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-[15px] rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105"
+              >
+                Log In / Sign Up
+              </button>
+            }
 
           <!-- Mobile Menu Button -->
           <button
@@ -274,13 +290,24 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
               </a>
             }
           }
-          <button
-            type="button"
-            class="mt-6 px-8 py-3 bg-brand-gold text-brand-black font-poppins font-semibold rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300"
-            (click)="openAuthModal()"
-          >
-            Log In / Sign Up
-          </button>
+          @if (auth.isLoggedIn()) {
+            <p class="mt-4 text-brand-white/60 text-sm">{{ auth.user()?.fullName }}</p>
+            <button
+              type="button"
+              class="mt-3 px-8 py-3 border border-brand-gold text-brand-gold font-poppins font-semibold rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+              (click)="logout()"
+            >
+              Log Out
+            </button>
+          } @else {
+            <button
+              type="button"
+              class="mt-6 px-8 py-3 bg-brand-gold text-brand-black font-poppins font-semibold rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300"
+              (click)="openAuthModal()"
+            >
+              Log In / Sign Up
+            </button>
+          }
 
           <!-- Social Links Mobile -->
           <div class="flex gap-6 mt-8">
@@ -297,7 +324,6 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
         </div>
       </div>
 
-      <!-- Log In / Sign Up modal (UI only) -->
       <app-auth-modal [open]="authModalOpen()" (closed)="authModalOpen.set(false)" />
     </nav>
   `,
@@ -320,6 +346,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
 })
 export class NavbarComponent {
   readonly scrollService = inject(ScrollService);
+  readonly auth = inject(AuthService);
   private readonly platformId = inject(PLATFORM_ID);
 
   mobileMenuOpen = signal(false);
@@ -353,7 +380,8 @@ export class NavbarComponent {
     { path: '/contact', label: 'Business Queries' },
     // Added per client requirement — Film/TV Crew button placed before Careers (points to talent network)
     { path: '/talent-network', label: 'Film/TV Crew' },
-    // Renamed per client requirement — "Career Portal" → "Careers"
+    // Mobile-app aligned Hire / Join hub
+    { path: '/get-started', label: 'Get Started' },
     { path: '/join-network', label: 'Careers' },
   ];
 
@@ -362,6 +390,11 @@ export class NavbarComponent {
   openAuthModal(): void {
     this.closeMenu();
     this.authModalOpen.set(true);
+  }
+
+  logout(): void {
+    this.auth.logout();
+    this.closeMenu();
   }
 
   /** Toggles a desktop dropdown; stops the click reaching the outside-click handler. */

@@ -198,9 +198,11 @@ import { DocumentUpload } from '../../shared/models/document-upload.model';
             </div>
           </fieldset>
 
-          <!-- 6. Portfolio Upload -->
+          <!-- 6. Audition Video & Portfolio -->
           <fieldset class="space-y-4">
-            <legend class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">06 · Portfolio Upload</legend>
+            <legend class="text-brand-gold text-xs uppercase tracking-[0.3em] mb-2">06 · Audition Video & Portfolio</legend>
+            <app-file-upload formControlName="auditionVideo" label="Audition Video (MP4 — required for actors)"
+              [multiple]="false" [accept]="['mp4']" [maxSizeMb]="80" purpose="audition-video" />
             <app-file-upload formControlName="portfolio" label="Headshots, Reels & Portfolio"
               [multiple]="true" [accept]="['jpg','png','pdf','zip','mp4']" [maxSizeMb]="25" purpose="casting-portfolio" />
           </fieldset>
@@ -306,6 +308,7 @@ export class CastingApplicationComponent implements OnInit {
     skills: [[] as string[]],
     mediaLinks: [''],
     portfolio: this.fb.control<DocumentUpload[]>([], { nonNullable: true }),
+    auditionVideo: this.fb.control<DocumentUpload | null>(null),
     willingToTravel: [false],
     captcha: [''],
     emailVerified: [null, Validators.required],
@@ -366,6 +369,7 @@ export class CastingApplicationComponent implements OnInit {
       skills: v.skills ?? [],
       mediaLinks: this.parseLinks(v.mediaLinks ?? ''),
       portfolio: v.portfolio ?? [],
+      auditionVideo: v.auditionVideo ? [v.auditionVideo] : [],
       availability: this.availability(),
       willingToTravel: v.willingToTravel ?? false,
     };

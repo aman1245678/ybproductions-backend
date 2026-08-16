@@ -10,6 +10,7 @@ import { EmailOtpComponent } from '../../shared/components/email-otp/email-otp.c
 import { MobileOtpComponent } from '../../shared/components/mobile-otp/mobile-otp.component';
 import { ToastService } from '../../shared/services/toast.service';
 import { NotificationService } from '../../shared/services/notification.service';
+import { FormSubmissionService } from '../../shared/services/form-submission.service';
 import { indianMobileValidator } from '../../shared/validators/form.validators';
 import { InquiryPayload } from '../../shared/models/notification.model';
 import { SERVICE_LINKS } from '../../shared/models/service-links.model';
@@ -320,6 +321,7 @@ export class ContactComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly toast = inject(ToastService);
   private readonly notifications = inject(NotificationService);
+  private readonly formsApi = inject(FormSubmissionService);
   private readonly sanitizer = inject(DomSanitizer);
 
   @ViewChild('captchaRef') private captcha?: CaptchaComponent;
@@ -387,30 +389,61 @@ export class ContactComponent implements OnInit {
     const loadingId = this.toast.loading('Sending your message…');
 
     const value = this.contactForm.value;
-    const payload: InquiryPayload = {
-      type: 'contact',
-      label: 'Contact Form',
-      name: `${value.firstName ?? ''} ${value.lastName ?? ''}`.trim(),
-      mobile: value.phone ?? '',
-      email: value.email ?? '',
-      service: value.service ?? '',
-      requirement: value.message ?? '',
-      extra: { clientType: value.clientType, budget: value.budget, source: value.source },
-    };
+    const contactName = `${value.firstName ?? ''} ${value.lastName ?? ''}`.trim();
+    const contactEmail = value.email ?? '';
+    const contactMobile = value.phone ?? '';
 
-    this.notifications.notify(payload).subscribe({
-      next: () => {
-        this.toast.update(loadingId, 'success', "Thank you! We'll get back to you within 24 hours.");
-        this.contactForm.reset();
-        this.captcha?.reset();
-        this.currentStep.set(1);
-        this.submitting.set(false);
-      },
-      error: () => {
-        this.toast.update(loadingId, 'error', 'Something went wrong. Please try again or reach us directly.');
-        this.submitting.set(false);
-      },
-    });
+    this.formsApi
+      .submit({
+        formType: 'CONTACT',
+        source: 'WEBSITE',
+        contactName,
+        contactEmail,
+        contactMobile,
+        payload: {
+          ...value,
+          portal: 'contact',
+        },
+      })
+      .subscribe({
+        next: (res) => {
+          this.toast.update(
+            loadingId,
+            'success',
+            `Thank you! We'll get back to you within 24 hours. Ref: ${res.applicationId}`,
+          );
+          this.contactForm.reset();
+          this.captcha?.reset();
+          this.currentStep.set(1);
+          this.submitting.set(false);
+        },
+        error: () => {
+          // Soft fallback to legacy notify
+          const payload: InquiryPayload = {
+            type: 'contact',
+            label: 'Contact Form',
+            name: contactName,
+            mobile: contactMobile,
+            email: contactEmail,
+            service: value.service ?? '',
+            requirement: value.message ?? '',
+            extra: { clientType: value.clientType, budget: value.budget, source: value.source },
+          };
+          this.notifications.notify(payload).subscribe({
+            next: () => {
+              this.toast.update(loadingId, 'success', "Thank you! We'll get back to you within 24 hours.");
+              this.contactForm.reset();
+              this.captcha?.reset();
+              this.currentStep.set(1);
+              this.submitting.set(false);
+            },
+            error: () => {
+              this.toast.update(loadingId, 'error', 'Something went wrong. Please try again or reach us directly.');
+              this.submitting.set(false);
+            },
+          });
+        },
+      });
   }
 
   ngOnInit(): void {

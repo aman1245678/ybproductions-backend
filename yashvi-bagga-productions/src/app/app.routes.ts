@@ -67,6 +67,61 @@ export const routes: Routes = [
     data: { animation: 'vocational-training' },
   },
   {
+    path: 'get-started',
+    loadComponent: () => import('./pages/flow/get-started.component').then(m => m.GetStartedComponent),
+    data: { animation: 'get-started' },
+  },
+  {
+    path: 'hire/branding',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-branding', formSlug: 'branding' },
+  },
+  {
+    path: 'hire/cast-crew',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-cast-crew', formSlug: 'cast-crew' },
+  },
+  {
+    path: 'hire/it',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-it', formSlug: 'it' },
+  },
+  {
+    path: 'hire/training',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-training', formSlug: 'training' },
+  },
+  {
+    path: 'hire/digital',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-digital', formSlug: 'digital' },
+  },
+  {
+    path: 'hire/social',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'hire-social', formSlug: 'social' },
+  },
+  {
+    path: 'join/talent',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'join-talent', formSlug: 'talent' },
+  },
+  {
+    path: 'join/creative',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'join-creative', formSlug: 'creative' },
+  },
+  {
+    path: 'join/it',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'join-it', formSlug: 'it-career' },
+  },
+  {
+    path: 'join/jobs',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'join-jobs', formSlug: 'jobs' },
+  },
+  {
     path: 'join-network',
     loadComponent: () => import('./pages/network/join-network/join-network.component').then(m => m.JoinNetworkComponent),
     data: { animation: 'join-network' },
@@ -107,6 +162,11 @@ export const routes: Routes = [
     path: 'testimonials',
     loadComponent: () => import('./pages/testimonials/testimonials.component').then(m => m.TestimonialsComponent),
     data: { animation: 'testimonials' },
+  },
+  {
+    path: 'admin',
+    loadComponent: () => import('./pages/admin/admin-panel.component').then(m => m.AdminPanelComponent),
+    data: { animation: 'admin' },
   },
   {
     path: 'contact',

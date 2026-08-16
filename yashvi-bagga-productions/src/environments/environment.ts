@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:5041/api/v1',
-  siteUrl: 'http://localhost:4201',
+  siteUrl: 'http://localhost:4200',
 
   /**
    * Google reCAPTCHA configuration.
@@ -41,6 +41,11 @@ export const environment = {
     crm: false,
   },
 
+  uploads: {
+    /** Use real backend upload at /api/v1/uploads (set true only for UI-only demos). */
+    mockMode: false,
+  },
+
   /**
    * OTP verification (email + mobile).
    *
@@ -50,7 +55,7 @@ export const environment = {
    *
    * `mockMode` simulates the full flow locally (codes surfaced via toast +
    * console) so forms are testable before the backend exists. It is DEV-ONLY
-   * and MUST stay false in production (see environment.prod.ts).
+   * and MUST stay false in production once /otp/* APIs are live.
    */
   otp: {
     enabled: true,

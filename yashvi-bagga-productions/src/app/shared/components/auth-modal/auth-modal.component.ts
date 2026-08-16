@@ -11,15 +11,12 @@ import {
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { indianMobileValidator } from '../../validators/form.validators';
+import { AuthService } from '../../services/auth.service';
 
 type AuthTab = 'login' | 'signup';
 
 /**
- * Log In / Sign Up modal (UI only — no persistence or real authentication yet).
- *
- * The Sign Up fields mirror the PDF "SIGN UP" spec (Name, Mobile, Email,
- * Category dropdown, Describe yourself). Submit handlers currently only show an
- * inline confirmation; they are the wiring point for a future auth backend.
+ * Log In / Sign Up modal — wired to POST /api/v1/auth/login|register.
  */
 @Component({
   selector: 'app-auth-modal',
@@ -33,17 +30,14 @@ type AuthTab = 'login' | 'signup';
         aria-modal="true"
         [attr.aria-label]="activeTab() === 'login' ? 'Log in' : 'Sign up'"
       >
-        <!-- Backdrop -->
         <div
           class="absolute inset-0 bg-brand-black/80 backdrop-blur-md"
           (click)="requestClose()"
         ></div>
 
-        <!-- Card -->
         <div
           class="relative z-10 w-full max-w-md rounded-[28px] border border-brand-gold/20 bg-brand-dark/95 backdrop-blur-xl shadow-2xl p-7 sm:p-8 max-h-[90vh] overflow-y-auto animate-slide-up"
         >
-          <!-- Close -->
           <button
             type="button"
             class="absolute top-5 right-5 text-brand-white/50 hover:text-brand-gold transition-colors"
@@ -55,7 +49,6 @@ type AuthTab = 'login' | 'signup';
             </svg>
           </button>
 
-          <!-- Header -->
           <div class="text-center mb-6">
             <span class="block text-brand-gold font-poppins text-xs tracking-[4px] uppercase mb-2">
               Yashvi Bagga Productions
@@ -65,7 +58,6 @@ type AuthTab = 'login' | 'signup';
             </h2>
           </div>
 
-          <!-- Tabs -->
           <div class="grid grid-cols-2 gap-1 p-1 mb-6 rounded-full border border-brand-white/10 bg-brand-black/40">
             <button
               type="button"
@@ -90,7 +82,6 @@ type AuthTab = 'login' | 'signup';
           </div>
 
           @if (submittedMessage()) {
-            <!-- Confirmation (UI placeholder — no backend yet) -->
             <div class="text-center py-6">
               <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-gold/15 text-brand-gold">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,7 +98,6 @@ type AuthTab = 'login' | 'signup';
               </button>
             </div>
           } @else if (activeTab() === 'login') {
-            <!-- LOGIN -->
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-4">
               <div>
                 <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Email</label>
@@ -127,17 +117,15 @@ type AuthTab = 'login' | 'signup';
                   class="w-full rounded-xl border border-brand-white/10 bg-brand-black/50 px-4 py-3 text-sm text-brand-white placeholder:text-brand-white/30 focus:border-brand-gold focus:outline-none transition-colors"
                 />
               </div>
-              <div class="text-right">
-                <button type="button" class="text-xs text-brand-white/50 hover:text-brand-gold transition-colors">
-                  Forgot password?
-                </button>
-              </div>
+              @if (errorMessage()) {
+                <p class="text-sm text-red-400">{{ errorMessage() }}</p>
+              }
               <button
                 type="submit"
-                [disabled]="loginForm.invalid"
+                [disabled]="loginForm.invalid || busy()"
                 class="w-full rounded-full bg-brand-gold py-3 text-sm font-poppins font-semibold text-brand-black hover:bg-brand-pink hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Continue
+                {{ busy() ? 'Please wait…' : 'Continue' }}
               </button>
               <p class="text-center text-xs text-brand-white/40">
                 New here?
@@ -145,7 +133,6 @@ type AuthTab = 'login' | 'signup';
               </p>
             </form>
           } @else {
-            <!-- SIGN UP (fields per PDF SIGN UP spec) -->
             <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="space-y-4">
               <div>
                 <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Name</label>
@@ -175,6 +162,15 @@ type AuthTab = 'login' | 'signup';
                 />
               </div>
               <div>
+                <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Password</label>
+                <input
+                  type="password"
+                  formControlName="password"
+                  placeholder="Min. 6 characters"
+                  class="w-full rounded-xl border border-brand-white/10 bg-brand-black/50 px-4 py-3 text-sm text-brand-white placeholder:text-brand-white/30 focus:border-brand-gold focus:outline-none transition-colors"
+                />
+              </div>
+              <div>
                 <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Category</label>
                 <select
                   formControlName="category"
@@ -195,12 +191,15 @@ type AuthTab = 'login' | 'signup';
                   class="w-full rounded-xl border border-brand-white/10 bg-brand-black/50 px-4 py-3 text-sm text-brand-white placeholder:text-brand-white/30 focus:border-brand-gold focus:outline-none transition-colors resize-none"
                 ></textarea>
               </div>
+              @if (errorMessage()) {
+                <p class="text-sm text-red-400">{{ errorMessage() }}</p>
+              }
               <button
                 type="submit"
-                [disabled]="signupForm.invalid"
+                [disabled]="signupForm.invalid || busy()"
                 class="w-full rounded-full bg-brand-gold py-3 text-sm font-poppins font-semibold text-brand-black hover:bg-brand-pink hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Create Account
+                {{ busy() ? 'Creating…' : 'Create Account' }}
               </button>
               <p class="text-center text-xs text-brand-white/40">
                 Already registered?
@@ -216,8 +215,8 @@ type AuthTab = 'login' | 'signup';
 export class AuthModalComponent {
   private readonly fb = inject(FormBuilder);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly auth = inject(AuthService);
 
-  /** Category options mirror the PDF "SIGN UP" dropdown. */
   readonly categories = [
     'Actor',
     'Other Media professional seeking opportunity',
@@ -230,27 +229,31 @@ export class AuthModalComponent {
   readonly isOpen = signal(false);
   readonly activeTab = signal<AuthTab>('login');
   readonly submittedMessage = signal<string | null>(null);
+  readonly errorMessage = signal<string | null>(null);
+  readonly busy = signal(false);
 
   @Output() closed = new EventEmitter<void>();
 
   @Input() set open(value: boolean) {
     this.isOpen.set(value);
     if (value) {
-      // Reset to a clean state each time the modal is opened.
       this.submittedMessage.set(null);
+      this.errorMessage.set(null);
+      this.busy.set(false);
     }
     this.lockScroll(value);
   }
 
   readonly loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(4)]],
   });
 
   readonly signupForm = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     mobile: ['', [Validators.required, indianMobileValidator()]],
     email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
     category: ['', Validators.required],
     description: [''],
   });
@@ -258,21 +261,61 @@ export class AuthModalComponent {
   switchTab(tab: AuthTab): void {
     this.activeTab.set(tab);
     this.submittedMessage.set(null);
+    this.errorMessage.set(null);
   }
 
   onLogin(): void {
-    if (this.loginForm.invalid) return;
-    // UI only — no authentication yet. Wire to auth backend here.
-    this.submittedMessage.set('You are all set. Login handling will be connected shortly.');
+    if (this.loginForm.invalid || this.busy()) return;
+    const { email, password } = this.loginForm.getRawValue();
+    this.busy.set(true);
+    this.errorMessage.set(null);
+    this.auth.login(email!, password!).subscribe({
+      next: (res) => {
+        this.busy.set(false);
+        this.submittedMessage.set(`Welcome back, ${res.user.fullName}. You are logged in.`);
+      },
+      error: (err: Error) => {
+        this.busy.set(false);
+        this.errorMessage.set(err.message || 'Login failed.');
+      },
+    });
   }
 
   onSignup(): void {
-    if (this.signupForm.invalid) return;
-    // UI only — no persistence yet. Per the brief, submitting sign-up should
-    // eventually issue login credentials; wire that to the backend here.
-    this.submittedMessage.set(
-      'Thank you for signing up! Your login credentials will be shared with you shortly.',
-    );
+    if (this.signupForm.invalid || this.busy()) return;
+    const v = this.signupForm.getRawValue();
+    this.busy.set(true);
+    this.errorMessage.set(null);
+    this.auth
+      .register({
+        fullName: v.name!,
+        email: v.email!,
+        mobile: v.mobile!,
+        password: v.password!,
+      })
+      .subscribe({
+        next: (res) => {
+          this.busy.set(false);
+          // Keep category/description for later profile enrichment (local hint).
+          if (isPlatformBrowser(this.platformId)) {
+            try {
+              localStorage.setItem(
+                'ybp_signup_meta',
+                JSON.stringify({ category: v.category, description: v.description }),
+              );
+            } catch {
+              /* ignore */
+            }
+          }
+          this.submittedMessage.set(
+            `Welcome, ${res.user.fullName}! Your account is ready. You can now submit applications.`,
+          );
+        },
+        error: (err: Error) => {
+          this.busy.set(false);
+          this.errorMessage.set(err.message || 'Sign up failed.');
+        },
+      });
   }
 
   requestClose(): void {

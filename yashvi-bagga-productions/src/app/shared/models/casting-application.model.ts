@@ -49,6 +49,8 @@ export interface CastingApplication {
 
   // Section 6 — Portfolio Upload (headshots, reels, ZIP)
   portfolio?: DocumentUpload[];
+  /** Dedicated actor audition video upload(s). */
+  auditionVideo?: DocumentUpload[];
 
   // Section 7 — Availability
   availability: string[];

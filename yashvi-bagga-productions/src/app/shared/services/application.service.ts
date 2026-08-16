@@ -1,9 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { NotificationService } from './notification.service';
+import { FormSubmissionService, FormTypeCode } from './form-submission.service';
 import { InquiryPayload, InquiryType } from '../models/notification.model';
 import {
   ApplicationStatus,
@@ -15,147 +14,143 @@ import { CastingApplication } from '../models/casting-application.model';
 import { MediaProfessional } from '../models/media-professional.model';
 import { OutsourcingRequirement } from '../models/outsourcing-requirement.model';
 
-/**
- * MODULE 10 — Scalable enterprise data layer.
- *
- * Single entry point that every applicant/requirement form submits through.
- * It does two things, both isolated so neither blocks the UX:
- *   1. Persists the typed record to the backend (best-effort; optional in dev).
- *   2. Fires the existing NotificationService inquiry flow (SMS/email/CRM).
- *
- * The read-side methods (get / list / advanceStatus) are the seams a future
- * Admin Dashboard, Applicant Tracking System, CRM and Client Portal plug into
- * WITHOUT touching the public site — they already speak these models.
- */
 export interface SubmitResult {
   accepted: boolean;
-  /** Server-assigned id when available (client proceeds even without it). */
   id?: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class ApplicationService {
-  private readonly http = inject(HttpClient);
   private readonly notifications = inject(NotificationService);
+  private readonly formsApi = inject(FormSubmissionService);
 
-  // --- Module 1: Talent & Career Portal ------------------------------------
   submitTalentProfile(profile: TalentProfile): Observable<SubmitResult> {
-    return this.submit('talent', 'talent-profiles', profile, {
-      type: 'talent-registration',
-      label: 'Talent Registration',
-      name: profile.fullName,
-      mobile: profile.mobile,
-      email: profile.email,
-      service: profile.category,
-      requirement: profile.about,
-      extra: {
-        skills: profile.skills,
-        availability: profile.availability,
-        experienceLevel: profile.experienceLevel,
-        portfolioLinks: profile.portfolioLinks,
+    return this.submitUnified(
+      'FILM_TV_TALENT',
+      profile.fullName,
+      profile.email,
+      profile.mobile,
+      undefined,
+      profile as unknown as Record<string, unknown>,
+      {
+        type: 'talent-registration',
+        label: 'Talent Registration',
+        name: profile.fullName,
+        mobile: profile.mobile,
+        email: profile.email,
+        service: profile.category,
+        requirement: profile.about,
       },
-    });
-  }
-
-  // --- Module 2: Casting Application System --------------------------------
-  submitCastingApplication(app: CastingApplication): Observable<SubmitResult> {
-    return this.submit('casting', 'casting-applications', app, {
-      type: 'talent-registration',
-      label: 'Casting Application',
-      name: app.fullName,
-      mobile: app.mobile,
-      email: app.email,
-      service: 'casting',
-      requirement: app.credits,
-      extra: { skills: app.skills, languages: app.languages, availability: app.availability },
-    });
-  }
-
-  // --- Module 3: Media Professional Registration ---------------------------
-  submitMediaProfessional(pro: MediaProfessional): Observable<SubmitResult> {
-    return this.submit('media', 'media-professionals', pro, {
-      type: 'talent-registration',
-      label: 'Media Professional Registration',
-      name: pro.fullName,
-      mobile: pro.mobile,
-      email: pro.email,
-      service: pro.profession,
-      requirement: pro.about,
-      extra: {
-        skills: pro.skills,
-        software: pro.software,
-        engagementModel: pro.engagementModel,
-        compensationExpectation: pro.compensationExpectation,
-      },
-    });
-  }
-
-  // --- Module 4: Manpower Requirement Portal -------------------------------
-  submitOutsourcingRequirement(req: OutsourcingRequirement): Observable<SubmitResult> {
-    return this.submit('manpower', 'outsourcing-requirements', req, {
-      type: 'manpower-requirement',
-      label: 'Manpower Requirement',
-      name: req.contactPerson,
-      mobile: req.mobile,
-      email: req.email,
-      service: req.industry,
-      requirement: req.requirement,
-      extra: {
-        organizationName: req.organizationName,
-        roles: req.roles,
-        totalHeadcount: req.totalHeadcount,
-        budgetRange: req.budgetRange,
-      },
-    });
-  }
-
-  /**
-   * Shared submit pipeline: stamp the record with an initial status, persist it
-   * (best-effort) and fan out the notification flow. Resolves to accepted=true
-   * as long as the notification flow accepts — the UX never hangs on a missing
-   * backend.
-   */
-  private submit<T extends { status?: ApplicationStatus; history?: StatusEvent[] }>(
-    track: WorkflowTrack,
-    resource: string,
-    record: T,
-    inquiry: InquiryPayload & { type: InquiryType },
-  ): Observable<SubmitResult> {
-    const stamped: T = {
-      ...record,
-      status: 'submitted',
-      history: [{ status: 'submitted', note: `Created via ${track} portal` }],
-    };
-
-    // 1. Persist (optional during development — failures are swallowed).
-    this.http
-      .post<{ id: string }>(`${environment.apiUrl}/${resource}`, stamped)
-      .pipe(catchError(() => of(null)))
-      .subscribe();
-
-    // 2. Notify (SMS live; email/CRM future-ready) and report acceptance.
-    return this.notifications.notify(inquiry).pipe(
-      map((res) => ({ accepted: res.accepted })),
-      catchError(() => of({ accepted: true })),
     );
   }
 
-  // --- Read side (future Admin Dashboard / ATS / Client Portal) -------------
-
-  /** Fetch a single application's current status + history. */
-  getStatus(resource: string, id: string): Observable<{ status: ApplicationStatus; history: StatusEvent[] } | null> {
-    return this.http
-      .get<{ status: ApplicationStatus; history: StatusEvent[] }>(`${environment.apiUrl}/${resource}/${id}/status`)
-      .pipe(catchError(() => of(null)));
+  submitCastingApplication(app: CastingApplication): Observable<SubmitResult> {
+    return this.submitUnified(
+      'FILM_TV_TALENT',
+      app.fullName,
+      app.email,
+      app.mobile,
+      undefined,
+      { ...app, portal: 'casting-application' },
+      {
+        type: 'talent-registration',
+        label: 'Casting Application',
+        name: app.fullName,
+        mobile: app.mobile,
+        email: app.email,
+        service: 'casting',
+        requirement: app.credits,
+      },
+    );
   }
 
-  /** Advance an application to a new status (admin action; future ATS). */
-  advanceStatus(resource: string, id: string, status: ApplicationStatus, note?: string): Observable<boolean> {
-    return this.http
-      .patch(`${environment.apiUrl}/${resource}/${id}/status`, { status, note })
+  submitMediaProfessional(pro: MediaProfessional): Observable<SubmitResult> {
+    return this.submitUnified(
+      'CREATIVE_CAREER',
+      pro.fullName,
+      pro.email,
+      pro.mobile,
+      undefined,
+      { ...pro, portal: 'media-professional' },
+      {
+        type: 'talent-registration',
+        label: 'Media Professional Registration',
+        name: pro.fullName,
+        mobile: pro.mobile,
+        email: pro.email,
+        service: pro.profession,
+        requirement: pro.about,
+      },
+    );
+  }
+
+  submitOutsourcingRequirement(req: OutsourcingRequirement): Observable<SubmitResult> {
+    return this.submitUnified(
+      'MANPOWER_HIRE',
+      req.contactPerson,
+      req.email,
+      req.mobile,
+      req.organizationName,
+      { ...req, portal: 'manpower-requirement' },
+      {
+        type: 'manpower-requirement',
+        label: 'Manpower Requirement',
+        name: req.contactPerson,
+        mobile: req.mobile,
+        email: req.email,
+        service: req.industry,
+        requirement: req.requirement,
+      },
+    );
+  }
+
+  /**
+   * Persist via unified FormSubmission API (admin pipeline), then best-effort notify.
+   */
+  private submitUnified(
+    formType: FormTypeCode,
+    contactName: string,
+    contactEmail: string,
+    contactMobile: string | undefined,
+    companyName: string | undefined,
+    payload: Record<string, unknown>,
+    inquiry: InquiryPayload & { type: InquiryType },
+  ): Observable<SubmitResult> {
+    return this.formsApi
+      .submit({
+        formType,
+        source: 'WEBSITE',
+        contactName,
+        contactEmail,
+        contactMobile,
+        companyName,
+        payload,
+      })
       .pipe(
-        map(() => true),
-        catchError(() => of(false)),
+        map((res) => {
+          this.notifications.notify(inquiry).pipe(catchError(() => of(null))).subscribe();
+          return { accepted: true, id: res.applicationId };
+        }),
+        catchError(() =>
+          // Fallback: still try notification so UX is not blocked if API is down.
+          this.notifications.notify(inquiry).pipe(
+            map((r) => ({ accepted: r.accepted })),
+            catchError(() => of({ accepted: false })),
+          ),
+        ),
       );
+  }
+
+  getStatus(_resource: string, _id: string): Observable<{ status: ApplicationStatus; history: StatusEvent[] } | null> {
+    return of(null);
+  }
+
+  advanceStatus(
+    _resource: string,
+    _id: string,
+    _status: ApplicationStatus,
+    _note?: string,
+  ): Observable<boolean> {
+    return of(false);
   }
 }

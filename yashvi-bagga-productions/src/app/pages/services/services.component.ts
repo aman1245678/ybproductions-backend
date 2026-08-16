@@ -35,7 +35,7 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
         <app-section-header
           subtitle="Our Services"
           title="What We Deliver"
-          description="Eight core services spanning casting, marketing, branding, technology, talent, staffing and training."
+          description="Eight core services spanning casting, marketing, branding, technology, talent, staffing and training. Or start an enquiry from Get Started."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"

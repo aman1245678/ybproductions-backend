@@ -149,7 +149,10 @@ import { IndustriesComponent } from './sections/industries.component';
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
           @for (service of premiumServices; track service.title) {
-            <div class="group relative overflow-hidden rounded-[32px] border border-brand-white/10 bg-brand-dark/80 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/25">
+            <a
+              [routerLink]="service.link || '/get-started'"
+              class="group relative overflow-hidden rounded-[32px] border border-brand-white/10 bg-brand-dark/80 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/25 block"
+            >
               <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,45,136,0.12),_transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
               <div class="relative z-10 space-y-4">
                 <div class="inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-brand-gold/10 text-brand-gold text-xl">
@@ -157,9 +160,9 @@ import { IndustriesComponent } from './sections/industries.component';
                 </div>
                 <h3 class="text-2xl font-playfair text-brand-white">{{ service.title }}</h3>
                 <p class="text-brand-white/60 text-sm leading-6">{{ service.description }}</p>
-                <div class="border-t border-brand-white/10 pt-4 text-brand-gold text-xs uppercase tracking-[0.24em]">Explore service</div>
+                <div class="border-t border-brand-white/10 pt-4 text-brand-gold text-xs uppercase tracking-[0.24em]">Apply / Enquire</div>
               </div>
-            </div>
+            </a>
           }
         </div>
       </div>
@@ -313,14 +316,14 @@ export class HomeComponent implements OnInit {
   // ];
 
   premiumServices = [
-    { icon: '🎬', title: 'Casting Services', description: 'Connecting filmmakers, brands and platforms with the right on-screen talent.' },
-    { icon: '📱', title: 'Social Media Management', description: 'Strategy, content, community and campaigns that build lasting digital presence.' },
-    { icon: '📈', title: 'Digital Marketing', description: 'SEO, performance ads, content and reputation solutions with measurable growth.' },
-    { icon: '🎨', title: 'Creative Branding', description: 'Brand strategy, identity design and campaigns that inspire and endure.' },
-    { icon: '💻', title: 'IT Solutions', description: 'Website design, apps, web applications, e-commerce and ongoing support.' },
-    { icon: '🌟', title: 'Talent Pool & Headhunting', description: 'End-to-end sourcing across every production department — one partner, every role.' },
-    { icon: '👔', title: 'Manpower Outsourcing', description: 'Contract, project and flexible workforce solutions for growing organizations.' },
-    { icon: '🎓', title: 'Professional & Vocational Training', description: 'Leadership, digital skills and industry programmes that build future-ready talent.' },
+    { icon: '🎬', title: 'Casting Services', description: 'Connecting filmmakers, brands and platforms with the right on-screen talent.', link: '/hire/cast-crew' },
+    { icon: '📱', title: 'Social Media Management', description: 'Strategy, content, community and campaigns that build lasting digital presence.', link: '/hire/cast-crew' },
+    { icon: '📈', title: 'Digital Marketing', description: 'SEO, performance ads, content and reputation solutions with measurable growth.', link: '/hire/cast-crew' },
+    { icon: '🎨', title: 'Creative Branding', description: 'Brand strategy, identity design and campaigns that inspire and endure.', link: '/hire/branding' },
+    { icon: '💻', title: 'IT Solutions', description: 'Website design, apps, web applications, e-commerce and ongoing support.', link: '/hire/it' },
+    { icon: '🌟', title: 'Talent Pool & Headhunting', description: 'End-to-end sourcing across every production department — one partner, every role.', link: '/hire/cast-crew' },
+    { icon: '👔', title: 'Manpower Outsourcing', description: 'Contract, project and flexible workforce solutions for growing organizations.', link: '/manpower-requirement' },
+    { icon: '🎓', title: 'Professional & Vocational Training', description: 'Leadership, digital skills and industry programmes that build future-ready talent.', link: '/hire/training' },
   ];
 
   // Removed per client requirement — "Meet The Team" section taken off the home page.
