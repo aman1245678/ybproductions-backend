@@ -1,0 +1,13 @@
+# Angular SPA — send deep links (/admin, /join/talent, etc.) to index.html
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Keep real files and folders
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else → Angular
+  RewriteRule ^ index.html [L]
+</IfModule>
