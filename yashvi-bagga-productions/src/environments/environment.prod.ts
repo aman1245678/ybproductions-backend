@@ -32,7 +32,7 @@ export const environment = {
 
   otp: {
     enabled: true,
-    mockMode: true,
+    mockMode: false,
     codeLength: 6,
     ttlSeconds: 300,
     resendCooldownSeconds: 60,

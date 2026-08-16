@@ -10,11 +10,13 @@ import { ToastService } from '../../../shared/services/toast.service';
 import { FormSubmissionService } from '../../../shared/services/form-submission.service';
 import { AuthService } from '../../../shared/services/auth.service';
 import { indianMobileValidator } from '../../../shared/validators/form.validators';
+import { EmailOtpComponent } from '../../../shared/components/email-otp/email-otp.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-join-network',
   standalone: true,
-  imports: [CommonModule, RouterLink, ReactiveFormsModule, ScrollAnimationDirective, SectionHeaderComponent],
+  imports: [CommonModule, RouterLink, ReactiveFormsModule, ScrollAnimationDirective, SectionHeaderComponent, EmailOtpComponent],
   template: `
     <!-- Compact hero -->
     <section class="relative overflow-hidden bg-brand-black pt-28 pb-10">
@@ -81,6 +83,14 @@ import { indianMobileValidator } from '../../../shared/validators/form.validator
                 class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
                 placeholder="your@email.com"
               />
+              <div class="mt-2">
+                <app-email-otp
+                  formControlName="emailVerified"
+                  [destination]="signUpForm.get('email')?.value || ''"
+                  [destinationValid]="!!signUpForm.get('email')?.valid"
+                  purpose="join-network"
+                />
+              </div>
             </div>
           </div>
           <div>
@@ -368,6 +378,10 @@ export class JoinNetworkComponent implements OnInit {
     description: ['', [Validators.required, Validators.minLength(10)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+    emailVerified: [
+      environment.otp.mockMode ? 'mock-verified' : null,
+      environment.otp.mockMode ? [] : Validators.required,
+    ],
   });
 
   ngOnInit(): void {
@@ -402,6 +416,7 @@ export class JoinNetworkComponent implements OnInit {
         email: v.email!,
         mobile: v.mobile!,
         password: v.password!,
+        emailVerificationToken: v.emailVerified || undefined,
       })
       .pipe(
         switchMap(() =>

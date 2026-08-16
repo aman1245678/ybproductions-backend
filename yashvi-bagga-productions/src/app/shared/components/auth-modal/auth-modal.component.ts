@@ -13,6 +13,8 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { indianMobileValidator } from '../../validators/form.validators';
 import { AuthService } from '../../services/auth.service';
 import { FormSubmissionService } from '../../services/form-submission.service';
+import { EmailOtpComponent } from '../email-otp/email-otp.component';
+import { environment } from '../../../environments/environment';
 import { switchMap } from 'rxjs';
 
 type AuthTab = 'login' | 'signup';
@@ -23,7 +25,7 @@ type AuthTab = 'login' | 'signup';
 @Component({
   selector: 'app-auth-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, EmailOtpComponent],
   template: `
     @if (isOpen()) {
       <div
@@ -109,6 +111,14 @@ type AuthTab = 'login' | 'signup';
                   placeholder="you@example.com"
                   class="w-full rounded-xl border border-brand-white/10 bg-brand-black/50 px-4 py-3 text-sm text-brand-white placeholder:text-brand-white/30 focus:border-brand-gold focus:outline-none transition-colors"
                 />
+                <div class="mt-2">
+                  <app-email-otp
+                    formControlName="emailVerified"
+                    [destination]="loginForm.get('email')?.value || ''"
+                    [destinationValid]="!!loginForm.get('email')?.valid"
+                    purpose="auth-login"
+                  />
+                </div>
               </div>
               <div>
                 <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Password</label>
@@ -162,6 +172,14 @@ type AuthTab = 'login' | 'signup';
                   placeholder="you@example.com"
                   class="w-full rounded-xl border border-brand-white/10 bg-brand-black/50 px-4 py-3 text-sm text-brand-white placeholder:text-brand-white/30 focus:border-brand-gold focus:outline-none transition-colors"
                 />
+                <div class="mt-2">
+                  <app-email-otp
+                    formControlName="emailVerified"
+                    [destination]="signupForm.get('email')?.value || ''"
+                    [destinationValid]="!!signupForm.get('email')?.valid"
+                    purpose="auth-register"
+                  />
+                </div>
               </div>
               <div>
                 <label class="block text-xs uppercase tracking-wide text-brand-white/50 mb-1.5">Password</label>
@@ -250,6 +268,10 @@ export class AuthModalComponent {
   readonly loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
+    emailVerified: [
+      environment.otp.mockMode ? 'mock-verified' : null,
+      environment.otp.mockMode ? [] : Validators.required,
+    ],
   });
 
   readonly signupForm = this.fb.group({
@@ -259,6 +281,10 @@ export class AuthModalComponent {
     password: ['', [Validators.required, Validators.minLength(6)]],
     category: ['', Validators.required],
     description: [''],
+    emailVerified: [
+      environment.otp.mockMode ? 'mock-verified' : null,
+      environment.otp.mockMode ? [] : Validators.required,
+    ],
   });
 
   switchTab(tab: AuthTab): void {
@@ -269,10 +295,10 @@ export class AuthModalComponent {
 
   onLogin(): void {
     if (this.loginForm.invalid || this.busy()) return;
-    const { email, password } = this.loginForm.getRawValue();
+    const { email, password, emailVerified } = this.loginForm.getRawValue();
     this.busy.set(true);
     this.errorMessage.set(null);
-    this.auth.login(email!, password!).subscribe({
+    this.auth.login(email!, password!, emailVerified || undefined).subscribe({
       next: (res) => {
         this.busy.set(false);
         this.submittedMessage.set(`Welcome back, ${res.user.fullName}. You are logged in.`);
@@ -295,6 +321,7 @@ export class AuthModalComponent {
         email: v.email!,
         mobile: v.mobile!,
         password: v.password!,
+        emailVerificationToken: v.emailVerified || undefined,
       })
       .pipe(
         switchMap((res) =>

@@ -48,6 +48,7 @@ export class AuthService {
     email: string;
     mobile?: string;
     password: string;
+    emailVerificationToken?: string;
   }): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.apiUrl}/auth/register`, {
@@ -55,6 +56,7 @@ export class AuthService {
         email: input.email.trim().toLowerCase(),
         mobile: input.mobile?.trim() || undefined,
         password: input.password,
+        emailVerificationToken: input.emailVerificationToken,
       })
       .pipe(
         tap((res) => this.persistSession(res)),
@@ -62,11 +64,12 @@ export class AuthService {
       );
   }
 
-  login(email: string, password: string): Observable<AuthResponse> {
+  login(email: string, password: string, emailVerificationToken?: string): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.apiUrl}/auth/login`, {
         email: email.trim().toLowerCase(),
         password,
+        emailVerificationToken,
       })
       .pipe(
         tap((res) => this.persistSession(res)),

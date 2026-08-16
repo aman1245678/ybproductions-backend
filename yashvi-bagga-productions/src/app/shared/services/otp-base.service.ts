@@ -90,7 +90,10 @@ export abstract class AbstractOtpService implements OtpService {
         success: res?.success !== false,
       })),
       catchError((err) =>
-        of<OtpRequestResult>({ success: false, error: err?.error?.error || err?.message || 'Could not send OTP' })
+        of<OtpRequestResult>({
+          success: false,
+          error: err?.error?.detail || err?.error?.error || err?.message || 'Could not send OTP',
+        })
       )
     );
   }
@@ -115,7 +118,7 @@ export abstract class AbstractOtpService implements OtpService {
         of<OtpVerificationResult>({
           success: false,
           verified: false,
-          error: err?.error?.error || err?.message || 'Verification failed',
+          error: err?.error?.detail || err?.error?.error || err?.message || 'Verification failed',
         })
       )
     );
