@@ -174,6 +174,16 @@ export const routes: Routes = [
     data: { animation: 'contact' },
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () => import('./pages/legal/legal-page.component').then(m => m.LegalPageComponent),
+    data: { animation: 'privacy', legal: 'privacy' },
+  },
+  {
+    path: 'terms-of-service',
+    loadComponent: () => import('./pages/legal/legal-page.component').then(m => m.LegalPageComponent),
+    data: { animation: 'terms', legal: 'terms' },
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

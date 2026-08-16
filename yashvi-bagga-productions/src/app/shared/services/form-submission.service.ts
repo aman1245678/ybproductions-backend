@@ -39,6 +39,15 @@ export interface SubmitApplicationResponse {
   title: string;
 }
 
+export interface ApplicationLookupResponse {
+  applicationId: string;
+  formType: string;
+  title: string;
+  status: string;
+  createdAtUtc: string;
+  contactName: string;
+}
+
 /** Website intake slug → backend formType */
 export const SLUG_TO_FORM_TYPE: Record<string, FormTypeCode> = {
   branding: 'BRANDING',
@@ -65,6 +74,15 @@ export class FormSubmissionService {
         payload: {},
         ...body,
       })
+      .pipe(catchError((err) => throwError(() => this.toError(err))));
+  }
+
+  lookupByCode(applicationId: string): Observable<ApplicationLookupResponse> {
+    const id = applicationId.trim();
+    return this.http
+      .get<ApplicationLookupResponse>(
+        `${environment.apiUrl}/applications/by-code/${encodeURIComponent(id)}`,
+      )
       .pipe(catchError((err) => throwError(() => this.toError(err))));
   }
 

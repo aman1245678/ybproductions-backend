@@ -12,6 +12,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { indianMobileValidator } from '../../validators/form.validators';
 import { AuthService } from '../../services/auth.service';
+import { FormSubmissionService } from '../../services/form-submission.service';
+import { switchMap } from 'rxjs';
 
 type AuthTab = 'login' | 'signup';
 
@@ -216,6 +218,7 @@ export class AuthModalComponent {
   private readonly fb = inject(FormBuilder);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly auth = inject(AuthService);
+  private readonly formsApi = inject(FormSubmissionService);
 
   readonly categories = [
     'Actor',
@@ -293,22 +296,28 @@ export class AuthModalComponent {
         mobile: v.mobile!,
         password: v.password!,
       })
+      .pipe(
+        switchMap((res) =>
+          this.formsApi.submit({
+            formType: 'JOIN_NETWORK',
+            source: 'WEBSITE',
+            contactName: v.name!,
+            contactEmail: v.email!,
+            contactMobile: v.mobile!,
+            payload: {
+              category: v.category,
+              description: v.description,
+              portal: 'auth-modal',
+              userId: res.user.id,
+            },
+          }),
+        ),
+      )
       .subscribe({
-        next: (res) => {
+        next: () => {
           this.busy.set(false);
-          // Keep category/description for later profile enrichment (local hint).
-          if (isPlatformBrowser(this.platformId)) {
-            try {
-              localStorage.setItem(
-                'ybp_signup_meta',
-                JSON.stringify({ category: v.category, description: v.description }),
-              );
-            } catch {
-              /* ignore */
-            }
-          }
           this.submittedMessage.set(
-            `Welcome, ${res.user.fullName}! Your account is ready. You can now submit applications.`,
+            `Welcome, ${v.name}! Your login credentials are active — use your email and password to sign in anytime.`,
           );
         },
         error: (err: Error) => {

@@ -2,11 +2,13 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import { switchMap } from 'rxjs';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SeoService } from '../../../core/services/seo.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { FormSubmissionService } from '../../../shared/services/form-submission.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { indianMobileValidator } from '../../../shared/validators/form.validators';
 
 @Component({
@@ -42,7 +44,7 @@ import { indianMobileValidator } from '../../../shared/validators/form.validator
         <app-section-header
           subtitle="Sign Up"
           title="Create Your Account"
-          description="Name, mobile, email and category. After submit, continue to the full application for your path."
+          description="Name, mobile, email, password and category. You receive login credentials immediately after sign up."
           [titleGradient]="true"
           appScrollAnimation
           animationType="fade-up"
@@ -102,10 +104,34 @@ import { indianMobileValidator } from '../../../shared/validators/form.validator
               placeholder="Tell us about yourself and what you are looking for..."
             ></textarea>
           </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Password *</label>
+              <input
+                formControlName="password"
+                type="password"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="Min. 6 characters"
+              />
+            </div>
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Confirm Password *</label>
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="Repeat password"
+              />
+            </div>
+          </div>
 
           @if (signUpDone()) {
             <div class="rounded-2xl border border-brand-gold/20 bg-brand-gold/10 p-5 text-brand-white/85 text-sm space-y-3">
-              <p>Thanks — your sign-up is recorded. Login credentials will be issued once backend auth is connected.</p>
+              <p>Your account is active. Use your email and password to log in anytime from the website header.</p>
+              @if (registeredEmail()) {
+                <p class="text-brand-gold">Login email: <strong>{{ registeredEmail() }}</strong></p>
+              }
+              <p class="text-brand-white/70">Reference: {{ applicationRef() }}</p>
               <p class="text-brand-gold">Next: complete your detailed application form.</p>
               <a
                 [routerLink]="nextFormLink()"
@@ -258,9 +284,12 @@ export class JoinNetworkComponent implements OnInit {
   private readonly seoService = inject(SeoService);
   private readonly toast = inject(ToastService);
   private readonly formsApi = inject(FormSubmissionService);
+  private readonly auth = inject(AuthService);
 
   signUpDone = signal(false);
   signUpSubmitting = signal(false);
+  registeredEmail = signal('');
+  applicationRef = signal('');
 
   readonly signUpCategories = [
     { value: 'actor', label: 'Actor', next: '/casting-application' },
@@ -337,6 +366,8 @@ export class JoinNetworkComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     category: ['', Validators.required],
     description: ['', [Validators.required, Validators.minLength(10)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   ngOnInit(): void {
@@ -359,27 +390,43 @@ export class JoinNetworkComponent implements OnInit {
       this.toast.error('Please fill all required Sign Up fields.');
       return;
     }
-    this.signUpSubmitting.set(true);
     const v = this.signUpForm.getRawValue();
-    this.formsApi
-      .submit({
-        formType: 'JOIN_NETWORK',
-        source: 'WEBSITE',
-        contactName: v.name!,
-        contactEmail: v.email!,
-        contactMobile: v.mobile!,
-        payload: {
-          category: v.category,
-          description: v.description,
-          portal: 'join-network',
-          nextForm: this.nextFormLink(),
-        },
+    if (v.password !== v.confirmPassword) {
+      this.toast.error('Passwords do not match.');
+      return;
+    }
+    this.signUpSubmitting.set(true);
+    this.auth
+      .register({
+        fullName: v.name!,
+        email: v.email!,
+        mobile: v.mobile!,
+        password: v.password!,
       })
+      .pipe(
+        switchMap(() =>
+          this.formsApi.submit({
+            formType: 'JOIN_NETWORK',
+            source: 'WEBSITE',
+            contactName: v.name!,
+            contactEmail: v.email!,
+            contactMobile: v.mobile!,
+            payload: {
+              category: v.category,
+              description: v.description,
+              portal: 'join-network',
+              nextForm: this.nextFormLink(),
+            },
+          }),
+        ),
+      )
       .subscribe({
         next: (res) => {
           this.signUpSubmitting.set(false);
           this.signUpDone.set(true);
-          this.toast.success(`Sign up received (${res.applicationId}). Continue to your detailed form.`);
+          this.registeredEmail.set(v.email!);
+          this.applicationRef.set(res.applicationId);
+          this.toast.success(`Account created. You are logged in. Ref: ${res.applicationId}`);
         },
         error: (err: Error) => {
           this.signUpSubmitting.set(false);

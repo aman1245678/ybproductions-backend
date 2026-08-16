@@ -141,8 +141,20 @@ export class ApplicationService {
       );
   }
 
-  getStatus(_resource: string, _id: string): Observable<{ status: ApplicationStatus; history: StatusEvent[] } | null> {
-    return of(null);
+  getStatus(_resource: string, id: string): Observable<{ status: ApplicationStatus; history: StatusEvent[] } | null> {
+    return this.formsApi.lookupByCode(id).pipe(
+      map((res) => ({
+        status: res.status as ApplicationStatus,
+        history: [
+          {
+            status: res.status as ApplicationStatus,
+            at: res.createdAtUtc,
+            note: res.title || res.formType,
+          },
+        ],
+      })),
+      catchError(() => of(null)),
+    );
   }
 
   advanceStatus(

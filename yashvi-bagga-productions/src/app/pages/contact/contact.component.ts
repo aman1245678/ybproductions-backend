@@ -6,19 +6,19 @@ import { ScrollAnimationDirective } from '../../shared/directives/scroll-animati
 import { SeoService } from '../../core/services/seo.service';
 import { CaptchaComponent } from '../../shared/components/captcha/captcha.component';
 import { RequirementTextareaComponent } from '../../shared/components/requirement-textarea/requirement-textarea.component';
-import { EmailOtpComponent } from '../../shared/components/email-otp/email-otp.component';
-import { MobileOtpComponent } from '../../shared/components/mobile-otp/mobile-otp.component';
 import { ToastService } from '../../shared/services/toast.service';
 import { NotificationService } from '../../shared/services/notification.service';
 import { FormSubmissionService } from '../../shared/services/form-submission.service';
+import { ApplicationTrackComponent } from '../track/application-track.component';
 import { indianMobileValidator } from '../../shared/validators/form.validators';
 import { InquiryPayload } from '../../shared/models/notification.model';
 import { SERVICE_LINKS } from '../../shared/models/service-links.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ScrollAnimationDirective, CaptchaComponent, RequirementTextareaComponent], //, EmailOtpComponent, MobileOtpComponent
+  imports: [CommonModule, ReactiveFormsModule, ScrollAnimationDirective, CaptchaComponent, RequirementTextareaComponent, ApplicationTrackComponent],
   template: `
     <!-- HERO -->
     <section class="relative min-h-[50vh] flex items-center justify-center overflow-hidden">
@@ -92,15 +92,15 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
               }
             </div>
 
-            <!-- Map placeholder -->
-            <div class="mt-10 rounded-2xl overflow-hidden aspect-video relative">
-              <div class="absolute inset-0 bg-brand-gray border border-white/5 flex items-center justify-center">
-                <div class="text-center">
-                  <svg class="w-8 h-8 text-brand-gold/40 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <p class="text-brand-white/30 font-poppins text-xs">Google Maps Integration</p>
-                  <p class="text-brand-white/20 font-poppins text-[10px]">New Delhi, India</p>
-                </div>
-              </div>
+            <!-- Map -->
+            <div class="mt-10 rounded-2xl overflow-hidden aspect-video relative border border-white/10">
+              <iframe
+                title="Yashvi Bagga Productions — New Delhi"
+                class="w-full h-full min-h-[220px] border-0"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=New+Delhi,+India&z=11&output=embed"
+              ></iframe>
             </div>
           </div>
 
@@ -312,6 +312,7 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
           </div>
         </div>
       </div>
+      <app-application-track />
     </section>
   `,
   styles: [`:host { display: block; }`],
@@ -355,9 +356,8 @@ export class ContactComponent implements OnInit {
     source: [''],
     // Holds the verified reCAPTCHA token; the submit gate enforces it.
     captcha: [''],
-    // OTP verification tokens — required, so submit is blocked until verified.
-    emailVerified: [null, Validators.required],
-    mobileVerified: [null, Validators.required],
+    emailVerified: [environment.otp.mockMode ? 'mock-verified' : null, environment.otp.mockMode ? [] : Validators.required],
+    mobileVerified: [environment.otp.mockMode ? 'mock-verified' : null, environment.otp.mockMode ? [] : Validators.required],
   });
 
   nextStep(): void {
@@ -412,7 +412,21 @@ export class ContactComponent implements OnInit {
             'success',
             `Thank you! We'll get back to you within 24 hours. Ref: ${res.applicationId}`,
           );
-          this.contactForm.reset();
+          const payload: InquiryPayload = {
+            type: 'contact',
+            label: 'Contact Form',
+            name: contactName,
+            mobile: contactMobile,
+            email: contactEmail,
+            service: value.service ?? '',
+            requirement: value.message ?? '',
+            extra: { clientType: value.clientType, budget: value.budget, source: value.source },
+          };
+          this.notifications.notify(payload).subscribe();
+          this.contactForm.reset({
+            emailVerified: environment.otp.mockMode ? 'mock-verified' : null,
+            mobileVerified: environment.otp.mockMode ? 'mock-verified' : null,
+          });
           this.captcha?.reset();
           this.currentStep.set(1);
           this.submitting.set(false);
@@ -432,7 +446,10 @@ export class ContactComponent implements OnInit {
           this.notifications.notify(payload).subscribe({
             next: () => {
               this.toast.update(loadingId, 'success', "Thank you! We'll get back to you within 24 hours.");
-              this.contactForm.reset();
+              this.contactForm.reset({
+            emailVerified: environment.otp.mockMode ? 'mock-verified' : null,
+            mobileVerified: environment.otp.mockMode ? 'mock-verified' : null,
+          });
               this.captcha?.reset();
               this.currentStep.set(1);
               this.submitting.set(false);

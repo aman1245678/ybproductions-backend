@@ -156,38 +156,38 @@ export class PortfolioComponent implements OnInit {
   filters = ['All', 'Campaigns', 'Reels', 'Editorial', 'Branding', 'Events'];
 
   projects = [
-    { title: 'Luxe Beauty Launch', category: 'Campaigns', type: 'image', ratio: '4/5', description: 'Premium beauty brand campaign', gradient: 'linear-gradient(135deg, #D4AF37 0%, #1A1A1A 100%)' },
-    { title: 'Summer Fashion Reel', category: 'Reels', type: 'reel', ratio: '9/16', description: '5M+ views fashion content', gradient: 'linear-gradient(135deg, #FF2E88 0%, #1A1A1A 100%)' },
-    { title: 'Editorial Shoot', category: 'Editorial', type: 'image', ratio: '3/4', description: 'High-fashion editorial series', gradient: 'linear-gradient(180deg, #D4AF37 0%, #0A0A0A 100%)' },
-    { title: 'Brand Identity', category: 'Branding', type: 'image', ratio: '1/1', description: 'Complete brand overhaul', gradient: 'linear-gradient(135deg, #1A1A1A 0%, #D4AF37 100%)' },
-    { title: 'Product Launch Event', category: 'Events', type: 'image', ratio: '16/9', description: 'Exclusive launch party', gradient: 'linear-gradient(135deg, #FF2E88 0%, #D4AF37 100%)' },
-    { title: 'Influencer Campaign', category: 'Campaigns', type: 'reel', ratio: '9/16', description: '10 influencers, 50M reach', gradient: 'linear-gradient(45deg, #D4AF37 0%, #FF2E88 100%)' },
-    { title: 'Lifestyle Content', category: 'Reels', type: 'reel', ratio: '9/16', description: 'Aesthetic lifestyle reels', gradient: 'linear-gradient(225deg, #0A0A0A 0%, #D4AF37 100%)' },
-    { title: 'Fashion Week', category: 'Editorial', type: 'image', ratio: '3/2', description: 'Fashion week coverage', gradient: 'linear-gradient(135deg, #D4AF37 0%, #FF2E88 50%, #1A1A1A 100%)' },
-    { title: 'Corporate Rebrand', category: 'Branding', type: 'image', ratio: '4/3', description: 'Tech startup rebrand', gradient: 'linear-gradient(180deg, #1A1A1A 0%, #FF2E88 100%)' },
+    { title: 'Showcase of the Week', category: 'Campaigns', type: 'image', ratio: '16/9', description: 'Featured production showcase — films, TV, digital & performing arts', gradient: 'linear-gradient(135deg, #D4AF37 0%, #1A1A1A 100%)' },
+    { title: 'Government Outreach Campaign', category: 'Campaigns', type: 'image', ratio: '4/5', description: 'Pan-India public awareness & institutional communication', gradient: 'linear-gradient(135deg, #1A1A1A 0%, #D4AF37 100%)' },
+    { title: 'Casting & Talent Network', category: 'Editorial', type: 'image', ratio: '3/4', description: 'Film, OTT, TV & commercial casting coordination', gradient: 'linear-gradient(180deg, #D4AF37 0%, #0A0A0A 100%)' },
+    { title: 'Digital Marketing Reel', category: 'Reels', type: 'reel', ratio: '9/16', description: 'Social-first campaign content for brands & PSUs', gradient: 'linear-gradient(135deg, #FF2E88 0%, #1A1A1A 100%)' },
+    { title: 'Creative Brand Identity', category: 'Branding', type: 'image', ratio: '1/1', description: 'End-to-end branding for corporates & institutions', gradient: 'linear-gradient(135deg, #1A1A1A 0%, #D4AF37 100%)' },
+    { title: 'Corporate Training Film', category: 'Events', type: 'image', ratio: '16/9', description: 'Executive development & vocational programme coverage', gradient: 'linear-gradient(135deg, #FF2E88 0%, #D4AF37 100%)' },
+    { title: 'Influencer Collaboration', category: 'Reels', type: 'reel', ratio: '9/16', description: 'Creator-led campaigns across Instagram & YouTube', gradient: 'linear-gradient(45deg, #D4AF37 0%, #FF2E88 100%)' },
+    { title: 'Manpower & Workforce', category: 'Branding', type: 'image', ratio: '4/3', description: 'Large-scale staffing & outsourced workforce deployments', gradient: 'linear-gradient(180deg, #1A1A1A 0%, #FF2E88 100%)' },
+    { title: 'IT Solutions Launch', category: 'Campaigns', type: 'image', ratio: '3/2', description: 'Web, app & digital platform rollouts', gradient: 'linear-gradient(135deg, #D4AF37 0%, #FF2E88 50%, #1A1A1A 100%)' },
   ];
 
   caseStudies = [
     {
-      title: 'Luxe Beauty - 400% Growth',
-      category: 'Beauty & Fashion',
-      description: 'How we transformed a local beauty brand into a national sensation with strategic influencer marketing and cinematic content.',
+      title: 'Pan-India Training Programme',
+      category: 'Government & PSUs',
+      description: 'Executive development and vocational training delivered across multiple states with certified trainers and structured learning outcomes.',
       gradient: 'linear-gradient(135deg, #D4AF37 0%, #1A1A1A 100%)',
       results: [
-        { value: '400%', label: 'Growth' },
-        { value: '50M+', label: 'Reach' },
-        { value: '2.5x', label: 'ROI' },
+        { value: '15+', label: 'States' },
+        { value: '200+', label: 'Sessions' },
+        { value: '98%', label: 'Satisfaction' },
       ],
     },
     {
-      title: 'TechStart - Viral Launch',
-      category: 'Technology',
-      description: 'A product launch campaign that broke the internet with creative reels and strategic influencer collaborations.',
+      title: 'Digital Brand Transformation',
+      category: 'Corporate',
+      description: 'Integrated social media, content production, and influencer strategy for a multi-city brand expansion.',
       gradient: 'linear-gradient(135deg, #FF2E88 0%, #1A1A1A 100%)',
       results: [
-        { value: '10M+', label: 'Views' },
-        { value: '500K', label: 'Signups' },
-        { value: '#1', label: 'Trending' },
+        { value: '3x', label: 'Engagement' },
+        { value: '50+', label: 'Creatives' },
+        { value: '12M', label: 'Reach' },
       ],
     },
   ];

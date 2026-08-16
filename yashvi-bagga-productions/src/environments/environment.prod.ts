@@ -4,7 +4,7 @@ export const environment = {
   siteUrl: 'https://ybproductions.co.in',
 
   recaptcha: {
-    enabled: true,
+    enabled: false,
     version: 'v3' as 'v3' | 'v2',
     v3SiteKey: '',
     v2SiteKey: '',
@@ -12,17 +12,17 @@ export const environment = {
   },
 
   sms: {
-    enabled: false,
+    enabled: true,
     provider: 'MSG91' as 'TWILIO' | 'MSG91' | 'FAST2SMS',
     endpoint: '/notifications/sms',
-    adminMobile: '',
+    adminMobile: '8368595223',
     senderId: 'YBGPRO',
     retry: { attempts: 3, delayMs: 800 },
   },
 
   notifications: {
-    sms: false,
-    email: false,
+    sms: true,
+    email: true,
     crm: false,
   },
 
@@ -30,10 +30,6 @@ export const environment = {
     mockMode: false,
   },
 
-  /**
-   * Backend OTP routes are not live yet — keep mockMode so join/casting
-   * forms still complete; switch to false when /otp/* is deployed.
-   */
   otp: {
     enabled: true,
     mockMode: true,
