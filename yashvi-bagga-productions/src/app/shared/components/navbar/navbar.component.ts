@@ -20,7 +20,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       <div class="w-full pl-8 sm:pl-10 lg:pl-14 pr-5 sm:pr-6 lg:pr-8">
         <div class="flex items-center justify-between h-20">
           <!-- Brand + nav: links sit lower under the company name line -->
-          <div class="flex items-end gap-10 lg:gap-14 xl:gap-16 min-w-0">
+          <div class="flex items-center gap-4 lg:gap-6 xl:gap-8 min-w-0 flex-1">
           <!-- Logo -->
           <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-3 group" (click)="closeMenu()">
             <div class="w-11 h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
@@ -36,9 +36,9 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             </div>
           </a>
 
-          <!-- Desktop Navigation — more space from brand, nudged right -->
-          <div class="hidden lg:flex items-center gap-4 xl:gap-5 pb-0.5 ml-2 xl:ml-4">
-            @for (link of navLinks; track link.path) {
+          <!-- Desktop Navigation (xl+ only — lg uses hamburger to avoid overlap) -->
+          <div class="hidden xl:flex items-center gap-3 2xl:gap-4 pb-0.5 ml-2 min-w-0 flex-1">
+            @for (link of primaryNavLinks; track link.path) {
               <!-- Services Dropdown — titles only; click opens the page -->
               @if (link.path === '/services') {
                 <div class="relative">
@@ -47,7 +47,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('services', $event)"
                     [attr.aria-expanded]="openMenu() === 'services'"
                     aria-haspopup="true"
-                    class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
+                    class="text-sm 2xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
@@ -94,7 +94,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('about', $event)"
                     [attr.aria-expanded]="openMenu() === 'about'"
                     aria-haspopup="true"
-                    class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
+                    class="text-sm 2xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300"
                     [class.text-brand-gold]="openMenu() === 'about'"
                   >
                     {{ link.label }}
@@ -139,12 +139,53 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                   [routerLink]="link.path"
                   routerLinkActive="text-brand-gold"
                   [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-                  class="text-[15px] xl:text-base font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group"
+                  class="text-sm 2xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
                 >
                   {{ link.label }}
                   <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
                 </a>
               }
+            }
+
+            <!-- Secondary links in a compact More menu -->
+            @if (moreNavLinks.length) {
+              <div class="relative">
+                <button
+                  type="button"
+                  (click)="toggleDesktopMenu('more', $event)"
+                  [attr.aria-expanded]="openMenu() === 'more'"
+                  aria-haspopup="true"
+                  class="text-sm 2xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
+                  [class.text-brand-gold]="openMenu() === 'more'"
+                >
+                  More
+                </button>
+                <div
+                  class="absolute right-0 top-full pt-4 w-56 z-50 transition-all duration-300"
+                  [class.opacity-100]="openMenu() === 'more'"
+                  [class.visible]="openMenu() === 'more'"
+                  [class.pointer-events-auto]="openMenu() === 'more'"
+                  [class.translate-y-0]="openMenu() === 'more'"
+                  [class.opacity-0]="openMenu() !== 'more'"
+                  [class.invisible]="openMenu() !== 'more'"
+                  [class.pointer-events-none]="openMenu() !== 'more'"
+                  [class.translate-y-2]="openMenu() !== 'more'"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
+                    @for (link of moreNavLinks; track link.path) {
+                      <a
+                        [routerLink]="link.path"
+                        routerLinkActive="text-brand-gold"
+                        (click)="closeDesktopMenus()"
+                        class="block px-4 py-2.5 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors duration-300"
+                      >
+                        {{ link.label }}
+                      </a>
+                    }
+                  </div>
+                </div>
+              </div>
             }
           </div>
           </div>
@@ -152,14 +193,22 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           <!-- Auth + mobile toggle stay on the right -->
           <div class="flex items-center shrink-0 gap-2">
             @if (auth.isLoggedIn()) {
-              <div class="hidden lg:flex items-center gap-3">
-                <span class="text-brand-white/70 font-poppins text-sm max-w-[10rem] truncate">
+              <div class="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
+                @if (isAdmin()) {
+                  <a
+                    routerLink="/admin"
+                    class="hidden 2xl:inline text-brand-gold/80 font-poppins text-xs uppercase tracking-wider hover:text-brand-gold whitespace-nowrap"
+                  >
+                    Admin
+                  </a>
+                }
+                <span class="hidden 2xl:inline text-brand-white/70 font-poppins text-sm max-w-[8rem] truncate">
                   {{ auth.user()?.fullName }}
                 </span>
                 <button
                   type="button"
                   (click)="logout()"
-                  class="px-5 py-2.5 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-[15px] rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
+                  class="px-4 py-2 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-sm rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300 whitespace-nowrap"
                 >
                   Log Out
                 </button>
@@ -168,7 +217,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
               <button
                 type="button"
                 (click)="openAuthModal()"
-                class="hidden lg:inline-flex px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-[15px] rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105"
+                class="hidden xl:inline-flex px-5 py-2 bg-brand-gold text-brand-black font-poppins font-medium text-sm rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 whitespace-nowrap"
               >
                 Log In / Sign Up
               </button>
@@ -176,7 +225,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
 
           <!-- Mobile Menu Button -->
           <button
-            class="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center"
+            class="xl:hidden relative z-50 w-10 h-10 flex items-center justify-center shrink-0"
             (click)="toggleMenu()"
             [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
           >
@@ -203,7 +252,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
 
       <!-- Mobile Menu -->
       <div
-        class="fixed inset-0 bg-brand-black/98 backdrop-blur-xl z-40 lg:hidden flex flex-col items-center justify-center overflow-y-auto transition-all duration-500"
+        class="fixed inset-0 bg-brand-black/98 backdrop-blur-xl z-40 xl:hidden flex flex-col items-center justify-center overflow-y-auto transition-all duration-500"
         [class.opacity-100]="mobileMenuOpen()"
         [class.pointer-events-auto]="mobileMenuOpen()"
         [class.opacity-0]="!mobileMenuOpen()"
@@ -292,6 +341,9 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           }
           @if (auth.isLoggedIn()) {
             <p class="mt-4 text-brand-white/60 text-sm">{{ auth.user()?.fullName }}</p>
+            @if (isAdmin()) {
+              <a routerLink="/admin" class="text-sm text-brand-gold hover:text-brand-gold/80" (click)="closeMenu()">Admin panel</a>
+            }
             <button
               type="button"
               class="mt-3 px-8 py-3 border border-brand-gold text-brand-gold font-poppins font-semibold rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300"
@@ -358,7 +410,7 @@ export class NavbarComponent {
    * Which desktop dropdown is open. Per client requirement the About and
    * Services menus open on click rather than on hover.
    */
-  openMenu = signal<'about' | 'services' | null>(null);
+  openMenu = signal<'about' | 'services' | 'more' | null>(null);
 
   /** Sections of the About page surfaced in the About dropdown */
   readonly aboutSections = ABOUT_SECTIONS;
@@ -368,22 +420,29 @@ export class NavbarComponent {
 
   private lastScrollY = 0;
 
-  navLinks = [
+  readonly primaryNavLinks = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
     { path: '/services', label: 'Services' },
     { path: '/portfolio', label: 'Portfolio' },
-    // Not part of PDF requirement — nav entry commented out
-    // { path: '/collaborations', label: 'Collaborations' },
     { path: '/testimonials', label: 'Testimonials' },
-    // Added per client requirement — Business Queries link (points to contact page)
+  ];
+
+  readonly moreNavLinks = [
     { path: '/contact', label: 'Business Queries' },
-    // Added per client requirement — Film/TV Crew button placed before Careers (points to talent network)
     { path: '/talent-network', label: 'Film/TV Crew' },
-    // Mobile-app aligned Hire / Join hub
     { path: '/get-started', label: 'Get Started' },
     { path: '/join-network', label: 'Careers' },
   ];
+
+  /** Full list for mobile drawer */
+  get navLinks() {
+    return [...this.primaryNavLinks, ...this.moreNavLinks];
+  }
+
+  isAdmin(): boolean {
+    return (this.auth.user()?.roles ?? []).includes('Admin');
+  }
 
   authModalOpen = signal(false);
 
@@ -398,7 +457,7 @@ export class NavbarComponent {
   }
 
   /** Toggles a desktop dropdown; stops the click reaching the outside-click handler. */
-  toggleDesktopMenu(menu: 'about' | 'services', event: Event): void {
+  toggleDesktopMenu(menu: 'about' | 'services' | 'more', event: Event): void {
     event.stopPropagation();
     this.openMenu.update(current => (current === menu ? null : menu));
   }
