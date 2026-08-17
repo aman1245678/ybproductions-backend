@@ -35,8 +35,8 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
           </a>
 
           <!-- Desktop nav — centered between logo and auth -->
-          <div class="hidden lg:flex flex-1 items-center justify-center min-w-0 px-1 xl:px-3">
-            <div class="flex items-center gap-4 xl:gap-5 2xl:gap-6 min-w-0">
+          <div class="hidden lg:flex flex-1 items-center justify-center min-w-0 px-2 xl:px-4">
+            <div class="flex items-center justify-evenly w-full max-w-5xl gap-3 xl:gap-4 2xl:gap-5 min-w-0">
             @for (link of primaryNavLinks; track link.path) {
               @if (link.path === '/services') {
                 <div class="relative shrink-0">
@@ -45,7 +45,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('services', $event)"
                     [attr.aria-expanded]="openMenu() === 'services'"
                     aria-haspopup="true"
-                    class="text-[14px] xl:text-[15px] 2xl:text-[16px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
+                    class="text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
                     [class.text-brand-gold]="openMenu() === 'services'"
                   >
                     {{ link.label }}
@@ -78,7 +78,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                     (click)="toggleDesktopMenu('about', $event)"
                     [attr.aria-expanded]="openMenu() === 'about'"
                     aria-haspopup="true"
-                    class="text-[14px] xl:text-[15px] 2xl:text-[16px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
+                    class="text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
                     [class.text-brand-gold]="openMenu() === 'about'"
                   >
                     {{ link.label }}
@@ -109,7 +109,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
                   [routerLink]="link.path"
                   routerLinkActive="text-brand-gold"
                   [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-                  class="shrink-0 text-[14px] xl:text-[15px] 2xl:text-[16px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
+                  class="shrink-0 text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
                 >
                   {{ link.label }}
                   <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
@@ -121,7 +121,7 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
               <a
                 [routerLink]="link.path"
                 routerLinkActive="text-brand-gold"
-                class="shrink-0 text-[14px] xl:text-[15px] 2xl:text-[16px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
+                class="shrink-0 text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
               >
                 {{ link.label }}
                 <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
