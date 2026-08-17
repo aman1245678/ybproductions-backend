@@ -11,7 +11,7 @@ import { FormSubmissionService } from '../../../shared/services/form-submission.
 import { AuthService } from '../../../shared/services/auth.service';
 import { indianMobileValidator } from '../../../shared/validators/form.validators';
 import { EmailOtpComponent } from '../../../shared/components/email-otp/email-otp.component';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-join-network',

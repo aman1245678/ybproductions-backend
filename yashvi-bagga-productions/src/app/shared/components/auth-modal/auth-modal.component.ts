@@ -14,7 +14,7 @@ import { indianMobileValidator } from '../../validators/form.validators';
 import { AuthService } from '../../services/auth.service';
 import { FormSubmissionService } from '../../services/form-submission.service';
 import { EmailOtpComponent } from '../email-otp/email-otp.component';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { switchMap } from 'rxjs';
 
 type AuthTab = 'login' | 'signup';
