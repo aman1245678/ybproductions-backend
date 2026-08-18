@@ -56,7 +56,7 @@ import { IndustriesComponent } from './sections/industries.component';
           >
             <app-magnetic-button>
               <a
-                routerLink="/services"
+                routerLink="/get-started"
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-7 py-3.5 font-poppins text-sm font-semibold text-brand-black transition-colors duration-300 hover:bg-brand-white"
               >
                 Explore Services
@@ -64,7 +64,7 @@ import { IndustriesComponent } from './sections/industries.component';
             </app-magnetic-button>
             <app-magnetic-button>
               <a
-                routerLink="/talent-network"
+                routerLink="/get-featured"
                 class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-white/25 px-7 py-3.5 font-poppins text-sm font-medium text-brand-white transition-colors duration-300 hover:border-brand-gold hover:text-brand-gold"
               >
                 Get Featured

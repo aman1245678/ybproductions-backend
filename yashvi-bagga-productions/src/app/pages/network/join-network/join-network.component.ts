@@ -179,7 +179,7 @@ import { environment } from '../../../../environments/environment';
 
     <section class="section-padding bg-brand-black relative overflow-hidden">
       <div class="relative max-w-4xl mx-auto px-6">
-        <p class="text-brand-gold font-poppins text-xs tracking-[0.28em] uppercase mb-4" appScrollAnimation animationType="fade-up">About careers with us</p>
+        <p class="text-brand-gold font-poppins text-xs tracking-[0.28em] uppercase mb-4" appScrollAnimation animationType="fade-up">Life at Yashvi Bagga Productions</p>
         <div class="space-y-5 text-brand-white/65 font-poppins text-sm leading-7" appScrollAnimation animationType="fade-up">
           <p>At Yashvi Bagga Productions, we believe that exceptional organizations are built by exceptional people. Our success is driven by passionate professionals, creative thinkers, skilled specialists, and dedicated individuals who share our commitment to excellence, innovation, and integrity.</p>
           <p>As a multidisciplinary organization working across media, entertainment, digital marketing, branding, professional training, event management, talent acquisition, and creative communications, we are always interested in connecting with talented individuals who are eager to learn, grow, and contribute to meaningful projects.</p>

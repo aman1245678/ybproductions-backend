@@ -374,6 +374,17 @@ export const INTAKE_FORMS: Record<string, IntakeFormDef> = {
       {
         title: 'Portfolio & Preferences',
         fields: [
+          {
+            key: 'resume',
+            label: 'Upload Resume / Portfolio (PDF or DOCX)',
+            type: 'file',
+            fullWidth: true,
+            required: true,
+            accept: ['pdf', 'docx'],
+            maxSizeMb: 10,
+            purpose: 'resume',
+            multiple: false,
+          },
           { key: 'behance', label: 'Behance / Dribbble', type: 'text' },
           { key: 'instagram', label: 'Instagram Professional', type: 'text' },
           { key: 'youtube', label: 'YouTube / Vimeo', type: 'text' },
@@ -420,6 +431,17 @@ export const INTAKE_FORMS: Record<string, IntakeFormDef> = {
       {
         title: 'Projects & Preferences',
         fields: [
+          {
+            key: 'resume',
+            label: 'Upload Resume (PDF or DOCX)',
+            type: 'file',
+            fullWidth: true,
+            required: true,
+            accept: ['pdf', 'docx'],
+            maxSizeMb: 10,
+            purpose: 'resume',
+            multiple: false,
+          },
           { key: 'projectSummary', label: 'Important projects (name, tech, your role)', type: 'textarea', fullWidth: true, required: true },
           { key: 'interestedIn', label: 'Interested In', type: 'chips', fullWidth: true, options: ['Full-Time', 'Part-Time', 'Freelance', 'Contract', 'Internship', 'Remote', 'Hybrid', 'Office-Based'] },
           { key: 'availability', label: 'Joining Availability', type: 'select', options: ['Immediate', 'Within 15 Days', 'Within 30 Days', 'More Than 30 Days'] },
@@ -466,6 +488,17 @@ export const INTAKE_FORMS: Record<string, IntakeFormDef> = {
       {
         title: 'Preferences & Submit',
         fields: [
+          {
+            key: 'resume',
+            label: 'Upload Resume (PDF or DOCX)',
+            type: 'file',
+            fullWidth: true,
+            required: true,
+            accept: ['pdf', 'docx'],
+            maxSizeMb: 10,
+            purpose: 'resume',
+            multiple: false,
+          },
           { key: 'workMode', label: 'Preferred Work Mode', type: 'chips', fullWidth: true, options: ['Office Based', 'Hybrid', 'Remote'] },
           { key: 'relocate', label: 'Willing to Relocate?', type: 'select', options: ['Yes', 'No'] },
           { key: 'availability', label: 'Joining Availability', type: 'select', options: ['Immediate', 'Within 15 Days', 'Within 30 Days', 'More Than 30 Days'] },

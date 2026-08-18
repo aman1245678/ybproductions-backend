@@ -87,60 +87,6 @@ import { SeoService } from '../../core/services/seo.service';
         </div>
       </div>
     </section>
-
-    <!-- CASE STUDIES -->
-    <section class="section-padding bg-brand-dark relative overflow-hidden">
-      <div class="relative max-w-7xl mx-auto">
-        <app-section-header
-          subtitle="Case Studies"
-          title="Transformations"
-          description="Real results from real campaigns. See how we've helped brands achieve their goals."
-          [titleGradient]="true"
-          appScrollAnimation
-          animationType="fade-up"
-        />
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          @for (study of caseStudies; track study.title; let i = $index) {
-            <div
-              class="glass-card overflow-hidden group hover:border-brand-gold/20 transition-all duration-500"
-              appScrollAnimation
-              animationType="fade-up"
-              [animationDelay]="i * 150"
-            >
-              <!-- Image area -->
-              <div class="h-48 relative">
-                <div class="absolute inset-0" [style.background]="study.gradient"></div>
-                <div class="absolute inset-0 bg-brand-black/20"></div>
-                <div class="absolute top-4 left-4">
-                  <span class="px-3 py-1 bg-brand-gold/20 backdrop-blur-sm text-brand-gold text-xs font-poppins rounded-full">
-                    {{ study.category }}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Content -->
-              <div class="p-8">
-                <h3 class="text-xl font-playfair text-brand-white mb-3 group-hover:text-brand-gold transition-colors">
-                  {{ study.title }}
-                </h3>
-                <p class="text-brand-white/50 font-poppins text-sm mb-6">{{ study.description }}</p>
-
-                <!-- Results -->
-                <div class="grid grid-cols-3 gap-4">
-                  @for (result of study.results; track result.label) {
-                    <div class="text-center">
-                      <div class="text-brand-gold font-playfair font-bold text-lg">{{ result.value }}</div>
-                      <div class="text-brand-white/40 font-poppins text-[10px] uppercase">{{ result.label }}</div>
-                    </div>
-                  }
-                </div>
-              </div>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
   `,
   styles: [`
     :host { display: block; }
@@ -165,31 +111,6 @@ export class PortfolioComponent implements OnInit {
     { title: 'Influencer Collaboration', category: 'Reels', type: 'reel', ratio: '9/16', description: 'Creator-led campaigns across Instagram & YouTube', gradient: 'linear-gradient(45deg, #D4AF37 0%, #FF2E88 100%)' },
     { title: 'Manpower & Workforce', category: 'Branding', type: 'image', ratio: '4/3', description: 'Large-scale staffing & outsourced workforce deployments', gradient: 'linear-gradient(180deg, #1A1A1A 0%, #FF2E88 100%)' },
     { title: 'IT Solutions Launch', category: 'Campaigns', type: 'image', ratio: '3/2', description: 'Web, app & digital platform rollouts', gradient: 'linear-gradient(135deg, #D4AF37 0%, #FF2E88 50%, #1A1A1A 100%)' },
-  ];
-
-  caseStudies = [
-    {
-      title: 'Pan-India Training Programme',
-      category: 'Government & PSUs',
-      description: 'Executive development and vocational training delivered across multiple states with certified trainers and structured learning outcomes.',
-      gradient: 'linear-gradient(135deg, #D4AF37 0%, #1A1A1A 100%)',
-      results: [
-        { value: '15+', label: 'States' },
-        { value: '200+', label: 'Sessions' },
-        { value: '98%', label: 'Satisfaction' },
-      ],
-    },
-    {
-      title: 'Digital Brand Transformation',
-      category: 'Corporate',
-      description: 'Integrated social media, content production, and influencer strategy for a multi-city brand expansion.',
-      gradient: 'linear-gradient(135deg, #FF2E88 0%, #1A1A1A 100%)',
-      results: [
-        { value: '3x', label: 'Engagement' },
-        { value: '50+', label: 'Creatives' },
-        { value: '12M', label: 'Reach' },
-      ],
-    },
   ];
 
   filteredProjects = signal(this.projects);

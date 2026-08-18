@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, PLATFORM_ID, inject, signal } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,8 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
   standalone: true,
   imports: [CommonModule, RouterLink, ScrollAnimationDirective, SectionHeaderComponent, FoundationNoteCardComponent],
   template: `
-    <!-- ============================= HERO ============================= -->
+    <!-- Overview hero -->
+    @if (isOverview()) {
     <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0 bg-brand-black">
         <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-brand-gold/10 rounded-full blur-[120px]"></div>
@@ -33,9 +34,7 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         <div class="mt-12 flex flex-wrap justify-center gap-3 animate-slide-up" style="animation-delay: 0.5s;">
           @for (section of aboutSections; track section.fragment) {
             <a
-              routerLink="/about"
-              [fragment]="section.fragment"
-              (click)="scrollToSection(section.fragment)"
+              [routerLink]="['/about', section.fragment]"
               class="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-card text-brand-white/70 font-poppins text-sm hover:border-brand-gold/30 hover:text-brand-gold transition-all duration-300"
             >
               <span class="text-base">{{ section.icon }}</span>
@@ -45,8 +44,14 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         </div>
       </div>
     </section>
+    }
 
-    <!-- ======================== THE FOUNDER ======================== -->
+    <!-- THE FOUNDER (standalone page) -->
+    @if (showSection('the-founder')) {
+    <section class="relative pt-32 pb-8 bg-brand-black text-center px-6">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em]">About</span>
+      <h1 class="heading-lg text-brand-white mt-2">The Founder</h1>
+    </section>
     <section id="the-founder" class="section-padding bg-brand-black relative scroll-mt-28">
       <div class="absolute top-0 right-0 w-96 h-96 bg-brand-pink/5 rounded-full blur-[120px]"></div>
       <div class="relative max-w-7xl mx-auto">
@@ -104,8 +109,14 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         </div>
       </div>
     </section>
+    }
 
-    <!-- ===================== THE BRAND — INTRO ===================== -->
+    <!-- THE BRAND (standalone page) -->
+    @if (showSection('the-brand')) {
+    <section class="relative pt-32 pb-8 bg-brand-black text-center px-6">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em]">About</span>
+      <h1 class="heading-lg text-brand-white mt-2">The Brand</h1>
+    </section>
     <section id="the-brand" class="section-padding bg-brand-black relative scroll-mt-28">
       <div class="max-w-7xl mx-auto">
         <app-section-header
@@ -257,8 +268,14 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         </div>
       </div>
     </section>
+    }
 
-    <!-- ========================= THE TEAM ========================= -->
+    <!-- THE TEAM (standalone page) -->
+    @if (showSection('the-team')) {
+    <section class="relative pt-32 pb-8 bg-brand-dark text-center px-6">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em]">About</span>
+      <h1 class="heading-lg text-brand-white mt-2">The Team</h1>
+    </section>
     <section id="the-team" class="section-padding bg-brand-dark relative scroll-mt-28">
       <div class="relative max-w-7xl mx-auto">
         <app-section-header
@@ -309,8 +326,13 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         </div>
       </div>
     </section>
+    }
 
-    <!-- ======================== OUR NETWORK ======================== -->
+    @if (showSection('our-network')) {
+    <section class="relative pt-32 pb-8 bg-brand-black text-center px-6">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em]">About</span>
+      <h1 class="heading-lg text-brand-white mt-2">Our Network</h1>
+    </section>
     <section id="our-network" class="section-padding bg-brand-black relative overflow-hidden scroll-mt-28">
       <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-gold/8 rounded-full blur-[130px]"></div>
       <div class="relative max-w-7xl mx-auto">
@@ -431,6 +453,7 @@ import { ABOUT_SECTIONS } from '../../shared/models/about-sections.model';
         </div>
       </div>
     </section>
+    }
   `,
   styles: [`:host { display: block; }`],
 })
@@ -442,6 +465,17 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   /** The four About sections — also drives the navbar "About" dropdown */
   readonly aboutSections = ABOUT_SECTIONS;
+
+  /** null = overview (/about); otherwise a single section slug */
+  viewSection = signal<string | null>(null);
+
+  isOverview(): boolean {
+    return this.viewSection() === null;
+  }
+
+  showSection(id: string): boolean {
+    return this.viewSection() === id;
+  }
 
   /** THE FOUNDER — signature values */
   founderValues = [
@@ -545,6 +579,15 @@ export class AboutComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const section = params.get('section');
+      if (section && ABOUT_SECTIONS.some((s) => s.fragment === section)) {
+        this.viewSection.set(section);
+      } else {
+        this.viewSection.set(null);
+      }
+    });
+
     this.seoService.updateMetaTags({
       title: 'About Us | Yashvi Bagga Productions',
       description: 'Discover the founder, the brand, the team, and the Pan-India network behind Yashvi Bagga Productions — a multidisciplinary creative, media, branding, and training organization.',

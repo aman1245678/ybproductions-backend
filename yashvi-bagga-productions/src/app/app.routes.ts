@@ -7,6 +7,11 @@ export const routes: Routes = [
     data: { animation: 'home' },
   },
   {
+    path: 'about/:section',
+    loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
+    data: { animation: 'about' },
+  },
+  {
     path: 'about',
     loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
     data: { animation: 'about' },
@@ -65,6 +70,11 @@ export const routes: Routes = [
     path: 'vocational-training',
     loadComponent: () => import('./pages/services/vocational-training/vocational-training.component').then(m => m.VocationalTrainingComponent),
     data: { animation: 'vocational-training' },
+  },
+  {
+    path: 'get-featured',
+    loadComponent: () => import('./pages/flow/get-featured.component').then(m => m.GetFeaturedComponent),
+    data: { animation: 'get-featured' },
   },
   {
     path: 'get-started',

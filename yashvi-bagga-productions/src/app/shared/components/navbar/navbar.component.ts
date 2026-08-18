@@ -5,7 +5,6 @@ import { ScrollService } from '../../../core/services/scroll.service';
 import { AuthModalComponent } from '../auth-modal/auth-modal.component';
 import { AuthService } from '../../services/auth.service';
 import { ABOUT_SECTIONS } from '../../models/about-sections.model';
-import { SERVICE_LINKS } from '../../models/service-links.model';
 
 @Component({
   selector: 'app-navbar',
@@ -17,163 +16,118 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
       [class.nav-scrolled]="scrollService.isScrolled()"
       [class.nav-hidden]="isNavHidden()"
     >
-      <div class="w-full pl-6 sm:pl-8 lg:pl-12 pr-4 sm:pr-5 lg:pr-6">
-        <div class="flex items-center justify-between h-[4.5rem] gap-3 lg:gap-5">
-          <!-- Logo -->
-          <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-2.5 sm:gap-3 group" (click)="closeMenu()">
-            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-white p-[3px] flex items-center justify-center shrink-0">
+      <div class="w-full pl-4 sm:pl-6 lg:pl-8 pr-4 sm:pr-5 lg:pr-6">
+        <!-- Row 1: compact logo + auth -->
+        <div class="flex items-center justify-between h-12 lg:h-14 gap-3">
+          <a routerLink="/" class="relative z-50 flex shrink-0 items-center gap-2 group" (click)="closeMenu()">
+            <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-md bg-white p-[2px] flex items-center justify-center shrink-0">
               <img src="/LogoYB.png" alt="Yashvi Bagga Productions logo" class="w-full h-full object-contain" />
             </div>
-            <div class="hidden sm:block leading-tight">
-              <span class="text-brand-white font-playfair text-lg sm:text-xl font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
+            <div class="hidden sm:block leading-none">
+              <span class="text-brand-white font-playfair text-sm sm:text-base font-semibold tracking-wide group-hover:text-brand-gold transition-colors duration-300">
                 YASHVI BAGGA
               </span>
-              <span class="block text-[10px] sm:text-[11px] uppercase tracking-[2px] sm:tracking-[3px] text-brand-gold/80 font-poppins">
+              <span class="block text-[9px] sm:text-[10px] uppercase tracking-[2px] text-brand-gold/80 font-poppins mt-0.5">
                 Productions
               </span>
             </div>
           </a>
 
-          <!-- Desktop nav — centered between logo and auth -->
-          <div class="hidden lg:flex flex-1 items-center justify-center min-w-0 px-2 xl:px-4">
-            <div class="flex items-center justify-evenly w-full max-w-5xl gap-3 xl:gap-4 2xl:gap-5 min-w-0">
-            @for (link of primaryNavLinks; track link.path) {
-              @if (link.path === '/services') {
-                <div class="relative shrink-0">
-                  <button
-                    type="button"
-                    (click)="toggleDesktopMenu('services', $event)"
-                    [attr.aria-expanded]="openMenu() === 'services'"
-                    aria-haspopup="true"
-                    class="text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
-                    [class.text-brand-gold]="openMenu() === 'services'"
-                  >
-                    {{ link.label }}
-                  </button>
-                  <div
-                    class="absolute right-0 top-full pt-3 w-64 z-50 transition-all duration-300"
-                    [class.opacity-100]="openMenu() === 'services'"
-                    [class.visible]="openMenu() === 'services'"
-                    [class.pointer-events-auto]="openMenu() === 'services'"
-                    [class.translate-y-0]="openMenu() === 'services'"
-                    [class.opacity-0]="openMenu() !== 'services'"
-                    [class.invisible]="openMenu() !== 'services'"
-                    [class.pointer-events-none]="openMenu() !== 'services'"
-                    [class.translate-y-2]="openMenu() !== 'services'"
-                    (click)="$event.stopPropagation()"
-                  >
-                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
-                      <a routerLink="/services" (click)="closeDesktopMenus()" class="block px-4 py-2.5 text-xs uppercase tracking-[0.2em] text-brand-gold/80 hover:text-brand-gold transition-colors duration-300">Overview</a>
-                      <div class="my-1 border-t border-brand-white/10"></div>
-                      @for (service of serviceLinks; track service.slug) {
-                        <a [routerLink]="service.link" (click)="closeDesktopMenus()" class="block px-4 py-2.5 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors duration-300">{{ service.label }}</a>
-                      }
-                    </div>
-                  </div>
-                </div>
-              } @else if (link.path === '/about') {
-                <div class="relative shrink-0">
-                  <button
-                    type="button"
-                    (click)="toggleDesktopMenu('about', $event)"
-                    [attr.aria-expanded]="openMenu() === 'about'"
-                    aria-haspopup="true"
-                    class="text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 whitespace-nowrap"
-                    [class.text-brand-gold]="openMenu() === 'about'"
-                  >
-                    {{ link.label }}
-                  </button>
-                  <div
-                    class="absolute left-0 top-full pt-3 w-56 z-50 transition-all duration-300"
-                    [class.opacity-100]="openMenu() === 'about'"
-                    [class.visible]="openMenu() === 'about'"
-                    [class.pointer-events-auto]="openMenu() === 'about'"
-                    [class.translate-y-0]="openMenu() === 'about'"
-                    [class.opacity-0]="openMenu() !== 'about'"
-                    [class.invisible]="openMenu() !== 'about'"
-                    [class.pointer-events-none]="openMenu() !== 'about'"
-                    [class.translate-y-2]="openMenu() !== 'about'"
-                    (click)="$event.stopPropagation()"
-                  >
-                    <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
-                      <a routerLink="/about" (click)="closeDesktopMenus()" class="block px-4 py-2.5 text-xs uppercase tracking-[0.2em] text-brand-gold/80 hover:text-brand-gold transition-colors duration-300">Overview</a>
-                      <div class="my-1 border-t border-brand-white/10"></div>
-                      @for (section of aboutSections; track section.fragment) {
-                        <a routerLink="/about" [fragment]="section.fragment" (click)="closeDesktopMenus()" class="block px-4 py-2.5 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors duration-300">{{ section.label }}</a>
-                      }
-                    </div>
-                  </div>
-                </div>
-              } @else {
-                <a
-                  [routerLink]="link.path"
-                  routerLinkActive="text-brand-gold"
-                  [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-                  class="shrink-0 text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
+          <div class="flex items-center shrink-0 gap-2">
+            @if (auth.isLoggedIn()) {
+              <div class="hidden lg:flex flex-col items-end gap-1.5 shrink-0">
+                @if (isAdmin()) {
+                  <a routerLink="/admin" class="text-brand-gold/80 font-poppins text-[10px] uppercase tracking-wider hover:text-brand-gold">Admin</a>
+                }
+                <span class="hidden xl:inline text-brand-white/70 font-poppins text-xs max-w-[7rem] truncate">{{ auth.user()?.fullName }}</span>
+                <button type="button" (click)="logout()" class="px-4 py-1.5 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-xs rounded-full hover:bg-brand-gold hover:text-brand-black transition-all whitespace-nowrap">Log Out</button>
+              </div>
+            } @else {
+              <div class="hidden lg:flex flex-col items-stretch gap-1.5 min-w-[9.5rem]">
+                <button
+                  type="button"
+                  (click)="openAuthModal()"
+                  class="px-4 py-2 bg-brand-gold text-brand-black font-poppins font-medium text-xs rounded-full hover:bg-brand-white transition-all whitespace-nowrap text-center"
                 >
-                  {{ link.label }}
-                  <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
+                  Log In / Sign Up
+                </button>
+                <a
+                  routerLink="/get-started"
+                  class="px-4 py-2 bg-brand-pink text-white font-poppins font-medium text-xs rounded-full hover:bg-brand-gold hover:text-brand-black transition-all whitespace-nowrap text-center"
+                >
+                  Get Started
                 </a>
-              }
+              </div>
             }
 
-            @for (link of moreNavLinks; track link.path) {
+            <button
+              class="lg:hidden relative z-50 w-9 h-9 flex items-center justify-center shrink-0"
+              (click)="toggleMenu()"
+              [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
+            >
+              <div class="flex flex-col gap-1.5 w-6">
+                <span class="w-full h-[2px] bg-brand-white transition-all duration-300" [class.rotate-45]="mobileMenuOpen()" [class.translate-y-2]="mobileMenuOpen()"></span>
+                <span class="w-full h-[2px] bg-brand-gold transition-all duration-300" [class.opacity-0]="mobileMenuOpen()"></span>
+                <span class="w-full h-[2px] bg-brand-white transition-all duration-300" [class.-rotate-45]="mobileMenuOpen()" [class.-translate-y-2]="mobileMenuOpen()"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Row 2: desktop nav links -->
+        <div class="hidden lg:flex items-center justify-center flex-wrap gap-x-4 xl:gap-x-5 gap-y-1 pb-2.5 pt-0.5 border-t border-brand-white/5">
+          @for (link of primaryNavLinks; track link.path) {
+            @if (link.path === '/about') {
+              <div class="relative shrink-0">
+                <button
+                  type="button"
+                  (click)="toggleDesktopMenu('about', $event)"
+                  [attr.aria-expanded]="openMenu() === 'about'"
+                  class="text-sm xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all whitespace-nowrap"
+                  [class.text-brand-gold]="openMenu() === 'about'"
+                >
+                  About
+                </button>
+                <div
+                  class="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-52 z-50 transition-all duration-300"
+                  [class.opacity-100]="openMenu() === 'about'"
+                  [class.visible]="openMenu() === 'about'"
+                  [class.pointer-events-auto]="openMenu() === 'about'"
+                  [class.opacity-0]="openMenu() !== 'about'"
+                  [class.invisible]="openMenu() !== 'about'"
+                  [class.pointer-events-none]="openMenu() !== 'about'"
+                  (click)="$event.stopPropagation()"
+                >
+                  <div class="bg-brand-dark/95 backdrop-blur-xl border border-brand-gold/20 rounded-xl shadow-2xl py-2">
+                    <a routerLink="/about" (click)="closeDesktopMenus()" class="block px-4 py-2 text-xs uppercase tracking-[0.2em] text-brand-gold/80 hover:text-brand-gold">Overview</a>
+                    <div class="my-1 border-t border-brand-white/10"></div>
+                    @for (section of aboutSections; track section.fragment) {
+                      <a [routerLink]="['/about', section.fragment]" (click)="closeDesktopMenus()" class="block px-4 py-2 text-sm font-poppins text-brand-white/85 hover:bg-brand-gold/10 hover:text-brand-gold">{{ section.label }}</a>
+                    }
+                  </div>
+                </div>
+              </div>
+            } @else {
               <a
                 [routerLink]="link.path"
                 routerLinkActive="text-brand-gold"
-                class="shrink-0 text-[15px] xl:text-[16px] 2xl:text-[17px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all duration-300 relative group whitespace-nowrap"
+                [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+                class="shrink-0 text-sm xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all relative group whitespace-nowrap"
               >
                 {{ link.label }}
                 <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
               </a>
             }
-            </div>
-          </div>
-
-          <!-- Auth + mobile/tablet toggle -->
-          <div class="flex items-center shrink-0 gap-2">
-            @if (auth.isLoggedIn()) {
-              <div class="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
-                @if (isAdmin()) {
-                  <a routerLink="/admin" class="text-brand-gold/80 font-poppins text-xs uppercase tracking-wider hover:text-brand-gold whitespace-nowrap">Admin</a>
-                }
-                <span class="hidden xl:inline text-brand-white/70 font-poppins text-sm max-w-[8rem] truncate">{{ auth.user()?.fullName }}</span>
-                <button type="button" (click)="logout()" class="px-4 xl:px-5 py-2 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-sm rounded-full hover:bg-brand-gold hover:text-brand-black transition-all duration-300 whitespace-nowrap">Log Out</button>
-              </div>
-            } @else {
-              <button
-                type="button"
-                (click)="openAuthModal()"
-                class="hidden lg:inline-flex px-4 xl:px-6 py-2.5 bg-brand-gold text-brand-black font-poppins font-medium text-[15px] rounded-full hover:bg-brand-pink hover:text-white transition-all duration-300 hover:scale-105 whitespace-nowrap"
-              >
-                Log In / Sign Up
-              </button>
-            }
-
-          <!-- Mobile + tablet menu button -->
-          <button
-            class="lg:hidden relative z-50 w-9 h-9 md:w-10 md:h-10 flex items-center justify-center shrink-0"
-            (click)="toggleMenu()"
-            [attr.aria-label]="mobileMenuOpen() ? 'Close menu' : 'Open menu'"
-          >
-            <div class="flex flex-col gap-1.5 w-6">
-              <span
-                class="w-full h-[2px] bg-brand-white transition-all duration-300"
-                [class.rotate-45]="mobileMenuOpen()"
-                [class.translate-y-2]="mobileMenuOpen()"
-              ></span>
-              <span
-                class="w-full h-[2px] bg-brand-gold transition-all duration-300"
-                [class.opacity-0]="mobileMenuOpen()"
-              ></span>
-              <span
-                class="w-full h-[2px] bg-brand-white transition-all duration-300"
-                [class.-rotate-45]="mobileMenuOpen()"
-                [class.-translate-y-2]="mobileMenuOpen()"
-              ></span>
-            </div>
-          </button>
-          </div>
+          }
+          @for (link of moreNavLinks; track link.path) {
+            <a
+              [routerLink]="link.path"
+              routerLinkActive="text-brand-gold"
+              class="shrink-0 text-sm xl:text-[15px] font-poppins font-medium text-brand-white/90 hover:text-brand-gold transition-all relative group whitespace-nowrap"
+            >
+              {{ link.label }}
+            </a>
+          }
         </div>
       </div>
 
@@ -188,42 +142,14 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
         <div class="w-full max-w-lg mx-auto px-5 pt-20 pb-8 md:pt-24 md:px-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-2">
           @for (link of navLinks; track link.path) {
-            @if (link.path === '/services') {
+            @if (link.path === '/about') {
               <div class="col-span-1 md:col-span-2 flex flex-col gap-2 py-1">
-                <button
-                  class="text-left text-lg md:text-xl font-playfair text-brand-white hover:text-brand-gold transition-colors py-2"
-                  (click)="toggleMobileServices()"
-                >
-                  {{ link.label }}
-                </button>
-                @if (mobileServicesOpen()) {
-                  <div class="pl-3 border-l border-brand-gold/20 space-y-2 pb-2">
-                    <a routerLink="/services" class="block text-sm text-brand-white/70 hover:text-brand-gold py-1" (click)="closeMenu()">View All Services</a>
-                    @for (service of serviceLinks; track service.slug) {
-                      <a [routerLink]="service.link" class="block text-sm text-brand-white/60 hover:text-brand-gold py-1" (click)="closeMenu()">{{ service.label }}</a>
-                    }
-                    <div class="pt-2 space-y-1 border-t border-brand-white/10">
-                      <a routerLink="/casting-application" class="block text-xs text-brand-white/50 hover:text-brand-gold py-1" (click)="closeMenu()">Casting Application</a>
-                      <a routerLink="/media-professional" class="block text-xs text-brand-white/50 hover:text-brand-gold py-1" (click)="closeMenu()">Media Professional</a>
-                      <a routerLink="/manpower-requirement" class="block text-xs text-brand-white/50 hover:text-brand-gold py-1" (click)="closeMenu()">Manpower Requirement</a>
-                      <a routerLink="/join-network" class="block text-xs text-brand-white/50 hover:text-brand-gold py-1" (click)="closeMenu()">Join Network</a>
-                    </div>
-                  </div>
-                }
-              </div>
-            } @else if (link.path === '/about') {
-              <div class="col-span-1 md:col-span-2 flex flex-col gap-2 py-1">
-                <button
-                  class="text-left text-lg md:text-xl font-playfair text-brand-white hover:text-brand-gold transition-colors py-2"
-                  (click)="toggleMobileAbout()"
-                >
-                  {{ link.label }}
-                </button>
+                <button class="text-left text-lg font-playfair text-brand-white hover:text-brand-gold py-2" (click)="toggleMobileAbout()">About</button>
                 @if (mobileAboutOpen()) {
                   <div class="pl-3 border-l border-brand-gold/20 space-y-2 pb-2">
-                    <a routerLink="/about" class="block text-sm text-brand-white/70 hover:text-brand-gold py-1" (click)="closeMenu()">About Overview</a>
+                    <a routerLink="/about" class="block text-sm text-brand-white/70 hover:text-brand-gold py-1" (click)="closeMenu()">Overview</a>
                     @for (section of aboutSections; track section.fragment) {
-                      <a routerLink="/about" [fragment]="section.fragment" class="block text-sm text-brand-white/60 hover:text-brand-gold py-1" (click)="closeMenu()">{{ section.label }}</a>
+                      <a [routerLink]="['/about', section.fragment]" class="block text-sm text-brand-white/60 hover:text-brand-gold py-1" (click)="closeMenu()">{{ section.label }}</a>
                     }
                   </div>
                 }
@@ -262,6 +188,13 @@ import { SERVICE_LINKS } from '../../models/service-links.model';
             >
               Log In / Sign Up
             </button>
+            <a
+              routerLink="/get-started"
+              class="w-full md:w-auto md:mx-auto px-6 py-2.5 bg-brand-pink text-white font-poppins font-medium text-sm rounded-full hover:bg-brand-gold hover:text-brand-black transition-all text-center"
+              (click)="closeMenu()"
+            >
+              Get Started
+            </a>
           }
 
           <div class="flex justify-center gap-5 mt-4">
@@ -313,13 +246,13 @@ export class NavbarComponent {
    * Which desktop dropdown is open. Per client requirement the About and
    * Services menus open on click rather than on hover.
    */
-  openMenu = signal<'about' | 'services' | null>(null);
+  openMenu = signal<'about' | null>(null);
 
   /** Sections of the About page surfaced in the About dropdown */
   readonly aboutSections = ABOUT_SECTIONS;
 
   /** The eight services surfaced in the Services dropdown */
-  readonly serviceLinks = SERVICE_LINKS;
+  // serviceLinks removed — Services is a direct link
 
   private lastScrollY = 0;
 
@@ -329,7 +262,6 @@ export class NavbarComponent {
     { path: '/services', label: 'Services' },
     { path: '/portfolio', label: 'Portfolio' },
     { path: '/testimonials', label: 'Testimonials' },
-    { path: '/get-started', label: 'Get Started' },
     { path: '/join-network', label: 'Careers' },
   ];
 
@@ -360,7 +292,7 @@ export class NavbarComponent {
   }
 
   /** Toggles a desktop dropdown; stops the click reaching the outside-click handler. */
-  toggleDesktopMenu(menu: 'about' | 'services', event: Event): void {
+  toggleDesktopMenu(menu: 'about', event: Event): void {
     event.stopPropagation();
     this.openMenu.update(current => (current === menu ? null : menu));
   }
