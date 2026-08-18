@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AdminApplication, AdminService } from '../../shared/services/admin.service';
 import { ToastService } from '../../shared/services/toast.service';
 import { ApplicationDrawerComponent } from './application-drawer.component';
-import { APPLICATION_STATUSES, initials, statusChip, statusLabel } from './admin-ui';
+import { APPLICATION_STATUSES, initials, statusChip, statusLabel, applicationDisplayTitle } from './admin-ui';
 
 /** Filterable submissions table — the main CRM pipeline view. */
 @Component({
@@ -89,7 +89,7 @@ import { APPLICATION_STATUSES, initials, statusChip, statusLabel } from './admin
                       </div>
                     </td>
                     <td class="px-5 py-4">
-                      <span class="text-brand-white/80">{{ row.title }}</span>
+                      <span class="text-brand-white/80">{{ displayTitle(row) }}</span>
                       <span class="mt-0.5 block text-[11px] text-brand-white/35">{{ row.userKind }}</span>
                     </td>
                     <td class="px-5 py-4 text-xs text-brand-white/50">{{ row.source }}</td>
@@ -154,6 +154,7 @@ import { APPLICATION_STATUSES, initials, statusChip, statusLabel } from './admin
 export class AdminApplicationsComponent {
   readonly formType = input<string>('');
   readonly userKind = input<string>('');
+  readonly payloadIntent = input<string>('');
   readonly reloadToken = input<number>(0);
   readonly changed = output<void>();
 
@@ -173,7 +174,11 @@ export class AdminApplicationsComponent {
   readonly selected = signal<AdminApplication | null>(null);
   search = '';
 
-  readonly scope = computed(() => ({ formType: this.formType(), userKind: this.userKind() }));
+  readonly scope = computed(() => ({
+    formType: this.formType(),
+    userKind: this.userKind(),
+    payloadIntent: this.payloadIntent(),
+  }));
 
   constructor() {
     effect(() => {
@@ -190,6 +195,7 @@ export class AdminApplicationsComponent {
   chip = statusChip;
   label = statusLabel;
   avatar = initials;
+  displayTitle = applicationDisplayTitle;
 
   setStatus(status: string): void {
     this.filterStatus.set(status);
@@ -225,6 +231,7 @@ export class AdminApplicationsComponent {
         status: this.filterStatus(),
         formType: this.formType(),
         userKind: this.userKind(),
+        payloadIntent: this.payloadIntent(),
         q: this.search,
       })
       .subscribe({

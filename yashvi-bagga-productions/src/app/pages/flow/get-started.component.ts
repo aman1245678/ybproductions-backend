@@ -1,14 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { ScrollAnimationDirective } from '../../shared/directives/scroll-animation.directive';
-import { SeoService } from '../../core/services/seo.service';
+import { Router } from '@angular/router';import { SeoService } from '../../core/services/seo.service';
 import { HIRE_OPTIONS, JOIN_OPTIONS, FlowOption } from '../../shared/models/flow-categories.model';
 
 @Component({
   selector: 'app-get-started',
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective],
+  imports: [CommonModule],
   template: `
     <section class="relative overflow-hidden bg-brand-black pt-32 pb-12">
       <div class="absolute top-20 right-10 h-64 w-64 rounded-full bg-brand-gold/10 blur-[100px]"></div>

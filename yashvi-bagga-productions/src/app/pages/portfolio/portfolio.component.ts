@@ -1,13 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScrollAnimationDirective } from '../../shared/directives/scroll-animation.directive';
-import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
 import { SeoService } from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective, SectionHeaderComponent],
+  imports: [CommonModule, ScrollAnimationDirective],
   template: `
     <!-- HERO -->
     <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">

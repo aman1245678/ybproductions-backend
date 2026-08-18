@@ -46,6 +46,11 @@ const USER_STATUS_CLASSES: Record<string, string> = {
   Deactivated: 'bg-white/5 text-brand-white/50 ring-white/10',
 };
 
+export function applicationDisplayTitle(app: { title: string; payload?: Record<string, unknown> | null }): string {
+  if (app.payload?.['intent'] === 'get-featured') return 'Get Featured';
+  return app.title;
+}
+
 export function statusLabel(status: string): string {
   return STATUS_LABELS[status] || status;
 }

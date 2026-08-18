@@ -18,6 +18,7 @@ type SectionId =
   | 'contact'
   | 'careers'
   | 'casting'
+  | 'get-featured'
   | 'creative'
   | 'manpower'
   | 'users';
@@ -29,6 +30,7 @@ interface NavItem {
   subtitle: string;
   formType?: string;
   userKind?: 'INDUSTRY' | 'CANDIDATE';
+  payloadIntent?: string;
 }
 
 interface NavGroup {
@@ -253,6 +255,7 @@ interface NavGroup {
                 <app-admin-applications
                   [formType]="current().formType || ''"
                   [userKind]="current().userKind || ''"
+                  [payloadIntent]="current().payloadIntent || ''"
                   [reloadToken]="reloadToken()"
                   (changed)="loadSummary()"
                 />
@@ -293,6 +296,7 @@ export class AdminPanelComponent implements OnInit {
       title: 'Portals',
       items: [
         { id: 'casting', label: 'Casting / Talent', subtitle: 'Portals', icon: 'film', formType: 'FILM_TV_TALENT' },
+        { id: 'get-featured', label: 'Get Featured', subtitle: 'Portals', icon: 'star', formType: 'FILM_TV_TALENT', payloadIntent: 'get-featured' },
         { id: 'creative', label: 'Creative / Media', subtitle: 'Portals', icon: 'camera', formType: 'CREATIVE_CAREER' },
         { id: 'manpower', label: 'Manpower hire', subtitle: 'Portals', icon: 'hardhat', formType: 'MANPOWER_HIRE' },
       ],

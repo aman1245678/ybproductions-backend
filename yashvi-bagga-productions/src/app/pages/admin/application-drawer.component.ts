@@ -10,6 +10,7 @@ import {
   readPayload,
   statusChip,
   statusLabel,
+  applicationDisplayTitle,
 } from './admin-ui';
 
 /** Right-side slide-over showing one submission with everything the team needs. */
@@ -47,7 +48,7 @@ import {
 
           <div class="mt-4 flex flex-wrap items-center gap-2">
             <span class="rounded-full px-2.5 py-1 text-[11px] ring-1 {{ chip(app().status) }}">{{ label(app().status) }}</span>
-            <span class="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-white/60 ring-1 ring-white/10">{{ app().title }}</span>
+            <span class="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-white/60 ring-1 ring-white/10">{{ displayTitle(app()) }}</span>
             <span class="rounded-full bg-white/5 px-2.5 py-1 text-[11px] text-brand-white/60 ring-1 ring-white/10">{{ app().source }}</span>
             <span class="text-[11px] text-brand-white/35">{{ app().createdAtUtc | date: 'medium' }}</span>
           </div>
@@ -239,6 +240,7 @@ export class ApplicationDrawerComponent {
 
   chip = statusChip;
   label = statusLabel;
+  displayTitle = applicationDisplayTitle;
 
   absolute(url: string): string {
     if (/^https?:\/\//i.test(url)) return url;

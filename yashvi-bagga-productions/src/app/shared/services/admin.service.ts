@@ -94,6 +94,7 @@ export class AdminService {
     source?: string;
     userKind?: string;
     q?: string;
+    payloadIntent?: string;
   }): Observable<AdminListResponse> {
     return this.http.get<AdminListResponse>(`${this.base}/applications`, {
       params: this.toParams(params),

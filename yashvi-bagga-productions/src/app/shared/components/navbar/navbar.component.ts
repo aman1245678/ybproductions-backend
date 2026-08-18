@@ -41,6 +41,12 @@ import { ABOUT_SECTIONS } from '../../models/about-sections.model';
                 }
                 <span class="hidden xl:inline text-brand-white/70 font-poppins text-xs max-w-[7rem] truncate">{{ auth.user()?.fullName }}</span>
                 <button type="button" (click)="logout()" class="px-4 py-1.5 border border-brand-gold/40 text-brand-gold font-poppins font-medium text-xs rounded-full hover:bg-brand-gold hover:text-brand-black transition-all whitespace-nowrap">Log Out</button>
+                <a
+                  routerLink="/get-started"
+                  class="px-4 py-2 bg-brand-pink text-white font-poppins font-medium text-xs rounded-full hover:bg-brand-gold hover:text-brand-black transition-all whitespace-nowrap text-center"
+                >
+                  Get Started
+                </a>
               </div>
             } @else {
               <div class="hidden lg:flex flex-col items-stretch gap-1.5 min-w-[9.5rem]">
@@ -238,7 +244,6 @@ export class NavbarComponent {
   private readonly platformId = inject(PLATFORM_ID);
 
   mobileMenuOpen = signal(false);
-  mobileServicesOpen = signal(false);
   mobileAboutOpen = signal(false);
   isNavHidden = signal(false);
 
@@ -335,15 +340,10 @@ export class NavbarComponent {
 
   closeMenu(): void {
     this.mobileMenuOpen.set(false);
-    this.mobileServicesOpen.set(false);
     this.mobileAboutOpen.set(false);
     if (isPlatformBrowser(this.platformId)) {
       document.body.style.overflow = '';
     }
-  }
-
-  toggleMobileServices(): void {
-    this.mobileServicesOpen.update(v => !v);
   }
 
   toggleMobileAbout(): void {
