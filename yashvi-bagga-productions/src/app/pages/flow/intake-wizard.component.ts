@@ -8,6 +8,7 @@ import { ToastService } from '../../shared/services/toast.service';
 import { FormSubmissionService } from '../../shared/services/form-submission.service';
 import { indianMobileValidator } from '../../shared/validators/form.validators';
 import { INTAKE_FORMS, IntakeField, IntakeFormDef } from '../../shared/models/intake-forms.model';
+import { SLUG_TO_CREW_TRACK } from '../../shared/services/form-submission.service';
 import { saveLocalApplication } from '../../shared/utils/application-id.util';
 import { FileUploadComponent } from '../../shared/components/file-upload/file-upload.component';
 import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-upload.model';
@@ -20,7 +21,7 @@ import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-up
     @if (!def) {
       <section class="section-padding bg-brand-black pt-32 text-center">
         <p class="text-brand-white/60">Form not found.</p>
-        <a routerLink="/get-started" class="mt-4 inline-block text-brand-gold">Back to Get Started</a>
+        <a [routerLink]="cancelLink" class="mt-4 inline-block text-brand-gold">Back</a>
       </section>
     } @else if (submittedId()) {
       <section class="section-padding bg-brand-black pt-32">
@@ -152,7 +153,7 @@ import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-up
                   @if (submitting()) { Submitting… } @else { Submit }
                 </button>
               }
-              <a routerLink="/get-started" class="sm:ml-auto self-center text-sm text-brand-white/40 hover:text-brand-gold">Cancel</a>
+              <a [routerLink]="cancelLink" class="sm:ml-auto self-center text-sm text-brand-white/40 hover:text-brand-gold">Cancel</a>
             </div>
           </form>
         </div>
@@ -176,6 +177,11 @@ export class IntakeWizardComponent implements OnInit {
   submitting = signal(false);
   private chipState: Record<string, string[]> = {};
   private formSlug = '';
+
+  /** Crew category forms return to Film/TV Crew hub; others to Get Started. */
+  get cancelLink(): string {
+    return SLUG_TO_CREW_TRACK[this.formSlug] ? '/talent-network' : '/get-started';
+  }
 
   currentStep = computed(() => this.def!.steps[this.step()]);
 

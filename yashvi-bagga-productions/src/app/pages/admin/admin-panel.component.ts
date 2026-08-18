@@ -19,6 +19,10 @@ type SectionId =
   | 'careers'
   | 'casting'
   | 'get-featured'
+  | 'crew-content'
+  | 'crew-influencer'
+  | 'crew-leads'
+  | 'crew-behind'
   | 'creative'
   | 'manpower'
   | 'users';
@@ -31,6 +35,7 @@ interface NavItem {
   formType?: string;
   userKind?: 'INDUSTRY' | 'CANDIDATE';
   payloadIntent?: string;
+  payloadCrewTrack?: string;
 }
 
 interface NavGroup {
@@ -256,6 +261,7 @@ interface NavGroup {
                   [formType]="current().formType || ''"
                   [userKind]="current().userKind || ''"
                   [payloadIntent]="current().payloadIntent || ''"
+                  [payloadCrewTrack]="current().payloadCrewTrack || ''"
                   [reloadToken]="reloadToken()"
                   (changed)="loadSummary()"
                 />
@@ -295,8 +301,12 @@ export class AdminPanelComponent implements OnInit {
     {
       title: 'Portals',
       items: [
-        { id: 'casting', label: 'Casting / Talent', subtitle: 'Portals', icon: 'film', formType: 'FILM_TV_TALENT' },
+        { id: 'casting', label: 'Casting / Talent (All)', subtitle: 'Portals', icon: 'film', formType: 'FILM_TV_TALENT' },
         { id: 'get-featured', label: 'Get Featured', subtitle: 'Portals', icon: 'star', formType: 'FILM_TV_TALENT', payloadIntent: 'get-featured' },
+        { id: 'crew-content', label: 'Content Creator', subtitle: 'Film/TV Crew', icon: 'video', formType: 'FILM_TV_TALENT', payloadCrewTrack: 'content-creator' },
+        { id: 'crew-influencer', label: 'Social Influencer', subtitle: 'Film/TV Crew', icon: 'share', formType: 'FILM_TV_TALENT', payloadCrewTrack: 'social-influencer' },
+        { id: 'crew-leads', label: 'Film/TV Leads', subtitle: 'Film/TV Crew', icon: 'user', formType: 'FILM_TV_TALENT', payloadCrewTrack: 'film-tv-leads' },
+        { id: 'crew-behind', label: 'Behind the Camera', subtitle: 'Film/TV Crew', icon: 'camera', formType: 'FILM_TV_TALENT', payloadCrewTrack: 'behind-camera' },
         { id: 'creative', label: 'Creative / Media', subtitle: 'Portals', icon: 'camera', formType: 'CREATIVE_CAREER' },
         { id: 'manpower', label: 'Manpower hire', subtitle: 'Portals', icon: 'hardhat', formType: 'MANPOWER_HIRE' },
       ],

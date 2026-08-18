@@ -132,6 +132,26 @@ export const routes: Routes = [
     data: { animation: 'join-jobs', formSlug: 'jobs' },
   },
   {
+    path: 'film-tv-crew/content-creator',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'crew-content-creator', formSlug: 'content-creator' },
+  },
+  {
+    path: 'film-tv-crew/social-influencer',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'crew-social-influencer', formSlug: 'social-influencer' },
+  },
+  {
+    path: 'film-tv-crew/leads',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'crew-leads', formSlug: 'talent' },
+  },
+  {
+    path: 'film-tv-crew/behind-camera',
+    loadComponent: () => import('./pages/flow/intake-wizard.component').then(m => m.IntakeWizardComponent),
+    data: { animation: 'crew-behind-camera', formSlug: 'behind-camera' },
+  },
+  {
     path: 'join-network',
     loadComponent: () => import('./pages/network/join-network/join-network.component').then(m => m.JoinNetworkComponent),
     data: { animation: 'join-network' },

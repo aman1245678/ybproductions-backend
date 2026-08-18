@@ -60,6 +60,17 @@ export const SLUG_TO_FORM_TYPE: Record<string, FormTypeCode> = {
   creative: 'CREATIVE_CAREER',
   'it-career': 'IT_CAREER',
   jobs: 'OFFICE_JOB',
+  'content-creator': 'FILM_TV_TALENT',
+  'social-influencer': 'FILM_TV_TALENT',
+  'behind-camera': 'FILM_TV_TALENT',
+};
+
+/** Film/TV Crew track stored in payload.crewTrack for admin filtering */
+export const SLUG_TO_CREW_TRACK: Record<string, string> = {
+  'content-creator': 'content-creator',
+  'social-influencer': 'social-influencer',
+  talent: 'film-tv-leads',
+  'behind-camera': 'behind-camera',
 };
 
 @Injectable({ providedIn: 'root' })
@@ -125,7 +136,10 @@ export class FormSubmissionService {
       contactWhatsapp: contactWhatsapp || undefined,
       companyName: companyName || undefined,
       preferredCommunication,
-      payload: raw,
+      payload: {
+        ...raw,
+        ...(SLUG_TO_CREW_TRACK[slug] ? { crewTrack: SLUG_TO_CREW_TRACK[slug] } : {}),
+      },
     };
   }
 

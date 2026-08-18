@@ -155,6 +155,7 @@ export class AdminApplicationsComponent {
   readonly formType = input<string>('');
   readonly userKind = input<string>('');
   readonly payloadIntent = input<string>('');
+  readonly payloadCrewTrack = input<string>('');
   readonly reloadToken = input<number>(0);
   readonly changed = output<void>();
 
@@ -178,6 +179,7 @@ export class AdminApplicationsComponent {
     formType: this.formType(),
     userKind: this.userKind(),
     payloadIntent: this.payloadIntent(),
+    payloadCrewTrack: this.payloadCrewTrack(),
   }));
 
   constructor() {
@@ -232,6 +234,7 @@ export class AdminApplicationsComponent {
         formType: this.formType(),
         userKind: this.userKind(),
         payloadIntent: this.payloadIntent(),
+        payloadCrewTrack: this.payloadCrewTrack(),
         q: this.search,
       })
       .subscribe({

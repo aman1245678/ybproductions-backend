@@ -1,26 +1,20 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ScrollAnimationDirective } from '../../shared/directives/scroll-animation.directive';
-import { SectionHeaderComponent } from '../../shared/components/section-header/section-header.component';
 import { MagneticButtonComponent } from '../../shared/components/magnetic-button/magnetic-button.component';
 import { SeoService } from '../../core/services/seo.service';
-import { EcosystemExpansionComponent } from './sections/ecosystem-expansion.component';
-import { IndustriesComponent } from './sections/industries.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ScrollAnimationDirective, SectionHeaderComponent, MagneticButtonComponent, EcosystemExpansionComponent, IndustriesComponent],
+  imports: [CommonModule, RouterLink, MagneticButtonComponent],
   template: `
-    <!-- HERO SECTION — left content, right image -->
     <section class="relative min-h-[100svh] overflow-hidden bg-brand-black text-brand-white">
       <div class="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-dark to-brand-black"></div>
       <div class="absolute -left-24 top-24 h-72 w-72 rounded-full bg-brand-gold/10 blur-[110px]"></div>
       <div class="absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-brand-gold/8 blur-[120px]"></div>
 
       <div class="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-16 pt-28 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:pb-20 lg:pt-32 xl:gap-16">
-        <!-- Left: copy -->
         <div class="order-1 max-w-xl lg:max-w-none">
           <p
             class="mb-5 font-poppins text-[11px] font-medium uppercase tracking-[0.42em] text-brand-gold opacity-0 animate-fade-in sm:mb-6 sm:text-xs"
@@ -73,7 +67,6 @@ import { IndustriesComponent } from './sections/industries.component';
           </div>
         </div>
 
-        <!-- Right: showcase image -->
         <div
           class="order-2 relative opacity-0 animate-slide-up"
           style="animation-delay: 0.5s; animation-fill-mode: forwards;"
@@ -89,283 +82,10 @@ import { IndustriesComponent } from './sections/industries.component';
         </div>
       </div>
     </section>
-
-    <app-ecosystem-expansion />
-
-    <!-- SHOWCASE OF THE WEEK -->
-    <!-- Commented out per client requirement — the Showcase of the Week poster now lives in the hero card above, so this dedicated banner is a duplicate. The "Be Next Week's Showcase" CTA is preserved below the poster instead. -->
-    <!--
-    <section class="section-padding bg-brand-dark relative overflow-hidden">
-      <div class="absolute -top-10 right-0 w-80 h-80 rounded-full bg-brand-gold/10 blur-[120px]"></div>
-      <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-brand-pink/10 blur-[120px]"></div>
-
-      <div class="relative max-w-6xl mx-auto">
-        <div class="text-center mb-10" appScrollAnimation animationType="fade-up">
-          <span class="text-brand-gold text-sm uppercase tracking-[0.3em]">Weekly Spotlight</span>
-          <p class="body-lg text-brand-white/60 max-w-2xl mx-auto mt-4">Discover. Inspire. Celebrate — a weekly spotlight on exceptional talent, outstanding work and inspiring stories from the world of film, television and digital entertainment.</p>
-        </div>
-
-        <figure
-          class="group relative rounded-[36px] border border-brand-gold/15 bg-brand-black/60 p-3 sm:p-4 overflow-hidden transition-all duration-500 hover:border-brand-gold/30"
-          appScrollAnimation
-          animationType="fade-up"
-        >
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.05),_transparent_30%)]"></div>
-          <img
-            src="/ShowcaseOfTheWeek.png"
-            alt="Showcase of the Week — Talent. Creativity. Opportunity. Only at Yashvi Bagga Productions."
-            loading="lazy"
-            class="relative z-10 w-full rounded-[28px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-          />
-        </figure>
-
-        <div class="mt-10 text-center" appScrollAnimation animationType="fade-up">
-          <a
-            routerLink="/talent-network"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-8 py-3 font-medium text-brand-black transition-colors duration-300 hover:bg-brand-white"
-          >
-            Be Next Week's Showcase
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-    -->
-
-    <!-- Removed per client requirement — the "About The Founder" section was taken off the home page. -->
-
-    <!-- SERVICES SECTION -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
-      <div class="absolute left-0 bottom-10 w-72 h-72 rounded-full bg-brand-gold/10 blur-[120px]"></div>
-      <div class="relative max-w-7xl mx-auto">
-        <app-section-header
-          subtitle="Our Services"
-          title="What We Deliver"
-          description="Creative, media, branding, talent, technology, staffing and training — under one roof."
-          [titleGradient]="true"
-          appScrollAnimation
-          animationType="fade-up"
-        />
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
-          @for (service of premiumServices; track service.title) {
-            <a
-              [routerLink]="service.link || '/get-started'"
-              class="group relative overflow-hidden rounded-[32px] border border-brand-white/10 bg-brand-dark/80 p-8 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/25 block"
-            >
-              <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,45,136,0.12),_transparent_40%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
-              <div class="relative z-10 space-y-4">
-                <div class="inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-brand-gold/10 text-brand-gold text-xl">
-                  {{ service.icon }}
-                </div>
-                <h3 class="text-2xl font-playfair text-brand-white">{{ service.title }}</h3>
-                <p class="text-brand-white/60 text-sm leading-6">{{ service.description }}</p>
-                <div class="border-t border-brand-white/10 pt-4 text-brand-gold text-xs uppercase tracking-[0.24em]">Apply / Enquire</div>
-              </div>
-            </a>
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- INDUSTRIES WE SERVE (Module 6) -->
-    <app-industries />
-
-    <!-- Removed per client requirement — the "Meet The Team" section was taken off the home page. -->
-
-    <!-- DIGITAL JOURNEY SECTION -->
-    <section class="section-padding bg-brand-dark relative overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_rgba(212,175,55,0.09),_transparent_30%)]"></div>
-      <div class="relative max-w-7xl mx-auto grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
-        <div class="space-y-8">
-          <span class="text-brand-gold text-sm uppercase tracking-[0.3em]">Digital Engagement</span>
-          <h2 class="heading-lg text-brand-white max-w-xl">Transforming brands through strategic digital engagement.</h2>
-          <p class="body-lg text-brand-white/70 max-w-2xl">We combine creativity, strategy and data-driven insights to build meaningful connections between brands and audiences across every major platform.</p>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            @for (stat of socialStats; track stat.label) {
-              <div class="glass-card border border-brand-white/10 p-6">
-                <p class="text-4xl font-playfair text-brand-gold">{{ stat.value }}</p>
-                <p class="text-brand-white/60 text-sm uppercase tracking-[0.28em] mt-2">{{ stat.label }}</p>
-              </div>
-            }
-          </div>
-        </div>
-
-        <div class="relative rounded-[36px] border border-brand-white/10 bg-brand-black/80 p-6 shadow-[0_30px_90px_rgba(0,0,0,0.4)]">
-          <div class="relative overflow-hidden rounded-[32px] border border-brand-white/10 bg-brand-dark/90 p-4">
-            <div class="flex items-center justify-between mb-4">
-              <div class="h-2.5 w-24 rounded-full bg-brand-white/10"></div>
-              <div class="flex gap-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-brand-red"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-brand-gold"></span>
-              </div>
-            </div>
-            <div class="grid gap-4">
-              @for (post of socialPosts; track post.title) {
-                <div class="rounded-3xl border border-brand-white/10 bg-brand-black/70 p-4 transition-all duration-300 hover:border-brand-gold/25">
-                  <div class="mb-3 h-40 rounded-[28px] bg-[radial-gradient(circle_at_top,_rgba(255,45,136,0.2),_rgba(13,13,13,0.95))]"></div>
-                  <h3 class="text-brand-white font-semibold">{{ post.title }}</h3>
-                  <p class="text-brand-white/50 text-sm leading-6">{{ post.description }}</p>
-                </div>
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY CHOOSE US -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
-      <div class="absolute left-0 top-1/4 w-72 h-72 rounded-full bg-brand-gold/10 blur-[100px]"></div>
-      <div class="relative max-w-7xl mx-auto">
-        <app-section-header
-          subtitle="Why Choose Us"
-          title="What Defines Our Brand"
-          description="Innovation, excellence, integrity and people-centric solutions that create lasting impact."
-          [titleGradient]="true"
-          appScrollAnimation
-          animationType="fade-up"
-        />
-
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 mt-10">
-          @for (point of manifestoPoints; track point.title) {
-            <div class="glass-card p-8 border border-brand-white/10 transition-all duration-500 hover:-translate-y-2 hover:border-brand-gold/25">
-              <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-brand-gold/10 text-brand-gold text-xl mb-5">{{ point.icon }}</div>
-              <h3 class="text-xl font-playfair text-brand-white mb-3">{{ point.title }}</h3>
-              <p class="text-brand-white/60 text-sm leading-6">{{ point.description }}</p>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO HIGHLIGHTS -->
-    <section class="section-padding bg-brand-dark relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-brand-black via-transparent to-brand-black opacity-60"></div>
-      <div class="relative max-w-7xl mx-auto">
-        <app-section-header
-          subtitle="Showcase"
-          title="Stories That Leave An Impact"
-          description="Campaigns, productions and digital experiences crafted for brands, institutions and creators."
-          appScrollAnimation
-          animationType="fade-up"
-        />
-
-        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] mt-10">
-          <div class="grid gap-6">
-            @for (card of portfolioHighlights.slice(0,2); track card.title) {
-              <div class="relative rounded-[32px] overflow-hidden border border-brand-white/10 bg-[linear-gradient(180deg,_rgba(212,175,55,0.08),_rgba(10,10,10,0.9))] p-6 group hover:-translate-y-2 transition-all duration-500">
-                <div class="mb-4 h-64 rounded-[28px] bg-[url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
-                <p class="text-brand-gold uppercase text-[11px] tracking-[0.32em] mb-3">{{ card.category }}</p>
-                <h3 class="text-2xl font-playfair text-brand-white">{{ card.title }}</h3>
-              </div>
-            }
-          </div>
-          <div class="grid gap-6">
-            @for (card of portfolioHighlights.slice(2); track card.title) {
-              <div class="relative rounded-[32px] overflow-hidden border border-brand-white/10 bg-[linear-gradient(180deg,_rgba(255,45,136,0.08),_rgba(10,10,10,0.95))] p-6 group hover:-translate-y-2 transition-all duration-500">
-                <div class="mb-4 h-72 rounded-[28px] bg-[url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"></div>
-                <p class="text-brand-gold uppercase text-[11px] tracking-[0.32em] mb-3">{{ card.category }}</p>
-                <h3 class="text-2xl font-playfair text-brand-white">{{ card.title }}</h3>
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="section-padding bg-brand-black relative overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.1),_transparent_30%)]"></div>
-      <div class="relative max-w-6xl mx-auto rounded-[40px] border border-brand-gold/15 bg-brand-dark/90 p-12 text-center shadow-[0_40px_120px_rgba(0,0,0,0.55)]">
-        <p class="text-brand-gold uppercase tracking-[0.35em] text-sm mb-4">Let’s Create Together</p>
-        <h2 class="heading-lg text-brand-white mb-6">Creating Experiences. Inspiring Excellence. Building Impact.</h2>
-        <p class="body-lg text-brand-white/70 max-w-2xl mx-auto mb-10">Partner with YASHVI BAGGA PRODUCTIONS for creative media, casting, branding, talent, training and end-to-end production — anywhere in India.</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <app-magnetic-button>
-            <a routerLink="/contact" class="inline-flex items-center gap-3 px-10 py-4 bg-brand-gold text-brand-black font-semibold rounded-full transition-all duration-500 hover:bg-brand-white">
-              Contact Us
-            </a>
-          </app-magnetic-button>
-          <app-magnetic-button>
-            <a href="https://wa.me/" target="_blank" class="inline-flex items-center gap-3 px-10 py-4 border border-brand-white/20 text-brand-white font-medium rounded-full transition-all duration-500 hover:border-brand-gold hover:text-brand-gold">
-              WhatsApp Consultation
-            </a>
-          </app-magnetic-button>
-        </div>
-      </div>
-    </section>
   `,
 })
 export class HomeComponent implements OnInit {
   private readonly seoService = inject(SeoService);
-
-  // Removed per client requirement — design-feature cards taken off the home page.
-  // heroFeatures = [
-  //   { icon: '✨', title: 'Cinematic Overlays', description: 'Elegant visual details that create premium, editorial depth.' },
-  //   { icon: '🎞️', title: 'Parallax Movement', description: 'Smooth layered motion that feels polished and modern.' },
-  //   { icon: '🪞', title: 'Glassmorphism CTA', description: 'Luxury call-to-action panels with premium blur and glow.' },
-  //   { icon: '📸', title: 'Instagram-Inspired UI', description: 'Creator culture visuals with bold social-first presentation.' },
-  // ];
-
-  // Removed per client requirement — "About The Founder" section taken off the home page.
-  // founderValues = [
-  //   { title: 'Visionary Storytelling', description: 'Transforming brand narratives into cinematic editorial moments.' },
-  //   { title: 'Premium Production', description: 'From concept to launch, every detail is crafted for camera-ready impact.' },
-  // ];
-
-  premiumServices = [
-    { icon: '🎬', title: 'Casting Services', description: 'Connecting filmmakers, brands and platforms with the right on-screen talent.', link: '/hire/cast-crew' },
-    { icon: '📱', title: 'Social Media Management', description: 'Strategy, content, community and campaigns that build lasting digital presence.', link: '/hire/cast-crew' },
-    { icon: '📈', title: 'Digital Marketing', description: 'SEO, performance ads, content and reputation solutions with measurable growth.', link: '/hire/cast-crew' },
-    { icon: '🎨', title: 'Creative Branding', description: 'Brand strategy, identity design and campaigns that inspire and endure.', link: '/hire/branding' },
-    { icon: '💻', title: 'IT Solutions', description: 'Website design, apps, web applications, e-commerce and ongoing support.', link: '/hire/it' },
-    { icon: '🌟', title: 'Talent Pool & Headhunting', description: 'End-to-end sourcing across every production department — one partner, every role.', link: '/hire/cast-crew' },
-    { icon: '👔', title: 'Manpower Outsourcing', description: 'Contract, project and flexible workforce solutions for growing organizations.', link: '/manpower-requirement' },
-    { icon: '🎓', title: 'Professional & Vocational Training', description: 'Leadership, digital skills and industry programmes that build future-ready talent.', link: '/hire/training' },
-  ];
-
-  // Removed per client requirement — "Meet The Team" section taken off the home page.
-  // coreTeam = [
-  //   { initials: 'AM', name: 'Aryan Malik', role: 'Photographer', specialty: 'Lifestyle & Fashion Photography', tags: ['Photographers', 'Editorial'] },
-  //   { initials: 'MS', name: 'Megha Sharma', role: 'Photographer', specialty: 'Product & Brand Imagery', tags: ['Photographers', 'Luxury'] },
-  //   { initials: 'RV', name: 'Rohan Verma', role: 'Videographer', specialty: 'Cinematic Video Direction', tags: ['Videographers', 'Storytelling'] },
-  //   { initials: 'PM', name: 'Pranjal Mishra', role: 'Videographer', specialty: 'Travel & Lifestyle Films', tags: ['Videographers', 'Motion'] },
-  //   { initials: 'TG', name: 'Tanvi Gupta', role: 'Graphic Designer', specialty: 'Brand Identity & Visual Design', tags: ['Designers', 'Brand'] },
-  //   { initials: 'RK', name: 'Riya Kapoor', role: 'Graphic Designer', specialty: 'Social Media Creative', tags: ['Designers', 'Social'] },
-  //   { initials: 'SK', name: 'Simran Kaur', role: 'Content Writer', specialty: 'Brand Storytelling & Copy', tags: ['Writers', 'Strategy'] },
-  //   { initials: 'AN', name: 'Anjali Dubey', role: 'Video Editor', specialty: 'Reels & Short-form Editing', tags: ['Editors', 'Motion'] },
-  // ];
-
-  socialStats = [
-    { value: 'Pan-India', label: 'Execution Network' },
-    { value: '8+', label: 'Core Service Verticals' },
-    { value: 'Gov + Corp', label: 'Trusted Sectors' },
-    { value: '1 Partner', label: 'Every Department' },
-  ];
-
-  socialPosts = [
-    { title: 'Brand Storytelling', description: 'Content that builds trust, engagement and lasting recall.' },
-    { title: 'Creator Collaborations', description: 'Authentic influencer and talent partnerships that amplify reach.' },
-    { title: 'Campaign Impact', description: 'Integrated digital campaigns with measurable business outcomes.' },
-  ];
-
-  manifestoPoints = [
-    { icon: '💡', title: 'Innovation with Purpose', description: 'New ideas, technologies and creative approaches for contemporary solutions.' },
-    { icon: '🏆', title: 'Excellence in Execution', description: 'Quality, professionalism and attention to detail in every project.' },
-    { icon: '🤝', title: 'People-Centric Approach', description: 'Solutions designed to inspire growth, confidence and transformation.' },
-    { icon: '🛡️', title: 'Integrity & Trust', description: 'Transparency, commitment and ethical practices that build long-term relationships.' },
-    { icon: '🎨', title: 'Creativity Beyond Boundaries', description: 'Imagination with strategic execution — distinctive and memorable work.' },
-    { icon: '📈', title: 'Result-Oriented Delivery', description: 'Experiences that educate, engage, inspire and deliver measurable impact.' },
-  ];
-
-  portfolioHighlights = [
-    { title: 'Brand & Awareness Campaigns', category: 'Digital Marketing' },
-    { title: 'Casting & Talent Stories', category: 'Casting' },
-    { title: 'Corporate & Training Films', category: 'Production' },
-    { title: 'Social Media Growth Series', category: 'Social Media' },
-  ];
 
   ngOnInit(): void {
     this.seoService.updateMetaTags({

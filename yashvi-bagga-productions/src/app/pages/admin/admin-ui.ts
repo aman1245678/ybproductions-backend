@@ -48,6 +48,14 @@ const USER_STATUS_CLASSES: Record<string, string> = {
 
 export function applicationDisplayTitle(app: { title: string; payload?: Record<string, unknown> | null }): string {
   if (app.payload?.['intent'] === 'get-featured') return 'Get Featured';
+  const track = app.payload?.['crewTrack'];
+  const crewLabels: Record<string, string> = {
+    'content-creator': 'Content Creator',
+    'social-influencer': 'Social Influencer',
+    'film-tv-leads': 'Film/TV Leads & Character',
+    'behind-camera': 'Behind the Camera',
+  };
+  if (typeof track === 'string' && crewLabels[track]) return crewLabels[track];
   return app.title;
 }
 

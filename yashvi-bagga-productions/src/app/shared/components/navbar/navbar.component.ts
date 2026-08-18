@@ -12,7 +12,7 @@ import { ABOUT_SECTIONS } from '../../models/about-sections.model';
   imports: [CommonModule, RouterLink, RouterLinkActive, AuthModalComponent],
   template: `
     <nav
-      class="fixed top-0 left-0 w-full z-50 transition-all duration-500"
+      class="fixed top-0 left-0 w-full z-50 transition-all duration-500 pt-2 sm:pt-2.5"
       [class.nav-scrolled]="scrollService.isScrolled()"
       [class.nav-hidden]="isNavHidden()"
     >
