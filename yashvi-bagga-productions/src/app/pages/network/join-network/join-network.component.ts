@@ -34,7 +34,7 @@ import { environment } from '../../../../environments/environment';
           routerLink="/get-started"
           class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-gold px-7 py-3 font-medium text-brand-black hover:bg-brand-white transition-colors"
         >
-          Open Hire / Join Forms
+          Click Here
         </a>
       </div>
     </section>

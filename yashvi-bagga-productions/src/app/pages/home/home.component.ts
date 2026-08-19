@@ -50,7 +50,7 @@ import { SeoService } from '../../core/services/seo.service';
           >
             <app-magnetic-button>
               <a
-                routerLink="/get-started"
+                routerLink="/services"
                 class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-7 py-3.5 font-poppins text-sm font-semibold text-brand-black transition-colors duration-300 hover:bg-brand-white"
               >
                 Explore Services

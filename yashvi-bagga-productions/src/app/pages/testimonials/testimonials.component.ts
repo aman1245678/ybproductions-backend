@@ -74,11 +74,6 @@ import { SeoService } from '../../core/services/seo.service';
                   <p class="text-brand-white font-poppins font-medium text-sm">{{ testimonial.name }}</p>
                   <p class="text-brand-white/40 font-poppins text-xs">{{ testimonial.role }}</p>
                 </div>
-                @if (testimonial.company) {
-                  <div class="ml-auto">
-                    <span class="text-brand-gold/60 font-poppins text-xs">{{ testimonial.company }}</span>
-                  </div>
-                }
               </div>
             </div>
           }
@@ -160,7 +155,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Dr. Rajesh Kumar',
       initials: 'RK',
       role: 'Program Director',
-      company: 'Public Sector Training Institute',
       quote: 'Yashvi Bagga Productions delivered our nationwide executive development programme with exceptional professionalism. Their trainers, logistics, and content quality exceeded expectations across every location.',
       avatarColor: '#D4AF37',
       hasVideo: false,
@@ -170,7 +164,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Anita Mehra',
       initials: 'AM',
       role: 'Head of Communications',
-      company: 'Corporate Enterprise',
       quote: 'From brand strategy to social campaigns, the team understood our vision and executed with creativity and precision. A trusted partner for integrated media solutions.',
       avatarColor: '#FF2E88',
       hasVideo: false,
@@ -180,7 +173,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Vikram Singh',
       initials: 'VS',
       role: 'Production Head',
-      company: 'Film & TV Studio',
       quote: 'Their casting network and coordination saved us weeks on talent sourcing. Professional, transparent, and deeply connected across the industry.',
       avatarColor: '#D4AF37',
       hasVideo: false,
@@ -190,7 +182,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Priya Sharma',
       initials: 'PS',
       role: 'Marketing Lead',
-      company: 'Educational Institution',
       quote: 'Digital outreach campaigns designed by YBP helped us reach students and stakeholders nationwide with measurable engagement and polished creative output.',
       avatarColor: '#FF2E88',
       hasVideo: false,
@@ -200,7 +191,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Arjun Reddy',
       initials: 'AR',
       role: 'HR Director',
-      company: 'MSME Client',
       quote: 'Manpower outsourcing and training support from Yashvi Bagga Productions streamlined our hiring and onboarding across multiple cities.',
       avatarColor: '#D4AF37',
       hasVideo: false,
@@ -210,7 +200,6 @@ export class TestimonialsComponent implements OnInit {
       name: 'Meera Kapoor',
       initials: 'MK',
       role: 'Creative Talent',
-      company: 'Actor & Model',
       quote: 'Submitting my profile through their network was seamless. The team is responsive, professional, and genuinely invested in matching talent with the right projects.',
       avatarColor: '#FF2E88',
       hasVideo: false,
