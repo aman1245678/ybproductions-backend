@@ -65,6 +65,37 @@ import { SeoService } from '../../core/services/seo.service';
               </a>
             </app-magnetic-button>
           </div>
+
+          <div
+            class="mt-8 opacity-0 animate-slide-up sm:mt-9"
+            style="animation-delay: 1s; animation-fill-mode: forwards;"
+          >
+            <a
+              href="/downloads/YBP_VERSION_1.02.3680000.apk"
+              download="YBP_VERSION_1.02.3680000.apk"
+              class="group flex max-w-md items-center gap-4 rounded-2xl border border-brand-gold/25 bg-brand-dark/70 p-4 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/50 hover:bg-brand-gray/80 hover:shadow-[0_12px_40px_rgba(212,175,55,0.12)] sm:p-5"
+            >
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-gold/15 ring-1 ring-brand-gold/30 transition-colors group-hover:bg-brand-gold/25">
+                <svg class="h-6 w-6 text-brand-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.29.15-.4.54-.22.86L6.4 9.48A10.81 10.81 0 001 18h22a10.81 10.81 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/>
+                </svg>
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="font-poppins text-sm font-semibold text-brand-white group-hover:text-brand-gold transition-colors">
+                  Download Android App
+                </p>
+                <p class="mt-0.5 font-poppins text-xs text-brand-white/55">
+                  YBP Mobile · Version 1.02 · Direct APK install
+                </p>
+              </div>
+              <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gold px-4 py-2 font-poppins text-xs font-semibold text-brand-black transition-colors group-hover:bg-brand-white">
+                Get App
+                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"/>
+                </svg>
+              </span>
+            </a>
+          </div>
         </div>
 
         <div
