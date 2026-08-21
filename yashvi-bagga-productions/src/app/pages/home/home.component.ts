@@ -71,7 +71,7 @@ import { SeoService } from '../../core/services/seo.service';
             style="animation-delay: 1s; animation-fill-mode: forwards;"
           >
             <a
-              href="/downloads/YBP_VERSION_1.02.3680000.apk"
+              href="https://github.com/aman1245678/ybproductions-backend/releases/download/v1.02.3680000/YBP_VERSION_1.02.3680000.apk"
               download="YBP_VERSION_1.02.3680000.apk"
               class="group flex max-w-md items-center gap-4 rounded-2xl border border-brand-gold/25 bg-brand-dark/70 p-4 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/50 hover:bg-brand-gray/80 hover:shadow-[0_12px_40px_rgba(212,175,55,0.12)] sm:p-5"
             >
