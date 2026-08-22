@@ -73,26 +73,45 @@ import { SeoService } from '../../core/services/seo.service';
             <a
               href="https://github.com/aman1245678/ybproductions-backend/releases/download/v1.02.3680000/YBP_VERSION_1.02.3680000.apk"
               download="YBP_VERSION_1.02.3680000.apk"
-              class="group flex max-w-md items-center gap-4 rounded-2xl border border-brand-gold/25 bg-brand-dark/70 p-4 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/50 hover:bg-brand-gray/80 hover:shadow-[0_12px_40px_rgba(212,175,55,0.12)] sm:p-5"
+              class="group relative flex max-w-lg items-center gap-4 overflow-hidden rounded-2xl border border-brand-gold/30 bg-gradient-to-br from-brand-dark via-brand-gray/90 to-brand-black p-4 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/60 hover:shadow-[0_16px_48px_rgba(212,175,55,0.18)] sm:p-5"
             >
-              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-gold/15 ring-1 ring-brand-gold/30 transition-colors group-hover:bg-brand-gold/25">
-                <svg class="h-6 w-6 text-brand-gold" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 00-.83.22l-1.88 3.24a11.43 11.43 0 00-8.94 0L5.65 5.67a.643.643 0 00-.87-.2c-.29.15-.4.54-.22.86L6.4 9.48A10.81 10.81 0 001 18h22a10.81 10.81 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/>
+              <div class="pointer-events-none absolute -right-8 -top-8 h-28 w-28 rounded-full bg-brand-pink/10 blur-2xl transition-opacity group-hover:opacity-100"></div>
+              <div class="pointer-events-none absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-brand-gold/10 blur-2xl"></div>
+
+              <div class="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-gold/25 via-brand-gold/10 to-brand-pink/15 ring-1 ring-brand-gold/40 shadow-[0_8px_24px_rgba(212,175,55,0.2)] transition-transform duration-300 group-hover:scale-105">
+                <svg class="h-7 w-7 text-brand-gold drop-shadow-sm" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="7" y="2.5" width="10" height="19" rx="2.2" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="18.5" r="0.9" fill="currentColor"/>
+                  <path d="M9.5 6.5h5M9.5 9h5M9.5 11.5h3.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                  <path d="M16.2 4.1l1.1 1.1M18.8 6.2l.9-.4" stroke="#FF2E88" stroke-width="1.2" stroke-linecap="round"/>
                 </svg>
               </div>
-              <div class="min-w-0 flex-1">
-                <p class="font-poppins text-sm font-semibold text-brand-white group-hover:text-brand-gold transition-colors">
-                  Download Android App
+
+              <div class="relative min-w-0 flex-1">
+                <p class="font-poppins text-[10px] font-semibold uppercase tracking-[0.28em] text-brand-gold/90">
+                  YBP Mobile App
                 </p>
-                <p class="mt-0.5 font-poppins text-xs text-brand-white/55">
-                  YBP Mobile · Version 1.02 · Direct APK install
+                <p class="mt-1 font-playfair text-base font-semibold leading-snug text-brand-white transition-colors group-hover:text-brand-gold sm:text-lg">
+                  Apply, Hire &amp; Track — All From Your Phone
                 </p>
+                <p class="mt-1.5 font-poppins text-xs leading-relaxed text-brand-white/60">
+                  Fill forms, join our talent network, submit hire requests &amp; check application status — free on Android.
+                </p>
+                <div class="mt-2.5 flex flex-wrap gap-1.5">
+                  <span class="rounded-full border border-brand-gold/25 bg-brand-gold/10 px-2 py-0.5 font-poppins text-[10px] font-medium text-brand-gold">Apply with App</span>
+                  <span class="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-poppins text-[10px] text-brand-white/70">Track Status</span>
+                  <span class="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-poppins text-[10px] text-brand-white/70">v1.02</span>
+                </div>
               </div>
-              <span class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-gold px-4 py-2 font-poppins text-xs font-semibold text-brand-black transition-colors group-hover:bg-brand-white">
-                Get App
-                <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"/>
-                </svg>
+
+              <span class="relative inline-flex shrink-0 flex-col items-center gap-1">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-gold px-4 py-2.5 font-poppins text-xs font-bold text-brand-black shadow-[0_4px_16px_rgba(212,175,55,0.35)] transition-all group-hover:bg-brand-white group-hover:shadow-[0_6px_20px_rgba(212,175,55,0.45)]">
+                  Download
+                  <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"/>
+                  </svg>
+                </span>
+                <span class="font-poppins text-[9px] text-brand-white/40">Free APK</span>
               </span>
             </a>
           </div>
