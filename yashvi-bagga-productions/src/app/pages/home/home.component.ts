@@ -3,16 +3,46 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MagneticButtonComponent } from '../../shared/components/magnetic-button/magnetic-button.component';
 import { SeoService } from '../../core/services/seo.service';
+import { HomeStatsComponent } from './sections/home-stats.component';
+import { HomeServicesPreviewComponent } from './sections/home-services-preview.component';
+import { HomeTalentSpotlightComponent } from './sections/home-talent-spotlight.component';
+import { HomeFeaturedWorkComponent } from './sections/home-featured-work.component';
+import { HomeWhyUsComponent } from './sections/home-why-us.component';
+import { IndustriesComponent } from './sections/industries.component';
+import { HomeTestimonialsPreviewComponent } from './sections/home-testimonials-preview.component';
+import { HomeCtaComponent } from './sections/home-cta.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, MagneticButtonComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    MagneticButtonComponent,
+    HomeStatsComponent,
+    HomeServicesPreviewComponent,
+    HomeTalentSpotlightComponent,
+    HomeFeaturedWorkComponent,
+    HomeWhyUsComponent,
+    IndustriesComponent,
+    HomeTestimonialsPreviewComponent,
+    HomeCtaComponent,
+  ],
   template: `
+  <div class="bg-brand-black">
+    <!-- HERO -->
     <section class="relative min-h-[100svh] overflow-hidden bg-brand-black text-brand-white">
       <div class="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-dark to-brand-black"></div>
-      <div class="absolute -left-24 top-24 h-72 w-72 rounded-full bg-brand-gold/10 blur-[110px]"></div>
-      <div class="absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-brand-gold/8 blur-[120px]"></div>
+      <div class="absolute -left-24 top-24 h-72 w-72 rounded-full bg-brand-gold/10 blur-[110px] animate-pulse-soft"></div>
+      <div class="absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-brand-pink/10 blur-[120px] animate-pulse-soft" style="animation-delay: 1.5s"></div>
+
+      <!-- Floating accent images -->
+      <div class="pointer-events-none absolute right-[8%] top-[18%] hidden h-28 w-20 overflow-hidden rounded-2xl border border-brand-white/10 opacity-40 shadow-2xl animate-float lg:block xl:right-[12%]">
+        <img src="/images/home/talent-2.jpg" alt="" class="h-full w-full object-cover" loading="eager" />
+      </div>
+      <div class="pointer-events-none absolute left-[6%] bottom-[22%] hidden h-24 w-24 overflow-hidden rounded-full border border-brand-gold/20 opacity-30 shadow-2xl animate-float-slow lg:block" style="animation-delay: 2s">
+        <img src="/images/home/production-2.jpg" alt="" class="h-full w-full object-cover" loading="eager" />
+      </div>
 
       <div class="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl items-center gap-10 px-6 pb-16 pt-24 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:pb-20 lg:pt-36 xl:pt-40 xl:gap-16">
         <div class="order-1 max-w-xl lg:max-w-none">
@@ -41,8 +71,19 @@ import { SeoService } from '../../core/services/seo.service';
             class="mt-6 max-w-md font-poppins text-[0.95rem] font-light leading-7 text-brand-white/70 opacity-0 animate-slide-up sm:text-base sm:leading-8"
             style="animation-delay: 0.65s; animation-fill-mode: forwards;"
           >
-            Cinematic storytelling, talent collaborations, and premium campaigns crafted for film, television, and digital culture.
+            India's creative production house for casting, fashion campaigns, brand films, digital content and talent collaborations — crafted for film, television, OTT and social culture.
           </p>
+
+          <div
+            class="mt-7 flex flex-wrap gap-2 opacity-0 animate-slide-up sm:mt-8"
+            style="animation-delay: 0.75s; animation-fill-mode: forwards;"
+          >
+            @for (badge of heroBadges; track badge) {
+              <span class="rounded-full border border-brand-white/10 bg-brand-white/5 px-3 py-1.5 font-poppins text-[10px] uppercase tracking-[0.2em] text-brand-white/60">
+                {{ badge }}
+              </span>
+            }
+          </div>
 
           <div
             class="mt-9 flex flex-col gap-3 opacity-0 animate-slide-up sm:mt-10 sm:flex-row sm:items-center sm:gap-4"
@@ -121,26 +162,42 @@ import { SeoService } from '../../core/services/seo.service';
           class="order-2 relative opacity-0 animate-slide-up"
           style="animation-delay: 0.5s; animation-fill-mode: forwards;"
         >
-          <div class="absolute -inset-4 rounded-[2rem] bg-brand-gold/10 blur-2xl"></div>
+          <div class="absolute -inset-4 rounded-[2rem] bg-brand-gold/10 blur-2xl animate-pulse-soft"></div>
           <figure class="relative overflow-hidden rounded-[1.75rem] border border-brand-gold/20 bg-brand-dark shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
             <img
               src="/ShowcaseOfTheWeek.png"
               alt="Showcase of the Week — Talent. Creativity. Opportunity. Only at Yashvi Bagga Productions."
-              class="block h-auto w-full object-cover object-center"
+              class="block h-auto w-full object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
             />
           </figure>
+          <div class="absolute -bottom-5 -left-4 hidden rounded-2xl border border-brand-white/10 bg-brand-black/80 px-4 py-3 backdrop-blur-md sm:block animate-float" style="animation-delay: 1s">
+            <p class="font-poppins text-[10px] uppercase tracking-[0.25em] text-brand-gold">Now Casting</p>
+            <p class="mt-1 font-playfair text-sm text-brand-white">Models · Actors · Influencers</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <app-home-stats />
+    <app-home-services-preview />
+    <app-home-talent-spotlight />
+    <app-home-featured-work />
+    <app-home-why-us />
+    <app-industries />
+    <app-home-testimonials-preview />
+    <app-home-cta />
+  </div>
   `,
 })
 export class HomeComponent implements OnInit {
   private readonly seoService = inject(SeoService);
 
+  readonly heroBadges = ['Casting', 'Fashion', 'OTT', 'Brand Films', 'Influencers', 'Events'];
+
   ngOnInit(): void {
     this.seoService.updateMetaTags({
       title: 'Home | YASHVI BAGGA PRODUCTIONS',
-      description: 'Creative media, casting, branding, talent, IT, manpower and training — creating experiences, inspiring excellence, building impact across India.',
+      description: 'Creative media, casting, branding, talent, fashion campaigns and digital production — creating experiences, inspiring excellence, building impact across India.',
       url: 'https://ybproductions.co.in',
     });
   }

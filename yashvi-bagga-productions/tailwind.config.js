@@ -17,11 +17,15 @@ module.exports = {
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 8s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite alternate',
         'shimmer': 'shimmer 2s linear infinite',
         'fade-in': 'fadeIn 1s ease-out forwards',
         'slide-up': 'slideUp 0.8s ease-out forwards',
         'scale-in': 'scaleIn 0.6s ease-out forwards',
+        'marquee': 'marquee 28s linear infinite',
+        'marquee-reverse': 'marquee-reverse 32s linear infinite',
+        'pulse-soft': 'pulseSoft 4s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -47,6 +51,18 @@ module.exports = {
         scaleIn: {
           '0%': { opacity: '0', transform: 'scale(0.9)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.6' },
+          '50%': { opacity: '1' },
         },
       },
       backgroundImage: {
