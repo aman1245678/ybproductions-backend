@@ -1,0 +1,12 @@
+{
+  "name": "ybproductions-backend",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "cd yashvi-bagga-productions && npm ci",
+  "forwardPorts": [4200, 4000],
+  "customizations": {
+    "vscode": {
+      "extensions": ["angular.ng-template"]
+    }
+  }
+}
