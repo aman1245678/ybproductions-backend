@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+- Classify the repo as a web-app (PROJECT_TYPE), add root package.json/Dockerfile/ESLint/Prettier.
+- Add optional `infra/` Terraform sketch for container hosting.
+- Expand unit tests (admin panel, manpower wizard) and tighten CI detection + LOC gate.
+
 ## 1.1.0
 
 - Add repository README, env example, Docker Compose, and CI gates (lint, typecheck, tests, audit).

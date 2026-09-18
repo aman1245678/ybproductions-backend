@@ -1,0 +1,21 @@
+{
+  "name": "ybproductions-backend",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Angular 20 web app + Express host for Yashvi Bagga Productions (not infrastructure-as-code).",
+  "scripts": {
+    "start": "npm --prefix yashvi-bagga-productions start",
+    "build": "npm --prefix yashvi-bagga-productions run build",
+    "test": "npm --prefix yashvi-bagga-productions test",
+    "lint": "npm --prefix yashvi-bagga-productions run lint",
+    "typecheck": "npm --prefix yashvi-bagga-productions run typecheck",
+    "format": "prettier --write \"yashvi-bagga-productions/src/**/*.{ts,json}\" \"*.md\" \"PROJECT_TYPE.md\"",
+    "format:check": "prettier --check \"README.md\" \"PROJECT_TYPE.md\" \"CHANGELOG.md\""
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
