@@ -4,17 +4,27 @@ import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import bootstrap from './src/main.server';
+import { createHealthRouter } from './server/routes/health.route.js';
+import { requestLogger } from './server/middleware/request-logger.js';
+import { errorHandler } from './server/middleware/error-handler.js';
+import { initErrorTracking } from './server/observability/sentry.js';
+import { logger } from './server/logging.js';
 
+/**
+ * Express host: request logging → health → static assets → Angular SSR → errors.
+ */
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
-
   const commonEngine = new CommonEngine();
 
+  server.disable('x-powered-by');
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
+  server.use(requestLogger);
+  server.use('/health', createHealthRouter());
 
   server.get('*.*', express.static(browserDistFolder, {
     maxAge: '1y',
@@ -35,14 +45,16 @@ export function app(): express.Express {
       .catch((err) => next(err));
   });
 
+  server.use(errorHandler);
   return server;
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
+  initErrorTracking();
+  const port = Number(process.env['PORT']) || 4000;
   const server = app();
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    logger.info({ port }, 'ssr_host_listening');
   });
 }
 

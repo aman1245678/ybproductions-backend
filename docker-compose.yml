@@ -1,0 +1,19 @@
+services:
+  web:
+    build:
+      context: ./yashvi-bagga-productions
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4000"
+    environment:
+      PORT: "4000"
+      NODE_ENV: production
+      LOG_LEVEL: info
+      SITE_URL: http://localhost:4200
+      API_URL: http://host.docker.internal:5041/api/v1
+      SENTRY_DSN: ""
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
