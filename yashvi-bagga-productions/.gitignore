@@ -14,6 +14,8 @@
 /.angular/cache
 .DS_Store
 Thumbs.db
+.env
+/coverage
 
 # Large mobile binaries — hosted via GitHub Releases, bundled in CI deploy
 /public/downloads/*.apk
