@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: ./yashvi-bagga-productions
+      context: .
       dockerfile: Dockerfile
     ports:
       - "4200:4000"
