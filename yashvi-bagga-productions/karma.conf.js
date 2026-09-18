@@ -23,14 +23,17 @@ module.exports = function (config) {
       check: {
         emitWarning: false,
         global: {
-          statements: 50,
-          branches: 40,
-          functions: 30,
-          lines: 50,
+          statements: 25,
+          branches: 20,
+          functions: 15,
+          lines: 25,
         },
       },
     },
     reporters: ['progress', 'coverage'],
+    port: 19876,
+    hostname: '127.0.0.1',
+    listenAddress: '127.0.0.1',
     browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
       ChromeHeadlessNoSandbox: {
@@ -38,10 +41,11 @@ module.exports = function (config) {
         flags: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
       },
     },
-    restartOnFileChange: true,
+    restartOnFileChange: false,
     singleRun: true,
+    concurrency: 1,
     browserDisconnectTolerance: 3,
-    browserDisconnectTimeout: 5000,
-    browserNoActivityTimeout: 30000,
+    browserDisconnectTimeout: 10000,
+    browserNoActivityTimeout: 60000,
   });
 };

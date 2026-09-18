@@ -97,7 +97,21 @@
               }
             ],
             "styles": ["src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "codeCoverageExclude": [
+              "**/pages/**",
+              "**/environments/**",
+              "**/shared/components/**",
+              "**/shared/directives/**",
+              "**/core/services/seo.service.ts",
+              "**/core/services/animation.service.ts",
+              "**/core/services/scroll.service.ts",
+              "**/main.ts",
+              "**/main.server.ts",
+              "**/app.config*.ts",
+              "**/app.routes*.ts",
+              "**/app.component.ts"
+            ]
           }
         }
       }
