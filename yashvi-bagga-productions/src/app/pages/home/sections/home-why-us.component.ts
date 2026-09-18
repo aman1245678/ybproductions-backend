@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 

@@ -1,10 +1,9 @@
-import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ScrollAnimationDirective } from '../../../shared/directives/scroll-animation.directive';
 import { SectionHeaderComponent } from '../../../shared/components/section-header/section-header.component';
 import { SeoService } from '../../../core/services/seo.service';
-import gsap from 'gsap';
 
 @Component({
   selector: 'app-it-solutions',
@@ -287,7 +286,6 @@ import gsap from 'gsap';
 })
 export class ItSolutionsComponent implements OnInit {
   private readonly seoService = inject(SeoService);
-  private readonly platformId = inject(PLATFORM_ID);
   private readonly router = inject(Router);
 
   coreServices = [

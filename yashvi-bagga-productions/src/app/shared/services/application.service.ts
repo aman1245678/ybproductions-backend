@@ -4,11 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
 import { FormSubmissionService, FormTypeCode } from './form-submission.service';
 import { InquiryPayload, InquiryType } from '../models/notification.model';
-import {
-  ApplicationStatus,
-  StatusEvent,
-  WorkflowTrack,
-} from '../models/application-status.model';
+import { ApplicationStatus, StatusEvent } from '../models/application-status.model';
 import { TalentProfile } from '../models/talent-profile.model';
 import { CastingApplication } from '../models/casting-application.model';
 import { MediaProfessional } from '../models/media-professional.model';

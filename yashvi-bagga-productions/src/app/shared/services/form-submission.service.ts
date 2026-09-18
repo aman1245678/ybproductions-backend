@@ -1,7 +1,11 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
+import { ZodError } from 'zod';
 import { environment } from '../../../environments/environment';
+import { LoggerService } from '../../core/services/logger.service';
+import { ErrorTrackingService } from '../../core/services/error-tracking.service';
+import { parseSubmitApplication } from '../validators/application.schema';
 
 /** Backend FormTypeCode values. */
 export type FormTypeCode =
@@ -76,16 +80,24 @@ export const SLUG_TO_CREW_TRACK: Record<string, string> = {
 @Injectable({ providedIn: 'root' })
 export class FormSubmissionService {
   private readonly http = inject(HttpClient);
+  private readonly logger = inject(LoggerService);
+  private readonly errors = inject(ErrorTrackingService);
 
   submit(body: SubmitApplicationRequest): Observable<SubmitApplicationResponse> {
-    return this.http
-      .post<SubmitApplicationResponse>(`${environment.apiUrl}/applications`, {
+    try {
+      const payload = parseSubmitApplication({
         source: 'WEBSITE',
         preferredCommunication: [],
         payload: {},
         ...body,
-      })
-      .pipe(catchError((err) => throwError(() => this.toError(err))));
+      });
+      this.logger.info('application.submit', { formType: payload.formType });
+      return this.http
+        .post<SubmitApplicationResponse>(`${environment.apiUrl}/applications`, payload)
+        .pipe(catchError((err) => throwError(() => this.toError(err))));
+    } catch (err) {
+      return throwError(() => this.toError(err));
+    }
   }
 
   lookupByCode(applicationId: string): Observable<ApplicationLookupResponse> {
@@ -144,13 +156,20 @@ export class FormSubmissionService {
   }
 
   private toError(err: unknown): Error {
+    if (err instanceof ZodError) {
+      const detail = err.issues[0]?.message || 'Please check the form and try again.';
+      this.logger.warn('application.validation_failed', { issues: err.issues.map((i) => i.message) });
+      return new Error(detail);
+    }
     if (err instanceof HttpErrorResponse) {
       const detail =
         (err.error && (err.error.detail || err.error.message || err.error.title)) ||
         err.message ||
         'Submission failed';
+      this.errors.captureException(err, { status: err.status });
       return new Error(typeof detail === 'string' ? detail : 'Submission failed');
     }
+    this.errors.captureException(err);
     return err instanceof Error ? err : new Error('Submission failed');
   }
 }

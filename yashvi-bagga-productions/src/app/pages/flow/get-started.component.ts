@@ -1,7 +1,8 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';import { SeoService } from '../../core/services/seo.service';
-import { HIRE_OPTIONS, JOIN_OPTIONS, FlowOption } from '../../shared/models/flow-categories.model';
+import { Router } from '@angular/router';
+import { SeoService } from '../../core/services/seo.service';
+import { HIRE_OPTIONS, JOIN_OPTIONS } from '../../shared/models/flow-categories.model';
 
 @Component({
   selector: 'app-get-started',
