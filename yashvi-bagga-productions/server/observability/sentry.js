@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/node';
-import { logger } from '../logging.js';
+import { logger } from '../lib/logger.js';
 
 let enabled = false;
 

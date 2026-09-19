@@ -8,7 +8,7 @@ import { createHealthRouter } from './server/routes/health.route.js';
 import { requestLogger } from './server/middleware/request-logger.js';
 import { errorHandler } from './server/middleware/error-handler.js';
 import { initErrorTracking } from './server/observability/sentry.js';
-import { logger } from './server/logging.js';
+import { logger } from './server/lib/logger.js';
 
 /**
  * Express host: request logging → health → static assets → Angular SSR → errors.

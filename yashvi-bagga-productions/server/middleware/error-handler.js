@@ -1,4 +1,4 @@
-import { logger } from '../logging.js';
+import { logger } from '../lib/logger.js';
 import { captureException } from '../observability/sentry.js';
 
 export function errorHandler(err, _req, res, _next) {
