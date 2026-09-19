@@ -23,10 +23,10 @@ module.exports = function (config) {
       check: {
         emitWarning: false,
         global: {
-          statements: 25,
-          branches: 20,
-          functions: 15,
-          lines: 25,
+          statements: 35,
+          branches: 25,
+          functions: 20,
+          lines: 35,
         },
       },
     },

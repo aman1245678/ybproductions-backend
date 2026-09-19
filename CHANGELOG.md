@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+- Expand unit specs (services, vocational training, manpower outsourcing, join-network, toast, notifications).
+- Enforce higher Karma coverage floor; CI production `build` job.
+- Add SECURITY.md; refresh CONTRIBUTING for root workspace commands.
+
 ## 1.3.0
 
 - Remove placeholder Terraform `infra/` scaffold that caused infra misclassification.

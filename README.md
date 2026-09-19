@@ -67,7 +67,7 @@ yashvi-bagga-productions/
 
 ## CI
 
-`.github/workflows/ci.yml` runs **lint**, **typecheck**, **test** (coverage threshold enforced), and `npm audit` on every push and pull request.
+`.github/workflows/ci.yml` runs **lint**, **typecheck**, **test** (coverage floor enforced), **build**, and `npm audit` on every push and pull request.
 
 ## License
 
