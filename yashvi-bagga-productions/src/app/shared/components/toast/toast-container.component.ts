@@ -19,8 +19,10 @@ import { ToastService } from '../../services/toast.service';
       @for (toast of toastService.toasts(); track toast.id) {
         <div
           class="glass-card pointer-events-auto flex items-start gap-3 px-4 py-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] animate-slide-up"
-          [class.border-brand-gold/30]="toast.type === 'success'"
-          [class.border-brand-pink/40]="toast.type === 'error'"
+          [ngClass]="{
+            'border-brand-gold/30': toast.type === 'success',
+            'border-brand-pink/40': toast.type === 'error'
+          }"
           role="status"
         >
           <!-- Icon -->

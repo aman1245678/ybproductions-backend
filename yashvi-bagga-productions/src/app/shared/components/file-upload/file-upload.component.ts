@@ -60,10 +60,10 @@ interface UploadRow {
         tabindex="0"
         [attr.aria-label]="'Upload ' + (label || 'files')"
         class="relative rounded-2xl border-2 border-dashed px-6 py-8 text-center transition-colors cursor-pointer focus:outline-none"
-        [class.border-white/15]="!dragging()"
-        [class.bg-brand-white/5]="!dragging()"
-        [class.border-brand-gold]="dragging()"
-        [class.bg-brand-gold/10]="dragging()"
+        [ngClass]="{
+          'border-white/15 bg-brand-white/5': !dragging(),
+          'border-brand-gold bg-brand-gold/10': dragging()
+        }"
         (click)="picker.click()"
         (keydown.enter)="picker.click()"
         (keydown.space)="picker.click(); $event.preventDefault()"

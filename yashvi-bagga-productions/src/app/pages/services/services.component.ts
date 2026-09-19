@@ -341,7 +341,7 @@ import { SERVICE_LINKS } from '../../shared/models/service-links.model';
               <p class="text-brand-white/50 font-poppins text-sm leading-relaxed">{{ step.description }}</p>
 
               <!-- Connector line -->
-              @if (i < processSteps.length - 1) {
+              @if (hasNextProcess(i)) {
                 <div class="hidden lg:block absolute top-8 left-[60%] w-[80%] h-[1px] bg-gradient-to-r from-brand-gold/30 to-transparent"></div>
               }
             </div>
@@ -443,5 +443,9 @@ export class ServicesComponent implements OnInit {
       title: 'Services | Yashvi Bagga Productions',
       description: 'Casting, social media, digital marketing, creative branding, IT solutions, talent pool, manpower outsourcing and professional training — across India.',
     });
+  }
+
+  hasNextProcess(i: number): boolean {
+    return i < this.processSteps.length - 1;
   }
 }

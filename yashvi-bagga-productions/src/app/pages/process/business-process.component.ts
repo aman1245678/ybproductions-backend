@@ -66,11 +66,7 @@ interface BusinessProcess {
               role="tab"
               [attr.aria-selected]="active() === process.key"
               class="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-poppins transition-all duration-300"
-              [class.border-brand-gold]="active() === process.key"
-              [class.bg-brand-gold/10]="active() === process.key"
-              [class.text-brand-gold]="active() === process.key"
-              [class.border-white/10]="active() !== process.key"
-              [class.text-brand-white/60]="active() !== process.key"
+              [ngClass]="tabClass(process.key)"
               (click)="select(process.key)"
             >
               <span>{{ process.icon }}</span> {{ process.label }}
@@ -111,7 +107,7 @@ interface BusinessProcess {
                   <h3 class="text-brand-white font-medium text-lg">{{ step.title }}</h3>
                   <p class="mt-1 text-brand-white/55 text-sm leading-6">{{ step.description }}</p>
                 </div>
-                @if (i < current().steps.length - 1) {
+                @if (hasNextStep(i)) {
                   <span class="absolute left-[2.45rem] top-[4.6rem] h-5 w-px bg-brand-gold/20"></span>
                 }
               </li>
@@ -241,5 +237,17 @@ export class BusinessProcessComponent implements OnInit {
 
   select(key: string): void {
     this.active.set(key);
+  }
+
+  tabClass(key: string): Record<string, boolean> {
+    const on = this.active() === key;
+    return {
+      'border-brand-gold bg-brand-gold/10 text-brand-gold': on,
+      'border-white/10 text-brand-white/60': !on,
+    };
+  }
+
+  hasNextStep(i: number): boolean {
+    return i < this.current().steps.length - 1;
   }
 }

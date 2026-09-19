@@ -19,14 +19,12 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: yashvi-bagga-productions/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: yashvi-bagga-productions
         run: npm ci
 
       - name: Build website
-        working-directory: yashvi-bagga-productions
         run: npm run build
 
       - name: Deploy to public_html via FTP

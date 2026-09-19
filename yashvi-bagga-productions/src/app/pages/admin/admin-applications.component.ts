@@ -127,13 +127,13 @@ import { APPLICATION_STATUSES, initials, statusChip, statusLabel, applicationDis
           <div class="flex items-center gap-1">
             <button
               type="button"
-              [disabled]="page() <= 1"
+              [disabled]="isFirstPage()"
               (click)="goTo(page() - 1)"
               class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25 disabled:hover:bg-transparent"
             >Prev</button>
             <button
               type="button"
-              [disabled]="page() >= totalPages()"
+              [disabled]="isLastPage()"
               (click)="goTo(page() + 1)"
               class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25 disabled:hover:bg-transparent"
             >Next</button>
@@ -218,6 +218,14 @@ export class AdminApplicationsComponent {
   goTo(page: number): void {
     this.page.set(page);
     this.load();
+  }
+
+  isFirstPage(): boolean {
+    return this.page() <= 1;
+  }
+
+  isLastPage(): boolean {
+    return this.page() >= this.totalPages();
   }
 
   open(row: AdminApplication): void {

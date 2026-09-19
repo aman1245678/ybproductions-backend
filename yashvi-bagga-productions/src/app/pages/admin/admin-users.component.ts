@@ -139,8 +139,8 @@ import {
         <div class="flex flex-wrap items-center justify-between gap-3 border-t border-white/5 px-5 py-3 text-xs text-brand-white/45">
           <span>{{ total() }} user{{ total() === 1 ? '' : 's' }} · page {{ page() }} of {{ totalPages() }}</span>
           <div class="flex items-center gap-1">
-            <button type="button" [disabled]="page() <= 1" (click)="goTo(page() - 1)" class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25">Prev</button>
-            <button type="button" [disabled]="page() >= totalPages()" (click)="goTo(page() + 1)" class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25">Next</button>
+            <button type="button" [disabled]="isFirstPage()" (click)="goTo(page() - 1)" class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25">Prev</button>
+            <button type="button" [disabled]="isLastPage()" (click)="goTo(page() + 1)" class="rounded-lg px-3 py-1.5 transition hover:bg-white/5 hover:text-brand-gold disabled:opacity-25">Next</button>
           </div>
         </div>
       </div>
@@ -295,6 +295,14 @@ export class AdminUsersComponent {
   goTo(page: number): void {
     this.page.set(page);
     this.load();
+  }
+
+  isFirstPage(): boolean {
+    return this.page() <= 1;
+  }
+
+  isLastPage(): boolean {
+    return this.page() >= this.totalPages();
   }
 
   onSearchChange(): void {

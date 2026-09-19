@@ -45,9 +45,10 @@ let uniqueId = 0;
         (input)="onInput($event)"
         (blur)="onBlur()"
         class="w-full bg-brand-white/5 border rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:outline-none transition-colors resize-none"
-        [class.border-white/10]="!(touched() && error())"
-        [class.focus:border-brand-gold]="!(touched() && error())"
-        [class.border-brand-pink/60]="touched() && error()"
+        [ngClass]="{
+          'border-white/10 focus:border-brand-gold': !(touched() && error()),
+          'border-brand-pink/60': !!(touched() && error())
+        }"
       ></textarea>
 
       <div class="mt-1.5 flex items-center justify-between gap-3">
@@ -63,8 +64,10 @@ let uniqueId = 0;
         <p
           [id]="id + '-counter'"
           class="font-poppins text-xs tabular-nums shrink-0"
-          [class.text-brand-white/40]="!overLimit()"
-          [class.text-brand-pink]="overLimit()"
+          [ngClass]="{
+            'text-brand-white/40': !overLimit(),
+            'text-brand-pink': overLimit()
+          }"
           aria-live="polite"
         >
           {{ value().length }} / {{ max }} characters

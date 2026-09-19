@@ -32,12 +32,7 @@ import { SeoService } from '../../core/services/seo.service';
           @for (filter of filters; track filter) {
             <button
               class="px-5 py-2 rounded-full font-poppins text-sm whitespace-nowrap transition-all duration-300"
-              [class.bg-brand-gold]="activeFilter() === filter"
-              [class.text-brand-black]="activeFilter() === filter"
-              [class.font-semibold]="activeFilter() === filter"
-              [class.bg-brand-white/5]="activeFilter() !== filter"
-              [class.text-brand-white/60]="activeFilter() !== filter"
-              [class.hover:text-brand-gold]="activeFilter() !== filter"
+              [ngClass]="filterClass(filter)"
               (click)="setFilter(filter)"
             >
               {{ filter }}
@@ -121,6 +116,14 @@ export class PortfolioComponent implements OnInit {
     } else {
       this.filteredProjects.set(this.projects.filter(p => p.category === filter));
     }
+  }
+
+  filterClass(filter: string): Record<string, boolean> {
+    const active = this.activeFilter() === filter;
+    return {
+      'bg-brand-gold text-brand-black font-semibold': active,
+      'bg-brand-white/5 text-brand-white/60 hover:text-brand-gold': !active,
+    };
   }
 
   ngOnInit(): void {

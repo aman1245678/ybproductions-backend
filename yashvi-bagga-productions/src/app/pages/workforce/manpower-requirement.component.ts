@@ -62,18 +62,22 @@ interface WizardStep {
         <ol class="mb-10 grid grid-cols-3 gap-3 sm:grid-cols-6">
           @for (s of steps; track s.index) {
             <li class="flex flex-col items-center text-center">
-              <div class="flex h-9 w-9 items-center justify-center rounded-full border text-xs font-medium transition-colors"
-                [class.border-brand-gold]="step() >= s.index"
-                [class.text-brand-gold]="step() >= s.index"
-                [class.bg-brand-gold/10]="step() === s.index"
-                [class.border-white/15]="step() < s.index"
-                [class.text-brand-white/40]="step() < s.index"
+              <div
+                class="flex h-9 w-9 items-center justify-center rounded-full border text-xs font-medium transition-colors"
+                [ngClass]="{
+                  'border-brand-gold text-brand-gold': stepReached(s.index),
+                  'bg-brand-gold/10': step() === s.index,
+                  'border-white/15 text-brand-white/40': stepUpcoming(s.index)
+                }"
               >
-                @if (step() > s.index) { ✓ } @else { {{ s.index + 1 }} }
+                @if (stepDone(s.index)) { ✓ } @else { {{ s.index + 1 }} }
               </div>
-              <span class="mt-2 text-[10px] uppercase tracking-[0.15em]"
-                [class.text-brand-white/70]="step() >= s.index"
-                [class.text-brand-white/35]="step() < s.index"
+              <span
+                class="mt-2 text-[10px] uppercase tracking-[0.15em]"
+                [ngClass]="{
+                  'text-brand-white/70': stepReached(s.index),
+                  'text-brand-white/35': stepUpcoming(s.index)
+                }"
               >{{ s.title }}</span>
             </li>
           }
@@ -140,7 +144,7 @@ interface WizardStep {
                   <div [formGroupName]="i" class="rounded-2xl border border-brand-white/10 bg-brand-black/50 p-5">
                     <div class="flex items-center justify-between mb-4">
                       <p class="text-brand-white/70 font-poppins text-sm">Role #{{ i + 1 }}</p>
-                      @if (roles.length > 1) {
+                      @if (canRemoveRole()) {
                         <button type="button" class="text-brand-white/50 hover:text-brand-pink text-sm" (click)="removeRole(i)">Remove</button>
                       }
                     </div>
@@ -331,6 +335,22 @@ export class ManpowerRequirementComponent implements OnInit {
   step = signal(0);
   submitted = signal(false);
   submitting = signal(false);
+
+  stepReached(index: number): boolean {
+    return this.step() >= index;
+  }
+
+  stepUpcoming(index: number): boolean {
+    return this.step() < index;
+  }
+
+  stepDone(index: number): boolean {
+    return this.step() > index;
+  }
+
+  canRemoveRole(): boolean {
+    return this.roles.length > 1;
+  }
 
   form = this.fb.group({
     organization: this.fb.group({

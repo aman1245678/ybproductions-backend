@@ -214,11 +214,7 @@ import { DocumentUpload } from '../../shared/models/document-upload.model';
               @for (option of availabilityOptions; track option.slug) {
                 <button type="button"
                   class="rounded-full border px-4 py-2 text-sm font-poppins transition-colors"
-                  [class.border-brand-gold]="isAvailable(option.slug)"
-                  [class.text-brand-gold]="isAvailable(option.slug)"
-                  [class.bg-brand-gold/10]="isAvailable(option.slug)"
-                  [class.border-white/10]="!isAvailable(option.slug)"
-                  [class.text-brand-white/60]="!isAvailable(option.slug)"
+                  [ngClass]="availabilityClass(option.slug)"
                   (click)="toggleAvailability(option.slug)"
                 >{{ option.label }}</button>
               }
@@ -325,6 +321,14 @@ export class CastingApplicationComponent implements OnInit {
 
   isAvailable(slug: string): boolean {
     return this.availability().includes(slug);
+  }
+
+  availabilityClass(slug: string): Record<string, boolean> {
+    const on = this.isAvailable(slug);
+    return {
+      'border-brand-gold text-brand-gold bg-brand-gold/10': on,
+      'border-white/10 text-brand-white/60': !on,
+    };
   }
 
   toggleAvailability(slug: string): void {

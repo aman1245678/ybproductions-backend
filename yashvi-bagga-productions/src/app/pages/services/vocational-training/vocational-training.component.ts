@@ -141,7 +141,7 @@ import { SeoService } from '../../../core/services/seo.service';
               [animationDelay]="i * 150"
             >
               <!-- Connecting line -->
-              @if (i < learningJourney.length - 1) {
+              @if (hasNextJourney(i)) {
                 <div class="hidden lg:block absolute top-12 left-[calc(100%+1rem)] w-8 h-[2px] bg-gradient-to-r from-yellow-500 to-transparent"></div>
               }
 
@@ -518,4 +518,8 @@ export class VocationalTrainingComponent implements OnInit {
       description: 'Contemporary curriculum aligned with industry trends and continuous improvement.',
     },
   ];
+
+  hasNextJourney(i: number): boolean {
+    return i < this.learningJourney.length - 1;
+  }
 }

@@ -114,8 +114,10 @@ import { environment } from '../../../environments/environment';
                 @for (step of [1, 2, 3]; track step) {
                   <div
                     class="flex-1 h-1 rounded-full transition-all duration-500"
-                    [class.bg-brand-gold]="currentStep() >= step"
-                    [class.bg-brand-white/10]="currentStep() < step"
+                    [ngClass]="{
+                      'bg-brand-gold': stepComplete(step),
+                      'bg-brand-white/10': stepPending(step)
+                    }"
                   ></div>
                 }
               </div>
@@ -274,7 +276,7 @@ import { environment } from '../../../environments/environment';
 
                 <!-- Navigation Buttons -->
                 <div class="flex items-center justify-between mt-10">
-                  @if (currentStep() > 1) {
+                  @if (canGoBack()) {
                     <button
                       type="button"
                       class="px-6 py-3 border border-white/10 text-brand-white/60 font-poppins text-sm rounded-full hover:border-brand-gold hover:text-brand-gold transition-all duration-300"
@@ -286,7 +288,7 @@ import { environment } from '../../../environments/environment';
                     <div></div>
                   }
 
-                  @if (currentStep() < 3) {
+                  @if (canContinue()) {
                     <button
                       type="button"
                       class="px-8 py-3 bg-brand-gold text-brand-black font-poppins font-semibold rounded-full hover:bg-brand-pink hover:text-white transition-all duration-500"
@@ -391,6 +393,22 @@ export class ContactComponent implements OnInit {
     if (this.currentStep() > 1) {
       this.currentStep.update(s => s - 1);
     }
+  }
+
+  stepComplete(step: number): boolean {
+    return this.currentStep() >= step;
+  }
+
+  stepPending(step: number): boolean {
+    return this.currentStep() < step;
+  }
+
+  canGoBack(): boolean {
+    return this.currentStep() > 1;
+  }
+
+  canContinue(): boolean {
+    return this.currentStep() < 3;
   }
 
   async submitForm(): Promise<void> {

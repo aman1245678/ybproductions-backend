@@ -85,7 +85,7 @@ import { SeoService } from '../../../core/services/seo.service';
                 <!-- Features list -->
                 <ul class="relative z-10 space-y-2 mb-6">
                   @for (feature of service.features; track feature; let j = $index) {
-                    @if (j < 3) {
+                    @if (showTopThree(j)) {
                       <li class="flex items-center gap-2 text-cyan-300/70 font-poppins text-xs">
                         <svg class="w-3 h-3 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
                         {{ feature }}
@@ -129,7 +129,7 @@ import { SeoService } from '../../../core/services/seo.service';
               [animationDelay]="i * 150"
             >
               <!-- Connecting line -->
-              @if (i < workflowSteps.length - 1) {
+              @if (hasNextWorkflow(i)) {
                 <div class="hidden lg:block absolute top-12 left-[calc(100%+1rem)] w-8 h-[2px] bg-gradient-to-r from-cyan-500 to-transparent"></div>
               }
 
@@ -403,5 +403,13 @@ export class ItSolutionsComponent implements OnInit {
       description: 'Enterprise-grade technology solutions including web development, mobile apps, cloud infrastructure, and digital transformation.',
       url: pageUrl,
     });
+  }
+
+  showTopThree(j: number): boolean {
+    return j < 3;
+  }
+
+  hasNextWorkflow(i: number): boolean {
+    return i < this.workflowSteps.length - 1;
   }
 }

@@ -121,7 +121,7 @@ import { SeoService } from '../../../core/services/seo.service';
               [animationDelay]="i * 150"
             >
               <!-- Connecting line -->
-              @if (i < creativeProcess.length - 1) {
+              @if (hasNextCreative(i)) {
                 <div class="hidden lg:block absolute top-12 left-[calc(100%+1rem)] w-8 h-[2px] bg-gradient-to-r from-brand-gold to-transparent"></div>
               }
 
@@ -403,5 +403,9 @@ export class CreativeMediaComponent implements OnInit {
       description: 'Social media management, digital marketing and creative branding — creating digital experiences and powerful brands with measurable results.',
       url: 'https://yashvibagga.com/services/creative-media',
     });
+  }
+
+  hasNextCreative(i: number): boolean {
+    return i < this.creativeProcess.length - 1;
   }
 }

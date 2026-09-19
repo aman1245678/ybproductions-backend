@@ -53,12 +53,7 @@ import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-up
             @for (s of def.steps; track s.title; let i = $index) {
               <li
                 class="rounded-full border px-3 py-1.5 text-[10px] uppercase tracking-[0.12em]"
-                [class.border-brand-gold]="step() === i"
-                [class.text-brand-gold]="step() === i"
-                [class.bg-brand-gold/10]="step() === i"
-                [class.border-white/15]="step() !== i"
-                [class.text-brand-white/40]="step() < i"
-                [class.text-brand-white/70]="step() > i"
+                [ngClass]="stepPillClass(i)"
               >
                 {{ i + 1 }}. {{ s.title }}
               </li>
@@ -97,11 +92,7 @@ import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-up
                         <button
                           type="button"
                           class="rounded-full border px-3 py-1.5 text-xs font-poppins transition-colors"
-                          [class.border-brand-gold]="isChipOn(field.key, opt)"
-                          [class.text-brand-gold]="isChipOn(field.key, opt)"
-                          [class.bg-brand-gold/10]="isChipOn(field.key, opt)"
-                          [class.border-white/10]="!isChipOn(field.key, opt)"
-                          [class.text-brand-white/60]="!isChipOn(field.key, opt)"
+                          [ngClass]="chipClass(field.key, opt)"
                           (click)="toggleChip(field.key, opt)"
                         >{{ opt }}</button>
                       }
@@ -139,12 +130,12 @@ import { DocumentUpload, AllowedFileKind } from '../../shared/models/document-up
             </div>
 
             <div class="flex flex-col sm:flex-row gap-3 pt-4">
-              @if (step() > 0) {
+              @if (canGoBack()) {
                 <button type="button" (click)="prev()" class="rounded-full border border-brand-white/20 px-6 py-3 text-brand-white hover:border-brand-gold hover:text-brand-gold transition-colors">
                   Back
                 </button>
               }
-              @if (step() < def.steps.length - 1) {
+              @if (canContinue()) {
                 <button type="button" (click)="next()" class="rounded-full bg-brand-gold px-8 py-3 font-medium text-brand-black hover:bg-brand-white transition-colors">
                   Continue
                 </button>
@@ -258,6 +249,34 @@ export class IntakeWizardComponent implements OnInit {
       }
     }
     return true;
+  }
+
+  stepPillClass(i: number): Record<string, boolean> {
+    const current = this.step() === i;
+    const upcoming = this.step() < i;
+    const done = this.step() > i;
+    return {
+      'border-brand-gold text-brand-gold bg-brand-gold/10': current,
+      'border-white/15': !current,
+      'text-brand-white/40': upcoming,
+      'text-brand-white/70': done,
+    };
+  }
+
+  chipClass(key: string, opt: string): Record<string, boolean> {
+    const on = this.isChipOn(key, opt);
+    return {
+      'border-brand-gold text-brand-gold bg-brand-gold/10': on,
+      'border-white/10 text-brand-white/60': !on,
+    };
+  }
+
+  canGoBack(): boolean {
+    return this.step() > 0;
+  }
+
+  canContinue(): boolean {
+    return this.step() < (this.def?.steps.length ?? 1) - 1;
   }
 
   next(): void {

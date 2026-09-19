@@ -24,25 +24,30 @@ import {
   template: `
     <ol class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
       @for (step of steps(); track step.status; let i = $index) {
-        <li class="relative rounded-2xl border p-4 transition-colors"
-            [class.border-brand-gold/40]="i <= activeIndex()"
-            [class.bg-brand-gold/5]="i <= activeIndex()"
-            [class.border-white/10]="i > activeIndex()"
+        <li
+          class="relative rounded-2xl border p-4 transition-colors"
+          [ngClass]="{
+            'border-brand-gold/40 bg-brand-gold/5': isReached(i),
+            'border-white/10': isUpcoming(i)
+          }"
         >
           <div class="flex items-center gap-3">
             <span
               class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium"
-              [class.border-brand-gold]="i <= activeIndex()"
-              [class.text-brand-gold]="i <= activeIndex()"
-              [class.bg-brand-gold/10]="i === activeIndex()"
-              [class.border-white/15]="i > activeIndex()"
-              [class.text-brand-white/40]="i > activeIndex()"
+              [ngClass]="{
+                'border-brand-gold text-brand-gold': isReached(i),
+                'bg-brand-gold/10': isCurrent(i),
+                'border-white/15 text-brand-white/40': isUpcoming(i)
+              }"
             >
-              @if (i < activeIndex()) { ✓ } @else { {{ i + 1 }} }
+              @if (isDone(i)) { ✓ } @else { {{ i + 1 }} }
             </span>
-            <p class="font-poppins text-sm"
-               [class.text-brand-white]="i <= activeIndex()"
-               [class.text-brand-white/45]="i > activeIndex()"
+            <p
+              class="font-poppins text-sm"
+              [ngClass]="{
+                'text-brand-white': isReached(i),
+                'text-brand-white/45': isUpcoming(i)
+              }"
             >{{ step.label }}</p>
           </div>
           <p class="mt-2 text-brand-white/45 font-poppins text-[11px] leading-5">{{ step.description }}</p>
@@ -68,4 +73,20 @@ export class StatusTimelineComponent {
     const idx = this.steps().findIndex((s) => s.status === cur);
     return idx < 0 ? 0 : idx;
   });
+
+  isReached(i: number): boolean {
+    return i <= this.activeIndex();
+  }
+
+  isUpcoming(i: number): boolean {
+    return i > this.activeIndex();
+  }
+
+  isCurrent(i: number): boolean {
+    return i === this.activeIndex();
+  }
+
+  isDone(i: number): boolean {
+    return i < this.activeIndex();
+  }
 }
