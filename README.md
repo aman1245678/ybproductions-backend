@@ -1,51 +1,39 @@
 # Yashvi Bagga Productions
 
-> **Project type:** Angular 20 **web-app / frontend** (marketing site + admin CRM). See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). This is **not** an infrastructure-as-code repository.
+Angular 20 **web-app** for [Yashvi Bagga Productions](https://ybproductions.co.in) — cinematic marketing site + admin control center, with a thin Express host for production static serving.
 
-Public website and admin control center for [Yashvi Bagga Productions](https://ybproductions.co.in).
+See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.md) for which `package.json` owns runtime deps.
 
 ## Tech stack
 
-- Angular 20 standalone components, signals, and reactive forms
+- Angular 20 standalone components, signals, reactive forms
 - Tailwind CSS + SCSS
-- Node/Express host (`server.ts`) with `/health`, **Pino** structured logging, and optional **Sentry** error tracking
-- Zod validation on application submissions before they hit `POST /api/v1/applications`
+- Express host with `GET /health`, **Pino** (`pino` / `pino-http`), optional **Sentry**
+- Zod validation before `POST /api/v1/applications`
 
-## Quick start
+## Fresh clone (only steps you need)
 
-Requires Node.js 20+. From the repository root:
+Requires Node.js 20+.
 
 ```bash
+git clone https://github.com/aman1245678/ybproductions-backend.git
+cd ybproductions-backend
 cp yashvi-bagga-productions/.env.example yashvi-bagga-productions/.env
-cd yashvi-bagga-productions
 npm ci
+npm test
 npm start
 ```
 
-Or use the root scripts after `npm ci` in `yashvi-bagga-productions/`:
-
-```bash
-npm start      # from yashvi-bagga-productions, or npm --prefix yashvi-bagga-productions start
-npm test
-npm run lint
-npm run typecheck
-npm run build
-```
-
-The site runs at [http://localhost:4200](http://localhost:4200). Point `apiUrl` in `src/environments/environment.ts` at a running YBP API (default `http://localhost:5041/api/v1`) for **manual** browser testing only.
-
-### Commands
-
 | Command | Purpose |
 | --- | --- |
-| `npm start` | Dev server (`ng serve`, port `4200` / `PORT`) |
-| `npm run build` | Production browser build |
-| `npm test` | Karma/Jasmine unit tests with coverage (threshold enforced) |
+| `npm ci` | Install root + app workspace dependencies (lockfile at repo root) |
+| `npm test` | Unit tests (Karma) **and** Express `/health` test — no live API required |
+| `npm start` | `ng serve` on port 4200 |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm run serve:ssr` / `npm run start:prod` | Express host after build |
+| `npm run build` | Production browser build |
 
-Clone into an empty folder and follow only this README: `npm ci`, `npm test`, and `npm start` inside `yashvi-bagga-productions` are the three commands a fresh machine needs.
+`npm test` never contacts a live backend. Specs use `HttpTestingController` / mocks; the host test uses Supertest against an in-memory Express app.
 
 ## Docker
 
@@ -53,46 +41,33 @@ Clone into an empty folder and follow only this README: `npm ci`, `npm test`, an
 docker compose up --build
 ```
 
-Uses the root [`Dockerfile`](Dockerfile). Health: [http://localhost:4200/health](http://localhost:4200/health).
-
-Optional hosting sketch: [`infra/`](infra/) (Terraform example for Azure Container Apps).
+Health: [http://localhost:4200/health](http://localhost:4200/health).
 
 ## Environment
 
-See [`yashvi-bagga-productions/.env.example`](yashvi-bagga-productions/.env.example) and root [`.env.example`](.env.example).
-
-| Variable | Used by | Default |
-| --- | --- | --- |
-| `PORT` | Express host / Docker | `4000` (`4200` for `ng serve`) |
-| `SITE_URL` | Canonical site URL | `http://localhost:4200` |
-| `API_URL` | Browser API base (build-time environment files) | `http://localhost:5041/api/v1` |
-| `SENTRY_DSN` | Optional error tracking | empty (disabled) |
-| `LOG_LEVEL` | Pino log level | `info` |
+| Variable | Default |
+| --- | --- |
+| `PORT` | `4000` (Express) / `4200` (`ng serve`) |
+| `SITE_URL` | `http://localhost:4200` |
+| `API_URL` | `http://localhost:5041/api/v1` (manual browser testing only) |
+| `LOG_LEVEL` | `info` (Pino) |
+| `SENTRY_DSN` | empty (Sentry off) |
 
 ## Architecture
 
 ```
 yashvi-bagga-productions/
-├── server.ts                  Express host
-├── server/                    Host layering (routes, middleware, services) — Pino + Sentry
-├── src/app/core/              Logger, error tracking, interceptors
-├── src/app/shared/models/intake-forms/  Config-driven multi-step forms
-├── src/app/shared/services/   HTTP clients (forms, auth, admin)
-├── src/app/shared/validators/ Angular + Zod validation
-└── src/app/pages/             Lazy-loaded routes (home, about, admin, intake)
-infra/                         Optional Terraform sketch for container hosting
+├── scripts/serve-prod.mjs     Express production host
+├── server/                    health, Pino logging, Sentry, errors
+├── src/app/core/              browser logger + error tracking
+├── src/app/shared/services/   HTTP clients
+├── src/app/shared/validators/ Angular + Zod
+└── src/app/pages/             routes (home, about, admin, intake)
 ```
 
-## Tests and CI
+## CI
 
-```bash
-cd yashvi-bagga-productions
-npm test
-```
-
-Unit tests **never call a live backend**. Specs use Angular `HttpTestingController` and service mocks only — no real `fetch`/XHR against `apiUrl`. Coverage is written to `yashvi-bagga-productions/coverage/` and Karma fails the run if global thresholds are missed.
-
-CI (`.github/workflows/ci.yml`) runs **lint**, **typecheck**, **test** (with coverage), **npm audit**, and a **500 LOC** file gate on every push/PR.
+`.github/workflows/ci.yml` runs **lint**, **typecheck**, **test** (coverage threshold enforced), and `npm audit` on every push and pull request.
 
 ## License
 

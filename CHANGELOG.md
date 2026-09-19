@@ -1,9 +1,15 @@
 # Changelog
 
+## 1.3.0
+
+- Remove placeholder Terraform `infra/` scaffold that caused infra misclassification.
+- Make root `npm ci` / `npm test` work via workspaces; document DEPENDENCIES.md.
+- Add Express `/health` + Pino logger tests (Supertest / node:test).
+- Add ContactComponent unit specs.
+
 ## 1.2.0
 
 - Classify the repo as a web-app (PROJECT_TYPE), add root package.json/Dockerfile/ESLint/Prettier.
-- Add optional `infra/` Terraform sketch for container hosting.
 - Expand unit tests (admin panel, manpower wizard) and tighten CI detection + LOC gate.
 
 ## 1.1.0
