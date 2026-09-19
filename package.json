@@ -1,16 +1,26 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "description": "Angular 20 web app + Express host for Yashvi Bagga Productions (not infrastructure-as-code).",
+  "description": "Angular 20 web-app + Express host for Yashvi Bagga Productions",
+  "keywords": [
+    "angular",
+    "frontend",
+    "web-app",
+    "typescript",
+    "express",
+    "nodejs"
+  ],
+  "workspaces": [
+    "yashvi-bagga-productions"
+  ],
   "scripts": {
-    "start": "npm --prefix yashvi-bagga-productions start",
-    "build": "npm --prefix yashvi-bagga-productions run build",
-    "test": "npm --prefix yashvi-bagga-productions test",
-    "lint": "npm --prefix yashvi-bagga-productions run lint",
-    "typecheck": "npm --prefix yashvi-bagga-productions run typecheck",
-    "format": "prettier --write \"yashvi-bagga-productions/src/**/*.{ts,json}\" \"*.md\" \"PROJECT_TYPE.md\"",
-    "format:check": "prettier --check \"README.md\" \"PROJECT_TYPE.md\" \"CHANGELOG.md\""
+    "start": "npm run start -w yashvi-bagga-productions",
+    "build": "npm run build -w yashvi-bagga-productions",
+    "test": "npm run test:all -w yashvi-bagga-productions",
+    "lint": "npm run lint -w yashvi-bagga-productions",
+    "typecheck": "npm run typecheck -w yashvi-bagga-productions",
+    "format:check": "prettier --check \"README.md\" \"PROJECT_TYPE.md\" \"CHANGELOG.md\" \"DEPENDENCIES.md\""
   },
   "engines": {
     "node": ">=20"

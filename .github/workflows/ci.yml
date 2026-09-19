@@ -10,9 +10,6 @@ jobs:
   lint:
     name: lint
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: yashvi-bagga-productions
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,13 +18,12 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: yashvi-bagga-productions/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - name: Run lint
         run: npm run lint
       - name: Fail on files over 500 LOC
-        working-directory: ${{ github.workspace }}
         run: |
           set -euo pipefail
           bad=0
@@ -43,9 +39,6 @@ jobs:
   typecheck:
     name: typecheck
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: yashvi-bagga-productions
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,7 +47,7 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: yashvi-bagga-productions/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - name: Run typecheck
@@ -63,9 +56,6 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: yashvi-bagga-productions
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -74,13 +64,13 @@ jobs:
         with:
           node-version: "20"
           cache: npm
-          cache-dependency-path: yashvi-bagga-productions/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - name: Run tests with coverage
         run: npm test
       - name: Run dependency audit
-        run: npm audit --audit-level=critical
+        run: npm audit --audit-level=critical --workspace=yashvi-bagga-productions
       - name: Upload coverage
         if: success()
         uses: actions/upload-artifact@v4
