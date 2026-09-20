@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0
+
+- Add Express `POST /api/v1/applications` and `POST /api/v1/auth/login` with Zod validation.
+- Add typed `AppError` / Result helpers and structured error middleware tests.
+- Expose runtime deps at the workspace root; document coverage thresholds for scanners.
+
 ## 1.4.0
 
 - Expand unit specs (services, vocational training, manpower outsourcing, join-network, toast, notifications).

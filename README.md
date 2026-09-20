@@ -1,6 +1,6 @@
 # Yashvi Bagga Productions
 
-Angular 20 **web-app** for [Yashvi Bagga Productions](https://ybproductions.co.in) — cinematic marketing site + admin control center, with a thin Express host for production static serving.
+Angular 20 **web-app** + Express **API host** for [Yashvi Bagga Productions](https://ybproductions.co.in) — cinematic marketing site, admin control center, and Zod-validated intake endpoints.
 
 See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.md) for which `package.json` owns runtime deps.
 
@@ -8,8 +8,9 @@ See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.m
 
 - Angular 20 standalone components, signals, reactive forms
 - Tailwind CSS + SCSS
-- Express host with `GET /health`, **Pino** (`pino` / `pino-http`), optional **Sentry**
-- Zod validation before `POST /api/v1/applications`
+- Express host: `GET /health`, `POST /api/v1/applications`, `POST /api/v1/auth/login`
+- **Pino** / **pino-http**, optional **Sentry**, typed `AppError` middleware
+- Zod validation on application + login bodies (server + browser)
 
 ## Fresh clone (only steps you need)
 
@@ -27,13 +28,23 @@ npm start
 | Command | Purpose |
 | --- | --- |
 | `npm ci` | Install root + app workspace dependencies (lockfile at repo root) |
-| `npm test` | Unit tests (Karma) **and** Express `/health` test — no live API required |
+| `npm test` | Karma unit specs **and** Express host tests (`node:test` + Supertest) — no live Azure required |
 | `npm start` | `ng serve` on port 4200 |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run build` | Production browser build |
 
-`npm test` never contacts a live backend. Specs use `HttpTestingController` / mocks; the host test uses Supertest against an in-memory Express app.
+Coverage floor is enforced via `yashvi-bagga-productions/coverage-thresholds.json` (wired in `karma.conf.js`). `test-framework.json` documents Karma + `node:test`.
+
+`npm test` never contacts a live Azure API. Browser specs use `HttpTestingController` / mocks; host tests use Supertest against an in-memory Express app.
+
+## Host API (Express)
+
+| Method | Path | Notes |
+| --- | --- | --- |
+| `GET` | `/health` | Liveness JSON |
+| `POST` | `/api/v1/applications` | Zod-validated intake → `202 Accepted` |
+| `POST` | `/api/v1/auth/login` | Admin login (`ADMIN_EMAIL` / `ADMIN_PASSWORD`) |
 
 ## Docker
 
@@ -49,7 +60,9 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 | --- | --- |
 | `PORT` | `4000` (Express) / `4200` (`ng serve`) |
 | `SITE_URL` | `http://localhost:4200` |
-| `API_URL` | `http://localhost:5041/api/v1` (manual browser testing only) |
+| `API_URL` | `http://localhost:5041/api/v1` (optional external CRM) |
+| `ADMIN_EMAIL` | `admin@ybproductions.local` |
+| `ADMIN_PASSWORD` | `Admin@12345` |
 | `LOG_LEVEL` | `info` (Pino) |
 | `SENTRY_DSN` | empty (Sentry off) |
 
@@ -58,7 +71,8 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 ```
 yashvi-bagga-productions/
 ├── scripts/serve-prod.mjs     Express production host
-├── server/                    health, Pino logging, Sentry, errors
+├── server/                    health, applications, auth, Pino, errors
+├── coverage-thresholds.json   enforced Karma coverage floor
 ├── src/app/core/              browser logger + error tracking
 ├── src/app/shared/services/   HTTP clients
 ├── src/app/shared/validators/ Angular + Zod
