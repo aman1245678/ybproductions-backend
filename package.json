@@ -1,15 +1,18 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.2.0",
+  "version": "1.5.0",
   "private": true,
-  "description": "Angular 20 web-app + Express host for Yashvi Bagga Productions",
+  "description": "Angular 20 web-app + Express API host for Yashvi Bagga Productions",
   "keywords": [
     "angular",
     "frontend",
     "web-app",
-    "typescript",
+    "backend",
     "express",
-    "nodejs"
+    "nodejs",
+    "typescript",
+    "zod",
+    "pino"
   ],
   "workspaces": [
     "yashvi-bagga-productions"
@@ -24,6 +27,13 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@sentry/node": "^9.0.0",
+    "express": "^4.18.2",
+    "pino": "^9.6.0",
+    "pino-http": "^10.4.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "prettier": "^3.5.3"
