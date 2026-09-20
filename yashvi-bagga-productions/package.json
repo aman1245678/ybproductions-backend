@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
-    "test:server": "node --test server/routes/health.test.mjs server/lib/logger.test.mjs",
+    "test:server": "node --test server/lib/logger.test.mjs server/lib/errors.test.mjs server/routes/health.test.mjs server/routes/applications.test.mjs server/routes/auth.test.mjs",
     "test:all": "npm run test && npm run test:server",
     "lint": "eslint . --ext .ts,.js,.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",

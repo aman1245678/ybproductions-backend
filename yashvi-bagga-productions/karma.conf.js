@@ -22,12 +22,7 @@ module.exports = function (config) {
       includeAllSources: false,
       check: {
         emitWarning: false,
-        global: {
-          statements: 35,
-          branches: 25,
-          functions: 20,
-          lines: 35,
-        },
+        global: require('./coverage-thresholds.json'),
       },
     },
     reporters: ['progress', 'coverage'],

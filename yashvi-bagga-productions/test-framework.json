@@ -1,0 +1,6 @@
+{
+  "unit": "karma-jasmine",
+  "server": "node:test",
+  "coverageThresholdsFile": "coverage-thresholds.json",
+  "enforceInCi": true
+}
