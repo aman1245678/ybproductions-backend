@@ -7,7 +7,7 @@ test('POST /api/v1/auth/login succeeds with default admin credentials', async ()
   const app = createHostApp({ skipStatic: true });
   const res = await request(app)
     .post('/api/v1/auth/login')
-    .send({ email: 'admin@ybproductions.local', password: 'Admin@12345' });
+    .send({ email: 'admin@example.com', password: 'change-me-in-local-env' });
   assert.equal(res.status, 200);
   assert.ok(res.body.accessToken);
   assert.equal(res.body.user.role, 'Admin');
@@ -17,7 +17,7 @@ test('POST /api/v1/auth/login returns 401 for bad credentials', async () => {
   const app = createHostApp({ skipStatic: true });
   const res = await request(app)
     .post('/api/v1/auth/login')
-    .send({ email: 'admin@ybproductions.local', password: 'wrong-password' });
+    .send({ email: 'admin@example.com', password: 'wrong-password' });
   assert.equal(res.status, 401);
   assert.equal(res.body.title, 'Unauthorized');
 });

@@ -18,8 +18,8 @@ export function createAuthRouter() {
   router.post('/login', (req, res, next) => {
     try {
       const body = loginSchema.parse(req.body);
-      const expectedEmail = (process.env.ADMIN_EMAIL || 'admin@ybproductions.local').toLowerCase();
-      const expectedPassword = process.env.ADMIN_PASSWORD || 'Admin@12345';
+      const expectedEmail = (process.env.ADMIN_EMAIL || 'admin@example.com').toLowerCase();
+      const expectedPassword = process.env.ADMIN_PASSWORD || 'change-me-in-local-env';
 
       if (
         body.email.toLowerCase() !== expectedEmail ||
