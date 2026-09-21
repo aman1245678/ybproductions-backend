@@ -28,7 +28,10 @@ npm start
 | Command | Purpose |
 | --- | --- |
 | `npm ci` | Install root + app workspace dependencies (lockfile at repo root) |
-| `npm test` | Karma unit specs **and** Express host tests (`node:test` + Supertest) — no live Azure required |
+| `npm test` | Runs `test:unit` (Karma/Jasmine) then `test:server` (node:test + c8 coverage gate ≥70% lines) |
+| `npm run test:unit` | Angular unit specs only |
+| `npm run test:server` | Express host specs with c8 coverage enforcement |
+| `make test` | Same as `npm test` (see `Makefile`) |
 | `npm start` | `ng serve` on port 4200 |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -61,8 +64,8 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 | `PORT` | `4000` (Express) / `4200` (`ng serve`) |
 | `SITE_URL` | `http://localhost:4200` |
 | `API_URL` | `http://localhost:5041/api/v1` (optional external CRM) |
-| `ADMIN_EMAIL` | `admin@ybproductions.local` |
-| `ADMIN_PASSWORD` | `Admin@12345` |
+| `ADMIN_EMAIL` | set in `.env` (see `.env.example`) |
+| `ADMIN_PASSWORD` | set in `.env` (see `.env.example`) |
 | `LOG_LEVEL` | `info` (Pino) |
 | `SENTRY_DSN` | empty (Sentry off) |
 

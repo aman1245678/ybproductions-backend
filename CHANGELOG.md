@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0
+
+- Grow Express host: metrics, request-id, rate-limit middleware with paired tests.
+- Enforce Express coverage via c8 (≥70% lines); split CI into unit + server test steps.
+- Extract large page templates to `.html` files; restore 500-LOC CI gate.
+- Complete root + workspace `.env.example` admin placeholders (no weak password in README).
+
 ## 1.5.0
 
 - Add Express `POST /api/v1/applications` and `POST /api/v1/auth/login` with Zod validation.
