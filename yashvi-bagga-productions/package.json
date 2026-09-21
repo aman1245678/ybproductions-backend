@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
-    "test:server": "node --test server/lib/logger.test.mjs server/lib/errors.test.mjs server/routes/health.test.mjs server/routes/applications.test.mjs server/routes/auth.test.mjs",
+    "test:server": "c8 --check-coverage --lines 70 --reporter=text-summary --reports-dir=coverage/server node scripts/run-server-tests.mjs",
     "test:all": "npm run test && npm run test:server",
     "lint": "eslint . --ext .ts,.js,.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",
@@ -57,6 +57,7 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "postcss": "^8.4.33",
     "supertest": "^7.0.0",
+    "c8": "^10.1.3",
     "tailwindcss": "^3.4.1",
     "typescript": "~5.8.0"
   }

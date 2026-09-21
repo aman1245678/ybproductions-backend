@@ -1,6 +1,6 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "private": true,
   "description": "Angular 20 web-app + Express API host for Yashvi Bagga Productions",
   "keywords": [
@@ -12,7 +12,10 @@
     "nodejs",
     "typescript",
     "zod",
-    "pino"
+    "pino",
+    "supertest",
+    "karma",
+    "jasmine"
   ],
   "workspaces": [
     "yashvi-bagga-productions"
@@ -20,7 +23,9 @@
   "scripts": {
     "start": "npm run start -w yashvi-bagga-productions",
     "build": "npm run build -w yashvi-bagga-productions",
-    "test": "npm run test:all -w yashvi-bagga-productions",
+    "test": "npm run test:unit && npm run test:server",
+    "test:unit": "npm run test -w yashvi-bagga-productions",
+    "test:server": "npm run test:server -w yashvi-bagga-productions",
     "lint": "npm run lint -w yashvi-bagga-productions",
     "typecheck": "npm run typecheck -w yashvi-bagga-productions",
     "format:check": "prettier --check \"README.md\" \"PROJECT_TYPE.md\" \"CHANGELOG.md\" \"DEPENDENCIES.md\""
@@ -36,6 +41,10 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "c8": "^10.1.3",
+    "jasmine-core": "^5.5.0",
+    "karma": "^6.4.4",
+    "prettier": "^3.5.3",
+    "supertest": "^7.0.0"
   }
 }
