@@ -29,7 +29,7 @@ jobs:
           bad=0
           while IFS= read -r file; do
             lines=$(wc -l < "$file")
-            if [ "$lines" -gt 600 ]; then
+            if [ "$lines" -gt 500 ]; then
               echo "LOC gate failed: $file has $lines lines"
               bad=1
             fi
@@ -67,8 +67,10 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Run tests with coverage
-        run: npm test
+      - name: Run unit tests (Karma/Jasmine)
+        run: npm run test:unit
+      - name: Run server tests with coverage gate
+        run: npm run test:server
       - name: Run dependency audit
         run: npm audit --audit-level=critical --workspace=yashvi-bagga-productions
       - name: Upload coverage
@@ -76,7 +78,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage
-          path: yashvi-bagga-productions/coverage
+          path: |
+            yashvi-bagga-productions/coverage
+            yashvi-bagga-productions/coverage/server
 
   build:
     name: build
