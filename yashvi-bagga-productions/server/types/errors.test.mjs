@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { AuthError, NotFoundError, ValidationError } from './errors.js';
+import { AuthError, ConflictError, ForbiddenError, NotFoundError, ValidationError } from './errors.js';
 import { toErrorResponse } from '../lib/errors.js';
 
 test('ValidationError maps to 400 via toErrorResponse', () => {
@@ -25,4 +25,16 @@ test('NotFoundError maps to 404 via toErrorResponse', () => {
   assert.equal(mapped.status, 404);
   assert.equal(mapped.body.title, 'Not Found');
   assert.equal(error.code, 'NOT_FOUND');
+});
+
+test('ForbiddenError maps to 403 via toErrorResponse', () => {
+  const mapped = toErrorResponse(new ForbiddenError());
+  assert.equal(mapped.status, 403);
+  assert.equal(mapped.body.title, 'Forbidden');
+});
+
+test('ConflictError maps to 409 via toErrorResponse', () => {
+  const mapped = toErrorResponse(new ConflictError('Email already registered'));
+  assert.equal(mapped.status, 409);
+  assert.equal(mapped.body.title, 'Conflict');
 });

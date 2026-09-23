@@ -2,7 +2,7 @@ import { AppError } from '../lib/errors.js';
 
 /**
  * Discriminated AppError subtypes used across route handlers and services.
- * @typedef {'VALIDATION_ERROR' | 'AUTH_ERROR' | 'NOT_FOUND'} AppErrorCode
+ * @typedef {'VALIDATION_ERROR' | 'AUTH_ERROR' | 'NOT_FOUND' | 'FORBIDDEN' | 'CONFLICT'} AppErrorCode
  */
 
 export class ValidationError extends AppError {
@@ -39,5 +39,29 @@ export class NotFoundError extends AppError {
     this.name = 'NotFoundError';
     /** @type {AppErrorCode} */
     this.code = 'NOT_FOUND';
+  }
+}
+
+export class ForbiddenError extends AppError {
+  /**
+   * @param {string} [detail]
+   */
+  constructor(detail = 'Insufficient role for this resource') {
+    super(403, 'Forbidden', detail);
+    this.name = 'ForbiddenError';
+    /** @type {AppErrorCode} */
+    this.code = 'FORBIDDEN';
+  }
+}
+
+export class ConflictError extends AppError {
+  /**
+   * @param {string} [detail]
+   */
+  constructor(detail = 'Resource already exists') {
+    super(409, 'Conflict', detail);
+    this.name = 'ConflictError';
+    /** @type {AppErrorCode} */
+    this.code = 'CONFLICT';
   }
 }
