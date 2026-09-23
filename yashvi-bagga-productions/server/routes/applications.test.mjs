@@ -47,3 +47,23 @@ test('GET /api/v1/applications/:id returns 404 for unknown ids', async () => {
   assert.equal(res.status, 404);
   assert.equal(res.body.title, 'Not Found');
 });
+
+test('admin can list and patch application status', async () => {
+  const app = createHostApp({ skipStatic: true });
+  const created = await request(app).post('/api/v1/applications').send(validBody);
+  const login = await request(app)
+    .post('/api/v1/auth/login')
+    .send({ email: 'admin@example.com', password: 'change-me-in-local-env' });
+  const token = login.body.accessToken;
+  const listed = await request(app)
+    .get('/api/v1/applications')
+    .set('Authorization', `Bearer ${token}`);
+  assert.equal(listed.status, 200);
+  assert.ok(listed.body.total >= 1);
+  const patched = await request(app)
+    .patch(`/api/v1/applications/${created.body.applicationId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send({ status: 'Reviewed' });
+  assert.equal(patched.status, 200);
+  assert.equal(patched.body.status, 'Reviewed');
+});
