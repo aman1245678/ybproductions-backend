@@ -30,3 +30,20 @@ test('POST /api/v1/applications rejects Zod validation failures', async () => {
   assert.ok(Array.isArray(res.body.issues));
   assert.ok(res.body.issues.length > 0);
 });
+
+test('GET /api/v1/applications/:id returns a previously accepted application', async () => {
+  const app = createHostApp({ skipStatic: true });
+  const created = await request(app).post('/api/v1/applications').send(validBody);
+  assert.equal(created.status, 202);
+  const res = await request(app).get(`/api/v1/applications/${created.body.applicationId}`);
+  assert.equal(res.status, 200);
+  assert.equal(res.body.applicationId, created.body.applicationId);
+  assert.equal(res.body.status, 'Received');
+});
+
+test('GET /api/v1/applications/:id returns 404 for unknown ids', async () => {
+  const app = createHostApp({ skipStatic: true });
+  const res = await request(app).get('/api/v1/applications/YBP-MISSING-1');
+  assert.equal(res.status, 404);
+  assert.equal(res.body.title, 'Not Found');
+});
