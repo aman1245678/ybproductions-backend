@@ -1,0 +1,269 @@
+    <!-- Compact hero -->
+    <section class="relative overflow-hidden bg-brand-black pt-28 pb-10">
+      <div class="absolute inset-0">
+        <div class="absolute top-20 right-10 h-64 w-64 rounded-full bg-brand-gold/10 blur-[100px]"></div>
+      </div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <span class="inline-block text-brand-gold font-poppins text-xs tracking-[0.28em] uppercase mb-3">Career Opportunities</span>
+        <h1 class="heading-xl text-brand-white mb-3">Build Your Future with Yashvi Bagga Productions</h1>
+        <p class="body-lg text-brand-white/60 max-w-2xl mx-auto">
+          Share your profile with our growing network. Prefer the full Hire / Join flow?
+          <a routerLink="/get-started" class="text-brand-gold hover:underline"> Go to Get Started</a>.
+        </p>
+        <a
+          routerLink="/get-started"
+          class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-gold px-7 py-3 font-medium text-brand-black hover:bg-brand-white transition-colors"
+        >
+          Click Here
+        </a>
+      </div>
+    </section>
+
+    <!-- SIGN UP (document form) -->
+    <section id="sign-up" class="section-padding bg-brand-dark relative overflow-hidden scroll-mt-28">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.08),_transparent_28%)]"></div>
+      <div class="relative max-w-3xl mx-auto">
+        <app-section-header
+          subtitle="Sign Up"
+          title="Create Your Account"
+          description="Name, mobile, email, password and category. You receive login credentials immediately after sign up."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <form [formGroup]="signUpForm" (ngSubmit)="submitSignUp()" class="glass-card p-6 md:p-10 mt-8 space-y-5" appScrollAnimation animationType="fade-up">
+          <div>
+            <label class="block text-brand-white/60 font-poppins text-sm mb-2">Name *</label>
+            <input
+              formControlName="name"
+              type="text"
+              class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+              placeholder="Your full name"
+            />
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Mobile *</label>
+              <input
+                formControlName="mobile"
+                type="tel"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="10-digit mobile"
+              />
+              @if (signUpForm.get('mobile')?.touched && signUpForm.get('mobile')?.hasError('indianMobile')) {
+                <p class="mt-1.5 text-brand-pink font-poppins text-xs">Enter a valid 10-digit Indian mobile number.</p>
+              }
+            </div>
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Email id *</label>
+              <input
+                formControlName="email"
+                type="email"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="your@email.com"
+              />
+              <div class="mt-2">
+                <app-email-otp
+                  formControlName="emailVerified"
+                  [destination]="signUpForm.get('email')?.value || ''"
+                  [destinationValid]="!!signUpForm.get('email')?.valid"
+                  purpose="join-network"
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <label class="block text-brand-white/60 font-poppins text-sm mb-2">Category *</label>
+            <select
+              formControlName="category"
+              class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+            >
+              <option value="" disabled>Select category</option>
+              @for (cat of signUpCategories; track cat.value) {
+                <option [value]="cat.value">{{ cat.label }}</option>
+              }
+            </select>
+          </div>
+          <div>
+            <label class="block text-brand-white/60 font-poppins text-sm mb-2">Describe yourself in few words *</label>
+            <textarea
+              formControlName="description"
+              rows="4"
+              class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors resize-y"
+              placeholder="Tell us about yourself and what you are looking for..."
+            ></textarea>
+          </div>
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Password *</label>
+              <input
+                formControlName="password"
+                type="password"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="Min. 6 characters"
+              />
+            </div>
+            <div>
+              <label class="block text-brand-white/60 font-poppins text-sm mb-2">Confirm Password *</label>
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                class="w-full bg-brand-white/5 border border-white/10 rounded-xl px-4 py-3 text-brand-white font-poppins text-sm focus:border-brand-gold focus:outline-none transition-colors"
+                placeholder="Repeat password"
+              />
+            </div>
+          </div>
+
+          @if (signUpDone()) {
+            <div class="rounded-2xl border border-brand-gold/20 bg-brand-gold/10 p-5 text-brand-white/85 text-sm space-y-3">
+              <p>Your account is active. Use your email and password to log in anytime from the website header.</p>
+              @if (registeredEmail()) {
+                <p class="text-brand-gold">Login email: <strong>{{ registeredEmail() }}</strong></p>
+              }
+              <p class="text-brand-white/70">Reference: {{ applicationRef() }}</p>
+              <p class="text-brand-gold">Next: complete your detailed application form.</p>
+              <a
+                [routerLink]="nextFormLink()"
+                class="inline-flex items-center gap-2 rounded-full bg-brand-gold px-6 py-2.5 font-medium text-brand-black hover:bg-brand-white transition-colors"
+              >
+                Continue to detailed form
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+            </div>
+          }
+
+          <button
+            type="submit"
+            [disabled]="signUpForm.invalid || signUpSubmitting()"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-8 py-3 font-medium text-brand-black transition-colors duration-300 hover:bg-brand-white disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            @if (signUpSubmitting()) { Submitting… } @else { Sign Up }
+          </button>
+        </form>
+
+        <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" appScrollAnimation animationType="fade-up">
+          @for (link of detailedFormLinks; track link.path) {
+            <a
+              [routerLink]="link.path"
+              class="rounded-2xl border border-brand-white/10 bg-brand-black/50 px-5 py-4 text-left transition-all hover:border-brand-gold/30"
+            >
+              <p class="text-brand-gold text-[11px] uppercase tracking-[0.2em] mb-1">{{ link.eyebrow }}</p>
+              <p class="text-brand-white font-playfair text-lg">{{ link.title }}</p>
+              <p class="mt-1 text-brand-white/50 text-xs leading-5">{{ link.blurb }}</p>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-brand-black relative overflow-hidden">
+      <div class="relative max-w-4xl mx-auto px-6">
+        <p class="text-brand-gold font-poppins text-xs tracking-[0.28em] uppercase mb-4" appScrollAnimation animationType="fade-up">Life at Yashvi Bagga Productions</p>
+        <div class="space-y-5 text-brand-white/65 font-poppins text-sm leading-7" appScrollAnimation animationType="fade-up">
+          <p>At Yashvi Bagga Productions, we believe that exceptional organizations are built by exceptional people. Our success is driven by passionate professionals, creative thinkers, skilled specialists, and dedicated individuals who share our commitment to excellence, innovation, and integrity.</p>
+          <p>As a multidisciplinary organization working across media, entertainment, digital marketing, branding, professional training, event management, talent acquisition, and creative communications, we are always interested in connecting with talented individuals who are eager to learn, grow, and contribute to meaningful projects.</p>
+          <p>Whether you are an experienced professional, a creative artist, a technical expert, a trainer, a marketing specialist, or a recent graduate looking to begin your career, we welcome your interest in becoming a part of our growing network.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-brand-dark relative">
+      <div class="max-w-7xl mx-auto">
+        <app-section-header
+          subtitle="Roles & Disciplines"
+          title="Opportunities We Frequently Explore"
+          description="We periodically engage professionals across a wide range of disciplines."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+          @for (role of careerOpportunities; track role; let i = $index) {
+            <div
+              class="flex items-center gap-3 rounded-[20px] border border-brand-white/10 bg-brand-black/70 px-5 py-4 transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/30"
+              appScrollAnimation
+              animationType="fade-up"
+              [animationDelay]="(i % 3) * 80"
+            >
+              <span class="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl border border-brand-gold/20 bg-brand-gold/10 text-brand-gold">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+              </span>
+              <span class="text-brand-white/75 font-poppins text-sm">{{ role }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-brand-black relative overflow-hidden">
+      <div class="relative max-w-6xl mx-auto">
+        <app-section-header
+          subtitle="The Advantage"
+          title="Why Join Yashvi Bagga Productions?"
+          description="Working with Yashvi Bagga Productions offers the opportunity to:"
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="grid gap-6 md:grid-cols-2 mt-12">
+          @for (point of whyJoinPoints; track point.text; let i = $index) {
+            <div
+              class="flex gap-5 rounded-[24px] border border-brand-white/10 bg-brand-dark/60 p-7 transition-all duration-500 hover:border-brand-gold/30"
+              appScrollAnimation
+              animationType="fade-up"
+              [animationDelay]="i * 90"
+            >
+              <div class="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl border border-brand-gold/20 bg-brand-gold/10 text-2xl">{{ point.icon }}</div>
+              <p class="text-brand-white/70 font-poppins text-sm leading-7">{{ point.text }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-brand-dark relative overflow-hidden">
+      <div class="relative max-w-6xl mx-auto">
+        <app-section-header
+          subtitle="How To Apply"
+          title="Submit Your Profile"
+          description="If you are passionate about creativity, innovation, excellence, and making a meaningful impact, we encourage you to share your profile with us."
+          [titleGradient]="true"
+          appScrollAnimation
+          animationType="fade-up"
+        />
+
+        <div class="grid gap-8 lg:grid-cols-2 items-start mt-12">
+          <div class="rounded-[30px] border border-brand-white/10 bg-brand-black/50 p-8 md:p-10" appScrollAnimation animationType="fade-up">
+            <p class="text-brand-white/70 font-poppins text-sm mb-6">Please send us:</p>
+            <ul class="space-y-4">
+              @for (item of submissionItems; track item) {
+                <li class="flex items-start gap-3">
+                  <svg class="w-4 h-4 mt-1 flex-shrink-0 text-brand-gold" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  <span class="text-brand-white/75 font-poppins text-sm leading-7">{{ item }}</span>
+                </li>
+              }
+            </ul>
+            <a
+              routerLink="/join-network"
+              fragment="sign-up"
+              class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold px-7 py-3 font-medium text-brand-black transition-colors duration-300 hover:bg-brand-white"
+            >
+              Go to Sign Up
+            </a>
+          </div>
+
+          <div class="space-y-6" appScrollAnimation animationType="fade-up">
+            <div class="rounded-[30px] border border-brand-gold/15 bg-gradient-to-br from-brand-gold/10 to-transparent p-8 md:p-10">
+              <h3 class="text-xl font-playfair text-brand-white mb-4">Join Our Talent Network</h3>
+              <p class="text-brand-white/65 font-poppins text-sm leading-7 mb-4">At Yashvi Bagga Productions, we are not just building a workforce—we are building a community of professionals who are passionate about creativity, excellence, collaboration, and innovation.</p>
+              <p class="text-brand-white/65 font-poppins text-sm leading-7">We look forward to connecting with talented individuals who share our vision across India.</p>
+            </div>
+            <p class="px-2 text-brand-gold font-playfair text-lg">Your Next Opportunity May Begin Here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
