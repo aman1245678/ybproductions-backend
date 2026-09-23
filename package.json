@@ -1,8 +1,8 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
-  "description": "Angular 20 web-app + Express API host for Yashvi Bagga Productions",
+  "description": "Express API (JWT auth, application intake, user directory) with an Angular 20 marketing SPA host",
   "keywords": [
     "angular",
     "frontend",

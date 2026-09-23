@@ -1,6 +1,6 @@
-# Yashvi Bagga Productions
+# Yashvi Bagga Productions API
 
-Angular 20 **web-app** + Express **API host** for [Yashvi Bagga Productions](https://ybproductions.co.in) — cinematic marketing site, admin control center, and Zod-validated intake endpoints.
+Express **backend** for [Yashvi Bagga Productions](https://ybproductions.co.in) — JWT admin auth, application intake/review, user directory, OpenAPI, plus an Angular 20 SPA served from the same host.
 
 See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.md) for which `package.json` owns runtime deps.
 
@@ -8,9 +8,11 @@ See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.m
 
 - Angular 20 standalone components, signals, reactive forms
 - Tailwind CSS + SCSS
-- Express host: `GET /health`, `POST /api/v1/applications`, `POST /api/v1/auth/login`
-- **Pino** / **pino-http**, optional **Sentry**, typed `AppError` middleware
-- Zod validation on application + login bodies (server + browser)
+- Express API: health/ready, applications CRUD, JWT login, users, OpenAPI
+- Layered host: `config` → `repositories` → `services` → thin `routes`
+- HMAC JWT (`JWT_SECRET`), scrypt password hashes, memory or file store
+- **Pino** / **pino-http**, optional **Sentry**, discriminated `AppError` types
+- Zod validation on application, login, user, and status bodies
 
 ## Fresh clone (only steps you need)
 
@@ -46,8 +48,16 @@ Coverage floor is enforced via `yashvi-bagga-productions/coverage-thresholds.jso
 | Method | Path | Notes |
 | --- | --- | --- |
 | `GET` | `/health` | Liveness JSON |
+| `GET` | `/ready` | Store readiness + counters |
+| `GET` | `/api/v1/openapi.json` | OpenAPI 3 document |
 | `POST` | `/api/v1/applications` | Zod-validated intake → `202 Accepted` |
-| `POST` | `/api/v1/auth/login` | Admin login (`ADMIN_EMAIL` / `ADMIN_PASSWORD`) |
+| `GET` | `/api/v1/applications` | Admin list (Bearer JWT) |
+| `GET` | `/api/v1/applications/:id` | Fetch one application |
+| `PATCH` | `/api/v1/applications/:id` | Admin status update |
+| `POST` | `/api/v1/auth/login` | Issues a signed JWT |
+| `GET` | `/api/v1/users/me` | Current user |
+| `GET` | `/api/v1/users` | Admin directory |
+| `POST` | `/api/v1/users` | Admin creates a user |
 
 ## Docker
 
@@ -64,8 +74,12 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 | `PORT` | `4000` (Express) / `4200` (`ng serve`) |
 | `SITE_URL` | `http://localhost:4200` |
 | `API_URL` | `http://localhost:5041/api/v1` (optional external CRM) |
-| `ADMIN_EMAIL` | set in `.env` (see `.env.example`) |
-| `ADMIN_PASSWORD` | set in `.env` (see `.env.example`) |
+| `ADMIN_EMAIL` | seed admin email (see `.env.example`) |
+| `ADMIN_PASSWORD` | seed admin password (hashed at boot) |
+| `JWT_SECRET` | HMAC secret for access tokens |
+| `JWT_EXPIRES_SECONDS` | `3600` |
+| `STORE_DRIVER` | `memory` (tests) or `file` |
+| `DATA_DIR` | `./data` when `STORE_DRIVER=file` |
 | `LOG_LEVEL` | `info` (Pino) |
 | `SENTRY_DSN` | empty (Sentry off) |
 
@@ -74,7 +88,7 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 ```
 yashvi-bagga-productions/
 ├── scripts/serve-prod.mjs     Express production host
-├── server/                    health, applications, auth, Pino, errors
+├── server/                    config, db, repositories, services, routes, JWT
 ├── coverage-thresholds.json   enforced Karma coverage floor
 ├── src/app/core/              browser logger + error tracking
 ├── src/app/shared/services/   HTTP clients
