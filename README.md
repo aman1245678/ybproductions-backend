@@ -32,7 +32,8 @@ npm start
 | `npm ci` | Install root + app workspace dependencies (lockfile at repo root) |
 | `npm test` | Runs `test:unit` (Karma/Jasmine) then `test:server` (node:test + c8 coverage gate ≥70% lines) |
 | `npm run test:unit` | Angular unit specs only |
-| `npm run test:server` | Express host specs with c8 coverage enforcement |
+| `npm run test:server` | Express API specs only (no Angular build; c8 ≥70%) |
+| `npm run typecheck:server` | `node --check` on the API entry, no SPA |
 | `make test` | Same as `npm test` (see `Makefile`) |
 | `npm start` | `ng serve` on port 4200 |
 | `npm run lint` | ESLint |
