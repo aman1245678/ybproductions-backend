@@ -1,7 +1,7 @@
 # Contributing
 
 1. Use Node.js 20+. From the **repository root** run `npm ci` (npm workspaces install the Angular app).
-2. Keep each feature or fix in its own commit, with tests that pin the new behavior.
+2. Keep each feature or fix in its own commit, with tests that pin the new behavior. Pull requests must include tests (see `.github/pull_request_template.md`).
 3. Do not mix formatting, refactors, and features in one commit.
 4. Before opening a PR, from the repo root run:
 

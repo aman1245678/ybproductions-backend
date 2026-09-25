@@ -1,1 +1,9 @@
-{ "type": "module" }
+{
+  "name": "ybproductions-api",
+  "private": true,
+  "type": "module",
+  "description": "Express API surface — isolated from the Angular SPA. Run from repo root: npm run test:server",
+  "engines": {
+    "node": ">=20"
+  }
+}

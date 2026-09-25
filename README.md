@@ -14,7 +14,18 @@ See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.m
 - **Pino** / **pino-http**, optional **Sentry**, discriminated `AppError` types
 - Zod validation on application, login, user, and status bodies
 
-## Fresh clone (only steps you need)
+## Backend only (primary API check — no Angular)
+
+```bash
+git clone https://github.com/aman1245678/ybproductions-backend.git
+cd ybproductions-backend
+npm ci
+npm run test:server
+```
+
+`npm run test:server` is the backend verification command. It does not build or boot the SPA.
+
+## Fresh clone (full app)
 
 Requires Node.js 20+.
 
@@ -30,9 +41,9 @@ npm start
 | Command | Purpose |
 | --- | --- |
 | `npm ci` | Install root + app workspace dependencies (lockfile at repo root) |
-| `npm test` | Runs `test:unit` (Karma/Jasmine) then `test:server` (node:test + c8 coverage gate ≥70% lines) |
+| `npm test` | Runs `test:unit` (Karma/Jasmine) then `test:server` (node:test + c8 coverage gate ≥80% lines) |
 | `npm run test:unit` | Angular unit specs only |
-| `npm run test:server` | Express API specs only (no Angular build; c8 ≥70%) |
+| `npm run test:server` | **Primary backend check** — Express specs only, no SPA build; c8 ≥80% |
 | `npm run typecheck:server` | `node --check` on the API entry, no SPA |
 | `make test` | Same as `npm test` (see `Makefile`) |
 | `npm start` | `ng serve` on port 4200 |
