@@ -34,3 +34,33 @@ test('root suite: GET missing application is 404', async () => {
   assert.equal(res.status, 404);
   assert.equal(res.body.title, 'Not Found');
 });
+
+test('root suite: admin PATCH moves an application to Reviewed', async () => {
+  const app = createHostApp({ skipStatic: true });
+  const created = await request(app).post('/api/v1/applications').send(validBody);
+  const login = await request(app)
+    .post('/api/v1/auth/login')
+    .send({ email: 'admin@example.com', password: 'change-me-in-local-env' });
+  const token = login.body.accessToken;
+  const patched = await request(app)
+    .patch(`/api/v1/applications/${created.body.applicationId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send({ status: 'Reviewed' });
+  assert.equal(patched.status, 200);
+  assert.equal(patched.body.status, 'Reviewed');
+});
+
+test('root suite: PATCH rejects an invalid status enum with 400', async () => {
+  const app = createHostApp({ skipStatic: true });
+  const created = await request(app).post('/api/v1/applications').send(validBody);
+  const login = await request(app)
+    .post('/api/v1/auth/login')
+    .send({ email: 'admin@example.com', password: 'change-me-in-local-env' });
+  const token = login.body.accessToken;
+  const res = await request(app)
+    .patch(`/api/v1/applications/${created.body.applicationId}`)
+    .set('Authorization', `Bearer ${token}`)
+    .send({ status: 'Nope' });
+  assert.equal(res.status, 400);
+  assert.equal(res.body.title, 'Validation Failed');
+});
