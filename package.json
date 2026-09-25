@@ -1,6 +1,6 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "description": "Express API (JWT auth, application intake, user directory) with an Angular 20 marketing SPA host",
   "keywords": [
@@ -27,6 +27,7 @@
     "test:unit": "npm run test -w yashvi-bagga-productions",
     "test:server": "c8 --check-coverage --lines 80 --reporter=text-summary --reports-dir=coverage/server node scripts/run-server-tests.mjs",
     "typecheck:server": "node --check yashvi-bagga-productions/server/app.js",
+    "verify:fresh": "bash scripts/verify-fresh-clone.sh",
     "lint": "npm run lint -w yashvi-bagga-productions",
     "typecheck": "npm run typecheck -w yashvi-bagga-productions && npm run typecheck:server",
     "format:check": "prettier --check \"README.md\" \"PROJECT_TYPE.md\" \"CHANGELOG.md\" \"DEPENDENCIES.md\""

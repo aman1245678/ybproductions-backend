@@ -1,4 +1,4 @@
-.PHONY: install test test-unit test-server lint typecheck build
+.PHONY: install test test-unit test-server lint typecheck build verify-fresh
 
 install:
 	npm ci
@@ -20,3 +20,6 @@ typecheck:
 
 build:
 	npm run build
+
+verify-fresh:
+	bash scripts/verify-fresh-clone.sh
