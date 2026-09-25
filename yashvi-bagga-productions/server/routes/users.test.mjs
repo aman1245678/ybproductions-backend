@@ -39,7 +39,8 @@ test('POST /api/v1/users creates a staff user for an admin', async () => {
   assert.equal(created.body.email, 'staff@example.com');
   const list = await request(app).get('/api/v1/users').set('Authorization', `Bearer ${token}`);
   assert.equal(list.status, 200);
-  assert.ok(list.body.length >= 2);
+  assert.ok(list.body.total >= 2);
+  assert.ok(Array.isArray(list.body.items));
 });
 
 test('GET /api/v1/users without a token is 401', async () => {

@@ -15,7 +15,8 @@ test('createUser and listDirectory require an Admin actor', () => {
     admin,
   );
   assert.equal(created.email, 'ops@example.com');
-  assert.equal(listDirectory(admin).length, 1);
+  assert.equal(listDirectory(admin).total, 1);
+  assert.equal(listDirectory(admin, { limit: 1, offset: 0 }).items.length, 1);
   assert.throws(() => listDirectory(staff), ForbiddenError);
   assert.throws(
     () => createUser({ email: 'x@y.com', password: 'abcdef' }, staff),

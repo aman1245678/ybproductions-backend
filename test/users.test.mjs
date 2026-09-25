@@ -34,4 +34,10 @@ test('root suite: admin can read /me and create a staff user', async () => {
     .send({ email: 'staff@example.com', password: 'staff-pass', role: 'Staff' });
   assert.equal(created.status, 201);
   assert.equal(created.body.role, 'Staff');
+  const page = await request(app)
+    .get('/api/v1/users?limit=1&offset=0')
+    .set('Authorization', `Bearer ${token}`);
+  assert.equal(page.status, 200);
+  assert.ok(page.body.total >= 2);
+  assert.equal(page.body.items.length, 1);
 });

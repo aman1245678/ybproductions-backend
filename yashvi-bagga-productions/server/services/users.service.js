@@ -19,12 +19,19 @@ export function getCurrentUser(userId) {
 
 /**
  * @param {{ role?: string }} actor
+ * @param {{ limit?: number, offset?: number }} [query]
  */
-export function listDirectory(actor) {
+export function listDirectory(actor, query = {}) {
   if (actor.role !== 'Admin') {
     throw new ForbiddenError();
   }
-  return listUsers();
+  const rows = listUsers();
+  const limit = query.limit ?? 50;
+  const offset = query.offset ?? 0;
+  return {
+    total: rows.length,
+    items: rows.slice(offset, offset + limit),
+  };
 }
 
 /**

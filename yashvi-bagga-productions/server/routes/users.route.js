@@ -21,9 +21,15 @@ export function createUsersRouter() {
     }
   });
 
+  const listQuerySchema = z.object({
+    limit: z.coerce.number().int().min(1).max(100).optional(),
+    offset: z.coerce.number().int().min(0).optional(),
+  });
+
   router.get('/', requireAuth, requireRole('Admin'), (req, res, next) => {
     try {
-      res.status(200).json(ok(listDirectory(req.auth)).value);
+      const query = listQuerySchema.parse(req.query);
+      res.status(200).json(ok(listDirectory(req.auth, query)).value);
     } catch (error) {
       next(error);
     }
