@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.8.0
+
+- Paginate `GET /api/v1/users`; reject invalid user-create and application status bodies with 400.
+- JWT expiry and malformed bearer coverage; c8 API gate raised to 80% lines.
+- `scripts/verify-fresh-clone.sh` proves `npm ci && npm run test:server` from a clean tree (no live API).
+- Document ChromeHeadlessNoSandbox flags for full `npm test`.
+
+## 1.7.0
+
+- HMAC JWT login, scrypt password hashes, memory/file store, application review, OpenAPI.
+- Discriminated AppError types (`ValidationError`, `AuthError`, `NotFoundError`, `ForbiddenError`, `ConflictError`).
+
 ## 1.6.0
 
 - Grow Express host: metrics, request-id, rate-limit middleware with paired tests.
