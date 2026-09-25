@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox",
-    "test:server": "c8 --check-coverage --lines 70 --reporter=text-summary --reports-dir=coverage/server node ../scripts/run-server-tests.mjs",
+    "test:server": "c8 --check-coverage --lines 80 --reporter=text-summary --reports-dir=coverage/server node ../scripts/run-server-tests.mjs",
     "test:all": "npm run test && npm run test:server",
     "lint": "eslint . --ext .ts,.js,.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.app.json",

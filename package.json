@@ -25,7 +25,7 @@
     "build": "npm run build -w yashvi-bagga-productions",
     "test": "npm run test:unit && npm run test:server",
     "test:unit": "npm run test -w yashvi-bagga-productions",
-    "test:server": "c8 --check-coverage --lines 70 --reporter=text-summary --reports-dir=coverage/server node scripts/run-server-tests.mjs",
+    "test:server": "c8 --check-coverage --lines 80 --reporter=text-summary --reports-dir=coverage/server node scripts/run-server-tests.mjs",
     "typecheck:server": "node --check yashvi-bagga-productions/server/app.js",
     "lint": "npm run lint -w yashvi-bagga-productions",
     "typecheck": "npm run typecheck -w yashvi-bagga-productions && npm run typecheck:server",
