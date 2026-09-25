@@ -55,6 +55,13 @@ Coverage floor is enforced via `yashvi-bagga-productions/coverage-thresholds.jso
 
 `npm test` never contacts a live Azure API. Browser specs use `HttpTestingController` / mocks; host tests use Supertest against an in-memory Express app.
 
+### Fresh clone troubleshooting
+
+- **API only (recommended):** `npm ci && npm run test:server` — no browser. Or `bash scripts/verify-fresh-clone.sh`.
+- **Full `npm test`:** Karma needs **Chrome / Chromium**. `karma.conf.js` uses launcher `ChromeHeadlessNoSandbox` with `--no-sandbox --disable-gpu --disable-dev-shm-usage` (Docker / CI). Install Google Chrome or `chromium` if the unit job fails with `No binary for ChromeHeadless`.
+- **Offline:** after one `npm ci`, `npm ci --offline` and `npm run test:server` need no network. `API_URL` is unused during tests.
+- **Clean reinstall:** `bash scripts/verify-fresh-clone.sh --clean`
+
 ## Host API (Express)
 
 | Method | Path | Notes |
