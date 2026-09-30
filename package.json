@@ -1,23 +1,25 @@
 {
   "name": "ybproductions-backend",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "private": true,
-  "description": "Express API (JWT auth, application intake, user directory) with an Angular 20 marketing SPA host",
+  "description": "Express API monorepo (@ybproductions/api) plus optional Angular 20 marketing SPA host",
   "keywords": [
-    "angular",
-    "frontend",
-    "web-app",
     "backend",
     "express",
     "nodejs",
-    "typescript",
+    "api",
     "zod",
     "pino",
     "supertest",
+    "angular",
+    "frontend",
+    "web-app",
+    "typescript",
     "karma",
     "jasmine"
   ],
   "workspaces": [
+    "packages/api",
     "yashvi-bagga-productions"
   ],
   "scripts": {
@@ -26,7 +28,7 @@
     "test": "npm run test:unit && npm run test:server",
     "test:unit": "npm run test -w yashvi-bagga-productions",
     "test:server": "c8 --check-coverage --lines 80 --reporter=text-summary --reports-dir=coverage/server node scripts/run-server-tests.mjs",
-    "typecheck:server": "node --check yashvi-bagga-productions/server/app.js",
+    "typecheck:server": "node --check packages/api/app.js",
     "verify:fresh": "bash scripts/verify-fresh-clone.sh",
     "lint": "npm run lint -w yashvi-bagga-productions",
     "typecheck": "npm run typecheck -w yashvi-bagga-productions && npm run typecheck:server",

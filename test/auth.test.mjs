@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import request from 'supertest';
-import { createHostApp } from '../yashvi-bagga-productions/server/app.js';
-import { signAccessToken, verifyAccessToken } from '../yashvi-bagga-productions/server/lib/jwt.js';
-import { AuthError } from '../yashvi-bagga-productions/server/types/errors.js';
-import { getEnv, resetEnvCache } from '../yashvi-bagga-productions/server/config/env.js';
+import { createHostApp } from '../packages/api/app.js';
+import { signAccessToken, verifyAccessToken } from '../packages/api/lib/jwt.js';
+import { AuthError } from '../packages/api/types/errors.js';
+import { getEnv, resetEnvCache } from '../packages/api/config/env.js';
 
 test('root suite: login issues a verifiable JWT', async () => {
   resetEnvCache();

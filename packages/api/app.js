@@ -51,7 +51,8 @@ export function createHostApp(options = {}) {
   if (!options.skipStatic) {
     const here = dirname(fileURLToPath(import.meta.url));
     const browserDist =
-      options.browserDist || resolve(here, '../dist/yashvi-bagga-productions/browser');
+      options.browserDist ||
+      resolve(here, '../../yashvi-bagga-productions/dist/yashvi-bagga-productions/browser');
     app.use(express.static(browserDist, { maxAge: '1y', index: false }));
     app.get('*', (_req, res) => {
       res.sendFile(join(browserDist, 'index.html'));

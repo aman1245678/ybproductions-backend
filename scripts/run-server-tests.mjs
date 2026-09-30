@@ -1,4 +1,4 @@
-import { readdirSync, statSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -15,13 +15,10 @@ function collect(dir, out = []) {
   return out;
 }
 
-const files = [
-  ...collect(join(root, 'yashvi-bagga-productions', 'server')),
-  ...collect(join(root, 'test')),
-];
+const files = [...collect(join(root, 'packages', 'api')), ...collect(join(root, 'test'))];
 
 if (!files.length) {
-  console.error('No server test files found');
+  console.error('No server test files found under packages/api or test/');
   process.exit(1);
 }
 

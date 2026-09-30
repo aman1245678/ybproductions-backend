@@ -4,7 +4,7 @@ import {
   NotFoundError,
   ValidationError,
   serializeAppError,
-} from '../yashvi-bagga-productions/server/errors/app-error.js';
+} from '../packages/api/errors/app-error.js';
 
 test('root suite: AppError subtypes expose HTTP status and JSON title', () => {
   const invalid = serializeAppError(new ValidationError('bad'));

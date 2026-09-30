@@ -1,22 +1,23 @@
-# Express API surface
+# `@ybproductions/api`
 
-This directory is the **backend deliverable**. The Angular marketing SPA lives in `../src` and is not required to run or test the API.
+Standalone Express API package (backend deliverable). The Angular marketing SPA lives in `../../yashvi-bagga-productions/src` and is **not** required to run or test this package.
 
 ```
-server/
+packages/api/
 ├── config/          env validation
 ├── db/              memory / file store
 ├── repositories/    applications + users
 ├── services/        business rules
-├── routes/          HTTP adapters + Supertest specs
+├── routes/          HTTP adapters
 ├── middleware/      request-id, rate-limit, JWT
 ├── errors/          AppError serialization
 └── lib/             JWT, password, Zod schemas
 ```
 
-Isolated (no SPA build):
+From the **repo root**:
 
 ```bash
-npm run typecheck:server
+npm ci
 npm run test:server
+npm run typecheck:server
 ```

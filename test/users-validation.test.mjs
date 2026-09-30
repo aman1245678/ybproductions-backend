@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import request from 'supertest';
-import { createHostApp } from '../yashvi-bagga-productions/server/app.js';
-import { configureStore, resetStore } from '../yashvi-bagga-productions/server/db/store.js';
-import { resetEnvCache } from '../yashvi-bagga-productions/server/config/env.js';
+import { createHostApp } from '../packages/api/app.js';
+import { configureStore, resetStore } from '../packages/api/db/store.js';
+import { resetEnvCache } from '../packages/api/config/env.js';
 
 async function login(app) {
   const res = await request(app)

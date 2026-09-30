@@ -2,13 +2,14 @@
 
 | File | Role |
 | --- | --- |
-| `package.json` (repo root) | Workspace root, shared scripts, and **visible runtime deps** (`express`, `pino`, `pino-http`, `zod`, `@sentry/node`) so scanners/auditors see the API host surface |
+| `packages/api/package.json` | **Backend package** — `express`, `pino`, `pino-http`, `zod`, `@sentry/node` |
+| `package.json` (repo root) | Workspace root, shared scripts, mirrors API runtime deps |
 | `package-lock.json` (repo root) | Authoritative lockfile for a fresh `npm ci` |
-| `yashvi-bagga-productions/package.json` | Full application + host dependencies (Angular + Express + tooling) |
+| `yashvi-bagga-productions/package.json` | Angular SPA + tooling (not required for `npm run test:server`) |
 
 ## Ownership
 
-- **Runtime / production libs for the Express host:** declared at the **repo root** and again in the workspace (npm workspaces hoist a single copy).
+- **Express API runtime:** `packages/api` (and mirrored at the root for scanners).
 - **Angular SPA libs:** only in `yashvi-bagga-productions/package.json`.
 - Always install from the repository root with `npm ci`.
 

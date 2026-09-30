@@ -18,7 +18,7 @@ make test             # same as npm test
 | Suite | Runner | Location |
 | --- | --- | --- |
 | Unit | Karma + Jasmine | `yashvi-bagga-productions/src/**/*.spec.ts` |
-| Server | `node:test` + Supertest + c8 | `yashvi-bagga-productions/server/**/*.test.mjs` and repo-root `test/` |
+| Server | `node:test` + Supertest + c8 | `packages/api/**/*.test.mjs` and repo-root `test/` |
 
 Coverage floors:
 

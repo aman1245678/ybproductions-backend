@@ -1,6 +1,6 @@
 # Yashvi Bagga Productions API
 
-Express **backend** for [Yashvi Bagga Productions](https://ybproductions.co.in) — JWT admin auth, application intake/review, user directory, OpenAPI, plus an Angular 20 SPA served from the same host.
+Express **backend** (`packages/api` / `@ybproductions/api`) for [Yashvi Bagga Productions](https://ybproductions.co.in) — JWT admin auth, application intake/review, user directory, OpenAPI. An Angular 20 SPA lives in a separate workspace and can be served by the same host.
 
 See [`PROJECT_TYPE.md`](PROJECT_TYPE.md). See [`DEPENDENCIES.md`](DEPENDENCIES.md) for which `package.json` owns runtime deps.
 
@@ -68,6 +68,7 @@ Coverage floor is enforced via `yashvi-bagga-productions/coverage-thresholds.jso
 | --- | --- | --- |
 | `GET` | `/health` | Liveness JSON |
 | `GET` | `/ready` | Store readiness + counters |
+| `GET` | `/metrics` | Request / error counters |
 | `GET` | `/api/v1/openapi.json` | OpenAPI 3 document |
 | `POST` | `/api/v1/applications` | Zod-validated intake → `202 Accepted` |
 | `GET` | `/api/v1/applications` | Admin list (Bearer JWT) |
@@ -105,19 +106,17 @@ Health: [http://localhost:4200/health](http://localhost:4200/health).
 ## Architecture
 
 ```
+packages/api/                  @ybproductions/api — Express backend (JWT, Zod, store)
+test/                          root Supertest suite (no Angular)
 yashvi-bagga-productions/
-├── scripts/serve-prod.mjs     Express production host
-├── server/                    config, db, repositories, services, routes, JWT
-├── coverage-thresholds.json   enforced Karma coverage floor
-├── src/app/core/              browser logger + error tracking
-├── src/app/shared/services/   HTTP clients
-├── src/app/shared/validators/ Angular + Zod
-└── src/app/pages/             routes (home, about, admin, intake)
+├── scripts/serve-prod.mjs     boots packages/api + static SPA
+├── src/app/                   Angular marketing + admin CRM
+└── coverage-thresholds.json   Karma coverage floor
 ```
 
 ## CI
 
-`.github/workflows/ci.yml` runs **lint**, **typecheck**, **test** (coverage floor enforced), **build**, and `npm audit` on every push and pull request.
+`.github/workflows/ci.yml` runs **lint**, **typecheck**, **test-server** (no Chrome), **test-unit** (Karma), **deps** (`npm audit --audit-level=high`), and **build**. Deploy to GoDaddy runs only after CI succeeds.
 
 ## License
 

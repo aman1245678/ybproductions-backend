@@ -1,4 +1,4 @@
-import { createHostApp, logger } from '../server/app.js';
+import { createHostApp, logger } from '../../packages/api/app.js';
 
 const port = Number(process.env.PORT) || 4000;
 const app = createHostApp();
