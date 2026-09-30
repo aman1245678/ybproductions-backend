@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.0
+
+- Move Express host to workspace package `packages/api` (`@ybproductions/api`), independent of the Angular SPA.
+- Split CI into parallel `test-server` (no Chrome) and `test-unit` jobs; gate FTP deploy on CI success.
+- Broaden API tests: repositories (memory/file), users negative paths, health/ready/metrics/OpenAPI, env validation.
+- Raise npm audit gate to `--audit-level=high`; document Zod boundaries in SECURITY.md.
+
 ## 1.8.0
 
 - Paginate `GET /api/v1/users`; reject invalid user-create and application status bodies with 400.

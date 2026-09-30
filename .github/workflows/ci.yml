@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -21,7 +22,7 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Run lint
+      - name: npm run lint
         run: npm run lint
       - name: Fail on files over 500 LOC
         run: |
@@ -50,11 +51,11 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Run typecheck
+      - name: npm run typecheck
         run: npm run typecheck
 
-  test:
-    name: test
+  test-server:
+    name: test-server
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -67,24 +68,61 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Run unit tests (Karma/Jasmine)
-        run: npm run test:unit
-      - name: Run server tests with coverage gate
+      - name: npm run test:server
         run: npm run test:server
-      - name: Run dependency audit
-        run: npm audit --audit-level=critical --workspace=yashvi-bagga-productions
-      - name: Upload coverage
+      - name: Upload server coverage
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: coverage
-          path: |
-            yashvi-bagga-productions/coverage
-            yashvi-bagga-productions/coverage/server
+          name: coverage-server
+          path: coverage/server
+
+  test-unit:
+    name: test-unit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: npm run test:unit
+        run: npm run test:unit
+      - name: Upload unit coverage
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-unit
+          path: yashvi-bagga-productions/coverage
+
+  deps:
+    name: deps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: npm outdated
+        run: npm outdated || true
+      - name: npm audit
+        run: npm audit --audit-level=high
 
   build:
     name: build
     runs-on: ubuntu-latest
+    needs: [lint, typecheck, test-server, test-unit]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
