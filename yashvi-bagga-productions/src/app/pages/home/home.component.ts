@@ -57,7 +57,7 @@ import { HomeCtaComponent } from './sections/home-cta.component';
             class="font-playfair text-[2.55rem] font-bold leading-[1.08] tracking-[-0.03em] text-brand-white opacity-0 animate-slide-up sm:text-5xl md:text-6xl lg:text-[3.75rem] xl:text-[4.25rem]"
             style="animation-delay: 0.35s; animation-fill-mode: forwards;"
           >
-            Crafting Vision.
+            Creating Stories.
             <span class="mt-2 block text-brand-gold">Building Influence.</span>
             <span class="mt-2 block">Producing Impact.</span>
           </h1>
