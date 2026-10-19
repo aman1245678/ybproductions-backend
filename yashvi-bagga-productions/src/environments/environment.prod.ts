@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://yb-api-d8eeaydha8esc4ex.centralindia-01.azurewebsites.net/api/v1',
+  apiUrl: 'https://ybp-api.onrender.com/api/v1',
   siteUrl: 'https://ybproductions.co.in',
 
   recaptcha: {
