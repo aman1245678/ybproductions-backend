@@ -82,6 +82,12 @@ import { ABOUT_SECTIONS } from '../../models/about-sections.model';
               {{ link.label }}
             </a>
           }
+          <a
+            href="/kanyadan/"
+            class="nav-link relative group shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-brand-gold/40 bg-brand-gold/10 text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-all font-medium text-xs shadow-[0_2px_12px_rgba(212,175,55,0.15)]"
+          >
+            <span>💍 Kanyadan</span>
+          </a>
         </nav>
 
         <!-- Desktop auth — login only in header row -->
@@ -163,6 +169,14 @@ import { ABOUT_SECTIONS } from '../../models/about-sections.model';
                 </a>
               }
             }
+            <a
+              href="/kanyadan/"
+              class="flex items-center justify-between text-lg md:text-xl font-playfair text-brand-gold hover:text-brand-white transition-colors py-2.5 md:py-3 border-y border-brand-gold/20 my-1 font-semibold"
+              (click)="closeMenu()"
+            >
+              <span>💍 Kanyadan Weddings</span>
+              <span class="text-xs uppercase font-poppins px-2 py-0.5 rounded-full bg-brand-gold/20 text-brand-gold">Visit</span>
+            </a>
           </nav>
 
           <div class="mt-6 pt-5 border-t border-brand-white/10 flex flex-col items-stretch gap-3">

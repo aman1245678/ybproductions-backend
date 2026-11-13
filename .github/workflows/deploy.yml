@@ -23,11 +23,22 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
 
-      - name: Install dependencies
+      - name: Install dependencies (Angular)
         run: npm ci
 
-      - name: Build website
+      - name: Build website (Angular)
         run: npm run build
+
+      - name: Install dependencies (Kanyadan)
+        working-directory: ./kanyadan
+        run: npm install --legacy-peer-deps
+
+      - name: Build Kanyadan (Next.js Static Export)
+        working-directory: ./kanyadan
+        run: npm run build
+
+      - name: Copy Kanyadan build into Angular dist
+        run: cp -r ./kanyadan/out ./yashvi-bagga-productions/dist/yashvi-bagga-productions/browser/kanyadan
 
       - name: Deploy to public_html via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

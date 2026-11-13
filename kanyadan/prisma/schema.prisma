@@ -1,0 +1,160 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// -------------------------------------------------------------
+// Matrimonial Profile & Registration
+// -------------------------------------------------------------
+model MatrimonialRegistration {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Subscription Plan (BASIC FREE, INTRODUCTORY ₹1100, SILVER ₹2100, GOLD ₹5100, DIAMOND ₹11000, PLATINUM ₹20000, SUPER PLATINUM)
+  planName        String   @default("INTRODUCTORY")
+  planPrice       Int      @default(1100)
+  planDuration    String   @default("Standard")
+  matchesAllowed  Int      @default(5)
+  paymentStatus   String   @default("PAID") // PENDING, PAID, FREE_TIER
+  paymentId       String?  @unique
+  paymentMethod   String?  @default("UPI / NetBanking")
+  registrationNo  String   @unique
+
+  // PROFILE PRIVACY & MANAGEMENT
+  profileManagedBy String  @default("Self") // Self, Parent, Guardian, Sibling
+  noDowryValidated Boolean @default(true) // Verified Stamp on profile
+  pictureVerified  Boolean @default(false) // Posted by team only after verification
+  profilePhotoUrl  String?
+
+  // ABOUT CANDIDATE
+  firstName       String   // NOT REVEALED TO PUBLIC (Admin/Internal only)
+  lastName        String   // REVEALED TO PUBLIC
+  pseudoName      String   // Public pseudo handle (e.g. aryan_patna92)
+  contactNumber   String   // NOT REVEALED TO PUBLIC
+  emailAddress    String   // NOT REVEALED TO PUBLIC
+  maritalStatus   String   // Never Married, Divorced, Widowed, Previously engaged
+  caste           String?
+  community       String   // SC, ST, GEN, OBC
+  religion        String   // Hindu, Muslim, Sikh, Jain, Christian, Buddhist, Other
+  languagesKnown  String   // Comma separated
+  birthPlace      String?
+  birthDate       DateTime?
+  birthDateString String?
+  birthTime       String?
+  height          String?
+  weight          String?
+  physicalAppearance String? // Optional
+  highestEducation String
+  professionalQualification String?
+  employmentStatus String // Salaried, Business, Government, Self-employed, Not working
+  monthlyIncome   String?
+  manglikStatus   String  @default("Don’t Know") // Manglik, Non Manglik, Don’t Know
+  presentState    String
+  presentNeighbourhood String
+  permanentLocation String
+  diet            String  // Veg, Non veg, Vegan, Any other
+  interestsHobbies String?
+  strengthsAttributes String?
+  shortcomingsToOvercome String?
+
+  // ABOUT FAMILY
+  familySetup     String  // Joint, Nuclear
+  fatherQualification String?
+  fatherOccupation String?
+  motherQualification String?
+  motherExperience String?
+  siblingsDetails String? // Siblings and marital status
+
+  // PARTNER PREFERENCES
+  prefAgeRangeMin Int?
+  prefAgeRangeMax Int?
+  prefHeight      String?
+  prefWeight      String?
+  prefPhysicalAppearance String?
+  prefLanguage    String?
+  prefCommunity   String?
+  prefReligion    String?
+  prefLocation    String?
+  prefBasicSchooling String?
+  prefEmploymentType String?
+  prefMinEducation String?
+  prefMinProfessionalQualification String?
+  prefMinMonthlyIncome String?
+  prefFamilySetup String? // Nuclear, Joint, Flexible
+
+  // QUESTIONS THAT MATTER (Signature Values-Based Questions)
+  qDowryMeaning   String? // What does a dowry-free marriage mean to you?
+  qVenueSetup     String? // What kind of a set up do you want for wedding venue?
+  qWeddingBudget  String? // How much budget have you set aside for the wedding?
+  qPartnerFamilySpend String? // How much do you expect the partner’s family to spend on the wedding?
+  qPrePostFunctions String? // How many pre/post wedding functions do you wish to host. Pls name them
+  qSpecificPreferences String? // Pls feel free to mention any specific preferences for your wedding festivities?
+  qJointOrNuclear String? // Do you belong to a Joint Family/Nuclear family
+  qCompatibilityDefinition String? // What is your definition of compatibility between husband and wife as well as Inlaws?
+  qWorkingPartnerThoughts String? // Are you open to the idea of a working partner?
+  qSharedHouseholdIncome String? // Thoughts on sharing household income between working partners?
+
+  status          String  @default("ACTIVE") // ACTIVE, UNDER_REVIEW, MATCHED
+}
+
+// -------------------------------------------------------------
+// Vendors & Partner Network (13 Partner Categories)
+// -------------------------------------------------------------
+model Vendor {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  businessName    String
+  ownerName       String
+  contactPhone    String
+  email           String?
+  city            String
+  address         String
+  category        String   // PHOTOGRAPHY, EVENT_PLANNER, GRAPHIC_DESIGN_VIDEO, CHOREOGRAPHER, CARDS_PRINTING, COSTUME_JEWELLERY, WEDDING_BAND, HONEYMOON_TRAVEL, MAKEUP_ARTIST, VENUES_CATERERS, JEWELLERS, CONTENT_CREATORS, TROUSSEAU_PACKERS
+
+  description     String?
+  capacity        Int?
+  basePrice       Int      // Vendor's base charge (₹)
+  markupPercentage Float   @default(15.0) // Platform margin
+  clientPrice     Int      // Customer price
+
+  images          String[] @default([])
+  amenities       String[] @default([])
+  isVerified      Boolean  @default(true)
+  isActive        Boolean  @default(true)
+}
+
+// -------------------------------------------------------------
+// Custom Wedding Packages & Bookings
+// -------------------------------------------------------------
+model WeddingPackage {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  packageName     String
+  city            String
+  guestCapacity   Int
+  totalVendorCost Int
+  platformProfit  Int
+  finalCustomerPrice Int
+}
+
+model PackageBooking {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  bookingNumber   String   @unique
+  customerName    String
+  customerPhone   String
+  customerEmail   String
+  eventDate       DateTime
+  guestCount      Int
+  city            String
+  packageName     String
+  totalAmount     Int
+  status          String   @default("INQUIRY")
+}

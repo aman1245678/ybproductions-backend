@@ -105,6 +105,16 @@ import { HomeCtaComponent } from './sections/home-cta.component';
             </app-magnetic-button>
 
             <a
+              href="/kanyadan/"
+              class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-500/20 to-rose-500/20 px-5 py-3 font-poppins text-xs font-semibold text-amber-200 hover:border-amber-400 hover:from-amber-500/30 hover:to-rose-500/30 transition-all duration-300 shadow-[0_4px_16px_rgba(245,158,11,0.15)]"
+            >
+              <span>💍 Kanyadan Weddings</span>
+              <svg class="h-3.5 w-3.5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <a
               href="https://github.com/aman1245678/ybproductions-backend/releases/download/v1.02.3680000/YBP_VERSION_1.02.3680000.apk"
               download="YBP_VERSION_1.02.3680000.apk"
               class="inline-flex items-center gap-2 rounded-full border border-brand-pink/30 bg-brand-pink/10 px-5 py-3 font-poppins text-xs font-medium text-brand-white hover:border-brand-pink hover:bg-brand-pink/20 transition-all duration-300"
