@@ -19,15 +19,15 @@ export default function PlansPage() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-700 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-            <ShieldCheck className="w-4 h-4 text-rose-600" />
-            Transparent Dowry-Free Matchmaking
+          <div className="inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+            <ShieldCheck className="w-4 h-4 text-amber-600" />
+            Dignified &amp; Trusted Matchmaking
           </div>
           <h1 className="font-serif-title text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-            Membership & Matchmaking Plans
+            Membership &amp; Matchmaking Plans
           </h1>
           <p className="text-sm sm:text-base text-stone-600 mt-3">
-            From our 100% Free verified profile creation to unlimited assisted matchmaking with Google Meet introductions and vendor discounts. Choose what fits your family.
+            Register your profile for free, and choose a verified membership plan to unlock direct connections, contact details, and personalized matchmaking assistance.
           </p>
         </div>
 

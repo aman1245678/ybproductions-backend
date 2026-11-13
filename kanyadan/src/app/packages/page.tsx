@@ -104,7 +104,7 @@ export default function PackagesPage() {
             All-in-One Wedding Packages (Pandal + Hall + Food)
           </h1>
           <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
-            Jaise hi rishta tay hota hai, shaadi ka pura intezaam (pandal ka kharcha, marriage hall, catering, light & sound) ek package me fix karein. Zero hidden cost, maximum shanti!
+            Seamlessly book your complete wedding setup — pandal, marriage hall, pure catering, lighting, and sound — in one transparent package. Zero hidden costs, complete peace of mind.
           </p>
         </div>
 

@@ -185,13 +185,13 @@ export default function MatrimonialRegisterPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-1.5 bg-rose-50 border border-rose-200 text-rose-700 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
             <HeartHandshake className="w-4 h-4 text-rose-600" />
-            No-Dowry Matrimonial Registration
+            Matrimonial Profile Registration
           </div>
           <h1 className="font-serif-title text-3xl sm:text-4xl font-black text-stone-900">
             Aashirwaad Profile Registration
           </h1>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-xl mx-auto">
-            Your contact details and first name remain 100% confidential. Profiles are published with verified No-Dowry badges only after verification.
+            Create your profile to join our verified matrimonial network. Contact details remain confidential until you choose to connect. Paid membership plans unlock full matching services.
           </p>
         </div>
 
@@ -204,7 +204,7 @@ export default function MatrimonialRegisterPage() {
             
             <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1 rounded-full text-xs font-extrabold uppercase mb-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              NO DOWRY COMMITMENT VALIDATED
+              PROFILE REGISTERED & PROTECTED
             </div>
 
             <h2 className="font-serif-title text-2xl sm:text-3xl font-bold text-stone-900 mt-2">
@@ -736,19 +736,20 @@ export default function MatrimonialRegisterPage() {
                       Step 5: Questions That Matter
                     </h2>
                     <p className="text-xs text-stone-500 mt-0.5">
-                      These questions clarify expectations early on wedding budget, joint/nuclear living, and dowry-free principles.
+                      These questions clarify expectations early on wedding budget, partner lifestyle, and marriage values.
                     </p>
                   </div>
 
                   {/* Q1 */}
                   <div>
                     <label className="block text-xs font-bold text-stone-900 mb-1">
-                      Q1. What does a dowry-free marriage mean to you? *
+                      Q1. What are your marriage &amp; wedding expectations? (Optional: Share your preference on dowry-free or traditional customs)
                     </label>
                     <textarea
                       rows={2}
                       value={formData.qDowryMeaning}
                       onChange={(e) => handleChange("qDowryMeaning", e.target.value)}
+                      placeholder="e.g. Prefer dowry-free marriage with mutual respect, or open to traditional family traditions"
                       className="w-full border border-stone-300 rounded-xl p-3 text-xs outline-none focus:ring-2 focus:ring-rose-500"
                     />
                   </div>
@@ -842,15 +843,15 @@ export default function MatrimonialRegisterPage() {
                     </h2>
                   </div>
 
-                  {/* Legal Verified Stamp Badge */}
-                  <div className="bg-emerald-50 border-2 border-emerald-500/40 rounded-2xl p-4 flex items-start gap-3">
-                    <ShieldCheck className="w-8 h-8 text-emerald-600 shrink-0" />
+                  {/* Verified Profile Activation Badge */}
+                  <div className="bg-amber-50 border-2 border-amber-500/40 rounded-2xl p-4 flex items-start gap-3">
+                    <ShieldCheck className="w-8 h-8 text-amber-600 shrink-0" />
                     <div>
-                      <h4 className="font-serif-title font-bold text-emerald-950 text-sm">
-                        NO DOWRY COMMITMENT VALIDATED
+                      <h4 className="font-serif-title font-bold text-stone-900 text-sm">
+                        CONFIDENTIAL PROFILE REGISTRATION
                       </h4>
-                      <p className="text-xs text-emerald-800 mt-0.5">
-                        By completing this form, you affirm that neither you nor your family will demand or accept dowry in any form. This profile will receive the verified official stamp.
+                      <p className="text-xs text-stone-600 mt-0.5">
+                        Your profile will be created securely. Basic registration is open to everyone. Paid membership plans unlock full matching services and direct family connections.
                       </p>
                     </div>
                   </div>

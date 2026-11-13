@@ -17,15 +17,15 @@ export default function Footer() {
                 AASHIRWAAD <span className="text-amber-400">WEDDINGS</span>
               </span>
             </div>
-            <p className="text-xs text-rose-300 font-semibold tracking-wide">
-              “Kanyadaan abb aur nahin……”
+            <p className="text-xs text-amber-300 font-semibold tracking-wide">
+              “Where Cherished Unions Begin”
             </p>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Our mission: to promote dowry-free marriages founded on dignity, equality, compatibility, and mutual respect.
+              Connecting genuine prospective partners, premier wedding venues, and trusted vendors with utmost dignity, transparency, and respect.
             </p>
-            <div className="inline-flex items-center gap-2 bg-rose-950/60 border border-rose-800/60 px-3 py-1.5 rounded-lg text-xs font-medium text-rose-300">
-              <ShieldCheck className="w-4 h-4 text-rose-400" />
-              100% Strict No-Dowry Verified Platform
+            <div className="inline-flex items-center gap-2 bg-amber-950/60 border border-amber-800/60 px-3 py-1.5 rounded-lg text-xs font-medium text-amber-300">
+              <ShieldCheck className="w-4 h-4 text-amber-400" />
+              100% Verified &amp; Privacy Protected Platform
             </div>
           </div>
 
