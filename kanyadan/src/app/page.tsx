@@ -176,11 +176,11 @@ export default function HomePage() {
               {/* Main Headline */}
               <div className="space-y-1">
                 <h1 className="font-serif text-4xl sm:text-5xl lg:text-[66px] font-bold tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
-                  Rishte Honge,
+                  Pavitra Bandhan,
                 </h1>
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="font-serif italic text-4xl sm:text-5xl lg:text-[66px] font-bold bg-gradient-to-r from-[#FFE8B3] via-[#F5B324] to-[#FFAE34] bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(245,179,36,0.35)]">
-                    Dahej Nahin.
+                    Dahej-Mukt Milan.
                   </span>
                   {/* Glowing Gold Heart Doodle */}
                   <svg className="w-8 sm:w-11 h-8 sm:h-11 text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)] animate-pulse" viewBox="0 0 40 40" fill="none">
@@ -197,7 +197,7 @@ export default function HomePage() {
 
               {/* Subtitle Paragraph */}
               <p className="text-stone-200/90 text-sm sm:text-base leading-relaxed max-w-xl font-normal drop-shadow-sm">
-                Aashirwaad Weddings — A platform where dignity, equality and true relationships come first. Find your life partner, plan your wedding, and manage everything at one place.
+                A platform founded on dignity, love &amp; equality. Discover genuine life partners and celebrate your dream wedding with 100% pride and zero compromises.
               </p>
 
               {/* CTA Buttons */}
