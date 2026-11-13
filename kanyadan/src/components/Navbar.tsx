@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { 
-  Heart, 
   Home, 
   Users, 
   Layers, 
@@ -29,58 +28,58 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full select-none">
       
-      {/* 1. TOP UTILITY BAR (Deep Wine Burgundy) */}
-      <div className="bg-[#260513] text-stone-300 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-amber-900/30">
+      {/* 1. TOP UTILITY BAR (Deep Wine Burgundy: #280716) */}
+      <div className="bg-[#280716] text-stone-300 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-amber-900/40">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           
-          {/* Left: Phone, Email, Platform Tag */}
+          {/* Left: Phone | Email | Platform Tag */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-            <a href="tel:+919876543210" className="inline-flex items-center gap-1.5 text-stone-300 hover:text-amber-300 transition">
-              <Phone className="w-3 h-3 text-amber-400" />
+            <a href="tel:+919876543210" className="inline-flex items-center gap-1.5 text-stone-200 hover:text-amber-300 transition">
+              <Phone className="w-3.5 h-3.5 text-amber-400" />
               <span>+91 98765 43210</span>
             </a>
-            <span className="text-stone-600 hidden sm:inline">|</span>
-            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1.5 text-stone-300 hover:text-amber-300 transition">
-              <Mail className="w-3 h-3 text-amber-400" />
+            <span className="text-stone-500 hidden sm:inline">|</span>
+            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1.5 text-stone-200 hover:text-amber-300 transition">
+              <Mail className="w-3.5 h-3.5 text-amber-400" />
               <span>support@aashirwaadweddings.com</span>
             </a>
-            <span className="text-stone-600 hidden md:inline">|</span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-300">
-              <MapPin className="w-3 h-3 text-amber-400" />
+            <span className="text-stone-500 hidden md:inline">|</span>
+            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-200">
+              <MapPin className="w-3.5 h-3.5 text-amber-400" />
               <span>India's Trusted Wedding Platform</span>
             </span>
           </div>
 
-          {/* Right: Download App, Help, Language */}
-          <div className="flex items-center gap-3 sm:gap-4 text-stone-300">
+          {/* Right: Download App | Help & Support | English ▾ */}
+          <div className="flex items-center gap-3 sm:gap-4 text-stone-200">
             <Link href="/register" className="inline-flex items-center gap-1.5 hover:text-amber-300 transition">
-              <Smartphone className="w-3 h-3 text-amber-400" />
+              <Smartphone className="w-3.5 h-3.5 text-amber-400" />
               <span>Download App</span>
             </Link>
-            <span className="text-stone-600">|</span>
+            <span className="text-stone-500">|</span>
             <Link href="/plans" className="inline-flex items-center gap-1.5 hover:text-amber-300 transition">
-              <Headphones className="w-3 h-3 text-amber-400" />
+              <Headphones className="w-3.5 h-3.5 text-amber-400" />
               <span>Help & Support</span>
             </Link>
-            <span className="text-stone-600 hidden sm:inline">|</span>
-            <div className="hidden sm:inline-flex items-center gap-1 text-stone-300 cursor-pointer hover:text-amber-300">
+            <span className="text-stone-500 hidden sm:inline">|</span>
+            <div className="hidden sm:inline-flex items-center gap-1 text-stone-200 cursor-pointer hover:text-amber-300">
               <span>English</span>
-              <ChevronDown className="w-3 h-3 text-stone-400" />
+              <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* 2. MAIN NAVIGATION ROW (Midnight Burgundy / Navy Royal Glass) */}
-      <div className="bg-[#0D020D]/95 backdrop-blur-xl border-b border-amber-500/20 py-2.5 px-4 sm:px-6 lg:px-8">
+      {/* 2. MAIN NAVIGATION ROW (Midnight Dark Burgundy #0C020B) */}
+      <div className="bg-[#0C020B] border-b border-amber-500/20 py-2.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-            {/* Glowing Dual Heart Icon */}
+            {/* Glowing Gradient Heart Icon */}
             <div className="relative flex items-center justify-center">
-              <svg className="w-9 h-9 drop-shadow-[0_0_12px_rgba(244,63,94,0.6)]" viewBox="0 0 40 40" fill="none">
+              <svg className="w-10 h-10 drop-shadow-[0_0_12px_rgba(244,63,94,0.65)]" viewBox="0 0 40 40" fill="none">
                 <path 
                   d="M12 21.5L20 29.5L28 21.5C31.5 18 31.5 12.5 28 9C24.5 5.5 19 5.5 15.5 9L14 10.5L12.5 9C9 5.5 3.5 5.5 0 9C-3.5 12.5 -3.5 18 0 21.5L12 33.5" 
                   transform="translate(8, 2) scale(0.7)"
@@ -100,14 +99,14 @@ export default function Navbar() {
             </div>
 
             <div className="text-left">
-              <div className="font-serif font-bold text-xl sm:text-2xl tracking-[0.12em] text-[#FFE8C2] leading-none drop-shadow-sm">
+              <div className="font-serif font-bold text-xl sm:text-2xl tracking-[0.1em] text-[#FFE8C2] leading-none drop-shadow-sm">
                 AASHIRWAAD
               </div>
-              <div className="font-serif italic text-xs sm:text-sm tracking-widest text-[#F59E0B] font-medium -mt-0.5">
+              <div className="font-serif italic text-xs sm:text-sm tracking-widest text-[#F5B324] font-medium -mt-0.5">
                 Weddings
               </div>
-              <div className="text-[9px] font-sans tracking-tight text-stone-400 italic">
-                "Where Cherished Unions Begin"
+              <div className="text-[9.5px] font-sans tracking-tight text-stone-400 italic">
+                "Rishte Rishton Se Badte Hain"
               </div>
             </div>
           </Link>
@@ -115,61 +114,66 @@ export default function Navbar() {
           {/* Desktop Nav Items */}
           <nav className="hidden xl:flex items-center gap-5 text-[12px] font-medium text-stone-200">
             
-            {/* Home (Active Pill) */}
+            {/* Home (Active Golden Pill Button) */}
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FFD56B] via-[#F4B41A] to-[#E69819] text-stone-950 font-bold px-4 py-1.5 rounded-full shadow-[0_2px_14px_rgba(244,180,26,0.4)] transition hover:brightness-105"
+              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FFD369] via-[#F4B41A] to-[#E59819] text-stone-950 font-bold px-4 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105"
             >
               <Home className="w-3.5 h-3.5 text-stone-950" />
               <span>Home</span>
             </Link>
 
-            <Link href="/register" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* Matrimonial Registration */}
+            <Link href="/register" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <Users className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Matrimonial<br />Registration</span>
             </Link>
 
-            <Link href="/plans" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* Plans & Pricing */}
+            <Link href="/plans" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <Layers className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>Plans &<br />Pricing</span>
+              <span>Plans &amp;<br />Pricing</span>
             </Link>
 
-            <Link href="/packages" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* Wedding Packages */}
+            <Link href="/packages" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <Gift className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Wedding<br />Packages</span>
             </Link>
 
-            <Link href="/vendors" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* Pandal & Halls */}
+            <Link href="/vendors" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <Landmark className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>Pandal &<br />Halls</span>
+              <span>Pandal &amp;<br />Halls</span>
             </Link>
 
-            <Link href="/vendors/join" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* Vendor Partner */}
+            <Link href="/vendors/join" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <Handshake className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Vendor<br />Partner</span>
             </Link>
 
-            {/* Link back to YB Productions */}
-            <a href="/" className="flex items-center gap-2 hover:text-[#F59E0B] transition leading-tight text-left">
+            {/* YB Productions Backlink */}
+            <a href="/" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
               <PlayCircle className="w-4 h-4 text-amber-300 shrink-0" />
               <span>YB<br />Productions</span>
             </a>
 
           </nav>
 
-          {/* Right Action CTA Buttons */}
+          {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             
-            {/* Login Pill Button */}
+            {/* Login Outline Button */}
             <Link
               href="/register"
-              className="border border-amber-300/40 bg-white/5 hover:bg-white/10 text-amber-100 rounded-full px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition backdrop-blur-sm"
+              className="border border-amber-300/50 bg-white/5 hover:bg-white/10 text-amber-100 rounded-full px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition backdrop-blur-sm"
             >
               <User className="w-3.5 h-3.5 text-amber-300" />
               <span>Login</span>
             </Link>
 
-            {/* Register Profile Gold Pill Button */}
+            {/* Register Profile Solid Gold Button */}
             <Link
               href="/register"
               className="bg-gradient-to-r from-[#FFE59E] via-[#F7B731] to-[#E18C00] text-stone-950 font-bold rounded-full px-5 py-2.5 text-xs flex items-center gap-1.5 shadow-[0_4px_18px_rgba(247,183,49,0.35)] hover:scale-105 hover:brightness-105 transition-all"
@@ -196,7 +200,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#0D020D]/98 border-b border-amber-500/20 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-200 shadow-2xl backdrop-blur-2xl">
+        <div className="xl:hidden bg-[#0C020B]/98 border-b border-amber-500/20 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-200 shadow-2xl backdrop-blur-2xl">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -219,7 +223,7 @@ export default function Navbar() {
             className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
           >
             <Layers className="w-4 h-4 text-amber-300" />
-            <span>Plans & Pricing</span>
+            <span>Plans &amp; Pricing</span>
           </Link>
           <Link
             href="/packages"
@@ -235,7 +239,7 @@ export default function Navbar() {
             className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
           >
             <Landmark className="w-4 h-4 text-amber-300" />
-            <span>Pandal & Halls</span>
+            <span>Pandal &amp; Halls</span>
           </Link>
           <Link
             href="/vendors/join"
