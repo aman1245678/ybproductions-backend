@@ -98,22 +98,22 @@ export default function HomePage() {
               {/* Ornate Gold Badge */}
               <div className="inline-flex items-center gap-2 rounded-2xl border border-amber-400/50 bg-[#160312]/80 px-4 sm:px-5 py-2 text-amber-200 backdrop-blur-md shadow-md">
                 <span className="text-amber-400 text-sm">💎</span>
-                <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-serif text-[#FFE29F]">
+                <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase font-cinzel text-[#FFE29F]">
                   India's Premium Wedding &amp; Matrimonial Platform
                 </span>
               </div>
 
               {/* Main Headline */}
               <div className="space-y-1">
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-[62px] font-bold tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+                <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-tight text-white leading-[1.06] drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
                   Rishte Honge,
                 </h1>
                 <div className="flex items-center gap-3 flex-wrap">
-                  <span className="font-serif italic text-4xl sm:text-5xl lg:text-[62px] font-bold bg-gradient-to-r from-[#FFE8B3] via-[#F5B324] to-[#FFAE34] bg-clip-text text-transparent drop-shadow-md">
+                  <span className="font-playfair italic text-4xl sm:text-5xl lg:text-[64px] font-bold bg-gradient-to-r from-[#FFE8B3] via-[#F5B324] to-[#FFAE34] bg-clip-text text-transparent drop-shadow-md">
                     Dahej Nahin.
                   </span>
                   {/* Glowing Gold Heart Doodle */}
-                  <svg className="w-8 sm:w-11 h-8 sm:h-11 text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)] animate-pulse" viewBox="0 0 40 40" fill="none">
+                  <svg className="w-8 sm:w-11 h-8 sm:h-11 text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" viewBox="0 0 40 40" fill="none">
                     <path 
                       d="M10 18 C5 12 10 5 18 9 C22 12 20 18 20 22 C20 28 32 18 32 12 C32 6 24 4 20 8" 
                       stroke="currentColor" 
@@ -178,7 +178,7 @@ export default function HomePage() {
                     <ShieldCheck className="w-5 h-5 text-amber-400" />
                   </div>
                   <div className="text-left">
-                    <div className="font-serif text-lg sm:text-xl font-bold text-white leading-none">100%</div>
+                    <div className="font-playfair text-lg sm:text-xl font-bold text-white leading-none">100%</div>
                     <div className="text-[11px] font-sans text-stone-300/80 mt-1">No-Dowry Verified</div>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ export default function HomePage() {
                     <Users className="w-5 h-5 text-amber-400" />
                   </div>
                   <div className="text-left">
-                    <div className="font-serif text-lg sm:text-xl font-bold text-white leading-none">50,000+</div>
+                    <div className="font-playfair text-lg sm:text-xl font-bold text-white leading-none">50,000+</div>
                     <div className="text-[11px] font-sans text-stone-300/80 mt-1">Verified Profiles</div>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export default function HomePage() {
                     <Landmark className="w-5 h-5 text-amber-400" />
                   </div>
                   <div className="text-left">
-                    <div className="font-serif text-lg sm:text-xl font-bold text-white leading-none">500+</div>
+                    <div className="font-playfair text-lg sm:text-xl font-bold text-white leading-none">500+</div>
                     <div className="text-[11px] font-sans text-stone-300/80 mt-1">Pandal &amp; Halls</div>
                   </div>
                 </div>
@@ -211,7 +211,7 @@ export default function HomePage() {
                     <Store className="w-5 h-5 text-amber-400" />
                   </div>
                   <div className="text-left">
-                    <div className="font-serif text-lg sm:text-xl font-bold text-white leading-none">1,000+</div>
+                    <div className="font-playfair text-lg sm:text-xl font-bold text-white leading-none">1,000+</div>
                     <div className="text-[11px] font-sans text-stone-300/80 mt-1">Trusted Vendors</div>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
                     <Gem className="w-5 h-5 text-amber-400" />
                   </div>
                   <div className="text-left">
-                    <div className="font-serif text-lg sm:text-xl font-bold text-white leading-none">4.8/5</div>
+                    <div className="font-playfair text-lg sm:text-xl font-bold text-white leading-none">4.8/5</div>
                     <div className="text-[11px] font-sans text-stone-300/80 mt-1">User Rating</div>
                   </div>
                 </div>

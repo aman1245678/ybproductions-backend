@@ -99,10 +99,10 @@ export default function Navbar() {
             </div>
 
             <div className="text-left">
-              <div className="font-serif font-bold text-xl sm:text-2xl tracking-[0.1em] text-[#FFE8C2] leading-none drop-shadow-sm">
+              <div className="font-cinzel font-bold text-xl sm:text-2xl tracking-[0.1em] text-[#FFE8C2] leading-none drop-shadow-sm">
                 AASHIRWAAD
               </div>
-              <div className="font-serif italic text-xs sm:text-sm tracking-widest text-[#F5B324] font-medium -mt-0.5">
+              <div className="font-playfair italic text-xs sm:text-sm tracking-widest text-[#F5B324] font-semibold -mt-0.5">
                 Weddings
               </div>
               <div className="text-[9.5px] font-sans tracking-tight text-stone-400 italic">
