@@ -106,7 +106,7 @@ export default function Navbar() {
                 Weddings
               </div>
               <div className="text-[9.5px] font-sans tracking-tight text-stone-400 italic">
-                "Where Sacred Bonds Begin"
+                "Rishte Rishton Se Badte Hain"
               </div>
             </div>
           </Link>

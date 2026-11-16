@@ -139,17 +139,17 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Main Headline in English */}
+              {/* Main Headline */}
               <div className="space-y-1">
-                <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[58px] font-bold tracking-tight text-white leading-[1.08] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
-                  Sacred Bonds,
+                <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[62px] font-bold tracking-tight text-white leading-[1.06] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
+                  Rishte Honge,
                 </h1>
                 <div className="flex items-center gap-3 flex-wrap">
-                  <span className="font-playfair italic text-4xl sm:text-5xl lg:text-[58px] font-bold bg-gradient-to-r from-[#FFE8B3] via-[#F5B324] to-[#FFAE34] bg-clip-text text-transparent drop-shadow-md">
-                    Golden Beginnings.
+                  <span className="font-playfair italic text-4xl sm:text-5xl lg:text-[62px] font-bold bg-gradient-to-r from-[#FFE8B3] via-[#F5B324] to-[#FFAE34] bg-clip-text text-transparent drop-shadow-md">
+                    Dahej Nahin.
                   </span>
                   {/* Glowing Gold Heart Doodle */}
-                  <svg className="w-8 sm:w-10 h-8 sm:h-10 text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" viewBox="0 0 40 40" fill="none">
+                  <svg className="w-9 sm:w-12 h-9 sm:h-12 text-amber-300 drop-shadow-[0_0_12px_rgba(251,191,36,0.8)]" viewBox="0 0 40 40" fill="none">
                     <path 
                       d="M10 18 C5 12 10 5 18 9 C22 12 20 18 20 22 C20 28 32 18 32 12 C32 6 24 4 20 8" 
                       stroke="currentColor" 
@@ -161,9 +161,9 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Subtitle Paragraph in English */}
+              {/* Subtitle Paragraph */}
               <p className="text-stone-200/90 text-sm sm:text-base leading-relaxed max-w-xl font-normal drop-shadow-sm">
-                Aashirwaad Weddings — A premier matrimonial platform where dignity, equality, and genuine relationships come first. Discover your ideal life partner, curate your dream wedding, and manage every celebration seamlessly in one place.
+                Aashirwaad Weddings — A platform where dignity, equality and true relationships come first. Find your life partner, plan your wedding, and manage everything at one place.
               </p>
 
               {/* CTA Buttons in English */}
