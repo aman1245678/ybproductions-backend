@@ -5,6 +5,11 @@ import { useState } from "react";
 import { 
   Sparkles, 
   ChevronDown,
+  ChevronRight,
+  ShieldCheck,
+  Users,
+  Building2,
+  Store,
   Star
 } from "lucide-react";
 
@@ -58,29 +63,143 @@ export default function HomePage() {
     }
   ];
 
+  const quickActionButtons = [
+    {
+      titleLine1: "Find Your",
+      titleLine2: "Life Partner",
+      href: "/register",
+      gradient: "from-[#4A0A35] via-[#330523] to-[#200316]",
+      borderColor: "border-[#E11D48]/70 hover:border-[#FB7185]",
+      shadowColor: "shadow-[0_0_15px_rgba(225,29,72,0.25)] hover:shadow-[0_0_22px_rgba(225,29,72,0.45)]",
+      iconColor: "text-[#FB7185]",
+      arrowBorder: "border-[#FB7185]/60 text-[#FB7185]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#FB7185] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M16 4C14.5 2 12 2 10.5 3.5C9 5 9 7.5 10.5 9L16 14L21.5 9C23 7.5 23 5 21.5 3.5C20 2 17.5 2 16 4Z" fill="#FB7185" fillOpacity="0.2" stroke="currentColor"/>
+          <circle cx="16" cy="18" r="2.5" />
+          <path d="M11 28C11 25 13 23 16 23C19 23 21 25 21 28" />
+          <circle cx="8" cy="20" r="2" />
+          <path d="M4 28C4 26 5.5 24.5 8 24.5" />
+          <circle cx="24" cy="20" r="2" />
+          <path d="M28 28C28 26 26.5 24.5 24 24.5" />
+        </svg>
+      )
+    },
+    {
+      titleLine1: "Plan Your",
+      titleLine2: "Wedding",
+      href: "/plans",
+      gradient: "from-[#4D3305] via-[#362203] to-[#211401]",
+      borderColor: "border-[#F59E0B]/70 hover:border-[#FBBF24]",
+      shadowColor: "shadow-[0_0_15px_rgba(245,158,11,0.25)] hover:shadow-[0_0_22px_rgba(245,158,11,0.45)]",
+      iconColor: "text-[#FBBF24]",
+      arrowBorder: "border-[#FBBF24]/60 text-[#FBBF24]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#FBBF24] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="18" r="6.5" stroke="currentColor" />
+          <circle cx="20" cy="14" r="6.5" stroke="currentColor" />
+          <path d="M19 7.5L20 6L21 7.5" stroke="currentColor" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
+      titleLine1: "Book",
+      titleLine2: "Pandal & Halls",
+      href: "/vendors?category=PANDAL",
+      gradient: "from-[#083E48] via-[#052930] to-[#031B20]",
+      borderColor: "border-[#06B6D4]/70 hover:border-[#22D3EE]",
+      shadowColor: "shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:shadow-[0_0_22px_rgba(6,182,212,0.45)]",
+      iconColor: "text-[#22D3EE]",
+      arrowBorder: "border-[#22D3EE]/60 text-[#22D3EE]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#22D3EE] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M16 4L26 11H6L16 4Z" stroke="currentColor" strokeLinejoin="round" />
+          <circle cx="16" cy="4" r="1.5" fill="currentColor" />
+          <path d="M8 11V26M13 11V26M19 11V26M24 11V26" stroke="currentColor" strokeLinecap="round" />
+          <path d="M5 26H27" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M13 15C13 15 14.5 13.5 16 13.5C17.5 13.5 19 15 19 15" stroke="currentColor" strokeLinecap="round" />
+        </svg>
+      )
+    },
+    {
+      titleLine1: "Choose",
+      titleLine2: "Trusted Vendors",
+      href: "/vendors",
+      gradient: "from-[#38145C] via-[#240B3E] to-[#160628]",
+      borderColor: "border-[#A855F7]/70 hover:border-[#C084FC]",
+      shadowColor: "shadow-[0_0_15px_rgba(168,85,247,0.25)] hover:shadow-[0_0_22px_rgba(168,85,247,0.45)]",
+      iconColor: "text-[#C084FC]",
+      arrowBorder: "border-[#C084FC]/60 text-[#C084FC]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#C084FC] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M5 12H27L25 6H7L5 12Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M5 12C5 13.5 6.5 14.5 8 14.5C9.5 14.5 11 13.5 11 12C11 13.5 12.5 14.5 14 14.5C15.5 14.5 17 13.5 17 12C17 13.5 18.5 14.5 20 14.5C21.5 14.5 23 13.5 23 12C23 13.5 24.5 14.5 26 14.5C27.5 14.5 27 13.5 27 12" stroke="currentColor" />
+          <path d="M7 14.5V26H25V14.5" stroke="currentColor" />
+          <path d="M13 26V20H19V26" stroke="currentColor" />
+        </svg>
+      )
+    },
+    {
+      titleLine1: "Capture",
+      titleLine2: "Your Moments",
+      href: "/packages",
+      gradient: "from-[#0A365C] via-[#06233E] to-[#04172B]",
+      borderColor: "border-[#0284C7]/70 hover:border-[#38BDF8]",
+      shadowColor: "shadow-[0_0_15px_rgba(2,132,199,0.25)] hover:shadow-[0_0_22px_rgba(2,132,199,0.45)]",
+      iconColor: "text-[#38BDF8]",
+      arrowBorder: "border-[#38BDF8]/60 text-[#38BDF8]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#38BDF8] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M6 10H10L12 7H20L22 10H26C27.1 10 28 10.9 28 12V24C28 25.1 27.1 26 26 26H6C4.9 26 4 25.1 4 24V12C4 10.9 4.9 10 6 10Z" stroke="currentColor" strokeLinejoin="round" />
+          <circle cx="16" cy="18" r="4.5" stroke="currentColor" />
+          <circle cx="23" cy="13" r="1" fill="currentColor" />
+        </svg>
+      )
+    },
+    {
+      titleLine1: "Curated",
+      titleLine2: "Wedding Packages",
+      href: "/packages",
+      gradient: "from-[#4E0924] via-[#360518] to-[#22020E]",
+      borderColor: "border-[#F43F5E]/70 hover:border-[#FB7185]",
+      shadowColor: "shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:shadow-[0_0_22px_rgba(244,63,94,0.45)]",
+      iconColor: "text-[#FB7185]",
+      arrowBorder: "border-[#FB7185]/60 text-[#FB7185]",
+      icon: (
+        <svg className="w-6 h-6 xl:w-7 xl:h-7 text-[#FB7185] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M5 13H27V17H5V13Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M7 17V26C7 26.5 7.5 27 8 27H24C24.5 27 25 26.5 25 26V17" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M16 13V27" stroke="currentColor" strokeLinecap="round" />
+          <path d="M16 13C16 13 13 8 10 9C7.5 10 8 13 16 13Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M16 13C16 13 19 8 22 9C24.5 10 24 13 16 13Z" stroke="currentColor" strokeLinejoin="round" />
+        </svg>
+      )
+    }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-[#0A0108] text-stone-100 overflow-x-hidden font-sans">
       
       {/* =========================================================================
-          HERO BANNER & ACTION BUTTONS - 100% EXACT 1:1 REPLICA FROM TARGET DESIGN
+          HERO BANNER & ACTION BUTTONS - USING USER'S OFFICIAL BACKGROUND IMAGE
       ========================================================================== */}
       <section className="relative w-full bg-[#0A0108] overflow-hidden select-none">
         
-        {/* Full-width High-Definition Hero Canvas matching exact 1024x524 target UI */}
+        {/* Full-width Hero Canvas with User's Official Background Image */}
         <div className="relative w-full max-w-[1600px] mx-auto">
           <img 
-            src="/kanyadan/hero_target_composite_hires.jpg" 
+            src="/kanyadan/hero_bg_official_hires.jpg" 
             alt="AASHIRWAAD Weddings - Rishte Honge, Dahej Nahin." 
             className="w-full h-auto object-cover select-none block drop-shadow-[0_15px_35px_rgba(0,0,0,0.9)]"
           />
 
-          {/* Pixel-Perfect Interactive Click Targets & Hover States */}
+          {/* Interactive Click Targets for the two buttons baked into the background image */}
           <div className="absolute inset-0 pointer-events-none">
             
             {/* 1. 'Register Profile →' button hotspot */}
             <Link 
               href="/register" 
-              className="absolute left-[8.5%] top-[52.5%] w-[17%] h-[7%] rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer pointer-events-auto"
+              className="absolute left-[8.5%] top-[64.5%] w-[18.5%] h-[7.2%] rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer pointer-events-auto"
               title="Register Profile"
             />
 
@@ -91,59 +210,100 @@ export default function HomePage() {
                 const el = document.getElementById("how-it-works");
                 if (el) el.scrollIntoView({ behavior: "smooth" });
               }}
-              className="absolute left-[26.8%] top-[52.5%] w-[17%] h-[7%] rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer pointer-events-auto"
+              className="absolute left-[28.8%] top-[64.5%] w-[18.5%] h-[7.2%] rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer pointer-events-auto"
               title="Watch How It Works"
             />
 
-            {/* 3. Golden Stats Bar Info Tooltip */}
-            <div 
-              className="absolute left-[8.5%] top-[64.2%] w-[83%] h-[8%] rounded-full pointer-events-auto cursor-default"
-              title="100% No-Dowry Verified • 50,000+ Verified Profiles • 500+ Pandal & Halls • 1,000+ Trusted Vendors • 4.8/5 User Rating"
-            />
+          </div>
 
-            {/* 4. The 6 Interactive Action Buttons Hotspots with Subtle Hover Glow */}
-            {/* Button 1: Find Your Life Partner */}
-            <Link
-              href="/register"
-              className="absolute left-[2.05%] top-[79.6%] w-[15.23%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-pink-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Find Your Life Partner"
-            />
+        </div>
 
-            {/* Button 2: Plan Your Wedding */}
-            <Link
-              href="/plans"
-              className="absolute left-[18.26%] top-[79.6%] w-[14.55%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-amber-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Plan Your Wedding"
-            />
+        {/* =========================================================================
+            STATS BAR & 6 ACTION BUTTONS - LAYERED SEAMLESSLY OVER HERO
+        ========================================================================== */}
+        <div className="relative -mt-14 sm:-mt-20 md:-mt-28 lg:-mt-36 z-20 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-3 sm:space-y-4">
+          
+          {/* 1. Golden Glowing Stats Bar Pill */}
+          <div className="rounded-full border border-amber-400/60 bg-black/85 backdrop-blur-md shadow-[0_0_25px_rgba(245,180,36,0.3)] py-2 sm:py-2.5 px-3 sm:px-6">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3 items-center justify-between text-center divide-y sm:divide-y-0 sm:divide-x divide-amber-500/20">
+              
+              {/* 100% No-Dowry Verified */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-stone-200">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold text-white tracking-wide">100%</div>
+                  <div className="text-[8.5px] sm:text-[10px] text-stone-300">No-Dowry Verified</div>
+                </div>
+              </div>
 
-            {/* Button 3: Book Pandal & Halls */}
-            <Link
-              href="/vendors?category=PANDAL"
-              className="absolute left-[33.69%] top-[79.6%] w-[14.94%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-cyan-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Book Pandal & Halls"
-            />
+              {/* 50,000+ Verified Profiles */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-stone-200 pt-1.5 sm:pt-0">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold text-white tracking-wide">50,000+</div>
+                  <div className="text-[8.5px] sm:text-[10px] text-stone-300">Verified Profiles</div>
+                </div>
+              </div>
 
-            {/* Button 4: Choose Trusted Vendors */}
-            <Link
-              href="/vendors"
-              className="absolute left-[49.61%] top-[79.6%] w-[15.04%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-purple-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Choose Trusted Vendors"
-            />
+              {/* 500+ Pandal & Halls */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-stone-200 pt-1.5 sm:pt-0">
+                <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold text-white tracking-wide">500+</div>
+                  <div className="text-[8.5px] sm:text-[10px] text-stone-300">Pandal &amp; Halls</div>
+                </div>
+              </div>
 
-            {/* Button 5: Capture Your Moments */}
-            <Link
-              href="/packages"
-              className="absolute left-[65.53%] top-[79.6%] w-[14.75%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-sky-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Capture Your Moments"
-            />
+              {/* 1,000+ Trusted Vendors */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-stone-200 pt-1.5 sm:pt-0">
+                <Store className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold text-white tracking-wide">1,000+</div>
+                  <div className="text-[8.5px] sm:text-[10px] text-stone-300">Trusted Vendors</div>
+                </div>
+              </div>
 
-            {/* Button 6: Curated Wedding Packages */}
-            <Link
-              href="/packages"
-              className="absolute left-[81.25%] top-[79.6%] w-[16.70%] h-[10.6%] rounded-xl sm:rounded-2xl opacity-0 hover:opacity-20 bg-rose-400 transition-all duration-300 pointer-events-auto cursor-pointer"
-              title="Curated Wedding Packages"
-            />
+              {/* 4.8/5 User Rating */}
+              <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-stone-200 col-span-2 sm:col-span-1 pt-1.5 sm:pt-0">
+                <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 fill-amber-400 shrink-0" />
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold text-white tracking-wide">4.8/5</div>
+                  <div className="text-[8.5px] sm:text-[10px] text-stone-300">User Rating</div>
+                </div>
+              </div>
 
+            </div>
+          </div>
+
+          {/* 2. The 6 Action Buttons Row */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 lg:gap-3.5">
+            {quickActionButtons.map((btn, idx) => (
+              <Link
+                key={idx}
+                href={btn.href}
+                className={`group relative rounded-xl sm:rounded-2xl px-2.5 sm:px-3 py-2 sm:py-2.5 bg-gradient-to-r ${btn.gradient} border ${btn.borderColor} ${btn.shadowColor} flex items-center justify-between gap-1.5 transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
+              >
+                {/* Left Icon */}
+                <div className="shrink-0">
+                  {btn.icon}
+                </div>
+
+                {/* Text Lines */}
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-[9.5px] sm:text-[10.5px] text-stone-300/80 font-medium leading-none truncate">
+                    {btn.titleLine1}
+                  </div>
+                  <div className="text-[11.5px] sm:text-[12.5px] font-bold text-white tracking-tight leading-tight mt-0.5 truncate">
+                    {btn.titleLine2}
+                  </div>
+                </div>
+
+                {/* Right Arrow inside Circle */}
+                <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border ${btn.arrowBorder} flex items-center justify-center shrink-0 group-hover:translate-x-0.5 transition-transform`}>
+                  <ChevronRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                </div>
+              </Link>
+            ))}
           </div>
 
         </div>
