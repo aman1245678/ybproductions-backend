@@ -5,6 +5,7 @@ import { useState } from "react";
 import { 
   Sparkles, 
   ChevronDown,
+  ChevronRight,
   Star,
   Play,
   UserPlus
@@ -60,36 +61,117 @@ export default function HomePage() {
     }
   ];
 
-  const actionButtons = [
+  const quickActionButtons = [
     {
-      title: "Find Your Life Partner",
+      titleLine1: "Find Your",
+      titleLine2: "Life Partner",
       href: "/register",
-      img: "/kanyadan/exact_card_1.png"
+      gradient: "from-[#4A0A35] via-[#330523] to-[#200316]",
+      borderColor: "border-[#E11D48]/70 hover:border-[#FB7185]",
+      shadowColor: "shadow-[0_0_15px_rgba(225,29,72,0.25)] hover:shadow-[0_0_22px_rgba(225,29,72,0.45)]",
+      iconColor: "text-[#FB7185]",
+      arrowBorder: "border-[#FB7185]/60 text-[#FB7185]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#FB7185] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M16 4C14.5 2 12 2 10.5 3.5C9 5 9 7.5 10.5 9L16 14L21.5 9C23 7.5 23 5 21.5 3.5C20 2 17.5 2 16 4Z" fill="#FB7185" fillOpacity="0.2" stroke="currentColor"/>
+          <circle cx="16" cy="18" r="2.5" />
+          <path d="M11 28C11 25 13 23 16 23C19 23 21 25 21 28" />
+          <circle cx="8" cy="20" r="2" />
+          <path d="M4 28C4 26 5.5 24.5 8 24.5" />
+          <circle cx="24" cy="20" r="2" />
+          <path d="M28 28C28 26 26.5 24.5 24 24.5" />
+        </svg>
+      )
     },
     {
-      title: "Plan Your Wedding",
+      titleLine1: "Plan Your",
+      titleLine2: "Wedding",
       href: "/plans",
-      img: "/kanyadan/exact_card_2.png"
+      gradient: "from-[#4D3305] via-[#362203] to-[#211401]",
+      borderColor: "border-[#F59E0B]/70 hover:border-[#FBBF24]",
+      shadowColor: "shadow-[0_0_15px_rgba(245,158,11,0.25)] hover:shadow-[0_0_22px_rgba(245,158,11,0.45)]",
+      iconColor: "text-[#FBBF24]",
+      arrowBorder: "border-[#FBBF24]/60 text-[#FBBF24]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#FBBF24] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="18" r="6.5" stroke="currentColor" />
+          <circle cx="20" cy="14" r="6.5" stroke="currentColor" />
+          <path d="M19 7.5L20 6L21 7.5" stroke="currentColor" strokeLinecap="round" />
+        </svg>
+      )
     },
     {
-      title: "Book Pandal & Halls",
+      titleLine1: "Book",
+      titleLine2: "Pandal & Halls",
       href: "/vendors?category=PANDAL",
-      img: "/kanyadan/exact_card_3.png"
+      gradient: "from-[#083E48] via-[#052930] to-[#031B20]",
+      borderColor: "border-[#06B6D4]/70 hover:border-[#22D3EE]",
+      shadowColor: "shadow-[0_0_15px_rgba(6,182,212,0.25)] hover:shadow-[0_0_22px_rgba(6,182,212,0.45)]",
+      iconColor: "text-[#22D3EE]",
+      arrowBorder: "border-[#22D3EE]/60 text-[#22D3EE]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#22D3EE] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M16 4L26 11H6L16 4Z" stroke="currentColor" strokeLinejoin="round" />
+          <circle cx="16" cy="4" r="1.5" fill="currentColor" />
+          <path d="M8 11V26M13 11V26M19 11V26M24 11V26" stroke="currentColor" strokeLinecap="round" />
+          <path d="M5 26H27" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M13 15C13 15 14.5 13.5 16 13.5C17.5 13.5 19 15 19 15" stroke="currentColor" strokeLinecap="round" />
+        </svg>
+      )
     },
     {
-      title: "Choose Trusted Vendors",
+      titleLine1: "Choose",
+      titleLine2: "Trusted Vendors",
       href: "/vendors",
-      img: "/kanyadan/exact_card_4.png"
+      gradient: "from-[#38145C] via-[#240B3E] to-[#160628]",
+      borderColor: "border-[#A855F7]/70 hover:border-[#C084FC]",
+      shadowColor: "shadow-[0_0_15px_rgba(168,85,247,0.25)] hover:shadow-[0_0_22px_rgba(168,85,247,0.45)]",
+      iconColor: "text-[#C084FC]",
+      arrowBorder: "border-[#C084FC]/60 text-[#C084FC]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#C084FC] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M5 12H27L25 6H7L5 12Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M5 12C5 13.5 6.5 14.5 8 14.5C9.5 14.5 11 13.5 11 12C11 13.5 12.5 14.5 14 14.5C15.5 14.5 17 13.5 17 12C17 13.5 18.5 14.5 20 14.5C21.5 14.5 23 13.5 23 12C23 13.5 24.5 14.5 26 14.5C27.5 14.5 27 13.5 27 12" stroke="currentColor" />
+          <path d="M7 14.5V26H25V14.5" stroke="currentColor" />
+          <path d="M13 26V20H19V26" stroke="currentColor" />
+        </svg>
+      )
     },
     {
-      title: "Capture Your Moments",
+      titleLine1: "Capture",
+      titleLine2: "Your Moments",
       href: "/packages",
-      img: "/kanyadan/exact_card_5.png"
+      gradient: "from-[#0A365C] via-[#06233E] to-[#04172B]",
+      borderColor: "border-[#0284C7]/70 hover:border-[#38BDF8]",
+      shadowColor: "shadow-[0_0_15px_rgba(2,132,199,0.25)] hover:shadow-[0_0_22px_rgba(2,132,199,0.45)]",
+      iconColor: "text-[#38BDF8]",
+      arrowBorder: "border-[#38BDF8]/60 text-[#38BDF8]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#38BDF8] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M6 10H10L12 7H20L22 10H26C27.1 10 28 10.9 28 12V24C28 25.1 27.1 26 26 26H6C4.9 26 4 25.1 4 24V12C4 10.9 4.9 10 6 10Z" stroke="currentColor" strokeLinejoin="round" />
+          <circle cx="16" cy="18" r="4.5" stroke="currentColor" />
+          <circle cx="23" cy="13" r="1" fill="currentColor" />
+        </svg>
+      )
     },
     {
-      title: "Curated Wedding Packages",
+      titleLine1: "Curated",
+      titleLine2: "Wedding Packages",
       href: "/packages",
-      img: "/kanyadan/exact_card_6.png"
+      gradient: "from-[#4E0924] via-[#360518] to-[#22020E]",
+      borderColor: "border-[#F43F5E]/70 hover:border-[#FB7185]",
+      shadowColor: "shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:shadow-[0_0_22px_rgba(244,63,94,0.45)]",
+      iconColor: "text-[#FB7185]",
+      arrowBorder: "border-[#FB7185]/60 text-[#FB7185]",
+      icon: (
+        <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#FB7185] shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M5 13H27V17H5V13Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M7 17V26C7 26.5 7.5 27 8 27H24C24.5 27 25 26.5 25 26V17" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M16 13V27" stroke="currentColor" strokeLinecap="round" />
+          <path d="M16 13C16 13 13 8 10 9C7.5 10 8 13 16 13Z" stroke="currentColor" strokeLinejoin="round" />
+          <path d="M16 13C16 13 19 8 22 9C24.5 10 24 13 16 13Z" stroke="currentColor" strokeLinejoin="round" />
+        </svg>
+      )
     }
   ];
 
@@ -102,9 +184,9 @@ export default function HomePage() {
       <section className="relative w-full bg-[#0A0108] overflow-hidden">
         
         {/* Full-width High-Definition Hero Banner */}
-        <div className="relative w-full max-w-[1655px] mx-auto">
+        <div className="relative w-full max-w-[1600px] mx-auto">
           <img 
-            src="/kanyadan/hero_banner_hires.jpg" 
+            src="/kanyadan/hero_exact_banner.jpg" 
             alt="AASHIRWAAD Weddings - Rishte Honge, Dahej Nahin." 
             className="w-full h-auto object-cover select-none block drop-shadow-[0_15px_35px_rgba(0,0,0,0.9)]"
           />
@@ -113,12 +195,12 @@ export default function HomePage() {
           <div className="absolute inset-0 pointer-events-none">
             
             {/* Left Column Button Overlay Area */}
-            <div className="absolute left-[8%] top-[68%] w-[38%] flex items-center gap-3 pointer-events-auto">
+            <div className="absolute left-[12%] top-[62%] w-[33%] flex items-center gap-3 pointer-events-auto">
               
               {/* Overlay for 'Register Profile →' button */}
               <Link 
                 href="/register" 
-                className="w-[45%] h-9 sm:h-12 md:h-14 rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer"
+                className="w-[48%] h-8 sm:h-11 md:h-14 rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer"
                 title="Register Profile"
               />
 
@@ -129,7 +211,7 @@ export default function HomePage() {
                   const el = document.getElementById("how-it-works");
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-[45%] h-9 sm:h-12 md:h-14 rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer"
+                className="w-[48%] h-8 sm:h-11 md:h-14 rounded-full opacity-0 hover:opacity-20 bg-white transition cursor-pointer"
                 title="Watch How It Works"
               />
 
@@ -143,22 +225,36 @@ export default function HomePage() {
       {/* =========================================================================
           SECTION: 6 VIBRANT ACTION BUTTONS & BOTTOM GOLDEN MANDALA
       ========================================================================== */}
-      <section className="relative py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#0A0108]">
-        <div className="max-w-[1655px] mx-auto">
+      <section className="relative py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 bg-[#0A0108]">
+        <div className="max-w-[1600px] mx-auto">
           
           {/* 6 Action Buttons Row */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5">
-            {actionButtons.map((btn, idx) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5 lg:gap-4">
+            {quickActionButtons.map((btn, idx) => (
               <Link
                 key={idx}
                 href={btn.href}
-                className="group relative rounded-2xl overflow-hidden shadow-xl hover:scale-105 hover:brightness-110 transition-all duration-300 border border-white/10 block bg-black/40"
+                className={`group relative rounded-xl sm:rounded-2xl px-3 sm:px-3.5 py-2.5 sm:py-3 bg-gradient-to-r ${btn.gradient} border ${btn.borderColor} ${btn.shadowColor} flex items-center justify-between gap-2 transition-all duration-300 hover:scale-[1.03] hover:brightness-110`}
               >
-                <img 
-                  src={btn.img} 
-                  alt={btn.title} 
-                  className="w-full h-auto object-contain select-none block"
-                />
+                {/* Left Icon */}
+                <div className="shrink-0">
+                  {btn.icon}
+                </div>
+
+                {/* Text Lines */}
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-[10.5px] sm:text-[11.5px] text-stone-300/80 font-medium leading-none truncate">
+                    {btn.titleLine1}
+                  </div>
+                  <div className="text-[12px] sm:text-[13px] font-bold text-white tracking-tight leading-tight mt-1 truncate">
+                    {btn.titleLine2}
+                  </div>
+                </div>
+
+                {/* Right Arrow inside Circle */}
+                <div className={`w-5 h-5 rounded-full border ${btn.arrowBorder} flex items-center justify-center shrink-0 group-hover:translate-x-0.5 transition-transform`}>
+                  <ChevronRight className="w-3 h-3" />
+                </div>
               </Link>
             ))}
           </div>

@@ -29,8 +29,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full select-none">
       
       {/* 1. TOP UTILITY BAR (Deep Wine Burgundy: #280716) */}
-      <div className="bg-[#280716] text-stone-300 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-amber-900/40">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="bg-[#240618] text-stone-300 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-amber-900/40">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           
           {/* Left: Phone | Email | Platform Tag */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
@@ -72,89 +72,100 @@ export default function Navbar() {
       </div>
 
       {/* 2. MAIN NAVIGATION ROW (Midnight Dark Burgundy #0C020B) */}
-      <div className="bg-[#0C020B] border-b border-amber-500/20 py-2.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div className="bg-[#0C020B] border-b border-amber-500/20 py-2 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <Link href="/" className="flex items-center gap-2 shrink-0 group">
             {/* Glowing Gradient Heart Icon */}
             <div className="relative flex items-center justify-center">
-              <svg className="w-10 h-10 drop-shadow-[0_0_12px_rgba(244,63,94,0.65)]" viewBox="0 0 40 40" fill="none">
+              <svg className="w-9 h-9 drop-shadow-[0_0_12px_rgba(244,63,94,0.7)]" viewBox="0 0 44 44" fill="none">
+                <defs>
+                  <linearGradient id="heartGradient" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FF2E93" />
+                    <stop offset="0.5" stopColor="#E11D48" />
+                    <stop offset="1" stopColor="#F59E0B" />
+                  </linearGradient>
+                  <linearGradient id="innerHeartGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FDE047" />
+                    <stop offset="1" stopColor="#F59E0B" />
+                  </linearGradient>
+                </defs>
                 <path 
-                  d="M12 21.5L20 29.5L28 21.5C31.5 18 31.5 12.5 28 9C24.5 5.5 19 5.5 15.5 9L14 10.5L12.5 9C9 5.5 3.5 5.5 0 9C-3.5 12.5 -3.5 18 0 21.5L12 33.5" 
-                  transform="translate(8, 2) scale(0.7)"
+                  d="M22 37S6 26 6 15A8.5 8.5 0 0 1 20 8.7 8.5 8.5 0 0 1 34 15C34 26 22 37 22 37Z" 
                   stroke="url(#heartGradient)" 
                   strokeWidth="3.2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
                 />
-                <defs>
-                  <linearGradient id="heartGradient" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF2E93" />
-                    <stop offset="0.5" stopColor="#E11D48" />
-                    <stop offset="1" stopColor="#F59E0B" />
-                  </linearGradient>
-                </defs>
+                <path 
+                  d="M22 30S11 21 11 14A5.5 5.5 0 0 1 20 9.8 5.5 5.5 0 0 1 29 14C29 21 22 30 22 30Z" 
+                  stroke="url(#innerHeartGrad)" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  opacity="0.85"
+                />
               </svg>
             </div>
 
             <div className="text-left">
-              <div className="font-cinzel font-bold text-xl sm:text-2xl tracking-[0.1em] text-[#FFE8C2] leading-none drop-shadow-sm">
+              <div className="font-cinzel font-bold text-lg sm:text-xl tracking-[0.08em] text-[#FFE8C2] leading-none drop-shadow-sm">
                 AASHIRWAAD
               </div>
               <div className="font-playfair italic text-xs sm:text-sm tracking-widest text-[#F5B324] font-semibold -mt-0.5">
                 Weddings
               </div>
-              <div className="text-[9.5px] font-sans tracking-tight text-stone-400 italic">
+              <div className="text-[9px] font-sans tracking-tight text-stone-400 italic">
                 "Rishte Rishton Se Badte Hain"
               </div>
             </div>
           </Link>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden xl:flex items-center gap-5 text-[12px] font-medium text-stone-200">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 text-[11.5px] xl:text-[12px] font-medium text-stone-200">
             
             {/* Home (Active Golden Pill Button) */}
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FFD369] via-[#F4B41A] to-[#E59819] text-stone-950 font-bold px-4 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105"
+              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold px-3.5 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105 shrink-0"
             >
               <Home className="w-3.5 h-3.5 text-stone-950" />
               <span>Home</span>
             </Link>
 
             {/* Matrimonial Registration */}
-            <Link href="/register" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <Link href="/register" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <Users className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Matrimonial<br />Registration</span>
             </Link>
 
             {/* Plans & Pricing */}
-            <Link href="/plans" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <Link href="/plans" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <Layers className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Plans &amp;<br />Pricing</span>
             </Link>
 
             {/* Wedding Packages */}
-            <Link href="/packages" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <Link href="/packages" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <Gift className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Wedding<br />Packages</span>
             </Link>
 
             {/* Pandal & Halls */}
-            <Link href="/vendors" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <Link href="/vendors" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <Landmark className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Pandal &amp;<br />Halls</span>
             </Link>
 
             {/* Vendor Partner */}
-            <Link href="/vendors/join" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <Link href="/vendors/join" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <Handshake className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Vendor<br />Partner</span>
             </Link>
 
             {/* YB Productions Backlink */}
-            <a href="/" className="flex items-center gap-2 hover:text-[#F5B324] transition leading-tight text-left">
+            <a href="/" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
               <PlayCircle className="w-4 h-4 text-amber-300 shrink-0" />
               <span>YB<br />Productions</span>
             </a>
@@ -162,12 +173,12 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3 shrink-0">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             
             {/* Login Outline Button */}
             <Link
               href="/register"
-              className="border border-amber-300/50 bg-white/5 hover:bg-white/10 text-amber-100 rounded-full px-4 py-2 text-xs font-semibold flex items-center gap-1.5 transition backdrop-blur-sm"
+              className="border border-amber-300/60 bg-black/40 hover:bg-white/10 text-amber-100 rounded-full px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition backdrop-blur-sm"
             >
               <User className="w-3.5 h-3.5 text-amber-300" />
               <span>Login</span>
@@ -176,7 +187,7 @@ export default function Navbar() {
             {/* Register Profile Solid Gold Button */}
             <Link
               href="/register"
-              className="bg-gradient-to-r from-[#FFE59E] via-[#F7B731] to-[#E18C00] text-stone-950 font-bold rounded-full px-5 py-2.5 text-xs flex items-center gap-1.5 shadow-[0_4px_18px_rgba(247,183,49,0.35)] hover:scale-105 hover:brightness-105 transition-all"
+              className="bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold rounded-full px-4 py-1.5 text-xs flex items-center gap-1.5 shadow-[0_4px_18px_rgba(247,183,49,0.35)] hover:scale-105 hover:brightness-105 transition-all"
             >
               <UserPlus className="w-3.5 h-3.5 text-stone-950" />
               <span>Register Profile</span>
@@ -185,7 +196,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Hamburger Button */}
-          <div className="flex xl:hidden">
+          <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-xl text-amber-200 hover:bg-white/10 focus:outline-none"
@@ -200,7 +211,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#0C020B]/98 border-b border-amber-500/20 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-200 shadow-2xl backdrop-blur-2xl">
+        <div className="lg:hidden bg-[#0C020B]/98 border-b border-amber-500/20 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-200 shadow-2xl backdrop-blur-2xl">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
