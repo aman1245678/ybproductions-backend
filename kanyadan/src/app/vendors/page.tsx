@@ -46,7 +46,7 @@ export default function VendorsCatalogPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         
         {/* Top Banner */}
@@ -56,10 +56,10 @@ export default function VendorsCatalogPage() {
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               Verified Wedding Infrastructure
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Pandals, Marriage Halls & Resources
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel">
+              Pandals, Marriage Halls &amp; Resources
             </h1>
-            <p className="text-slate-600 text-sm sm:text-base mt-1 max-w-2xl">
+            <p className="text-stone-600 text-sm sm:text-base mt-1 max-w-2xl">
               Waterproof dome pandals, AC banquets, and pure shakahari catering. Every vendor is registered with transparent pricing, fixed quality assurance, and managed by Aashirwaad Weddings.
             </p>
           </div>
@@ -67,16 +67,16 @@ export default function VendorsCatalogPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/vendors/join"
-              className="bg-purple-700 hover:bg-purple-800 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
             >
               <Building2 className="w-4 h-4" />
               List Your Pandal / Hall
             </Link>
             <Link
               href="/packages"
-              className="bg-amber-600 hover:bg-amber-700 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
+              className="bg-stone-900 hover:bg-stone-800 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4 text-emerald-400" />
               Build Complete Package
             </Link>
           </div>
@@ -91,8 +91,8 @@ export default function VendorsCatalogPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition ${
                   selectedCategory === cat.id
-                    ? "bg-rose-600 text-white shadow-xs"
-                    : "bg-stone-100 text-slate-700 hover:bg-stone-200"
+                    ? "bg-emerald-600 text-white shadow-xs"
+                    : "bg-stone-100 text-stone-700 hover:bg-stone-200"
                 }`}
               >
                 {cat.label}
@@ -106,7 +106,7 @@ export default function VendorsCatalogPage() {
               placeholder="Search by city (e.g. Patna, Delhi)..."
               value={searchCity}
               onChange={(e) => setSearchCity(e.target.value)}
-              className="w-full border border-stone-300 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-rose-500"
+              className="w-full border border-stone-300 rounded-xl px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </div>
         </div>

@@ -4,9 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "AASHIRWAAD WEDDINGS | Rishte Honge. Dahej Nahin.",
+  title: "AASHIRWAAD WEDDINGS | India's Trusted Dowry-Free Matrimonial Platform",
   description:
-    "A platform where dignity, equality and true relationships come first. Find your life partner, plan your wedding, and manage everything at one place.",
+    "A platform where dignity, equality and true relationships come first. Find your verified life partner, plan your wedding, and manage everything at one place.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-[#0A0108] text-stone-100 flex flex-col min-h-screen font-helvetica selection:bg-amber-500 selection:text-black">
+      <body className="antialiased bg-[#F0FDF4] text-stone-900 flex flex-col min-h-screen selection:bg-emerald-500 selection:text-white">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />

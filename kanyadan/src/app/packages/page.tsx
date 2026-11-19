@@ -91,19 +91,19 @@ export default function PackagesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 text-xs font-black uppercase px-3.5 py-1.5 rounded-full border border-amber-200 mb-3">
-            <Sparkles className="w-4 h-4 text-amber-600" />
+          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3.5 py-1.5 rounded-full border border-emerald-200 mb-3">
+            <Sparkles className="w-4 h-4 text-emerald-600" />
             Complete Wedding Infrastructure Bundles
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel">
             All-in-One Wedding Packages (Pandal + Hall + Food)
           </h1>
-          <p className="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+          <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
             Seamlessly book your complete wedding setup — pandal, marriage hall, pure catering, lighting, and sound — in one transparent package. Zero hidden costs, complete peace of mind.
           </p>
         </div>
@@ -115,8 +115,8 @@ export default function PackagesPage() {
               key={pkg.id}
               className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
                 pkg.badge === "Most Popular"
-                  ? "bg-gradient-to-b from-rose-950 via-stone-900 to-black text-white shadow-2xl ring-4 ring-rose-500/30 scale-105"
-                  : "bg-white text-slate-800 border border-stone-200 shadow-md hover:shadow-xl"
+                  ? "bg-gradient-to-b from-emerald-800 via-emerald-900 to-stone-900 text-white shadow-2xl ring-4 ring-emerald-500/40 scale-105"
+                  : "bg-white text-stone-800 border border-stone-200 shadow-md hover:shadow-xl"
               }`}
             >
               <div>
@@ -124,31 +124,31 @@ export default function PackagesPage() {
                   <span
                     className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
                       pkg.badge === "Most Popular"
-                        ? "bg-rose-600 text-white"
-                        : "bg-stone-100 text-slate-700"
+                        ? "bg-emerald-500 text-white"
+                        : "bg-emerald-100 text-emerald-800 border border-emerald-200"
                     }`}
                   >
                     {pkg.badge}
                   </span>
-                  <span className={`text-xs font-semibold ${pkg.badge === "Most Popular" ? "text-stone-300" : "text-slate-500"}`}>
+                  <span className={`text-xs font-semibold ${pkg.badge === "Most Popular" ? "text-emerald-200" : "text-stone-500"}`}>
                     Up to {pkg.guestCount} Guests
                   </span>
                 </div>
 
-                <h3 className={`text-2xl font-black mb-1 ${pkg.badge === "Most Popular" ? "text-white" : "text-slate-900"}`}>
+                <h3 className={`text-2xl font-black mb-1 ${pkg.badge === "Most Popular" ? "text-white" : "text-stone-900"}`}>
                   {pkg.name}
                 </h3>
-                <p className={`text-xs leading-relaxed mb-6 ${pkg.badge === "Most Popular" ? "text-stone-300" : "text-slate-500"}`}>
+                <p className={`text-xs leading-relaxed mb-6 ${pkg.badge === "Most Popular" ? "text-stone-200" : "text-stone-500"}`}>
                   {pkg.subtitle}
                 </p>
 
                 {/* Price Display */}
-                <div className={`p-4 rounded-2xl mb-6 ${pkg.badge === "Most Popular" ? "bg-stone-800/80 border border-stone-700" : "bg-stone-50 border border-stone-200"}`}>
+                <div className={`p-4 rounded-2xl mb-6 ${pkg.badge === "Most Popular" ? "bg-stone-800/80 border border-emerald-700/50" : "bg-stone-50 border border-stone-200"}`}>
                   <div className="flex justify-between items-baseline">
-                    <span className="text-xs uppercase font-bold tracking-wider text-amber-500">
+                    <span className="text-xs uppercase font-bold tracking-wider text-emerald-600">
                       Total Package Price
                     </span>
-                    <span className="text-2xl font-black text-amber-400">
+                    <span className={`text-2xl font-black ${pkg.badge === "Most Popular" ? "text-emerald-300" : "text-emerald-700"}`}>
                       ₹{pkg.customerPrice.toLocaleString("en-IN")}
                     </span>
                   </div>
@@ -161,16 +161,16 @@ export default function PackagesPage() {
                 {/* Services list */}
                 <div className="space-y-3 mb-6 text-xs sm:text-sm">
                   <div className="flex items-start gap-2.5">
-                    <Building2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
-                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-slate-900"}>Hall:</strong> {pkg.hallName}</span>
+                    <Building2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-stone-900"}>Hall:</strong> {pkg.hallName}</span>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <Tent className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-slate-900"}>Pandal:</strong> {pkg.pandalType}</span>
+                    <Tent className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-stone-900"}>Pandal:</strong> {pkg.pandalType}</span>
                   </div>
                   <div className="flex items-start gap-2.5">
-                    <Utensils className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-slate-900"}>Food:</strong> {pkg.cateringType}</span>
+                    <Utensils className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong className={pkg.badge === "Most Popular" ? "text-white" : "text-stone-900"}>Food:</strong> {pkg.cateringType}</span>
                   </div>
                 </div>
 
@@ -179,7 +179,7 @@ export default function PackagesPage() {
                   {pkg.features.map((feat, i) => (
                     <li key={i} className="flex items-center gap-2">
                       <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                      <span className={pkg.badge === "Most Popular" ? "text-stone-300" : "text-slate-600"}>{feat}</span>
+                      <span className={pkg.badge === "Most Popular" ? "text-stone-200" : "text-stone-600"}>{feat}</span>
                     </li>
                   ))}
                 </ul>
@@ -189,8 +189,8 @@ export default function PackagesPage() {
                 href="#custom-calculator"
                 className={`w-full py-3 text-center rounded-xl font-bold text-sm transition shadow-md block ${
                   pkg.badge === "Most Popular"
-                    ? "bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white"
-                    : "bg-slate-900 hover:bg-slate-800 text-white"
+                    ? "bg-white hover:bg-emerald-50 text-emerald-950 font-black"
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white"
                 }`}
               >
                 Book This Package
@@ -201,15 +201,15 @@ export default function PackagesPage() {
 
         {/* Custom Package Builder & Management Calculator */}
         <div id="custom-calculator" className="bg-white rounded-3xl shadow-xl border border-stone-200 overflow-hidden mb-16">
-          <div className="bg-gradient-to-r from-amber-700 via-rose-700 to-red-800 p-6 sm:p-8 text-white">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-200">
+          <div className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 p-6 sm:p-8 text-white">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-200">
               Interactive Tool
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold mt-1">
-              Custom Wedding Package Builder & Profit Engine
+            <h2 className="text-2xl sm:text-3xl font-extrabold mt-1 font-cinzel">
+              Custom Wedding Package Builder &amp; Instant Quote
             </h2>
-            <p className="text-xs sm:text-sm text-rose-100 mt-1">
-              Select any registered Pandal, Marriage Hall, Catering, or Decoration vendor. Our backend calculates the vendor cost, platform profit margin, and instant quotation for the family.
+            <p className="text-xs sm:text-sm text-emerald-100 mt-1">
+              Select any registered Pandal, Marriage Hall, Catering, or Decoration vendor. Get instant itemized pricing with complete transparency.
             </p>
           </div>
 
@@ -416,7 +416,7 @@ export default function PackagesPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-bold py-3 rounded-xl text-xs sm:text-sm shadow-md transition disabled:opacity-50 mt-2"
+                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl text-xs sm:text-sm shadow-md transition disabled:opacity-50 mt-2"
                     >
                       {isSubmitting ? "Generating Quotation..." : "Lock Package Quotation & Dates"}
                     </button>

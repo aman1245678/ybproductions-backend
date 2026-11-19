@@ -4,12 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { 
   Home, 
-  Users, 
   Layers, 
   Gift, 
   Landmark, 
   Handshake, 
-  PlayCircle, 
   User, 
   UserPlus, 
   Menu, 
@@ -26,135 +24,137 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full select-none">
+    <header className="sticky top-0 z-50 w-full select-none shadow-xs">
       
-      {/* 1. TOP UTILITY BAR (Deep Wine Burgundy: #280716) */}
-      <div className="bg-[#240618] text-stone-300 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-amber-900/40">
+      {/* 1. TOP UTILITY BAR (Soft Pastel Mint #EAF8F1) */}
+      <div className="bg-[#EAF8F1] text-stone-700 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-emerald-200/60">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           
           {/* Left: Phone | Email | Platform Tag */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-            <a href="tel:+919876543210" className="inline-flex items-center gap-1.5 text-stone-200 hover:text-amber-300 transition">
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
+            <a href="tel:+919876543210" className="inline-flex items-center gap-1.5 text-stone-700 hover:text-emerald-700 font-medium transition">
+              <Phone className="w-3.5 h-3.5 text-emerald-600" />
               <span>+91 98765 43210</span>
             </a>
-            <span className="text-stone-500 hidden sm:inline">|</span>
-            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1.5 text-stone-200 hover:text-amber-300 transition">
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-emerald-300 hidden sm:inline">|</span>
+            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1.5 text-stone-700 hover:text-emerald-700 font-medium transition">
+              <Mail className="w-3.5 h-3.5 text-emerald-600" />
               <span>support@aashirwaadweddings.com</span>
             </a>
-            <span className="text-stone-500 hidden md:inline">|</span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-200">
-              <MapPin className="w-3.5 h-3.5 text-amber-400" />
-              <span>India's Trusted Wedding Platform</span>
+            <span className="text-emerald-300 hidden md:inline">|</span>
+            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-600">
+              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+              <span>India's Trusted Dowry-Free Platform</span>
             </span>
           </div>
 
           {/* Right: Download App | Help & Support | English ▾ */}
-          <div className="flex items-center gap-3 sm:gap-4 text-stone-200">
-            <Link href="/register" className="inline-flex items-center gap-1.5 hover:text-amber-300 transition">
-              <Smartphone className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center gap-3 sm:gap-4 text-stone-700 font-medium">
+            <Link href="/register" className="inline-flex items-center gap-1.5 hover:text-emerald-700 transition">
+              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
               <span>Download App</span>
             </Link>
-            <span className="text-stone-500">|</span>
-            <Link href="/plans" className="inline-flex items-center gap-1.5 hover:text-amber-300 transition">
-              <Headphones className="w-3.5 h-3.5 text-amber-400" />
-              <span>Help & Support</span>
+            <span className="text-emerald-300">|</span>
+            <Link href="/plans" className="inline-flex items-center gap-1.5 hover:text-emerald-700 transition">
+              <Headphones className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Help &amp; Support</span>
             </Link>
-            <span className="text-stone-500 hidden sm:inline">|</span>
-            <div className="hidden sm:inline-flex items-center gap-1 text-stone-200 cursor-pointer hover:text-amber-300">
+            <span className="text-emerald-300 hidden sm:inline">|</span>
+            <div className="hidden sm:inline-flex items-center gap-1 text-stone-700 cursor-pointer hover:text-emerald-700">
               <span>English</span>
-              <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
+              <ChevronDown className="w-3.5 h-3.5 text-stone-500" />
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* 2. MAIN NAVIGATION ROW (Midnight Dark Burgundy #0C020B) */}
-      <div className="bg-[#0C020B] border-b border-amber-500/20 py-2 px-4 sm:px-6 lg:px-8">
+      {/* 2. MAIN NAVIGATION ROW (Crisp Pure White #FFFFFF) */}
+      <div className="bg-white border-b border-stone-200 py-2.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0 group">
-            {/* Glowing Gradient Heart Icon */}
+          {/* Brand Logo & Registration Badge matching the user's screenshot */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+            
+            {/* Glowing Emerald Heart Icon */}
             <div className="relative flex items-center justify-center">
-              <svg className="w-9 h-9 drop-shadow-[0_0_12px_rgba(244,63,94,0.7)]" viewBox="0 0 44 44" fill="none">
+              <svg className="w-9 h-9 drop-shadow-xs" viewBox="0 0 44 44" fill="none">
                 <defs>
-                  <linearGradient id="heartGradient" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF2E93" />
-                    <stop offset="0.5" stopColor="#E11D48" />
-                    <stop offset="1" stopColor="#F59E0B" />
-                  </linearGradient>
-                  <linearGradient id="innerHeartGrad" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FDE047" />
-                    <stop offset="1" stopColor="#F59E0B" />
+                  <linearGradient id="emeraldHeart" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#059669" />
+                    <stop offset="0.5" stopColor="#10B981" />
+                    <stop offset="1" stopColor="#047857" />
                   </linearGradient>
                 </defs>
                 <path 
                   d="M22 37S6 26 6 15A8.5 8.5 0 0 1 20 8.7 8.5 8.5 0 0 1 34 15C34 26 22 37 22 37Z" 
-                  stroke="url(#heartGradient)" 
+                  stroke="url(#emeraldHeart)" 
                   strokeWidth="3.2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
                 />
                 <path 
                   d="M22 30S11 21 11 14A5.5 5.5 0 0 1 20 9.8 5.5 5.5 0 0 1 29 14C29 21 22 30 22 30Z" 
-                  stroke="url(#innerHeartGrad)" 
-                  strokeWidth="2" 
+                  fill="#059669"
+                  fillOpacity="0.15"
+                  stroke="#059669" 
+                  strokeWidth="1.8" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  opacity="0.85"
                 />
               </svg>
             </div>
 
-            <div className="text-left">
-              <div className="font-cinzel font-bold text-lg sm:text-xl tracking-[0.08em] text-[#FFE8C2] leading-none drop-shadow-sm">
-                AASHIRWAAD
+            <div className="flex items-center gap-2">
+              <div className="text-left">
+                <div className="font-cinzel font-bold text-lg sm:text-xl tracking-[0.08em] text-stone-900 leading-none">
+                  AASHIRWAAD
+                </div>
+                <div className="font-playfair italic text-xs sm:text-sm tracking-wide text-emerald-700 font-bold -mt-0.5">
+                  Weddings
+                </div>
               </div>
-              <div className="font-playfair italic text-xs sm:text-sm tracking-widest text-[#F5B324] font-semibold -mt-0.5">
-                Weddings
-              </div>
-              <div className="text-[9px] font-sans tracking-tight text-stone-400 italic">
-                "Rishte Rishton Se Badte Hain"
-              </div>
+
+              {/* Verified Pill Badge (Matching User's Screenshot) */}
+              <span className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                Verified Matrimony
+              </span>
             </div>
           </Link>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[12px] xl:text-[13px] font-medium text-stone-200">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-xs xl:text-sm font-semibold text-stone-700">
             
-            {/* Home (Active Golden Pill Button) */}
+            {/* Home (Active Emerald Pill Button) */}
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold px-4 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105 shrink-0"
+              className="inline-flex items-center gap-1.5 bg-emerald-600 text-white font-bold px-4 py-1.5 rounded-full shadow-xs transition hover:bg-emerald-700 shrink-0"
             >
-              <Home className="w-3.5 h-3.5 text-stone-950" />
+              <Home className="w-3.5 h-3.5 text-white" />
               <span>Home</span>
             </Link>
 
             {/* Plans & Pricing */}
-            <Link href="/plans" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <Layers className="w-4 h-4 text-amber-300 shrink-0" />
+            <Link href="/plans" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+              <Layers className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Plans &amp;<br />Pricing</span>
             </Link>
 
             {/* Wedding Packages */}
-            <Link href="/packages" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <Gift className="w-4 h-4 text-amber-300 shrink-0" />
+            <Link href="/packages" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+              <Gift className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Wedding<br />Packages</span>
             </Link>
 
             {/* Pandal & Halls */}
-            <Link href="/vendors" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <Landmark className="w-4 h-4 text-amber-300 shrink-0" />
+            <Link href="/vendors" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+              <Landmark className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Pandal &amp;<br />Halls</span>
             </Link>
 
             {/* Vendor Partner */}
-            <Link href="/vendors/join" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <Handshake className="w-4 h-4 text-amber-300 shrink-0" />
+            <Link href="/vendors/join" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+              <Handshake className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Vendor<br />Partner</span>
             </Link>
 
@@ -166,18 +166,18 @@ export default function Navbar() {
             {/* Login Outline Button */}
             <Link
               href="/register"
-              className="border border-amber-300/60 bg-black/40 hover:bg-white/10 text-amber-100 rounded-full px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition backdrop-blur-sm"
+              className="border border-stone-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-700 rounded-full px-4 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition"
             >
-              <User className="w-3.5 h-3.5 text-amber-300" />
+              <User className="w-3.5 h-3.5 text-emerald-600" />
               <span>Login</span>
             </Link>
 
-            {/* Register Profile Solid Gold Button */}
+            {/* Register Profile Emerald Button */}
             <Link
               href="/register"
-              className="bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold rounded-full px-4 py-1.5 text-xs flex items-center gap-1.5 shadow-[0_4px_18px_rgba(247,183,49,0.35)] hover:scale-105 hover:brightness-105 transition-all"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full px-4 sm:px-5 py-2 text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
             >
-              <UserPlus className="w-3.5 h-3.5 text-stone-950" />
+              <UserPlus className="w-3.5 h-3.5 text-white" />
               <span>Register Profile</span>
             </Link>
 
@@ -187,7 +187,7 @@ export default function Navbar() {
           <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-amber-200 hover:bg-white/10 focus:outline-none"
+              className="p-2 rounded-xl text-stone-700 hover:bg-stone-100 focus:outline-none"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -199,45 +199,45 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0C020B]/98 border-b border-amber-500/20 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-200 shadow-2xl backdrop-blur-2xl">
+        <div className="lg:hidden bg-white border-b border-stone-200 px-5 pt-3 pb-6 space-y-2.5 text-sm text-stone-700 shadow-xl">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg text-amber-300 font-bold bg-amber-500/10 border border-amber-500/20"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-emerald-800 font-bold bg-emerald-50 border border-emerald-200"
           >
-            <Home className="w-4 h-4" />
+            <Home className="w-4 h-4 text-emerald-600" />
             <span>Home</span>
           </Link>
           <Link
             href="/plans"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-stone-50 text-stone-700"
           >
-            <Layers className="w-4 h-4 text-amber-300" />
+            <Layers className="w-4 h-4 text-emerald-600" />
             <span>Plans &amp; Pricing</span>
           </Link>
           <Link
             href="/packages"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-stone-50 text-stone-700"
           >
-            <Gift className="w-4 h-4 text-amber-300" />
+            <Gift className="w-4 h-4 text-emerald-600" />
             <span>Wedding Packages</span>
           </Link>
           <Link
             href="/vendors"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-stone-50 text-stone-700"
           >
-            <Landmark className="w-4 h-4 text-amber-300" />
+            <Landmark className="w-4 h-4 text-emerald-600" />
             <span>Pandal &amp; Halls</span>
           </Link>
           <Link
             href="/vendors/join"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-stone-50 text-stone-700"
           >
-            <Handshake className="w-4 h-4 text-amber-300" />
+            <Handshake className="w-4 h-4 text-emerald-600" />
             <span>Vendor Partner</span>
           </Link>
 
@@ -245,7 +245,7 @@ export default function Navbar() {
             <Link
               href="/register"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center bg-gradient-to-r from-[#FFE59E] via-[#F7B731] to-[#E18C00] text-stone-950 font-bold py-2.5 rounded-full shadow-md text-xs"
+              className="w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-full shadow-sm text-xs"
             >
               Register Profile
             </Link>
