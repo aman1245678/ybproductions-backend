@@ -123,21 +123,15 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 text-[11.5px] xl:text-[12px] font-medium text-stone-200">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-[12px] xl:text-[13px] font-medium text-stone-200">
             
             {/* Home (Active Golden Pill Button) */}
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold px-3.5 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105 shrink-0"
+              className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#FDE047] via-[#F5B82A] to-[#E59819] text-stone-950 font-bold px-4 py-1.5 rounded-full shadow-[0_2px_12px_rgba(244,180,26,0.35)] transition hover:brightness-105 shrink-0"
             >
               <Home className="w-3.5 h-3.5 text-stone-950" />
               <span>Home</span>
-            </Link>
-
-            {/* Matrimonial Registration */}
-            <Link href="/register" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <Users className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>Matrimonial<br />Registration</span>
             </Link>
 
             {/* Plans & Pricing */}
@@ -163,12 +157,6 @@ export default function Navbar() {
               <Handshake className="w-4 h-4 text-amber-300 shrink-0" />
               <span>Vendor<br />Partner</span>
             </Link>
-
-            {/* YB Productions Backlink */}
-            <a href="/" className="flex items-center gap-1.5 hover:text-[#F5B324] transition leading-tight text-left">
-              <PlayCircle className="w-4 h-4 text-amber-300 shrink-0" />
-              <span>YB<br />Productions</span>
-            </a>
 
           </nav>
 
@@ -221,14 +209,6 @@ export default function Navbar() {
             <span>Home</span>
           </Link>
           <Link
-            href="/register"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
-          >
-            <Users className="w-4 h-4 text-amber-300" />
-            <span>Matrimonial Registration</span>
-          </Link>
-          <Link
             href="/plans"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-stone-200"
@@ -260,14 +240,6 @@ export default function Navbar() {
             <Handshake className="w-4 h-4 text-amber-300" />
             <span>Vendor Partner</span>
           </Link>
-          <a
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/5 text-amber-300 font-semibold"
-          >
-            <PlayCircle className="w-4 h-4" />
-            <span>YB Productions</span>
-          </a>
 
           <div className="pt-3 flex flex-col gap-2">
             <Link
