@@ -173,24 +173,24 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-[#F0FDF4] text-stone-900 font-sans">
       
       {/* =========================================================================
-          HERO BANNER - FULL WIDTH COMPLETE IMAGE
+          HERO BANNER - COMPACT FULL-WIDTH COVER
       ========================================================================== */}
       <section className="relative w-full bg-[#F0FDF4] pb-8 overflow-hidden select-none">
         
-        {/* Full-width Complete Banner Image (100% uncropped) */}
-        <div className="w-full">
+        {/* Full-width Compact Hero Banner Cover */}
+        <div className="relative w-full h-[320px] sm:h-[400px] md:h-[460px] lg:h-[490px] xl:h-[520px] overflow-hidden shadow-sm">
           <img 
             src="/kanyadan/dignity_banner.png" 
             alt="Aashirwaad Wedding Dignity Banner" 
-            className="w-full h-auto block select-none"
+            className="w-full h-full object-cover object-top sm:object-center select-none"
           />
         </div>
 
         {/* =========================================================================
-            SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING BELOW FULL BANNER)
+            SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING BELOW COMPACT BANNER)
         ========================================================================== */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-10 relative z-20">
-          <div className="p-4 sm:p-5 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 md:-mt-10 relative z-20">
+          <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
                 {/* 1. I'm looking for a */}
