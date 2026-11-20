@@ -173,44 +173,25 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-[#F0FDF4] text-stone-900 font-sans">
       
       {/* =========================================================================
-          HERO BANNER - SHAADI.COM CLEAN DESIGN (MATCHING UPLOADED THEME)
+          HERO BANNER - FULL WIDTH COMPLETE IMAGE
       ========================================================================== */}
-      <section className="relative w-full pt-8 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative w-full bg-[#F0FDF4] pb-8 overflow-hidden select-none">
         
-        <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-          
-          {/* Top Verified Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-bold mb-6 shadow-2xs">
-            <Sparkles className="w-4 h-4 text-emerald-700" />
-            <span>India's Premier Dowry-Free Matrimonial Platform</span>
-          </div>
+        {/* Full-width Complete Banner Image (100% uncropped) */}
+        <div className="w-full">
+          <img 
+            src="/kanyadan/dignity_banner.png" 
+            alt="Aashirwaad Wedding Dignity Banner" 
+            className="w-full h-auto block select-none"
+          />
+        </div>
 
-          {/* Main Headline */}
-          <h1 className="font-cinzel text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-stone-900 max-w-4xl leading-tight">
-            Find Your Life Partner with <br className="hidden sm:inline" />
-            <span className="text-emerald-700">
-              Dignity, Equality &amp; Respect
-            </span>
-          </h1>
-
-          {/* Subheading */}
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-stone-600 max-w-2xl leading-relaxed">
-            Connect with thousands of verified brides and grooms. Complete zero dowry pledge, strict mobile &amp; ID screening, and total privacy protection.
-          </p>
-
-          {/* Complete Full Dignity Banner (Zero crop, 100% full image) */}
-          <div className="relative mt-8 w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
-            <img 
-              src="/kanyadan/dignity_banner.png" 
-              alt="Aashirwaad Wedding Dignity Banner" 
-              className="w-full h-auto block select-none"
-            />
-
-            {/* =========================================================================
-                SHAADI.COM STYLE SEARCH BAR WIDGET (CLEAN WHITE CARD)
-            ========================================================================== */}
-            <div className="p-4 sm:p-5 bg-white border-t border-stone-100">
-              <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
+        {/* =========================================================================
+            SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING BELOW FULL BANNER)
+        ========================================================================== */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-10 relative z-20">
+          <div className="p-4 sm:p-5 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
+            <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
                 {/* 1. I'm looking for a */}
                 <div>
@@ -303,29 +284,27 @@ export default function HomePage() {
               </form>
             </div>
 
+            {/* Quick trust strip */}
+            <div className="mt-5 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600">
+              <span className="flex items-center gap-1.5 text-emerald-800">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                100% ID Verified
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5 text-emerald-800">
+                <Lock className="w-3.5 h-3.5 text-emerald-600" />
+                100% Privacy Protected
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5 text-emerald-800">
+                <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
+                Zero Dowry Guarantee
+              </span>
+            </div>
+
           </div>
 
-          {/* Quick trust strip */}
-          <div className="mt-5 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600">
-            <span className="flex items-center gap-1.5 text-emerald-800">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              100% ID Verified
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5 text-emerald-800">
-              <Lock className="w-3.5 h-3.5 text-emerald-600" />
-              100% Privacy Protected
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1.5 text-emerald-800">
-              <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-              Zero Dowry Guarantee
-            </span>
-          </div>
-
-        </div>
-
-      </section>
+        </section>
 
       {/* =========================================================================
           STATS BAR & 6 ACTION BUTTONS
