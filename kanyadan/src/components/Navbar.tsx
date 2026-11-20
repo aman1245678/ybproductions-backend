@@ -70,20 +70,16 @@ export default function Navbar() {
       </div>
 
       {/* 2. MAIN NAVIGATION ROW (Crisp Pure White #FFFFFF) */}
-      <div className="bg-white border-b border-stone-200 py-2.5 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white border-b border-stone-200 py-1.5 sm:py-2 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* Brand Logo & Registration Badge */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group py-0.5">
+          {/* Brand Logo - Enlarged cleanly without compact restrictions */}
+          <Link href="/" className="flex items-center shrink-0 group py-0.5">
             <img 
               src="/kanyadan/logo.png" 
               alt="AASHIRWAAD Weddings" 
-              className="h-11 sm:h-12 md:h-13 w-auto object-contain transition duration-200 group-hover:scale-[1.02]"
+              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transition duration-200 group-hover:scale-[1.02] drop-shadow-xs"
             />
-            {/* Verified Pill Badge (Matching User's Screenshot) */}
-            <span className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-              Verified Matrimony
-            </span>
           </Link>
 
           {/* Desktop Nav Items */}

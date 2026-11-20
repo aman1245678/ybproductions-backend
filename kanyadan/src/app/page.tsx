@@ -198,25 +198,13 @@ export default function HomePage() {
             Connect with thousands of verified brides and grooms. Complete zero dowry pledge, strict mobile &amp; ID screening, and total privacy protection.
           </p>
 
-          {/* Hero Image Showcase Card */}
-          <div className="relative mt-8 w-full max-w-4xl rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
-            <div className="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden">
-              <img 
-                src="/kanyadan/real_indian_couple_hero.jpg" 
-                alt="Authentic Indian Wedding Couple" 
-                className="w-full h-full object-cover object-center group-hover:scale-102 transition duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 text-left text-white">
-                <span className="inline-block px-3 py-1 bg-emerald-600 text-white text-[11px] font-bold rounded-full mb-1.5 shadow-xs">
-                  Zero-Dowry Union
-                </span>
-                <h3 className="text-lg sm:text-2xl font-bold font-cinzel text-white drop-shadow-sm">
-                  Cherished Unions, Lifelong Respect
-                </h3>
-              </div>
-            </div>
+          {/* Complete Full Dignity Banner (Zero crop, 100% full image) */}
+          <div className="relative mt-8 w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl border border-stone-200 bg-white">
+            <img 
+              src="/kanyadan/dignity_banner.png" 
+              alt="Aashirwaad Wedding Dignity Banner" 
+              className="w-full h-auto block select-none"
+            />
 
             {/* =========================================================================
                 SHAADI.COM STYLE SEARCH BAR WIDGET (CLEAN WHITE CARD)
