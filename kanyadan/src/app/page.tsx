@@ -177,12 +177,12 @@ export default function HomePage() {
       ========================================================================== */}
       <section className="relative w-full bg-[#F0FDF4] pb-8 overflow-hidden select-none">
         
-        {/* Full-width Compact Hero Banner Cover */}
-        <div className="relative w-full h-[320px] sm:h-[400px] md:h-[460px] lg:h-[490px] xl:h-[520px] overflow-hidden shadow-sm">
+        {/* Full-width Compact Hero Banner Cover - Increased slightly with object-top */}
+        <div className="relative w-full h-[360px] sm:h-[450px] md:h-[520px] lg:h-[570px] xl:h-[610px] overflow-hidden shadow-sm">
           <img 
             src="/kanyadan/dignity_banner.png" 
             alt="Aashirwaad Wedding Dignity Banner" 
-            className="w-full h-full object-cover object-top sm:object-center select-none"
+            className="w-full h-full object-cover object-top select-none"
           />
         </div>
 
