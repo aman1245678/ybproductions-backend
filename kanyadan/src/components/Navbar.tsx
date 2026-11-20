@@ -27,106 +27,106 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full select-none shadow-xs">
       
       {/* 1. TOP UTILITY BAR (Soft Pastel Mint #EAF8F1) */}
-      <div className="bg-[#EAF8F1] text-stone-700 text-[11px] sm:text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-emerald-200/60">
+      <div className="bg-[#EAF8F1] text-stone-700 text-[11px] py-1 px-4 sm:px-6 lg:px-8 border-b border-emerald-200/50">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between">
           
           {/* Left: Phone | Email | Platform Tag */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-            <a href="tel:+919876543210" className="inline-flex items-center gap-1.5 text-stone-700 hover:text-emerald-700 font-medium transition">
-              <Phone className="w-3.5 h-3.5 text-emerald-600" />
+            <a href="tel:+919876543210" className="inline-flex items-center gap-1 text-stone-700 hover:text-emerald-700 font-medium transition">
+              <Phone className="w-3 h-3 text-emerald-600" />
               <span>+91 98765 43210</span>
             </a>
             <span className="text-emerald-300 hidden sm:inline">|</span>
-            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1.5 text-stone-700 hover:text-emerald-700 font-medium transition">
-              <Mail className="w-3.5 h-3.5 text-emerald-600" />
+            <a href="mailto:support@aashirwaadweddings.com" className="hidden sm:inline-flex items-center gap-1 text-stone-700 hover:text-emerald-700 font-medium transition">
+              <Mail className="w-3 h-3 text-emerald-600" />
               <span>support@aashirwaadweddings.com</span>
             </a>
             <span className="text-emerald-300 hidden md:inline">|</span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-stone-600">
-              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="hidden md:inline-flex items-center gap-1 text-stone-600">
+              <MapPin className="w-3 h-3 text-emerald-600" />
               <span>India's Trusted Dowry-Free Platform</span>
             </span>
           </div>
 
           {/* Right: Download App | Help & Support | English ▾ */}
           <div className="flex items-center gap-3 sm:gap-4 text-stone-700 font-medium">
-            <Link href="/register" className="inline-flex items-center gap-1.5 hover:text-emerald-700 transition">
-              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+            <Link href="/register" className="inline-flex items-center gap-1 hover:text-emerald-700 transition">
+              <Smartphone className="w-3 h-3 text-emerald-600" />
               <span>Download App</span>
             </Link>
             <span className="text-emerald-300">|</span>
-            <Link href="/plans" className="inline-flex items-center gap-1.5 hover:text-emerald-700 transition">
-              <Headphones className="w-3.5 h-3.5 text-emerald-600" />
+            <Link href="/plans" className="inline-flex items-center gap-1 hover:text-emerald-700 transition">
+              <Headphones className="w-3 h-3 text-emerald-600" />
               <span>Help &amp; Support</span>
             </Link>
             <span className="text-emerald-300 hidden sm:inline">|</span>
             <div className="hidden sm:inline-flex items-center gap-1 text-stone-700 cursor-pointer hover:text-emerald-700">
               <span>English</span>
-              <ChevronDown className="w-3.5 h-3.5 text-stone-500" />
+              <ChevronDown className="w-3 h-3 text-stone-500" />
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* 2. MAIN NAVIGATION ROW (Crisp Pure White #FFFFFF) */}
+      {/* 2. MAIN NAVIGATION ROW (Compact & Single-Line Navigation) */}
       <div className="bg-white border-b border-stone-200 py-1.5 sm:py-2 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-6">
           
-          {/* Brand Logo - Enlarged cleanly without compact restrictions */}
-          <Link href="/" className="flex items-center shrink-0 group py-0.5">
+          {/* Brand Logo - Compact Proportional */}
+          <Link href="/" className="flex items-center shrink-0 group">
             <img 
               src="/kanyadan/logo.png" 
               alt="AASHIRWAAD Weddings" 
-              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transition duration-200 group-hover:scale-[1.02] drop-shadow-xs"
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain transition duration-200 group-hover:scale-[1.02]"
             />
           </Link>
 
-          {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-xs xl:text-sm font-semibold text-stone-700">
+          {/* Desktop Nav Items - Single Line (whitespace-nowrap) */}
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-semibold text-stone-700 whitespace-nowrap">
             
-            {/* Home (Active Emerald Pill Button) */}
+            {/* Home */}
             <Link 
               href="/" 
-              className="inline-flex items-center gap-1.5 bg-emerald-600 text-white font-bold px-4 py-1.5 rounded-full shadow-xs transition hover:bg-emerald-700 shrink-0"
+              className="inline-flex items-center gap-1.5 bg-emerald-600 text-white font-bold px-3.5 py-1.5 rounded-full shadow-xs transition hover:bg-emerald-700 shrink-0"
             >
               <Home className="w-3.5 h-3.5 text-white" />
               <span>Home</span>
             </Link>
 
             {/* Plans & Pricing */}
-            <Link href="/plans" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+            <Link href="/plans" className="flex items-center gap-1.5 hover:text-emerald-600 transition">
               <Layers className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Plans &amp;<br />Pricing</span>
+              <span>Plans &amp; Pricing</span>
             </Link>
 
             {/* Wedding Packages */}
-            <Link href="/packages" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+            <Link href="/packages" className="flex items-center gap-1.5 hover:text-emerald-600 transition">
               <Gift className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Wedding<br />Packages</span>
+              <span>Wedding Packages</span>
             </Link>
 
             {/* Pandal & Halls */}
-            <Link href="/vendors" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+            <Link href="/vendors" className="flex items-center gap-1.5 hover:text-emerald-600 transition">
               <Landmark className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Pandal &amp;<br />Halls</span>
+              <span>Pandal &amp; Halls</span>
             </Link>
 
             {/* Vendor Partner */}
-            <Link href="/vendors/join" className="flex items-center gap-1.5 hover:text-emerald-600 transition leading-tight text-left">
+            <Link href="/vendors/join" className="flex items-center gap-1.5 hover:text-emerald-600 transition">
               <Handshake className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Vendor<br />Partner</span>
+              <span>Vendor Partner</span>
             </Link>
 
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0 whitespace-nowrap">
             
             {/* Login Outline Button */}
             <Link
               href="/register"
-              className="border border-stone-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-700 rounded-full px-4 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition"
+              className="border border-stone-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-700 rounded-full px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition"
             >
               <User className="w-3.5 h-3.5 text-emerald-600" />
               <span>Login</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
             {/* Register Profile Emerald Button */}
             <Link
               href="/register"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full px-4 sm:px-5 py-2 text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full px-4 py-1.5 text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
             >
               <UserPlus className="w-3.5 h-3.5 text-white" />
               <span>Register Profile</span>
