@@ -73,53 +73,17 @@ export default function Navbar() {
       <div className="bg-white border-b border-stone-200 py-2.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* Brand Logo & Registration Badge matching the user's screenshot */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-            
-            {/* Glowing Emerald Heart Icon */}
-            <div className="relative flex items-center justify-center">
-              <svg className="w-9 h-9 drop-shadow-xs" viewBox="0 0 44 44" fill="none">
-                <defs>
-                  <linearGradient id="emeraldHeart" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#059669" />
-                    <stop offset="0.5" stopColor="#10B981" />
-                    <stop offset="1" stopColor="#047857" />
-                  </linearGradient>
-                </defs>
-                <path 
-                  d="M22 37S6 26 6 15A8.5 8.5 0 0 1 20 8.7 8.5 8.5 0 0 1 34 15C34 26 22 37 22 37Z" 
-                  stroke="url(#emeraldHeart)" 
-                  strokeWidth="3.2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-                <path 
-                  d="M22 30S11 21 11 14A5.5 5.5 0 0 1 20 9.8 5.5 5.5 0 0 1 29 14C29 21 22 30 22 30Z" 
-                  fill="#059669"
-                  fillOpacity="0.15"
-                  stroke="#059669" 
-                  strokeWidth="1.8" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="text-left">
-                <div className="font-cinzel font-bold text-lg sm:text-xl tracking-[0.08em] text-stone-900 leading-none">
-                  AASHIRWAAD
-                </div>
-                <div className="font-playfair italic text-xs sm:text-sm tracking-wide text-emerald-700 font-bold -mt-0.5">
-                  Weddings
-                </div>
-              </div>
-
-              {/* Verified Pill Badge (Matching User's Screenshot) */}
-              <span className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
-                Verified Matrimony
-              </span>
-            </div>
+          {/* Brand Logo & Registration Badge */}
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 group py-0.5">
+            <img 
+              src="/kanyadan/logo.png" 
+              alt="AASHIRWAAD Weddings" 
+              className="h-11 sm:h-12 md:h-13 w-auto object-contain transition duration-200 group-hover:scale-[1.02]"
+            />
+            {/* Verified Pill Badge (Matching User's Screenshot) */}
+            <span className="hidden sm:inline-block text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+              Verified Matrimony
+            </span>
           </Link>
 
           {/* Desktop Nav Items */}

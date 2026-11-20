@@ -9,14 +9,13 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="space-y-4 md:col-span-1">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-xs">
-                <Heart className="w-5 h-5 fill-white/20" />
-              </div>
-              <span className="font-cinzel font-black text-xl text-stone-900 tracking-tight">
-                AASHIRWAAD <span className="text-emerald-700">WEDDINGS</span>
-              </span>
-            </div>
+            <Link href="/" className="inline-block">
+              <img 
+                src="/kanyadan/logo.png" 
+                alt="AASHIRWAAD Weddings" 
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
             <p className="text-xs text-emerald-800 font-bold tracking-wide">
               “Where Dignity &amp; Genuine Unions Begin”
             </p>

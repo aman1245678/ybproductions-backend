@@ -174,11 +174,13 @@ function RegisterContent() {
       ========================================================================== */}
       <div className="bg-white border-b border-stone-200 py-3.5 px-4 sm:px-8 sticky top-0 z-30 shadow-sm">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-cinzel font-bold text-xl tracking-wider text-[#0A0108]">
-              AASHIRWAAD
-            </span>
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+          <Link href="/" className="flex items-center gap-2.5">
+            <img 
+              src="/kanyadan/logo.png" 
+              alt="AASHIRWAAD Weddings" 
+              className="h-10 sm:h-11 w-auto object-contain"
+            />
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
               Registration Desk
             </span>
           </Link>
