@@ -173,21 +173,50 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-[#F0FDF4] text-stone-900 font-sans">
       
       {/* =========================================================================
-          HERO BANNER - COMPACT FULL-WIDTH COVER
+          HERO BANNER - HEROCONTENT WITH SUBTLE OVERLAY TEXT
       ========================================================================== */}
       <section className="relative w-full bg-[#F0FDF4] pb-8 overflow-hidden select-none">
         
-        {/* Full-width Compact Hero Banner Cover - Increased slightly with object-top */}
-        <div className="relative w-full h-[360px] sm:h-[450px] md:h-[520px] lg:h-[570px] xl:h-[610px] overflow-hidden shadow-sm">
+        {/* Full-width Hero Container with Background Image & Subtle Content Overlay */}
+        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[500px] lg:h-[540px] xl:h-[580px] overflow-hidden shadow-sm">
+          {/* Background Real Wedding Photograph */}
           <img 
-            src="/kanyadan/dignity_banner.png" 
-            alt="Aashirwaad Wedding Dignity Banner" 
-            className="w-full h-full object-cover object-top select-none"
+            src="/kanyadan/herosection.jpg" 
+            alt="Aashirwaad Weddings Hero" 
+            className="w-full h-full object-cover object-[center_22%] select-none"
           />
+
+          {/* Soft Dark/Warm Gradient Overlay for Subtle Text Legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/65" />
+
+          {/* Subtle Overlay Content (Halki Text me Content) - Positioned gracefully towards the right decor on desktop, leaving the smiling couple clear */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end text-center md:text-left px-4 sm:px-8 md:pr-12 lg:pr-20 pb-14 sm:pb-16 z-10">
+            <div className="max-w-md lg:max-w-lg">
+              
+              {/* Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+                <span className="tracking-wide">India's Trusted Dowry-Free Matrimonial Platform</span>
+              </div>
+
+              {/* Subtle Elegant Headline */}
+              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white tracking-wide leading-tight drop-shadow-md">
+                Find Your Life Partner with <br className="hidden sm:inline" />
+                <span className="text-amber-300">Dignity, Equality &amp; Respect</span>
+              </h1>
+
+              {/* Soft Subtitle */}
+              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/90 font-light leading-relaxed drop-shadow-sm">
+                Connect with thousands of verified brides and grooms with zero dowry pledge, strict screening, and complete privacy protection.
+              </p>
+
+            </div>
+          </div>
         </div>
 
         {/* =========================================================================
-            SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING BELOW COMPACT BANNER)
+            SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING DIRECTLY BELOW HERO BANNER)
         ========================================================================== */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 md:-mt-10 relative z-20">
           <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
