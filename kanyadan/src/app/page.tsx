@@ -178,12 +178,12 @@ export default function HomePage() {
       <section className="relative w-full bg-[#F0FDF4] pb-8 overflow-hidden select-none">
         
         {/* Full-width Hero Container with Background Image & Subtle Content Overlay */}
-        <div className="relative w-full h-[380px] sm:h-[450px] md:h-[500px] lg:h-[540px] xl:h-[580px] overflow-hidden shadow-sm">
+        <div className="relative w-full h-[400px] sm:h-[480px] md:h-[550px] lg:h-[620px] xl:h-[660px] overflow-hidden shadow-sm">
           {/* Background Real Wedding Photograph */}
           <img 
             src="/kanyadan/herosection.jpg" 
             alt="Aashirwaad Weddings Hero" 
-            className="w-full h-full object-cover object-[center_22%] select-none"
+            className="w-full h-full object-cover object-[center_40%] select-none"
           />
 
           {/* Soft Dark/Warm Gradient Overlay for Subtle Text Legibility */}
@@ -191,7 +191,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/65" />
 
           {/* Subtle Overlay Content (Halki Text me Content) - Positioned gracefully towards the right decor on desktop, leaving the smiling couple clear */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end text-center md:text-left px-4 sm:px-8 md:pr-12 lg:pr-20 pb-14 sm:pb-16 z-10">
+          <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end text-center md:text-left px-4 sm:px-8 md:pr-12 lg:pr-20 pb-16 sm:pb-20 z-10">
             <div className="max-w-md lg:max-w-lg">
               
               {/* Pill Badge */}
@@ -218,7 +218,7 @@ export default function HomePage() {
         {/* =========================================================================
             SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING DIRECTLY BELOW HERO BANNER)
         ========================================================================== */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 md:-mt-10 relative z-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-6 md:-mt-8 relative z-20">
           <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
