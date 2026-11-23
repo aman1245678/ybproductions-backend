@@ -209,7 +209,7 @@ function RegisterContent() {
           MAIN CONTAINER (SHAADI.COM STEPPING FORM)
       ========================================================================== */}
       <main className="max-w-xl w-full mx-auto p-4 sm:p-6 my-auto">
-        <div className="bg-white rounded-2xl shadow-xl border border-stone-200 p-6 sm:p-8">
+        <div className="hero-card-rise bg-white rounded-2xl shadow-xl border border-stone-200 p-6 sm:p-8">
 
           {/* =====================================================================
               STEP 0: MOBILE VERIFICATION VIA OTP

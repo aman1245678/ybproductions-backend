@@ -39,3 +39,116 @@ body {
 .emerald-card-glow {
   box-shadow: 0 10px 30px -5px rgba(5, 150, 105, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
+
+/* =========================================================================
+   YOUSPOT-STYLE BUTTERY SMOOTH ANIMATION SYSTEM
+   Physics: cubic-bezier(0.22, 1, 0.36, 1) [Natural deceleration, zero bounce]
+========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--hero-rise, 18px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-scale-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtle-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Staggered Rise Classes */
+.hero-rise {
+  opacity: 0;
+  display: inline-block;
+  animation: hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise-block {
+  opacity: 0;
+  display: block;
+  animation: hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-card-rise {
+  opacity: 0;
+  animation: hero-scale-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nav-fade-down {
+  opacity: 0;
+  animation: fade-down 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fade-in-slow {
+  opacity: 0;
+  animation: subtle-fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Smooth Interactive Micro-physics */
+.smooth-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+}
+
+.smooth-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(5, 150, 105, 0.15), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+}
+
+.smooth-btn {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.smooth-btn:hover {
+  transform: translateY(-1.5px) scale(1.015);
+}
+
+.smooth-btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise,
+  .hero-rise-block,
+  .hero-card-rise,
+  .nav-fade-down,
+  .fade-in-slow {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

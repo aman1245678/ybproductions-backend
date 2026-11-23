@@ -194,20 +194,34 @@ export default function HomePage() {
           <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end text-center md:text-left px-4 sm:px-8 md:pr-12 lg:pr-20 pb-16 sm:pb-20 z-10">
             <div className="max-w-md lg:max-w-lg">
               
-              {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs">
+              {/* Pill Badge - YouSpot Hero Rise */}
+              <div 
+                className="hero-rise inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs"
+                style={{ animationDelay: '0.08s' }}
+              >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
                 <span className="tracking-wide">India's Trusted Dowry-Free Matrimonial Platform</span>
               </div>
 
-              {/* Subtle Elegant Headline */}
+              {/* Subtle Elegant Headline - Staggered Word Rise (YouSpot Style) */}
               <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white tracking-wide leading-tight drop-shadow-md">
-                Find Your Life Partner with <br className="hidden sm:inline" />
-                <span className="text-amber-300">Dignity, Equality &amp; Respect</span>
+                <span className="block">
+                  <span className="hero-rise" style={{ animationDelay: '0.15s' }}>Find Your</span>{" "}
+                  <span className="hero-rise" style={{ animationDelay: '0.23s' }}>Life Partner</span>{" "}
+                  <span className="hero-rise" style={{ animationDelay: '0.31s' }}>with</span>
+                </span>
+                <span className="block mt-1">
+                  <span className="hero-rise text-amber-300" style={{ animationDelay: '0.39s' }}>Dignity,</span>{" "}
+                  <span className="hero-rise text-amber-300" style={{ animationDelay: '0.47s' }}>Equality</span>{" "}
+                  <span className="hero-rise text-amber-300" style={{ animationDelay: '0.54s' }}>&amp; Respect</span>
+                </span>
               </h1>
 
-              {/* Soft Subtitle */}
-              <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/90 font-light leading-relaxed drop-shadow-sm">
+              {/* Soft Subtitle - YouSpot Hero Sub Rise */}
+              <p 
+                className="hero-rise-block mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/90 font-light leading-relaxed drop-shadow-sm"
+                style={{ animationDelay: '0.62s' }}
+              >
                 Connect with thousands of verified brides and grooms with zero dowry pledge, strict screening, and complete privacy protection.
               </p>
 
@@ -218,8 +232,11 @@ export default function HomePage() {
         {/* =========================================================================
             SHAADI.COM STYLE SEARCH BAR WIDGET (FLOATING DIRECTLY BELOW HERO BANNER)
         ========================================================================== */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-6 md:-mt-8 relative z-20">
-          <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200">
+        <div 
+          className="hero-card-rise max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-6 md:-mt-8 relative z-20"
+          style={{ animationDelay: '0.70s' }}
+        >
+          <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(5,150,105,0.12)]">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
                 {/* 1. I'm looking for a */}
@@ -303,7 +320,7 @@ export default function HomePage() {
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                    className="smooth-btn w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-all cursor-pointer"
                   >
                     <span>Let's Begin</span>
                     <ChevronRight className="w-4 h-4 stroke-[2.5]" />
@@ -313,8 +330,11 @@ export default function HomePage() {
               </form>
             </div>
 
-            {/* Quick trust strip */}
-            <div className="mt-5 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600">
+            {/* Quick trust strip - YouSpot Hero Sub Rise */}
+            <div 
+              className="hero-rise-block mt-5 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600"
+              style={{ animationDelay: '0.82s' }}
+            >
               <span className="flex items-center gap-1.5 text-emerald-800">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 100% ID Verified
@@ -338,10 +358,13 @@ export default function HomePage() {
       {/* =========================================================================
           STATS BAR & 6 ACTION BUTTONS
       ========================================================================== */}
-      <section className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4 mb-14">
+      <section 
+        className="hero-card-rise max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4 mb-14"
+        style={{ animationDelay: '0.90s' }}
+      >
         
         {/* Clean White Stats Bar */}
-        <div className="rounded-2xl sm:rounded-full border border-stone-200/90 bg-white shadow-md py-3.5 px-6 sm:px-8">
+        <div className="rounded-2xl sm:rounded-full border border-stone-200/90 bg-white shadow-md py-3.5 px-6 sm:px-8 smooth-hover">
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 items-center justify-between text-center divide-y sm:divide-y-0 sm:divide-x divide-stone-200">
             
             {/* 100% Zero-Dowry Verified */}
@@ -398,7 +421,7 @@ export default function HomePage() {
             <Link
               key={idx}
               href={btn.href}
-              className="group bg-white border border-stone-200 rounded-2xl p-3.5 flex items-center justify-between gap-2 shadow-2xs hover:shadow-md hover:border-emerald-500 transition-all"
+              className="smooth-hover smooth-btn group bg-white border border-stone-200 rounded-2xl p-3.5 flex items-center justify-between gap-2 shadow-2xs hover:shadow-md hover:border-emerald-500 transition-all"
             >
               <div className={`w-9 h-9 rounded-xl ${btn.iconBg} flex items-center justify-center shrink-0`}>
                 {btn.icon}

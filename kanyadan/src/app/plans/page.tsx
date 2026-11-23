@@ -17,30 +17,40 @@ export default function PlansPage() {
     <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
+        {/* Header - YouSpot Staggered Rise */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+          <div 
+            className="hero-rise inline-flex items-center gap-2 bg-emerald-100 border border-emerald-200 text-emerald-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3"
+            style={{ animationDelay: '0.08s' }}
+          >
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             Dignified &amp; Trusted Matchmaking
           </div>
-          <h1 className="font-cinzel text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
+          <h1 
+            className="hero-rise-block font-cinzel text-3xl sm:text-5xl font-black text-stone-900 tracking-tight"
+            style={{ animationDelay: '0.18s' }}
+          >
             Membership &amp; Matchmaking Plans
           </h1>
-          <p className="text-sm sm:text-base text-stone-600 mt-3">
+          <p 
+            className="hero-rise-block text-sm sm:text-base text-stone-600 mt-3"
+            style={{ animationDelay: '0.28s' }}
+          >
             Register your profile for free, and choose a verified membership plan to unlock direct connections, contact details, and personalized matchmaking assistance.
           </p>
         </div>
 
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-20">
-          {SUBSCRIPTION_PLANS.map((plan) => (
+          {SUBSCRIPTION_PLANS.map((plan, idx) => (
             <div
               key={plan.id}
-              className={`rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 relative ${
+              className={`hero-card-rise smooth-hover rounded-3xl p-6 flex flex-col justify-between relative ${
                 plan.popular
                   ? "bg-gradient-to-b from-emerald-800 via-emerald-900 to-stone-900 text-white shadow-xl ring-2 ring-emerald-500/50"
-                  : "bg-white text-stone-900 border border-stone-200 shadow-sm hover:shadow-lg"
+                  : "bg-white text-stone-900 border border-stone-200 shadow-sm"
               }`}
+              style={{ animationDelay: `${0.35 + idx * 0.1}s` }}
             >
               {plan.badge && (
                 <span

@@ -94,30 +94,40 @@ export default function PackagesPage() {
     <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header */}
+        {/* Header - YouSpot Staggered Rise */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3.5 py-1.5 rounded-full border border-emerald-200 mb-3">
+          <div 
+            className="hero-rise inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3.5 py-1.5 rounded-full border border-emerald-200 mb-3"
+            style={{ animationDelay: '0.08s' }}
+          >
             <Sparkles className="w-4 h-4 text-emerald-600" />
             Complete Wedding Infrastructure Bundles
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel">
+          <h1 
+            className="hero-rise-block text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel"
+            style={{ animationDelay: '0.18s' }}
+          >
             All-in-One Wedding Packages (Pandal + Hall + Food)
           </h1>
-          <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+          <p 
+            className="hero-rise-block text-stone-600 text-sm sm:text-base mt-2 max-w-2xl mx-auto"
+            style={{ animationDelay: '0.28s' }}
+          >
             Seamlessly book your complete wedding setup — pandal, marriage hall, pure catering, lighting, and sound — in one transparent package. Zero hidden costs, complete peace of mind.
           </p>
         </div>
 
         {/* 3 Pre-built Packages */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {PRE_BUILT_PACKAGES.map((pkg) => (
+          {PRE_BUILT_PACKAGES.map((pkg, idx) => (
             <div
               key={pkg.id}
-              className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
+              className={`hero-card-rise smooth-hover rounded-3xl p-6 sm:p-8 flex flex-col justify-between ${
                 pkg.badge === "Most Popular"
                   ? "bg-gradient-to-b from-emerald-800 via-emerald-900 to-stone-900 text-white shadow-2xl ring-4 ring-emerald-500/40 scale-105"
-                  : "bg-white text-stone-800 border border-stone-200 shadow-md hover:shadow-xl"
+                  : "bg-white text-stone-800 border border-stone-200 shadow-md"
               }`}
+              style={{ animationDelay: `${0.35 + idx * 0.12}s` }}
             >
               <div>
                 <div className="flex justify-between items-center mb-4">

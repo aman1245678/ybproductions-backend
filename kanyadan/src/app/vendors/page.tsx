@@ -49,25 +49,37 @@ export default function VendorsCatalogPage() {
     <div className="min-h-screen bg-[#F0FDF4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         
-        {/* Top Banner */}
+        {/* Top Banner - YouSpot Staggered Rise */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3 py-1 rounded-full border border-emerald-200 mb-2">
+            <div 
+              className="hero-rise inline-flex items-center gap-2 bg-emerald-100 text-emerald-800 text-xs font-bold uppercase px-3 py-1 rounded-full border border-emerald-200 mb-2"
+              style={{ animationDelay: '0.08s' }}
+            >
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               Verified Wedding Infrastructure
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel">
+            <h1 
+              className="hero-rise-block text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight font-cinzel"
+              style={{ animationDelay: '0.18s' }}
+            >
               Pandals, Marriage Halls &amp; Resources
             </h1>
-            <p className="text-stone-600 text-sm sm:text-base mt-1 max-w-2xl">
+            <p 
+              className="hero-rise-block text-stone-600 text-sm sm:text-base mt-1 max-w-2xl"
+              style={{ animationDelay: '0.28s' }}
+            >
               Waterproof dome pandals, AC banquets, and pure shakahari catering. Every vendor is registered with transparent pricing, fixed quality assurance, and managed by Aashirwaad Weddings.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div 
+            className="hero-rise flex items-center gap-3"
+            style={{ animationDelay: '0.36s' }}
+          >
             <Link
               href="/vendors/join"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
+              className="smooth-btn bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm shadow-md transition flex items-center gap-2"
             >
               <Building2 className="w-4 h-4" />
               List Your Pandal / Hall

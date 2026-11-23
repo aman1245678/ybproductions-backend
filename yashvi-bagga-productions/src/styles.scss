@@ -269,18 +269,74 @@ select option:checked {
   @apply text-sm md:text-base font-poppins font-light leading-relaxed;
 }
 
-// === PAGE TRANSITIONS ===
+// === PAGE TRANSITIONS & YOUSPOT-STYLE BUTTERY SMOOTH ANIMATIONS ===
 .page-enter {
-  animation: pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: pageEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes pageEnter {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-scale-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hero-rise {
+  opacity: 0;
+  display: inline-block;
+  animation: hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise-block {
+  opacity: 0;
+  display: block;
+  animation: hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-card-rise {
+  opacity: 0;
+  animation: hero-scale-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.smooth-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.smooth-btn {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+  &:hover {
+    transform: translateY(-1.5px) scale(1.015);
+  }
+  &:active {
+    transform: translateY(0) scale(0.985);
   }
 }

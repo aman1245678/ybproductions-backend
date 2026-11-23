@@ -24,7 +24,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full select-none shadow-xs">
+    <header className="nav-fade-down sticky top-0 z-50 w-full select-none shadow-xs">
       
       {/* 1. TOP UTILITY BAR (Soft Pastel Mint #EAF8F1) */}
       <div className="bg-[#EAF8F1] text-stone-700 text-[11px] py-1 px-4 sm:px-6 lg:px-8 border-b border-emerald-200/50">
@@ -126,7 +126,7 @@ export default function Navbar() {
             {/* Login Outline Button */}
             <Link
               href="/register"
-              className="border border-stone-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-700 rounded-full px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition"
+              className="smooth-btn border border-stone-300 hover:border-emerald-600 bg-white hover:bg-emerald-50 text-stone-700 hover:text-emerald-700 rounded-full px-3.5 py-1.5 text-xs font-semibold flex items-center gap-1.5 transition"
             >
               <User className="w-3.5 h-3.5 text-emerald-600" />
               <span>Login</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
             {/* Register Profile Emerald Button */}
             <Link
               href="/register"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full px-4 py-1.5 text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
+              className="smooth-btn bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full px-4 py-1.5 text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer"
             >
               <UserPlus className="w-3.5 h-3.5 text-white" />
               <span>Register Profile</span>
