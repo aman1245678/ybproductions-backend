@@ -341,27 +341,6 @@ export default function HomePage() {
               </form>
             </div>
 
-            {/* Quick trust strip - YouSpot Hero Sub Rise */}
-            <div 
-              className="hero-rise-block mt-5 flex items-center justify-center gap-4 text-xs font-semibold text-stone-600"
-              style={{ animationDelay: '0.82s' }}
-            >
-              <span className="flex items-center gap-1.5 text-emerald-800">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                100% ID Verified
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5 text-emerald-800">
-                <Lock className="w-3.5 h-3.5 text-emerald-600" />
-                100% Privacy Protected
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1.5 text-emerald-800">
-                <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" />
-                Zero Dowry Guarantee
-              </span>
-            </div>
-
           </div>
 
         </section>
