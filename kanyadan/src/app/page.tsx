@@ -187,16 +187,16 @@ export default function HomePage() {
             className="w-full h-full object-cover object-[center_18%] select-none"
           />
 
-          {/* Soft Dark/Warm Gradient Overlay for Subtle Text Legibility & Real Vibrance */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/30" />
+          {/* Soft Gradient Overlay: darker at bottom for clean text contrast, completely transparent at top/center so faces stay clear */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
 
-          {/* Subtle Overlay Content (Halki Text me Content) - Positioned in the center garden opening between the royal couple */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 z-10">
+          {/* Subtle Overlay Content - Positioned comfortably at the bottom so the couple's faces are 100% visible and unobstructed */}
+          <div className="absolute inset-0 flex flex-col justify-end items-center text-center px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16 md:pb-20 lg:pb-22 z-10">
             <div className="max-w-xl">
               
               {/* Pill Badge - YouSpot Hero Rise */}
               <div 
-                className="hero-rise inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/30 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs"
+                className="hero-rise inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-emerald-300 text-xs font-medium mb-2 sm:mb-2.5 shadow-xs"
                 style={{ animationDelay: '0.08s' }}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
@@ -204,13 +204,13 @@ export default function HomePage() {
               </div>
 
               {/* Subtle Elegant Headline - Staggered Word Rise (YouSpot Style) */}
-              <h1 className="font-cinzel text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white tracking-wide leading-tight drop-shadow-md">
+              <h1 className="font-cinzel text-xl sm:text-2xl md:text-3xl lg:text-[34px] font-bold text-white tracking-wide leading-tight drop-shadow-md">
                 <span className="block">
                   <span className="hero-rise" style={{ animationDelay: '0.15s' }}>Find Your</span>{" "}
                   <span className="hero-rise" style={{ animationDelay: '0.23s' }}>Life Partner</span>{" "}
                   <span className="hero-rise" style={{ animationDelay: '0.31s' }}>with</span>
                 </span>
-                <span className="block mt-1">
+                <span className="block mt-0.5 sm:mt-1">
                   <span className="hero-rise text-amber-300" style={{ animationDelay: '0.39s' }}>Dignity,</span>{" "}
                   <span className="hero-rise text-amber-300" style={{ animationDelay: '0.47s' }}>Equality</span>{" "}
                   <span className="hero-rise text-amber-300" style={{ animationDelay: '0.54s' }}>&amp; Respect</span>
@@ -219,7 +219,7 @@ export default function HomePage() {
 
               {/* Soft Subtitle - YouSpot Hero Sub Rise */}
               <p 
-                className="hero-rise-block mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/95 font-light leading-relaxed drop-shadow-sm"
+                className="hero-rise-block mt-2 sm:mt-2.5 text-xs sm:text-sm text-stone-200/90 font-light leading-relaxed max-w-lg mx-auto drop-shadow-sm"
                 style={{ animationDelay: '0.62s' }}
               >
                 Connect with thousands of verified brides and grooms with zero dowry pledge, strict screening, and complete privacy protection.
