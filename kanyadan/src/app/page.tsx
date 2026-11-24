@@ -26,15 +26,16 @@ export default function HomePage() {
   const router = useRouter();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // Matchmaker quick search bar state (Shaadi.com pattern)
-  const [lookingFor, setLookingFor] = useState<"Woman" | "Man">("Woman");
-  const [ageRange, setAgeRange] = useState("22 to 28");
+  // Matchmaker quick search bar state (Shaadi.com pattern with respectful matrimonial vocab)
+  const [lookingFor, setLookingFor] = useState<"Bride" | "Groom">("Bride");
+  const [ageFrom, setAgeFrom] = useState(21);
+  const [ageTo, setAgeTo] = useState(28);
   const [religion, setReligion] = useState("Hindu");
   const [motherTongue, setMotherTongue] = useState("Hindi");
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/register?lookingFor=${encodeURIComponent(lookingFor)}&ageRange=${encodeURIComponent(ageRange)}&religion=${encodeURIComponent(religion)}&motherTongue=${encodeURIComponent(motherTongue)}`);
+    router.push(`/register?lookingFor=${encodeURIComponent(lookingFor)}&ageFrom=${ageFrom}&ageTo=${ageTo}&religion=${encodeURIComponent(religion)}&motherTongue=${encodeURIComponent(motherTongue)}`);
   };
 
   const toggleFaq = (index: number) => {
@@ -239,37 +240,47 @@ export default function HomePage() {
           <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(5,150,105,0.12)]">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
-                {/* 1. I'm looking for a */}
+                {/* 1. I'm looking for (Bride / Groom with Dulha / Dulhan Vocab) */}
                 <div>
                   <label className="block text-[11px] uppercase font-bold tracking-wider text-emerald-800 mb-1">
-                    I'm looking for a
+                    Looking For
                   </label>
                   <select 
                     value={lookingFor}
-                    onChange={(e) => setLookingFor(e.target.value as "Woman" | "Man")}
+                    onChange={(e) => setLookingFor(e.target.value as "Bride" | "Groom")}
                     className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
                   >
-                    <option value="Woman">Woman</option>
-                    <option value="Man">Man</option>
+                    <option value="Bride">Bride (Dulhan)</option>
+                    <option value="Groom">Groom (Dulha)</option>
                   </select>
                 </div>
 
-                {/* 2. Aged */}
+                {/* 2. Age Selection: From & To */}
                 <div>
                   <label className="block text-[11px] uppercase font-bold tracking-wider text-emerald-800 mb-1">
-                    Aged
+                    Age (From - To)
                   </label>
-                  <select 
-                    value={ageRange}
-                    onChange={(e) => setAgeRange(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
-                  >
-                    <option value="20 to 25">20 to 25</option>
-                    <option value="22 to 28">22 to 28</option>
-                    <option value="25 to 30">25 to 30</option>
-                    <option value="28 to 35">28 to 35</option>
-                    <option value="32 to 42">32 to 42</option>
-                  </select>
+                  <div className="flex items-center gap-1.5">
+                    <select 
+                      value={ageFrom}
+                      onChange={(e) => setAgeFrom(Number(e.target.value))}
+                      className="w-1/2 bg-stone-50 border border-stone-200 rounded-xl px-2 py-2.5 text-xs sm:text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+                    >
+                      {[18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 35, 40].map((age) => (
+                        <option key={age} value={age}>{age} Yrs</option>
+                      ))}
+                    </select>
+                    <span className="text-xs font-bold text-stone-400">to</span>
+                    <select 
+                      value={ageTo}
+                      onChange={(e) => setAgeTo(Number(e.target.value))}
+                      className="w-1/2 bg-stone-50 border border-stone-200 rounded-xl px-2 py-2.5 text-xs sm:text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
+                    >
+                      {[21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 35, 40, 45, 50, 60].map((age) => (
+                        <option key={age} value={age}>{age} Yrs</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 {/* 3. Religion */}

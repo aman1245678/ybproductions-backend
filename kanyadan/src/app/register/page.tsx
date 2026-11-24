@@ -79,9 +79,13 @@ function RegisterContent() {
     const qLookingFor = searchParams.get("lookingFor");
     const qReligion = searchParams.get("religion");
     const qMotherTongue = searchParams.get("motherTongue");
+    const qZone = searchParams.get("zone");
 
     if (qLookingFor) {
-      setGender(qLookingFor === "Woman" ? "Female" : "Male");
+      setGender(qLookingFor === "Bride" || qLookingFor === "Woman" ? "Female" : "Male");
+    }
+    if (qZone === "dowry-free") {
+      setZeroDowryConsent(true);
     }
     if (qReligion && qReligion !== "All Religions") {
       setReligion(qReligion);

@@ -41,12 +41,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/plans" className="hover:text-emerald-700 transition">
-                  Membership &amp; Matchmaking Plans
+                <Link href="/plans" className="hover:text-emerald-700 font-semibold text-emerald-800 transition">
+                  Plans &amp; Pricing (Membership)
                 </Link>
               </li>
               <li>
-                <Link href="/register" className="hover:text-emerald-700 transition">
+                <Link href="/register?zone=dowry-free" className="hover:text-emerald-700 transition">
                   Zero-Dowry Dignity Pledge
                 </Link>
               </li>
@@ -58,16 +58,16 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Wedding Venues & Pandals */}
+          {/* Wedding Management, Venues & Pandals */}
           <div>
             <h4 className="text-stone-900 font-bold text-sm mb-4 flex items-center gap-1.5 uppercase tracking-wider">
               <Sparkles className="w-4 h-4 text-emerald-600" />
-              Venues &amp; Packages
+              Wedding Management
             </h4>
             <ul className="space-y-2.5 text-xs text-stone-600">
               <li>
                 <Link href="/packages" className="hover:text-emerald-700 transition">
-                  All-in-One Wedding Package Calculator
+                  All-in-One Wedding Packages
                 </Link>
               </li>
               <li>
@@ -81,8 +81,14 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/vendors/join" className="hover:text-emerald-700 transition text-emerald-700 font-semibold">
+                <Link href="/vendors/join" className="hover:text-emerald-700 transition text-emerald-700 font-medium">
                   Partner with Us (List Pandal/Hall)
+                </Link>
+              </li>
+              <li>
+                <Link href="/business-inquiry" className="hover:text-emerald-700 transition text-emerald-800 font-bold flex items-center gap-1">
+                  <span>Business &amp; Event Inquiry Form</span>
+                  <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded-full">New</span>
                 </Link>
               </li>
             </ul>
