@@ -183,21 +183,20 @@ export default function HomePage() {
           {/* Background Real Wedding Photograph */}
           <img 
             src="/kanyadan/herosection.jpg" 
-            alt="Aashirwaad Weddings Hero" 
-            className="w-full h-full object-cover object-[center_40%] select-none"
+            alt="Aashirwaad Weddings Royal Couple" 
+            className="w-full h-full object-cover object-[center_18%] select-none"
           />
 
-          {/* Soft Dark/Warm Gradient Overlay for Subtle Text Legibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/35" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/65" />
+          {/* Soft Dark/Warm Gradient Overlay for Subtle Text Legibility & Real Vibrance */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/30" />
 
-          {/* Subtle Overlay Content (Halki Text me Content) - Positioned gracefully towards the right decor on desktop, leaving the smiling couple clear */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center md:items-end text-center md:text-left px-4 sm:px-8 md:pr-12 lg:pr-20 pb-16 sm:pb-20 z-10">
-            <div className="max-w-md lg:max-w-lg">
+          {/* Subtle Overlay Content (Halki Text me Content) - Positioned in the center garden opening between the royal couple */}
+          <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 z-10">
+            <div className="max-w-xl">
               
               {/* Pill Badge - YouSpot Hero Rise */}
               <div 
-                className="hero-rise inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs"
+                className="hero-rise inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/30 backdrop-blur-md border border-white/25 text-emerald-200 text-xs font-medium mb-3 shadow-xs"
                 style={{ animationDelay: '0.08s' }}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
@@ -220,7 +219,7 @@ export default function HomePage() {
 
               {/* Soft Subtitle - YouSpot Hero Sub Rise */}
               <p 
-                className="hero-rise-block mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/90 font-light leading-relaxed drop-shadow-sm"
+                className="hero-rise-block mt-2.5 sm:mt-3 text-xs sm:text-sm md:text-base text-stone-200/95 font-light leading-relaxed drop-shadow-sm"
                 style={{ animationDelay: '0.62s' }}
               >
                 Connect with thousands of verified brides and grooms with zero dowry pledge, strict screening, and complete privacy protection.
