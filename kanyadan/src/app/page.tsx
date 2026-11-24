@@ -240,7 +240,7 @@ export default function HomePage() {
           <div className="p-3.5 sm:p-4 bg-white rounded-2xl sm:rounded-full shadow-2xl border border-stone-200 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(5,150,105,0.12)]">
             <form onSubmit={handleSearchSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-left items-end">
                 
-                {/* 1. I'm looking for (Bride / Groom with Dulha / Dulhan Vocab) */}
+                {/* 1. Looking For (Clean English Matrimonial Vocab) */}
                 <div>
                   <label className="block text-[11px] uppercase font-bold tracking-wider text-emerald-800 mb-1">
                     Looking For
@@ -250,8 +250,8 @@ export default function HomePage() {
                     onChange={(e) => setLookingFor(e.target.value as "Bride" | "Groom")}
                     className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2.5 text-sm font-semibold text-stone-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer"
                   >
-                    <option value="Bride">Bride (Dulhan)</option>
-                    <option value="Groom">Groom (Dulha)</option>
+                    <option value="Bride">Bride</option>
+                    <option value="Groom">Groom</option>
                   </select>
                 </div>
 
